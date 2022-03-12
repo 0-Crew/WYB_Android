@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.wyb.wyb_android.data.local.Comfort" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+
+        <ImageView
+            android:id="@+id/imgBottle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="97dp"
+            android:src="@drawable/ic_bottle_main_0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="19dp"
+            android:fontFamily="@font/spoqa_bold"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.03"
+            android:text="@{data.range}"
+            android:textColor="@color/orange"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/imgBottle"
+            app:layout_constraintTop_toTopOf="@id/imgBottle" />
+
+        <ImageButton
+            android:id="@+id/btnCalendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_calendar"
+            app:layout_constraintBottom_toBottomOf="@id/tvDate"
+            app:layout_constraintStart_toEndOf="@id/tvDate"
+            app:layout_constraintTop_toTopOf="@id/tvDate"
+            tools:ignore="ContentDescription" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutChallengeComfort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/orange"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="8dp"
+            app:layout_constraintStart_toStartOf="@id/tvDate"
+            app:layout_constraintTop_toBottomOf="@id/tvDate">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/ic_star_white"
+                app:layout_constraintBottom_toBottomOf="@id/tvComfort"
+                app:layout_constraintEnd_toStartOf="@id/tvComfortTitle"
+                app:layout_constraintTop_toTopOf="@id/tvComfort"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tvComfortTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:fontFamily="@font/spoqa_medium"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:text="@string/challenge_comfort"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvComfort"
+                app:layout_constraintEnd_toStartOf="@id/viewDivider"
+                app:layout_constraintTop_toTopOf="@id/tvComfort" />
+
+            <View
+                android:id="@+id/viewDivider"
+                android:layout_width="2dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="6dp"
+                android:background="@color/white"
+                android:maxHeight="30dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvComfort"
+                app:layout_constraintEnd_toStartOf="@id/tvComfort"
+                app:layout_constraintTop_toTopOf="@id/tvComfort" />
+
+            <TextView
+                android:id="@+id/tvComfort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spoqa_bold"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:maxWidth="212dp"
+                android:maxHeight="34dp"
+                android:text="@{data.comfort}"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="340dp"
+            android:layout_marginEnd="1dp"
+            android:background="@drawable/border_gradient_line_challenge"
+            app:layout_constraintEnd_toEndOf="@id/imgBottle"
+            app:layout_constraintStart_toStartOf="@id/imgBottle"
+            app:layout_constraintTop_toBottomOf="@id/imgBottle" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_challenge_discomfort"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="30dp"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutChallengeComfort"
+            tools:listitem="@layout/item_challenge_date" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

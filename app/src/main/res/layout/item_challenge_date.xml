@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.wyb.wyb_android.data.local.Challenge" />
+
+        <variable
+            name="viewModel"
+            type="com.wyb.wyb_android.ui.main.ChallengeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutWater"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:id="@+id/imgWaterOrange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:clickable="@{data.future == true? false : true}"
+                    android:src="@{data.future == true? @drawable/ic_water_gray : @drawable/ic_water_orange}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/tvDateToday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/spoqa_bold"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.03"
+                    android:text="@{data.date}"
+                    android:textColor="@{data.future == true? @color/gray_3 : @color/gray_1}"
+                    android:textSize="13dp"
+                    app:layout_constraintBottom_toBottomOf="@id/imgWaterOrange"
+                    app:layout_constraintEnd_toEndOf="@id/imgWaterOrange"
+                    app:layout_constraintStart_toStartOf="@id/imgWaterOrange"
+                    app:layout_constraintTop_toTopOf="@id/imgWaterOrange" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutChallengeToday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:background="@{data.today == true? @drawable/selector_challenge_today : null}"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="8dp">
+
+                <TextView
+                    android:id="@+id/tvDiscomfort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:fontFamily="@font/spoqa_medium"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.03"
+                    android:text="@{data.disComfort}"
+                    android:textColor="@{data.future == true? @color/gray_2 : @color/gray_4}"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btnChallengeEdit"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/btnChallengeEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:onClick="@{()->viewModel.setIsEdit(true)}"
+                    android:src="@drawable/ic_edit_gray"
+                    android:visibility="@{data.future == true ? View.INVISIBLE : 0}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tvDiscomfort"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

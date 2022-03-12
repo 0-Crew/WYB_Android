@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/challenge_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.ChallengeFragment">
+
+        <TextView
+            android:id="@+id/tvNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/spoqa_bold"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.03"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="가니" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/futura_heavy"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.03"
+            android:text="@string/main_bottle_title"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="@id/tvNickname"
+            app:layout_constraintStart_toEndOf="@id/tvNickname"
+            app:layout_constraintTop_toTopOf="@id/tvNickname" />
+
+        <ImageButton
+            android:id="@+id/btnMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="20dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_menu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/btnAlarm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="8dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_alarm"
+            app:layout_constraintEnd_toStartOf="@id/btnMenu"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayoutChallengeContent"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNickname"
+            app:tabBackground="@drawable/selector_main_tab_menu"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="0dp"
+            app:tabMode="fixed"
+            app:tabPaddingEnd="11dp"
+            app:tabPaddingStart="11dp"
+            app:tabRippleColor="@android:color/transparent"
+            app:tabSelectedTextColor="@color/black"
+            app:tabTextAppearance="@style/main_tab_text"
+            app:tabTextColor="@color/gray_3" />
+
+        <ImageButton
+            android:id="@+id/btnBottleWorld"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_plus"
+            app:layout_constraintBottom_toBottomOf="@id/tabLayoutChallengeContent"
+            app:layout_constraintStart_toEndOf="@id/tabLayoutChallengeContent"
+            app:layout_constraintTop_toTopOf="@id/tabLayoutChallengeContent"
+            tools:ignore="ContentDescription" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPagerContent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:overScrollMode="never"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tabLayoutChallengeContent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

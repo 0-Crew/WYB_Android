@@ -1,0 +1,2 @@
+rootProject.name = "WYB_Android"
+include ':app'

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">WYB_Android</string>
+
+    <!-- BindingFragment -->
+    <string name="binding_error">Binding not initialized to reference the view.</string>
+
+    <!-- General -->
+
+
+    <!-- Dialog -->
+
+
+    <!-- ChallengeFragment -->
+    <string name="main_bottle_title">\'s Bottle</string>
+    <string name="challenge_comfort">편리함</string>
+    <string name="challenge_divider">|</string>
+</resources>
