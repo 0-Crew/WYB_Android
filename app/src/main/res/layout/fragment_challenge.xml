@@ -15,11 +15,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="50dp"
-            android:fontFamily="@font/spoqa_bold"
-            android:includeFontPadding="false"
-            android:letterSpacing="-0.03"
+            android:textAppearance="@style/TextAppearance.WYBComponents.Bold.30"
             android:textColor="@color/black"
-            android:textSize="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="가니" />
@@ -27,12 +24,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/futura_heavy"
-            android:includeFontPadding="false"
-            android:letterSpacing="-0.03"
             android:text="@string/main_bottle_title"
+            android:textAppearance="@style/TextAppearance.WYBComponents.Heavy.30.Eng"
             android:textColor="@color/black"
-            android:textSize="30dp"
             app:layout_constraintBottom_toBottomOf="@id/tvNickname"
             app:layout_constraintStart_toEndOf="@id/tvNickname"
             app:layout_constraintTop_toTopOf="@id/tvNickname" />
@@ -77,7 +71,7 @@
             app:tabPaddingStart="11dp"
             app:tabRippleColor="@android:color/transparent"
             app:tabSelectedTextColor="@color/black"
-            app:tabTextAppearance="@style/main_tab_text"
+            app:tabTextAppearance="@style/TextAppearance.WYBComponents.Medium.12"
             app:tabTextColor="@color/gray_3" />
 
         <ImageButton
