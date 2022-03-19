@@ -1,11 +1,11 @@
-package com.wyb.wyb_android.ui.main
+package com.wyb.wyb_android.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.wyb.wyb_android.R
-import com.wyb.wyb_android.data.local.Comfort
+import com.wyb.wyb_android.data.model.Comfort
 import com.wyb.wyb_android.databinding.ItemChallengeContainerBinding
 
 class ChallengeAdapter(

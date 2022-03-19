@@ -1,4 +1,4 @@
-package com.wyb.wyb_android.ui.main
+package com.wyb.wyb_android.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.BindingFragment
-import com.wyb.wyb_android.data.local.Challenge
-import com.wyb.wyb_android.data.local.Comfort
+import com.wyb.wyb_android.data.model.Challenge
+import com.wyb.wyb_android.data.model.Comfort
 import com.wyb.wyb_android.databinding.FragmentChallengeBinding
 
 class ChallengeFragment : BindingFragment<FragmentChallengeBinding>(R.layout.fragment_challenge) {

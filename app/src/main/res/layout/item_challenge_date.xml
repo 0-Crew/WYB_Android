@@ -9,11 +9,11 @@
 
         <variable
             name="data"
-            type="com.wyb.wyb_android.data.local.Challenge" />
+            type="com.wyb.wyb_android.data.model.Challenge" />
 
         <variable
             name="viewModel"
-            type="com.wyb.wyb_android.ui.main.ChallengeViewModel" />
+            type="com.wyb.wyb_android.ui.home.ChallengeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

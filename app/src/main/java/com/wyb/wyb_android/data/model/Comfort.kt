@@ -1,4 +1,4 @@
-package com.wyb.wyb_android.data.local
+package com.wyb.wyb_android.data.model
 
 data class Comfort(
     val range: String,
