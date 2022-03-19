@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="com.wyb.wyb_android.data.local.Comfort" />
+            type="com.wyb.wyb_android.data.model.Comfort" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -1,4 +1,4 @@
-package com.wyb.wyb_android.ui.main
+package com.wyb.wyb_android.ui.home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.wyb.wyb_android.R
-import com.wyb.wyb_android.data.local.Challenge
+import com.wyb.wyb_android.data.model.Challenge
 import com.wyb.wyb_android.databinding.ItemChallengeDateBinding
 
 class ChallengeDateAdapter(

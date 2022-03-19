@@ -1,4 +1,4 @@
-package com.wyb.wyb_android.ui.main
+package com.wyb.wyb_android.ui
 
 import android.os.Bundle
 import com.wyb.wyb_android.R

@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_main_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WYB_Android">
-        <activity android:name=".ui.main.MainActivity"
+        <activity android:name=".ui.MainActivity"
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
