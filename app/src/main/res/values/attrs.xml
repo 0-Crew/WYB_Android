@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WYBLabelEditText">
+        <attr name="backgroundStroke" format="enum">
+            <enum name="gray" value="0" />
+            <enum name="orange" value="1" />
+        </attr>
+        <attr name="labelText" format="reference|string" />
+        <attr name="showIcon" format="boolean" />
+        <attr name="iconType" format="enum">
+            <enum name="edit" value="0" />
+            <enum name="check" value="1" />
+        </attr>
+    </declare-styleable>
+</resources>
