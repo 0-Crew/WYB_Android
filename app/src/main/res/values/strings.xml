@@ -14,4 +14,8 @@
     <string name="main_bottle_title">\'s Bottle</string>
     <string name="challenge_comfort">편리함</string>
     <string name="challenge_divider">|</string>
+
+    <!-- ChallengeOpenComfortFragment -->
+    <string name="challenge_open_comport_label">편리함</string>
+    <string name="challenge_open_comfort_hint">플라스틱 빨대 사용 안 하기</string>
 </resources>
