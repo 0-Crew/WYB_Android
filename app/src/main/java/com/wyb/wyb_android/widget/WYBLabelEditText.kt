@@ -55,13 +55,13 @@ class WYBLabelEditText @JvmOverloads constructor(
             showIcon = it.getBoolean(R.styleable.WYBLabelEditText_showIcon, false)
             iconType = when (it.getInt(R.styleable.WYBLabelEditText_iconType, TYPE_CHECK)) {
                 TYPE_EDIT -> ResourcesCompat.getDrawable(resources, R.drawable.ic_edit, null)
-                else -> ResourcesCompat.getDrawable(resources, R.drawable.ic_check, null)
+                else -> ResourcesCompat.getDrawable(resources, R.drawable.ic_check_20, null)
             }
             backgroundStroke =
                 when (it.getInt(R.styleable.WYBLabelEditText_backgroundStroke, COLOR_ORANGE)) {
                     COLOR_GRAY -> ResourcesCompat.getDrawable(
                         resources,
-                        R.drawable.shape_gray_2_stroke,
+                        R.drawable.shape_gray2_stroke,
                         null
                     )
                     else -> ResourcesCompat.getDrawable(
