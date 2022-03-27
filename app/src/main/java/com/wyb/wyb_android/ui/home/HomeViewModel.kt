@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ChallengeViewModel : ViewModel() {
+class HomeViewModel : ViewModel() {
 
     private val _isSuccess = MutableLiveData(false)
     val isSuccess: LiveData<Boolean> = _isSuccess
