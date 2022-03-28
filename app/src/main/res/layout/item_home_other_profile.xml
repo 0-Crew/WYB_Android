@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/shape_gray3_stroke_oval"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="6dp"
+            android:textAppearance="@style/TextAppearance.WYBComponents.Medium.12"
+            android:textColor="@color/gray_3"
+            tools:text="가" />
+    </LinearLayout>
+</layout>

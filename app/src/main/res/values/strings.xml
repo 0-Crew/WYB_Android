@@ -6,13 +6,14 @@
 
     <!-- General -->
     <string name="comfort">편리함</string>
+    <string name="divider">|</string>
 
     <!-- Dialog -->
 
 
-    <!-- ChallengeFragment -->
-    <string name="main_bottle_title">\'s Bottle</string>
-    <string name="challenge_divider">|</string>
+    <!-- HomeFragment -->
+    <string name="home_bottle_title">\'s Bottle</string>
+    <string name="home_goto_bottle_world">다른 보틀보기</string>
 
     <!-- ChallengeOpenComfortFragment -->
     <string name="challenge_open_comfort_hint">플라스틱 빨대 사용 안 하기</string>

@@ -13,7 +13,7 @@
 
         <variable
             name="viewModel"
-            type="com.wyb.wyb_android.ui.home.ChallengeViewModel" />
+            type="com.wyb.wyb_android.ui.home.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,11 +38,11 @@
 
                 <ImageButton
                     android:id="@+id/imgWaterOrange"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
                     android:background="@android:color/transparent"
                     android:clickable="@{data.future == true? false : true}"
-                    android:src="@{data.future == true? @drawable/ic_water_gray : @drawable/ic_water_orange}"
+                    android:src="@{data.future == true? @drawable/ic_water_43_gray : @drawable/ic_water_43_orange}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="ContentDescription" />
@@ -90,7 +90,8 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:onClick="@{()->viewModel.setIsEdit(true)}"
-                    android:src="@drawable/ic_edit_gray"
+                    android:src="@drawable/ic_edit"
+                    android:tint="@color/gray_1"
                     android:visibility="@{data.future == true ? View.INVISIBLE : 0}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
