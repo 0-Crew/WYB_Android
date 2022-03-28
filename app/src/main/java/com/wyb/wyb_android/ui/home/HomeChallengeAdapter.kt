@@ -11,9 +11,9 @@ import com.wyb.wyb_android.data.model.Challenge
 import com.wyb.wyb_android.databinding.ItemHomeChallengeBinding
 
 class HomeChallengeAdapter(private val viewModel: HomeViewModel) :
-    ListAdapter<Challenge, HomeChallengeAdapter.ChallengeDateViewHolder>(ChallengeDiffUtil()) {
+    ListAdapter<Challenge, HomeChallengeAdapter.ChallengeViewHolder>(ChallengeDiffUtil()) {
 
-    inner class ChallengeDateViewHolder(
+    inner class ChallengeViewHolder(
         private val binding: ItemHomeChallengeBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(challengeData: Challenge) {
@@ -43,17 +43,17 @@ class HomeChallengeAdapter(private val viewModel: HomeViewModel) :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChallengeDateViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChallengeViewHolder {
         val binding: ItemHomeChallengeBinding =
             ItemHomeChallengeBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             )
-        return ChallengeDateViewHolder(binding)
+        return ChallengeViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ChallengeDateViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ChallengeViewHolder, position: Int) {
         holder.onBind(getItem(position))
     }
 

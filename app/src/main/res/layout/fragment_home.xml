@@ -41,7 +41,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/challenge_bottle_title"
+            android:text="@string/home_bottle_title"
             android:textAppearance="@style/TextAppearance.WYBComponents.Heavy.30.Eng"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/tvNickname"
@@ -104,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:text="@string/challenge_goto_bottle_world"
+                android:text="@string/home_goto_bottle_world"
                 android:textAppearance="@style/TextAppearance.WYBComponents.Medium.12"
                 android:textColor="@color/gray_3" />
         </LinearLayout>
