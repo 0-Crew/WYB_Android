@@ -161,4 +161,20 @@
         <item name="android:letterSpacing">-0.04</item>
         <item name="android:includeFontPadding">false</item>
     </style>
+
+    <!-- Widget -->
+
+    <style name="Widget.WYB.Button.SolidButton.FullWidth" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:backgroundTint">@color/selector_full_width_button_background</item>
+        <item name="android:textAppearance">@style/TextAppearance.WYBComponents.Bold.16</item>
+        <item name="android:textColor">@color/selector_full_width_button_text</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
 </resources>
