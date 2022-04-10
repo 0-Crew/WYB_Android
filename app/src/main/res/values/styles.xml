@@ -162,6 +162,24 @@
         <item name="android:includeFontPadding">false</item>
     </style>
 
+    <style name="TextAppearance.WYBComponents.PopupWindow.Bold.14" parent="TextAppearance.WYBComponents">
+        <item name="fontFamily">@font/spoqa_bold</item>
+        <item name="android:fontFamily">@font/spoqa_bold</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:letterSpacing">-0.04</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/gray_4</item>
+    </style>
+
+    <style name="TextAppearance.WYBComponents.PopupWindow.Medium.14" parent="TextAppearance.WYBComponents">
+        <item name="fontFamily">@font/spoqa_medium</item>
+        <item name="android:fontFamily">@font/spoqa_medium</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:letterSpacing">-0.04</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/gray_4</item>
+    </style>
+
     <!-- Widget -->
 
     <style name="Widget.WYB.Button.SolidButton.FullWidth" parent="Widget.MaterialComponents.Button">
@@ -176,5 +194,11 @@
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="Widget.WYB.PopupWindow.Scrollbar" parent="">
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:scrollbarFadeDuration">0</item>
+        <item name="android:scrollbarThumbVertical">@drawable/thumb_wyb_popup_window_scrollbar</item>
     </style>
 </resources>

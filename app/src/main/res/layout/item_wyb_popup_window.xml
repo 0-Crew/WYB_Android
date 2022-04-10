@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/tvItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_wyb_popup_window_item"
+        android:paddingVertical="6dp"
+        android:paddingHorizontal="7dp"
+        android:textColor="@color/gray_4"
+        android:layout_marginEnd="7dp" />
+</layout>
