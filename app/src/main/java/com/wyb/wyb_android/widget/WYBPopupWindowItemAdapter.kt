@@ -3,6 +3,7 @@ package com.wyb.wyb_android.widget
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.databinding.ItemWybPopupWindowBinding
@@ -49,19 +50,21 @@ class WYBPopupWindowItemAdapter(private val viewType: Int) :
             is WYBPopupWindowItemViewHolder -> {
                 holder.bind(data[position])
 
+                val tvItem = holder.itemView.tvItem
                 if (selectedPos == RecyclerView.NO_POSITION && position == 0) {
                     selectedPos = 0
                     holder.itemView.isSelected = true
-                    holder.itemView.tvItem.setTextAppearance(R.style.TextAppearance_WYBComponents_PopupWindow_Bold_14)
+                    tvItem.setTextAppearance(R.style.TextAppearance_WYBComponents_Bold_14)
                 } else {
                     if (selectedPos == position) {
                         holder.itemView.isSelected = true
-                        holder.itemView.tvItem.setTextAppearance(R.style.TextAppearance_WYBComponents_PopupWindow_Bold_14)
+                        tvItem.setTextAppearance(R.style.TextAppearance_WYBComponents_Bold_14)
                     } else {
                         holder.itemView.isSelected = false
-                        holder.itemView.tvItem.setTextAppearance(R.style.TextAppearance_WYBComponents_PopupWindow_Medium_14)
+                        tvItem.setTextAppearance(R.style.TextAppearance_WYBComponents_Medium_14)
                     }
                 }
+                tvItem.setTextColor(ContextCompat.getColor(tvItem.context, R.color.gray_4))
             }
             is WYBPopupWindowItemSmallViewHolder -> {
                 holder.bind(data[position])
@@ -71,9 +74,7 @@ class WYBPopupWindowItemAdapter(private val viewType: Int) :
 
     override fun getItemCount(): Int = data.size
 
-    override fun getItemViewType(position: Int): Int {
-        return viewType
-    }
+    override fun getItemViewType(position: Int): Int = viewType
 
     inner class WYBPopupWindowItemViewHolder(
         private val binding: ItemWybPopupWindowBinding,
