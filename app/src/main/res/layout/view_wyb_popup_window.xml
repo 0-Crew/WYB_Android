@@ -4,8 +4,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="158dp"
-        android:background="@drawable/shape_orange_stroke">
+        android:layout_height="158dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvItem"
