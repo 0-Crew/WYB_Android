@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="158dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvItem"
+            style="@style/Widget.WYB.PopupWindow.Scrollbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="true"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="5dp"
+            tools:listitem="@layout/item_wyb_popup_window" />
+
+    </FrameLayout>
+</layout>
