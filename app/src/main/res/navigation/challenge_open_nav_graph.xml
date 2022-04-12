@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/challenge_open_nav_graph"
+    app:startDestination="@id/challengeOpenComfortFragment">
+
+    <fragment
+        android:id="@+id/challengeOpenComfortFragment"
+        android:name="com.wyb.wyb_android.ui.open.ChallengeOpenComfortFragment"
+        android:label="ChallengeOpenComfortFragment"
+        tools:layout="@layout/fragment_challenge_open_comfort">
+
+        <action
+            android:id="@+id/actionChallengeOpenComfortToChallengeOpenDiscomfort"
+            app:destination="@id/challengeOpenDiscomfortFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/challengeOpenDiscomfortFragment"
+        android:name="com.wyb.wyb_android.ui.open.ChallengeOpenDiscomfortFragment"
+        android:label="ChallengeOpenDiscomfortFragment"
+        tools:layout="@layout/fragment_challenge_open_discomfort">
+
+        <action
+            android:id="@+id/actionChallengeOpenDiscomfortToChallengeOpenStartDate"
+            app:destination="@id/challengeOpenStartDateFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/challengeOpenStartDateFragment"
+        android:name="com.wyb.wyb_android.ui.open.ChallengeOpenStartDateFragment"
+        android:label="ChallengeOpenStartDateFragment"
+        tools:layout="@layout/fragment_challenge_open_start_date">
+
+        <action
+            android:id="@+id/actionChallengeOpenStartDateToChallengeHome"
+            app:destination="@id/challengeFragment"
+            app:popUpTo="@id/challengeFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+</navigation>
