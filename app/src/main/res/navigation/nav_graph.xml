@@ -9,5 +9,13 @@
         android:id="@+id/challengeFragment"
         android:name="com.wyb.wyb_android.ui.home.HomeFragment"
         android:label="ChallengeFragment"
-        tools:layout ="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/actionChallengeHomeToChallengeOpen"
+            app:destination="@id/challenge_open_nav_graph" />
+
+    </fragment>
+
+    <include app:graph="@navigation/challenge_open_nav_graph" />
 </navigation>
