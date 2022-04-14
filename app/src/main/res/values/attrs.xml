@@ -12,4 +12,27 @@
             <enum name="check" value="1" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="WYBCompactTextButton">
+        <attr name="backgroundRes" format="enum">
+            <enum name="orange" value="0" />
+            <enum name="white" value="1" />
+            <enum name="orangeStroke" value="2" />
+        </attr>
+        <attr name="showStartIcon" format="boolean" />
+        <attr name="setIcon" format="enum">
+            <enum name="starWhite" value="0" />
+            <enum name="starBlack" value="1" />
+            <enum name="calender" value="2" />
+        </attr>
+        <attr name="titleText" format="reference|string" />
+        <attr name="comfortText" format="reference|string" />
+        <attr name="showComfortTv" format="boolean" />
+        <attr name="setTitleStyle" format="enum">
+            <enum name="bold16" value="0" />
+            <enum name="medium14" value="1" />
+            <enum name="bold12" value="2" />
+            <enum name="medium12" value="3" />
+        </attr>
+    </declare-styleable>
 </resources>
