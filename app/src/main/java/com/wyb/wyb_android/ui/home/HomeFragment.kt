@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.wyb.wyb_android.R
-import com.wyb.wyb_android.base.BindingFragment
+import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.data.model.Challenge
 import com.wyb.wyb_android.databinding.FragmentHomeBinding
 
-class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
-    private val homeViewModel by viewModels<HomeViewModel>()
+class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.layout.fragment_home) {
+    override val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -19,7 +19,6 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding.lifecycleOwner = viewLifecycleOwner
         setChallengeRVAdapter()
         return binding.root
     }
