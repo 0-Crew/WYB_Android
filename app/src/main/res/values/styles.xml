@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--Text Appearance-->
+    <!--Start Text Appearance-->
 
     <style name="TextAppearance.WYBComponents" parent="android:TextAppearance">
         <item name="android:textColor">?android:textColorPrimary</item>
@@ -16,6 +16,7 @@
         <item name="android:textSize">30dp</item>
         <item name="android:letterSpacing">-0.03</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@null</item>
     </style>
 
     <style name="TextAppearance.WYBComponents.Heavy.30.Eng" parent="TextAppearance.WYBComponents">
@@ -24,6 +25,7 @@
         <item name="android:textSize">30dp</item>
         <item name="android:letterSpacing">-0.03</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@null</item>
     </style>
 
     <style name="TextAppearance.WYBComponents.Bold.30" parent="TextAppearance.WYBComponents">
@@ -32,6 +34,7 @@
         <item name="android:textSize">30dp</item>
         <item name="android:letterSpacing">-0.04</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@null</item>
     </style>
 
     <style name="TextAppearance.WYBComponents.Heavy.20.Eng" parent="TextAppearance.WYBComponents">
@@ -40,6 +43,7 @@
         <item name="android:textSize">20dp</item>
         <item name="android:letterSpacing">-0.03</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@null</item>
     </style>
 
     <style name="TextAppearance.WYBComponents.Bold.20.Eng" parent="TextAppearance.WYBComponents">
@@ -48,6 +52,7 @@
         <item name="android:textSize">20dp</item>
         <item name="android:letterSpacing">-0.03</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@null</item>
     </style>
 
     <style name="TextAppearance.WYBComponents.Heavy.16.Eng" parent="TextAppearance.WYBComponents">
@@ -56,6 +61,7 @@
         <item name="android:textSize">16dp</item>
         <item name="android:letterSpacing">-0.03</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@null</item>
     </style>
 
     <style name="TextAppearance.WYBComponents.Bold.16.Eng" parent="TextAppearance.WYBComponents">
@@ -64,6 +70,7 @@
         <item name="android:textSize">16dp</item>
         <item name="android:letterSpacing">-0.03</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@null</item>
     </style>
 
     <style name="TextAppearance.WYBComponents.Bold.16" parent="TextAppearance.WYBComponents">
@@ -72,6 +79,7 @@
         <item name="android:textSize">16dp</item>
         <item name="android:letterSpacing">-0.04</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@null</item>
     </style>
 
     <style name="TextAppearance.WYBComponents.Medium.16" parent="TextAppearance.WYBComponents">
@@ -80,6 +88,7 @@
         <item name="android:textSize">16dp</item>
         <item name="android:letterSpacing">-0.04</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@null</item>
     </style>
 
     <style name="TextAppearance.WYBComponents.Bold.14" parent="TextAppearance.WYBComponents">
@@ -88,6 +97,7 @@
         <item name="android:textSize">14dp</item>
         <item name="android:letterSpacing">-0.04</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@null</item>
     </style>
 
     <style name="TextAppearance.WYBComponents.Medium.14" parent="TextAppearance.WYBComponents">
@@ -96,6 +106,7 @@
         <item name="android:textSize">14dp</item>
         <item name="android:letterSpacing">-0.04</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@null</item>
     </style>
 
     <style name="TextAppearance.WYBComponents.Medium.14.Eng" parent="TextAppearance.WYBComponents">
@@ -104,6 +115,7 @@
         <item name="android:textSize">14dp</item>
         <item name="android:letterSpacing">-0.03</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@null</item>
     </style>
 
     <style name="TextAppearance.WYBComponents.Heavy.13.Eng" parent="TextAppearance.WYBComponents">
@@ -112,6 +124,7 @@
         <item name="android:textSize">13dp</item>
         <item name="android:letterSpacing">-0.03</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@null</item>
     </style>
 
     <style name="TextAppearance.WYBComponents.Bold.13" parent="TextAppearance.WYBComponents">
@@ -120,6 +133,7 @@
         <item name="android:textSize">13dp</item>
         <item name="android:letterSpacing">-0.04</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@null</item>
     </style>
 
     <style name="TextAppearance.WYBComponents.Medium.13" parent="TextAppearance.WYBComponents">
@@ -128,6 +142,7 @@
         <item name="android:textSize">13dp</item>
         <item name="android:letterSpacing">-0.04</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@null</item>
     </style>
 
     <style name="TextAppearance.WYBComponents.Bold.12" parent="TextAppearance.WYBComponents">
@@ -136,6 +151,7 @@
         <item name="android:textSize">12dp</item>
         <item name="android:letterSpacing">-0.04</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@null</item>
     </style>
 
     <style name="TextAppearance.WYBComponents.Medium.12" parent="TextAppearance.WYBComponents">
@@ -144,6 +160,7 @@
         <item name="android:textSize">12dp</item>
         <item name="android:letterSpacing">-0.04</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@null</item>
     </style>
 
     <style name="TextAppearance.WYBComponents.Bold.10" parent="TextAppearance.WYBComponents">
@@ -152,6 +169,7 @@
         <item name="android:textSize">10dp</item>
         <item name="android:letterSpacing">-0.04</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@null</item>
     </style>
 
     <style name="TextAppearance.WYBComponents.Medium.10" parent="TextAppearance.WYBComponents">
@@ -160,7 +178,11 @@
         <item name="android:textSize">10dp</item>
         <item name="android:letterSpacing">-0.04</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@null</item>
     </style>
+
+    <!--End Text Appearance-->
+
 
     <!-- Widget -->
 
