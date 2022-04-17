@@ -12,7 +12,7 @@ import com.wyb.wyb_android.widget.WYBPopupWindowItemAdapter
 import com.wyb.wyb_android.widget.WYBPopupWindowItemAdapter.Companion.TYPE_POPUP_DEFAULT
 import com.wyb.wyb_android.widget.WYBPopupWindowItemAdapter.Companion.TYPE_POPUP_SMALL
 
-fun View.showPopupWindowDefault(
+fun View.showPopupWindow(
     context: Context
 ) {
     val popupView = ViewWybPopupWindowBinding.inflate(LayoutInflater.from(context))
@@ -38,7 +38,7 @@ fun View.showPopupWindowDefault(
     popup.showAsDropDown(this, 0, convertDpToPx(context, popupMargin))
 }
 
-fun View.showPopupWindowSmall(
+fun View.showPopupWindow(
     backgroundRes: Int,
     context: Context,
     margin: Int
