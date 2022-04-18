@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="wyb_popup_window_height_default">158</integer>
+    <integer name="wyb_popup_window_height_small">134</integer>
+    <integer name="wyb_popup_window_margin_default">6</integer>
+    <integer name="wyb_popup_window_margin_small_up">-8</integer>
+    <integer name="wyb_popup_window_margin_small_down">8</integer>
+</resources>
