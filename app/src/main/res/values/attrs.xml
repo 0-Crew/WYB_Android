@@ -35,4 +35,15 @@
             <enum name="medium12" value="3" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="WYBChallengeEditText">
+        <attr name="setBackgroundRes" format="enum">
+            <enum name="orangeStroke" value="0" />
+            <enum name="grayStroke" value="1" />
+        </attr>
+        <attr name="setEtStyle" format="enum">
+            <enum name="challengeNow" value="0" />
+            <enum name="challengeEnd" value="1" />
+        </attr>
+    </declare-styleable>
 </resources>
