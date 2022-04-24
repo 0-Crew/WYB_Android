@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import com.wyb.wyb_android.R
@@ -74,7 +75,6 @@ class WYBCompactTextButton @JvmOverloads constructor(
             showIcon = it.getBoolean(R.styleable.WYBCompactTextButton_showStartIcon, false)
             setIcon =
                 when (it.getInt(R.styleable.WYBCompactTextButton_setIcon, ICON_STAR_WHITE)) {
-                    ICON_STAR_BLACK -> setDrawableRes(R.drawable.ic_star_black)
                     ICON_CALENDER -> setDrawableRes(R.drawable.ic_calendar)
                     else -> setDrawableRes(R.drawable.ic_star)
                 }
@@ -82,6 +82,12 @@ class WYBCompactTextButton @JvmOverloads constructor(
             setBackgroundColor =
                 when (it.getInt(R.styleable.WYBCompactTextButton_backgroundRes, COLOR_ORANGE)) {
                     COLOR_WHITE -> {
+                        binding.ivIcon.setColorFilter(
+                            ContextCompat.getColor(
+                                context,
+                                R.color.dark_gray_2
+                            )
+                        )
                         setColorTvTitle(R.color.dark_gray_2)
                         setDrawableRes(R.color.white)
                     }
@@ -90,6 +96,12 @@ class WYBCompactTextButton @JvmOverloads constructor(
                         setDrawableRes(R.drawable.shape_orange_stroke)
                     }
                     else -> {
+                        binding.ivIcon.setColorFilter(
+                            ContextCompat.getColor(
+                                context,
+                                R.color.white
+                            )
+                        )
                         setColorTvTitle(R.color.white)
                         setDrawableRes(R.color.orange)
                     }
@@ -124,8 +136,7 @@ class WYBCompactTextButton @JvmOverloads constructor(
         private const val COLOR_WHITE = 1
         private const val COLOR_ORANGE_STROKE = 2
         private const val ICON_STAR_WHITE = 0
-        private const val ICON_STAR_BLACK = 1
-        private const val ICON_CALENDER = 2
+        private const val ICON_CALENDER = 1
         private const val FONT_BOLD_16 = 0
         private const val FONT_MID_14 = 1
         private const val FONT_BOLD_12 = 2

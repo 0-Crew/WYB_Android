@@ -22,8 +22,7 @@
         <attr name="showStartIcon" format="boolean" />
         <attr name="setIcon" format="enum">
             <enum name="starWhite" value="0" />
-            <enum name="starBlack" value="1" />
-            <enum name="calender" value="2" />
+            <enum name="calender" value="1" />
         </attr>
         <attr name="titleText" format="reference|string" />
         <attr name="comfortText" format="reference|string" />
