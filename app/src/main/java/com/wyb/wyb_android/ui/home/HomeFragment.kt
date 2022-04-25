@@ -19,8 +19,13 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
+        setOtherProfileRVAdapter()
         setChallengeRVAdapter()
         return binding.root
+    }
+
+    private fun setOtherProfileRVAdapter() {
+        binding.rvOtherProfile.adapter = HomeOtherProfileAdapter()
     }
 
     private fun setChallengeRVAdapter() {
