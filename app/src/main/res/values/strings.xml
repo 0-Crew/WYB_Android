@@ -7,6 +7,7 @@
     <!-- General -->
     <string name="comfort">편리함</string>
     <string name="divider">|</string>
+    <string name="complete">완료</string>
 
     <!-- Dialog -->
 
@@ -22,6 +23,9 @@
     <string name="popup_menu_mobile_receipt">종이 영수증 대신 모바일 영수증 받기</string>
     <string name="popup_menu_delete_email">불필요한 이메일 삭제하기</string>
     <string name="popup_menu_input">직접입력</string>
+
+    <!-- WYBChallengeEditText -->
+    <string name="challenge_et_hint">참을 수 있는 불편함을 적어주세요</string>
 
     <!-- HomeFragment -->
     <string name="home_bottle_title">\'s Bottle</string>
