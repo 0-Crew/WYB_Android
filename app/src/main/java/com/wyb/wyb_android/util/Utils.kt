@@ -22,7 +22,9 @@ fun clearFocus(activity: Activity?) {
 }
 
 fun requestFocus(context: Context?, view: View) {
-    val inputMethodManager = context?.getSystemService<InputMethodManager>()!!
+    val inputMethodManager = checkNotNull(context?.getSystemService<InputMethodManager>()) {
+        "The service or null if the class is not a supported system service"
+    }
     view.requestFocus()
     if (view !is EditText) {
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
