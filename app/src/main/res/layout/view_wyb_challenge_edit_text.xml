@@ -29,7 +29,7 @@
         android:textCursorDrawable="@null" />
 
     <ImageButton
-        android:id="@+id/ibCheck"
+        android:id="@+id/btnCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="6dp"
@@ -40,7 +40,7 @@
         tools:ignore="ContentDescription" />
 
     <ImageButton
-        android:id="@+id/ibClose"
+        android:id="@+id/btnClose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="6dp"

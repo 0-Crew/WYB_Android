@@ -78,15 +78,15 @@ class WYBChallengeEditText @JvmOverloads constructor(
 
     private fun setIconSize(checkDrawable: Int, closeDrawable: Int) {
         with(binding) {
-            ibCheck.setImageResource(checkDrawable)
-            ibClose.setImageResource(closeDrawable)
+            btnCheck.setImageResource(checkDrawable)
+            btnClose.setImageResource(closeDrawable)
         }
     }
 
     private fun setViewColor(colorRes: Int) {
         with(binding) {
             etDiscomfort.setTextColor(resources.getColor(colorRes, null))
-            ibCheck.setColorFilter(
+            btnCheck.setColorFilter(
                 ContextCompat.getColor(
                     context,
                     colorRes
@@ -104,13 +104,13 @@ class WYBChallengeEditText @JvmOverloads constructor(
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     when (count) {
                         0 -> {
-                            ibCheck.visibility = View.GONE
-                            ibClose.visibility = View.VISIBLE
+                            btnCheck.visibility = View.GONE
+                            btnClose.visibility = View.VISIBLE
                         }
 
                         else -> {
-                            ibClose.visibility = View.GONE
-                            ibCheck.visibility = View.VISIBLE
+                            btnClose.visibility = View.GONE
+                            btnCheck.visibility = View.VISIBLE
                         }
                     }
                 }
