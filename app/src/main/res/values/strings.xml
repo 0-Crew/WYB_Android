@@ -43,4 +43,11 @@
     <string name="challenge_open_discomfort_title">대신 일주일 동안\n7번 참아볼 수 있는\n불편함은 무엇인가요?</string>
     <string name="challenge_open_discomfort_hint">참을 수 있는 불편함을 적어주세요</string>
     <string name="challenge_open_discomfort_guide">챌린지 기간 동안 언제든 변경할 수 있어요!</string>
+    
+    <!-- ChallengeOpenStartDateFragment -->
+    <string name="challenge_open_start_date_nav_title">보틀 씻기 완료!</string>
+    <string name="challenge_open_start_date_title">오늘부터 시작할까요,\n내일부터 시작할까요?</string>
+    <string name="challenge_open_start_date_btn_today">오늘부터</string>
+    <string name="challenge_open_start_date_btn_tomorrow">내일부터</string>
+    <string name="challenge_open_start_date_btn_start">챌린지 시작하기</string>
 </resources>

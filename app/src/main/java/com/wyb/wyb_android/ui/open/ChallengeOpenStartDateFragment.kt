@@ -17,6 +17,18 @@ class ChallengeOpenStartDateFragment :
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
+
+        initNavBar()
+
         return binding.root
+    }
+
+    private fun initNavBar() {
+        binding.includeNavBar.apply {
+            btnNav.setImageResource(R.drawable.ic_arrow_left)
+            tvNavTitle.text = getString(R.string.challenge_open_start_date_nav_title)
+            ivBottle.setImageResource(R.drawable.ic_nav_bottle)
+            progressBar.progress = 3
+        }
     }
 }
