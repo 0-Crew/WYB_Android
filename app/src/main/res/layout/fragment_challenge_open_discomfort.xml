@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -9,10 +10,66 @@
             type="com.wyb.wyb_android.ui.open.ChallengeOpenViewModel" />
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context=".ui.open.ChallengeOpenDiscomfortFragment">
 
-    </FrameLayout>
+        <include
+            android:id="@+id/includeNavBar"
+            layout="@layout/include_challenge_open_nav" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/challenge_open_discomfort_title"
+                    android:textAppearance="@style/TextAppearance.WYBComponents.Bold.30"
+                    android:textColor="@color/dark_gray_2" />
+
+                <com.wyb.wyb_android.widget.WYBLabelEditText
+                    android:id="@+id/etDiscomfort"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="40dp"
+                    app:backgroundStroke="orange"
+                    app:hint="@string/challenge_open_discomfort_hint"
+                    app:labelText="@string/discomfort"
+                    app:showIcon="false" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="174dp"
+                    android:layout_weight="1"
+                    android:text="@string/challenge_open_discomfort_guide"
+                    android:textAppearance="@style/TextAppearance.WYBComponents.Medium.12"
+                    android:textColor="@color/orange_alpha_60" />
+
+                <Button
+                    android:id="@+id/btnNext"
+                    style="@style/Widget.WYB.Button.SolidButton.FullWidth"
+                    android:enabled="true"
+                    android:text="@string/next" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
 </layout>
