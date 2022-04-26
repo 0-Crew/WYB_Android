@@ -6,6 +6,7 @@
             <enum name="orange" value="1" />
         </attr>
         <attr name="labelText" format="reference|string" />
+        <attr name="hint" format="reference|string"/>
         <attr name="showIcon" format="boolean" />
         <attr name="iconType" format="enum">
             <enum name="edit" value="0" />

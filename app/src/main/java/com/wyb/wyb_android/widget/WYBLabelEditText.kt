@@ -36,6 +36,12 @@ class WYBLabelEditText @JvmOverloads constructor(
             binding.tvLabel.text = value
         }
 
+    var hint: String?
+        get() = binding.etInput.hint.toString()
+        set(value) {
+            binding.etInput.hint = value
+        }
+
     var showIcon: Boolean
         get() = binding.ivIcon.isVisible
         set(value) {
@@ -52,6 +58,7 @@ class WYBLabelEditText @JvmOverloads constructor(
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.WYBLabelEditText)
         typedArray.let {
             labelText = it.getString(R.styleable.WYBLabelEditText_labelText)
+            hint = it.getString(R.styleable.WYBLabelEditText_hint)
             showIcon = it.getBoolean(R.styleable.WYBLabelEditText_showIcon, false)
             iconType = when (it.getInt(R.styleable.WYBLabelEditText_iconType, TYPE_CHECK)) {
                 TYPE_EDIT -> ResourcesCompat.getDrawable(resources, R.drawable.ic_edit, null)
