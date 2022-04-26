@@ -17,6 +17,18 @@ class ChallengeOpenComfortFragment :
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
+
+        initNavBar()
+
         return binding.root
+    }
+
+    private fun initNavBar() {
+        binding.includeNavBar.apply {
+            btnNav.setImageResource(R.drawable.ic_x_24)
+            tvNavTitle.text = getString(R.string.challenge_open_comfort_nav_title)
+            ivBottle.setImageResource(R.drawable.ic_nav_bottle_washing)
+            progressBar.progress = 1
+        }
     }
 }
