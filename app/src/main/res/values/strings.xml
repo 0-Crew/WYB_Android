@@ -8,6 +8,8 @@
     <string name="comfort">편리함</string>
     <string name="divider">|</string>
     <string name="complete">완료</string>
+    <string name="next">다음</string>
+    <string name="discomfort">불편함</string>
 
     <!-- Dialog -->
 
@@ -33,4 +35,19 @@
 
     <!-- ChallengeOpenComfortFragment -->
     <string name="challenge_open_comfort_hint">플라스틱 빨대 사용 안 하기</string>
+    <string name="challenge_open_comfort_nav_title">보틀 씻는 중</string>
+    <string name="challenge_open_comfort_title">이번 일주일 동안\n포기하기 어려운 편리함은\n무엇인가요?</string>
+
+    <!-- ChallengeOpenDiscomfortFragment -->
+    <string name="challenge_open_discomfort_nav_title">거의 다 씻었어요!</string>
+    <string name="challenge_open_discomfort_title">대신 일주일 동안\n7번 참아볼 수 있는\n불편함은 무엇인가요?</string>
+    <string name="challenge_open_discomfort_hint">참을 수 있는 불편함을 적어주세요</string>
+    <string name="challenge_open_discomfort_guide">챌린지 기간 동안 언제든 변경할 수 있어요!</string>
+    
+    <!-- ChallengeOpenStartDateFragment -->
+    <string name="challenge_open_start_date_nav_title">보틀 씻기 완료!</string>
+    <string name="challenge_open_start_date_title">오늘부터 시작할까요,\n내일부터 시작할까요?</string>
+    <string name="challenge_open_start_date_btn_today">오늘부터</string>
+    <string name="challenge_open_start_date_btn_tomorrow">내일부터</string>
+    <string name="challenge_open_start_date_btn_start">챌린지 시작하기</string>
 </resources>

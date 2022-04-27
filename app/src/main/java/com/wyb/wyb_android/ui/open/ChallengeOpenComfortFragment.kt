@@ -6,19 +6,29 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.navGraphViewModels
 import com.wyb.wyb_android.R
-import com.wyb.wyb_android.base.BindingFragment
+import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.databinding.FragmentChallengeOpenComfortBinding
 
 class ChallengeOpenComfortFragment :
-    BindingFragment<FragmentChallengeOpenComfortBinding>(R.layout.fragment_challenge_open_comfort) {
-    private val viewModel: ChallengeOpenViewModel by navGraphViewModels(R.id.challenge_open_nav_graph)
+    ViewModelFragment<FragmentChallengeOpenComfortBinding, ChallengeOpenViewModel>(R.layout.fragment_challenge_open_comfort) {
+    override val viewModel: ChallengeOpenViewModel by navGraphViewModels(R.id.challenge_open_nav_graph)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.viewModel = viewModel
+        super.onCreateView(inflater, container, savedInstanceState)
+
+        initNavBar()
 
         return binding.root
+    }
+
+    private fun initNavBar() {
+        binding.includeNavBar.apply {
+            btnNav.setImageResource(R.drawable.ic_x_24)
+            tvNavTitle.text = getString(R.string.challenge_open_comfort_nav_title)
+            ivBottle.setImageResource(R.drawable.ic_nav_bottle_washing)
+            progressBar.progress = 1
+        }
     }
 }
