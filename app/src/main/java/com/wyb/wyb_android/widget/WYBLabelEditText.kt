@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
+import androidx.core.widget.doOnTextChanged
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.databinding.ViewWybLabelEditTextBinding
 
@@ -81,15 +82,24 @@ class WYBLabelEditText @JvmOverloads constructor(
         }
     }
 
-    fun setTextFilter(maxLength: Int, hasPattern: Boolean) {
+    fun setTextInputFilter() {
         val pattern = "^[_.a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ\\u318D\\u119E\\u11A2\\u2022\\u2025a\\u00B7\\uFE55]*$"
-        val lengthFilter = InputFilter.LengthFilter(maxLength)
         val inputFilter = InputFilter { source, _, _, _, _, _ ->
             if (!source.matches(Regex(pattern))) return@InputFilter ""
             null
         }
-        val filters = if (hasPattern) arrayOf(lengthFilter, inputFilter) else arrayOf(lengthFilter)
+        val filters = arrayOf(inputFilter)
         binding.etInput.filters = filters
+    }
+
+    fun setTextMaxLength(maxLength: Int) {
+        binding.etInput.doOnTextChanged { text, _, _, _ ->
+            if (text == null) return@doOnTextChanged
+            if (text.length > maxLength) {
+                binding.etInput.setText(text.subSequence(0, maxLength))
+                binding.etInput.setSelection(maxLength)
+            }
+        }
     }
 
     companion object {
