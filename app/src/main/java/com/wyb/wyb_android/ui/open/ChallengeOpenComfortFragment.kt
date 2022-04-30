@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
@@ -20,6 +21,7 @@ class ChallengeOpenComfortFragment :
 
         initNavBar()
         initEditText()
+        addListeners()
 
         return binding.root
     }
@@ -40,6 +42,15 @@ class ChallengeOpenComfortFragment :
 
     private fun initEditText() {
         binding.etComfort.setTextMaxLength(MAX_LENGTH)
+    }
+
+    private fun addListeners() {
+        binding.includeNavBar.btnNav.setOnClickListener {
+            findNavController().popBackStack()
+        }
+        binding.btnNext.setOnClickListener {
+            findNavController().navigate(R.id.actionChallengeOpenComfortToChallengeOpenDiscomfort)
+        }
     }
 
     companion object {
