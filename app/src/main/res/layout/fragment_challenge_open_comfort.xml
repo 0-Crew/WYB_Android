@@ -44,6 +44,7 @@
                 app:backgroundStroke="gray"
                 app:hint="@{viewModel.randomHint}"
                 app:iconType="edit"
+                app:inputText="@={viewModel.comfort}"
                 app:labelText="@string/comfort"
                 app:showIcon="true" />
 

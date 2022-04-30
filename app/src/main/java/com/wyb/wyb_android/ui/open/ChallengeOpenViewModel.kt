@@ -13,6 +13,8 @@ class ChallengeOpenViewModel(application: Application) : AndroidViewModel(applic
     private val _randomHint = MutableLiveData<String>()
     val randomHint: LiveData<String> = _randomHint
 
+    val comfort = MutableLiveData("")
+
     fun getRandomHintString() {
         val hintList = context.resources.getStringArray(R.array.challenge_open_comfort_hint_list)
         val randomIndex = Random().nextInt(hintList.size - 1)
