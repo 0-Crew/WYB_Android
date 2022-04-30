@@ -19,6 +19,7 @@ class ChallengeOpenComfortFragment :
         super.onCreateView(inflater, container, savedInstanceState)
 
         initNavBar()
+        initEditText()
 
         return binding.root
     }
@@ -35,5 +36,13 @@ class ChallengeOpenComfortFragment :
             ivBottle.setImageResource(R.drawable.ic_nav_bottle_washing)
             progressBar.progress = 1
         }
+    }
+
+    private fun initEditText() {
+        binding.etComfort.setTextMaxLength(MAX_LENGTH)
+    }
+
+    companion object {
+        private const val MAX_LENGTH = 20
     }
 }
