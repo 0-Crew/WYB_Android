@@ -42,7 +42,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_weight="1"
                 app:backgroundStroke="gray"
-                app:hint="@string/challenge_open_comfort_hint"
+                app:hint="@{viewModel.randomHint}"
                 app:iconType="edit"
                 app:labelText="@string/comfort"
                 app:showIcon="true" />

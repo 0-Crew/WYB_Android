@@ -23,6 +23,11 @@ class ChallengeOpenComfortFragment :
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getRandomHintString()
+    }
+
     private fun initNavBar() {
         binding.includeNavBar.apply {
             btnNav.setImageResource(R.drawable.ic_x_24)
