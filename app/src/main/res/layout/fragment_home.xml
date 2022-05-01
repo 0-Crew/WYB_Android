@@ -126,67 +126,28 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:layout_marginTop="19dp"
-            android:text=""
+            android:drawablePadding="6dp"
+            android:gravity="center_vertical"
             android:textAppearance="@style/TextAppearance.WYBComponents.Bold.16"
             android:textColor="@color/orange"
+            app:drawableEndCompat="@drawable/ic_calendar_oval"
             app:layout_constraintStart_toEndOf="@id/imgBottle"
             app:layout_constraintTop_toTopOf="@id/imgBottle"
             tools:text="2020" />
 
-        <ImageButton
-            android:id="@+id/imgBtnCalendar"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="6dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_calendar_oval"
-            app:layout_constraintBottom_toBottomOf="@id/tvDate"
-            app:layout_constraintStart_toEndOf="@id/tvDate"
-            app:layout_constraintTop_toTopOf="@id/tvDate"
-            tools:ignore="ContentDescription" />
-
-        <LinearLayout
+        <com.wyb.wyb_android.widget.WYBCompactTextButton
             android:id="@+id/layoutChallengeComfort"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:background="@color/orange"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="8dp"
+            app:backgroundRes="orange"
             app:layout_constraintStart_toStartOf="@id/tvDate"
-            app:layout_constraintTop_toBottomOf="@id/tvDate">
-
-            <TextView
-                android:id="@+id/tvComfortTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_star"
-                android:drawablePadding="5dp"
-                android:gravity="center_vertical"
-                android:text="@string/comfort"
-                android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14.Eng"
-                android:textColor="@color/white" />
-
-            <View
-                android:id="@+id/viewDivider"
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="6dp"
-                android:background="@color/white"
-                android:maxHeight="30dp" />
-
-            <TextView
-                android:id="@+id/tvComfort"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxWidth="212dp"
-                android:text=""
-                android:textAppearance="@style/TextAppearance.WYBComponents.Bold.14"
-                android:textColor="@color/white"
-                tools:text="@string/challenge_open_comfort_hint" />
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@id/tvDate"
+            app:setIcon="starWhite"
+            app:showComfortTv="true"
+            app:showStartIcon="true"
+            app:titleText="@string/comfort"
+            tools:comfortText="플라스틱 빨대 사용 안 하기" />
 
         <View
             android:layout_width="1dp"
