@@ -45,7 +45,7 @@ class ChallengeOpenDiscomfortFragment :
 
     private fun initPopupWindow() {
         binding.etDiscomfort.post {
-            popupWindow = binding.etDiscomfort.showPopupWindow(requireContext())
+            popupWindow = binding.etDiscomfort.showPopupWindow(requireContext(), viewModel)
         }
     }
 
