@@ -5,6 +5,7 @@ import android.text.TextWatcher
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
+import com.wyb.wyb_android.R
 import kotlinx.android.synthetic.main.view_wyb_label_edit_text.view.*
 
 object WYBLabelEditTextBindingAdapters {
@@ -37,5 +38,16 @@ object WYBLabelEditTextBindingAdapters {
     @JvmStatic
     fun getInputText(view: WYBLabelEditText): String {
         return view.etInput.text.toString()
+    }
+
+    @BindingAdapter("setBackgroundStroke")
+    @JvmStatic
+    fun setBackgroundStroke(view: WYBLabelEditText, color: Int) {
+        val gray = view.context.resources.getInteger(R.integer.wyb_label_edit_text_bg_stroke_gray)
+        val orange = view.context.resources.getInteger(R.integer.wyb_label_edit_text_bg_stroke_orange)
+        when (color) {
+            gray -> view.setBackgroundStroke(gray)
+            orange -> view.setBackgroundStroke(orange)
+        }
     }
 }

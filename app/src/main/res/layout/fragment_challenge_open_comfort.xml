@@ -41,11 +41,11 @@
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="40dp"
                 android:layout_weight="1"
-                app:backgroundStroke="gray"
                 app:hint="@{viewModel.randomHint}"
                 app:iconType="edit"
                 app:inputText="@={viewModel.comfort}"
                 app:labelText="@string/comfort"
+                app:setBackgroundStroke="@{viewModel.isInputEmpty ? @integer/wyb_label_edit_text_bg_stroke_gray : @integer/wyb_label_edit_text_bg_stroke_orange}"
                 app:showIcon="@{viewModel.isInputEmpty}" />
 
             <Button

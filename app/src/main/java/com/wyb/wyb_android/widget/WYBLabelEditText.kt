@@ -65,19 +65,7 @@ class WYBLabelEditText @JvmOverloads constructor(
                 TYPE_EDIT -> ResourcesCompat.getDrawable(resources, R.drawable.ic_edit, null)
                 else -> ResourcesCompat.getDrawable(resources, R.drawable.ic_check_20, null)
             }
-            backgroundStroke =
-                when (it.getInt(R.styleable.WYBLabelEditText_backgroundStroke, COLOR_ORANGE)) {
-                    COLOR_GRAY -> ResourcesCompat.getDrawable(
-                        resources,
-                        R.drawable.shape_gray2_stroke,
-                        null
-                    )
-                    else -> ResourcesCompat.getDrawable(
-                        resources,
-                        R.drawable.shape_orange_stroke,
-                        null
-                    )
-                }
+            setBackgroundStroke(it.getInt(R.styleable.WYBLabelEditText_backgroundStroke, COLOR_ORANGE))
             it.recycle()
         }
     }
@@ -99,6 +87,13 @@ class WYBLabelEditText @JvmOverloads constructor(
                 binding.etInput.setText(text.subSequence(0, maxLength))
                 binding.etInput.setSelection(maxLength)
             }
+        }
+    }
+
+    fun setBackgroundStroke(color: Int) {
+        backgroundStroke = when (color) {
+            COLOR_GRAY -> ResourcesCompat.getDrawable(resources, R.drawable.shape_gray2_stroke, null)
+            else -> ResourcesCompat.getDrawable(resources, R.drawable.shape_orange_stroke, null)
         }
     }
 
