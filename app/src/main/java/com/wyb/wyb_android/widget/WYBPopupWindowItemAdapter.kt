@@ -75,6 +75,7 @@ class WYBPopupWindowItemAdapter(context: Context, private val viewType: Int) :
                 notifyItemChanged(selectedPos)
                 selectedPos = adapterPosition
                 notifyItemChanged(selectedPos)
+                itemClickListener.onItemClick(selectedPos)
             }
         }
     }
