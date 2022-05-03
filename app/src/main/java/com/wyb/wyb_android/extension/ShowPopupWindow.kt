@@ -1,4 +1,4 @@
-package com.wyb.wyb_android.util
+package com.wyb.wyb_android.extension
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,13 +8,14 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.databinding.ViewWybPopupWindowBinding
+import com.wyb.wyb_android.util.convertDpToPx
 import com.wyb.wyb_android.widget.WYBPopupWindowItemAdapter
 import com.wyb.wyb_android.widget.WYBPopupWindowItemAdapter.Companion.TYPE_POPUP_DEFAULT
 import com.wyb.wyb_android.widget.WYBPopupWindowItemAdapter.Companion.TYPE_POPUP_SMALL
 
 fun View.showPopupWindow(
     context: Context
-) {
+): PopupWindow {
     val popupView = ViewWybPopupWindowBinding.inflate(LayoutInflater.from(context))
     initPopupView(popupView, TYPE_POPUP_DEFAULT, context)
 
@@ -36,6 +37,7 @@ fun View.showPopupWindow(
         )
     )
     popup.showAsDropDown(this, 0, convertDpToPx(context, popupMargin))
+    return popup
 }
 
 fun View.showPopupWindow(
