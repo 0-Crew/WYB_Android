@@ -10,22 +10,11 @@ import com.wyb.wyb_android.databinding.ItemWybPopupWindowBinding
 import com.wyb.wyb_android.databinding.ItemWybPopupWindowSmallBinding
 import kotlinx.android.synthetic.main.item_wyb_popup_window.view.*
 
-class WYBPopupWindowItemAdapter(private val viewType: Int) :
+class WYBPopupWindowItemAdapter(context: Context, private val viewType: Int) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private var selectedPos = RecyclerView.NO_POSITION
-    private var data = listOf(
-        R.string.popup_menu_plastic_dining_utensil,
-        R.string.popup_menu_plastic_bag,
-        R.string.popup_menu_reuse_disposable_bag,
-        R.string.popup_menu_separate_collection,
-        R.string.popup_menu_soap,
-        R.string.popup_menu_dishcloth,
-        R.string.popup_menu_handkerchief,
-        R.string.popup_menu_unplug,
-        R.string.popup_menu_mobile_receipt,
-        R.string.popup_menu_delete_email,
-        R.string.popup_menu_input
-    )
+    private val data = context.resources.getStringArray(R.array.challenge_open_discomfort_menu_list)
+    var selectedPos = RecyclerView.NO_POSITION
+    private lateinit var itemClickListener: OnItemClickListener
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -35,12 +24,12 @@ class WYBPopupWindowItemAdapter(private val viewType: Int) :
             TYPE_POPUP_DEFAULT -> {
                 val binding =
                     ItemWybPopupWindowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                WYBPopupWindowItemViewHolder(binding, parent.context)
+                WYBPopupWindowItemViewHolder(binding)
             }
             else -> {
                 val binding =
                     ItemWybPopupWindowSmallBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                WYBPopupWindowItemSmallViewHolder(binding, parent.context)
+                WYBPopupWindowItemSmallViewHolder(binding)
             }
         }
     }
@@ -77,11 +66,10 @@ class WYBPopupWindowItemAdapter(private val viewType: Int) :
     override fun getItemViewType(position: Int): Int = viewType
 
     inner class WYBPopupWindowItemViewHolder(
-        private val binding: ItemWybPopupWindowBinding,
-        private val context: Context
+        private val binding: ItemWybPopupWindowBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(stringRes: Int) {
-            binding.tvItem.text = context.getString(stringRes)
+        fun bind(item: String) {
+            binding.tvItem.text = item
 
             itemView.setOnClickListener {
                 notifyItemChanged(selectedPos)
@@ -92,12 +80,19 @@ class WYBPopupWindowItemAdapter(private val viewType: Int) :
     }
 
     inner class WYBPopupWindowItemSmallViewHolder(
-        private val binding: ItemWybPopupWindowSmallBinding,
-        private val context: Context
+        private val binding: ItemWybPopupWindowSmallBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(stringRes: Int) {
-            binding.tvItemSmall.text = context.getString(stringRes)
+        fun bind(item: String) {
+            binding.tvItemSmall.text = item
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
+    fun setItemClickListener(onItemClickListener: OnItemClickListener) {
+        itemClickListener = onItemClickListener
     }
 
     companion object {
