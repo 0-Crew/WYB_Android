@@ -11,7 +11,9 @@ object WYBLabelEditTextBindingAdapters {
     @BindingAdapter("inputText")
     @JvmStatic
     fun setInputText(view: WYBLabelEditText, inputText: String?) {
-        if (!inputText.isNullOrBlank() && inputText != view.etInput.text.toString()) {
+        if (inputText.isNullOrBlank()) {
+            view.etInput.text.clear()
+        } else if (inputText != view.etInput.text.toString()) {
             view.etInput.setText(inputText)
         }
     }

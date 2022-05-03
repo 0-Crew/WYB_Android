@@ -16,8 +16,15 @@ class ChallengeOpenViewModel(application: Application) : AndroidViewModel(applic
         addSource(comfort) { this.value = it.isNullOrBlank() }
     }
 
+    private val discomfortMenu =
+        context.resources.getStringArray(R.array.challenge_open_discomfort_menu_list)
     val discomfortPos = MutableLiveData(0)
     val discomfortScrollPos = MutableLiveData(0)
+    val discomfort = MediatorLiveData<String>().apply {
+        addSource(discomfortPos) {
+            this.value = if (it == 10) "" else discomfortMenu[it]
+        }
+    }
 
     fun getRandomHintString() {
         val hintList = context.resources.getStringArray(R.array.challenge_open_comfort_hint_list)
