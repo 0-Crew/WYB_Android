@@ -26,10 +26,17 @@ class ChallengeOpenViewModel(application: Application) : AndroidViewModel(applic
         }
     }
 
+    private val _selectedToday = MutableLiveData<Boolean?>(null)
+    val selectedToday: LiveData<Boolean?> = _selectedToday
+
     fun getRandomHintString() {
         val hintList = context.resources.getStringArray(R.array.challenge_open_comfort_hint_list)
         val randomIndex = Random().nextInt(hintList.size - 1)
         _randomHint.value = hintList[randomIndex]
+    }
+
+    fun setStartDateCheckBox(isToday: Boolean) {
+        _selectedToday.value = isToday
     }
 
     companion object {

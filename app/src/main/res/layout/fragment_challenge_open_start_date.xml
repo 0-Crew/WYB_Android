@@ -51,6 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:text="@{viewModel.comfort}"
                 android:textAppearance="@style/TextAppearance.WYBComponents.Bold.14"
                 android:textColor="@color/gray_3"
                 tools:text="서브웨이에서 비닐봉투 받기" />
@@ -68,6 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:text="@{viewModel.discomfort}"
                 android:textAppearance="@style/TextAppearance.WYBComponents.Bold.14"
                 android:textColor="@color/gray_3"
                 tools:text="플라스틱 빨대 사용 안 하기" />
@@ -85,14 +87,16 @@
             <CheckBox
                 android:id="@+id/checkBoxToday"
                 style="@style/Widget.WYB.CheckBox"
-                android:checked="false"
+                android:checked="@{viewModel.selectedToday != null &amp;&amp; viewModel.selectedToday == true ? true : false}"
+                android:onClick="@{(v) -> viewModel.setStartDateCheckBox(true)}"
                 android:text="@string/challenge_open_start_date_btn_today" />
 
             <CheckBox
                 android:id="@+id/checkBoxTomorrow"
                 style="@style/Widget.WYB.CheckBox"
                 android:layout_marginStart="8dp"
-                android:checked="false"
+                android:checked="@{viewModel.selectedToday != null &amp;&amp; viewModel.selectedToday == false ? true : false}"
+                android:onClick="@{(v) -> viewModel.setStartDateCheckBox(false)}"
                 android:text="@string/challenge_open_start_date_btn_tomorrow" />
 
         </LinearLayout>
@@ -100,7 +104,7 @@
         <Button
             android:id="@+id/btnStart"
             style="@style/Widget.WYB.Button.SolidButton.FullWidth"
-            android:enabled="false"
+            android:enabled="@{viewModel.selectedToday == null ? false : true}"
             android:text="@string/challenge_open_start_date_btn_start" />
 
     </LinearLayout>
