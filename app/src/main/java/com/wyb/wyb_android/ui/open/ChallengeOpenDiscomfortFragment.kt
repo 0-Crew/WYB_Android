@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.databinding.FragmentChallengeOpenDiscomfortBinding
-import com.wyb.wyb_android.util.showPopupWindow
+import com.wyb.wyb_android.extension.showPopupWindow
 
 class ChallengeOpenDiscomfortFragment :
     ViewModelFragment<FragmentChallengeOpenDiscomfortBinding, ChallengeOpenViewModel>(R.layout.fragment_challenge_open_discomfort) {
@@ -20,6 +21,7 @@ class ChallengeOpenDiscomfortFragment :
         super.onCreateView(inflater, container, savedInstanceState)
 
         initNavBar()
+        addListeners()
         binding.etDiscomfort.post { binding.etDiscomfort.showPopupWindow(requireContext()) }
 
         return binding.root
@@ -31,6 +33,15 @@ class ChallengeOpenDiscomfortFragment :
             tvNavTitle.text = getString(R.string.challenge_open_discomfort_nav_title)
             ivBottle.setImageResource(R.drawable.ic_nav_bottle_washing)
             progressBar.progress = 2
+        }
+    }
+
+    private fun addListeners() {
+        binding.includeNavBar.btnNav.setOnClickListener {
+            findNavController().popBackStack()
+        }
+        binding.btnNext.setOnClickListener {
+            findNavController().navigate(R.id.actionChallengeOpenDiscomfortToChallengeOpenStartDate)
         }
     }
 }
