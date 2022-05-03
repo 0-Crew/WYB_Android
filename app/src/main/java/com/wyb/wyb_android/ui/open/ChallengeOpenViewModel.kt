@@ -31,4 +31,8 @@ class ChallengeOpenViewModel(application: Application) : AndroidViewModel(applic
         val randomIndex = Random().nextInt(hintList.size - 1)
         _randomHint.value = hintList[randomIndex]
     }
+
+    companion object {
+        const val MAX_INPUT_LENGTH = 20
+    }
 }

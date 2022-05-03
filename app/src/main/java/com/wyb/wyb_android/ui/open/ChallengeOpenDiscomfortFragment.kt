@@ -11,6 +11,7 @@ import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.databinding.FragmentChallengeOpenDiscomfortBinding
 import com.wyb.wyb_android.extension.showPopupWindow
+import com.wyb.wyb_android.ui.open.ChallengeOpenViewModel.Companion.MAX_INPUT_LENGTH
 
 class ChallengeOpenDiscomfortFragment :
     ViewModelFragment<FragmentChallengeOpenDiscomfortBinding, ChallengeOpenViewModel>(R.layout.fragment_challenge_open_discomfort) {
@@ -24,6 +25,7 @@ class ChallengeOpenDiscomfortFragment :
 
         initNavBar()
         initPopupWindow()
+        initEditText()
         addListeners()
 
         return binding.root
@@ -47,6 +49,10 @@ class ChallengeOpenDiscomfortFragment :
         binding.etDiscomfort.post {
             popupWindow = binding.etDiscomfort.showPopupWindow(requireContext(), viewModel)
         }
+    }
+
+    private fun initEditText() {
+        binding.etDiscomfort.setTextMaxLength(MAX_INPUT_LENGTH)
     }
 
     private fun addListeners() {

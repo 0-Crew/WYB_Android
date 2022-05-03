@@ -9,6 +9,7 @@ import androidx.navigation.navGraphViewModels
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.databinding.FragmentChallengeOpenComfortBinding
+import com.wyb.wyb_android.ui.open.ChallengeOpenViewModel.Companion.MAX_INPUT_LENGTH
 
 class ChallengeOpenComfortFragment :
     ViewModelFragment<FragmentChallengeOpenComfortBinding, ChallengeOpenViewModel>(R.layout.fragment_challenge_open_comfort) {
@@ -41,7 +42,7 @@ class ChallengeOpenComfortFragment :
     }
 
     private fun initEditText() {
-        binding.etComfort.setTextMaxLength(MAX_LENGTH)
+        binding.etComfort.setTextMaxLength(MAX_INPUT_LENGTH)
     }
 
     private fun addListeners() {
@@ -51,9 +52,5 @@ class ChallengeOpenComfortFragment :
         binding.btnNext.setOnClickListener {
             findNavController().navigate(R.id.actionChallengeOpenComfortToChallengeOpenDiscomfort)
         }
-    }
-
-    companion object {
-        private const val MAX_LENGTH = 20
     }
 }
