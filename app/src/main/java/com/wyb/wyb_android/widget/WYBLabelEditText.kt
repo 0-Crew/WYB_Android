@@ -2,13 +2,14 @@ package com.wyb.wyb_android.widget
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.text.Editable
 import android.text.InputFilter
+import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
-import androidx.core.widget.doOnTextChanged
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.databinding.ViewWybLabelEditTextBinding
 
@@ -19,6 +20,19 @@ class WYBLabelEditText @JvmOverloads constructor(
 
     private val binding: ViewWybLabelEditTextBinding =
         ViewWybLabelEditTextBinding.inflate(LayoutInflater.from(context), this, false)
+
+    private var maxLength = 0
+    private val textWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        override fun afterTextChanged(s: Editable?) {}
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            if (s == null) return
+            if (s.length > maxLength) {
+                binding.etInput.setText(s.subSequence(0, maxLength))
+                binding.etInput.setSelection(maxLength)
+            }
+        }
+    }
 
     init {
         addView(binding.root)
@@ -81,13 +95,12 @@ class WYBLabelEditText @JvmOverloads constructor(
     }
 
     fun setTextMaxLength(maxLength: Int) {
-        binding.etInput.doOnTextChanged { text, _, _, _ ->
-            if (text == null) return@doOnTextChanged
-            if (text.length > maxLength) {
-                binding.etInput.setText(text.subSequence(0, maxLength))
-                binding.etInput.setSelection(maxLength)
-            }
-        }
+        this.maxLength = maxLength
+        binding.etInput.addTextChangedListener(textWatcher)
+    }
+
+    fun clearTextMaxLength() {
+        binding.etInput.removeTextChangedListener(textWatcher)
     }
 
     fun setBackgroundStroke(color: Int) {

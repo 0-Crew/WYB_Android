@@ -25,8 +25,8 @@ class ChallengeOpenDiscomfortFragment :
 
         initNavBar()
         initPopupWindow()
-        initEditText()
         addListeners()
+        addObserver()
 
         return binding.root
     }
@@ -51,16 +51,22 @@ class ChallengeOpenDiscomfortFragment :
         }
     }
 
-    private fun initEditText() {
-        binding.etDiscomfort.setTextMaxLength(MAX_INPUT_LENGTH)
-    }
-
     private fun addListeners() {
         binding.includeNavBar.btnNav.setOnClickListener {
             findNavController().popBackStack()
         }
         binding.btnNext.setOnClickListener {
             findNavController().navigate(R.id.actionChallengeOpenDiscomfortToChallengeOpenStartDate)
+        }
+    }
+
+    private fun addObserver() {
+        viewModel.discomfortPos.observe(viewLifecycleOwner) { position ->
+            if (position == 10) {
+                binding.etDiscomfort.setTextMaxLength(MAX_INPUT_LENGTH)
+            } else {
+                binding.etDiscomfort.clearTextMaxLength()
+            }
         }
     }
 }
