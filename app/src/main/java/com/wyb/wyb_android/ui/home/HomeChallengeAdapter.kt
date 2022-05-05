@@ -10,8 +10,9 @@ import com.wyb.wyb_android.R
 import com.wyb.wyb_android.data.model.Challenge
 import com.wyb.wyb_android.databinding.ItemHomeChallengeBinding
 
-class HomeChallengeAdapter(private val viewModel: HomeViewModel) :
-    ListAdapter<Challenge, HomeChallengeAdapter.ChallengeViewHolder>(ChallengeDiffUtil()) {
+class HomeChallengeAdapter(
+    private val viewModel: HomeViewModel,
+) : ListAdapter<Challenge, HomeChallengeAdapter.ChallengeViewHolder>(ChallengeDiffUtil()) {
 
     inner class ChallengeViewHolder(
         private val binding: ItemHomeChallengeBinding
@@ -59,7 +60,7 @@ class HomeChallengeAdapter(private val viewModel: HomeViewModel) :
 
     private class ChallengeDiffUtil : DiffUtil.ItemCallback<Challenge>() {
         override fun areItemsTheSame(oldItem: Challenge, newItem: Challenge): Boolean {
-            return oldItem.date == newItem.date
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Challenge, newItem: Challenge): Boolean {

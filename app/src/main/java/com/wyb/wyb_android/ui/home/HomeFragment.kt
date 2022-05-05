@@ -29,17 +29,17 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
     }
 
     private fun setChallengeRVAdapter() {
-        val challengeAdapter = HomeChallengeAdapter(homeViewModel)
+        val challengeAdapter = HomeChallengeAdapter(viewModel)
+        binding.rvDiscomfort.adapter = challengeAdapter
         val itemList = mutableListOf(
-            Challenge("불편함1", "06", isToday = false, isFuture = false),
-            Challenge("불편함1", "07", isToday = false, isFuture = false),
-            Challenge("불편함1", "08", isToday = false, isFuture = false),
-            Challenge("불편함1", "09", isToday = false, isFuture = false),
-            Challenge("불편함1", "10", isToday = true, isFuture = false),
-            Challenge("불편함1", "11", isToday = false, isFuture = true),
-            Challenge("불편함1", "12", isToday = false, isFuture = true)
+            Challenge(1, "불편함1", false, isToday = false, isFuture = false, 1),
+            Challenge(2, "불편함1", false, isToday = false, isFuture = false, 2),
+            Challenge(3, "불편함1", true, isToday = false, isFuture = false, 3),
+            Challenge(4, "불편함1", false, isToday = false, isFuture = false, 4),
+            Challenge(5, "불편함1", false, isToday = true, isFuture = false, 5),
+            Challenge(6, "불편함1", false, isToday = false, isFuture = true, 6),
+            Challenge(7, "불편함1", false, isToday = false, isFuture = true, 7)
         )
-
         challengeAdapter.submitList(itemList)
     }
 }
