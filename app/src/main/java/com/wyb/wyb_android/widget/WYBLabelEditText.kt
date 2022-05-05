@@ -2,7 +2,9 @@ package com.wyb.wyb_android.widget
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.text.Editable
 import android.text.InputFilter
+import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
@@ -18,6 +20,19 @@ class WYBLabelEditText @JvmOverloads constructor(
 
     private val binding: ViewWybLabelEditTextBinding =
         ViewWybLabelEditTextBinding.inflate(LayoutInflater.from(context), this, false)
+
+    private var maxLength = 0
+    private val textWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        override fun afterTextChanged(s: Editable?) {}
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            if (s == null) return
+            if (s.length > maxLength) {
+                binding.etInput.setText(s.subSequence(0, maxLength))
+                binding.etInput.setSelection(maxLength)
+            }
+        }
+    }
 
     init {
         addView(binding.root)
@@ -64,32 +79,35 @@ class WYBLabelEditText @JvmOverloads constructor(
                 TYPE_EDIT -> ResourcesCompat.getDrawable(resources, R.drawable.ic_edit, null)
                 else -> ResourcesCompat.getDrawable(resources, R.drawable.ic_check_20, null)
             }
-            backgroundStroke =
-                when (it.getInt(R.styleable.WYBLabelEditText_backgroundStroke, COLOR_ORANGE)) {
-                    COLOR_GRAY -> ResourcesCompat.getDrawable(
-                        resources,
-                        R.drawable.shape_gray2_stroke,
-                        null
-                    )
-                    else -> ResourcesCompat.getDrawable(
-                        resources,
-                        R.drawable.shape_orange_stroke,
-                        null
-                    )
-                }
+            setBackgroundStroke(it.getInt(R.styleable.WYBLabelEditText_backgroundStroke, COLOR_ORANGE))
             it.recycle()
         }
     }
 
-    fun setTextFilter(maxLength: Int, hasPattern: Boolean) {
+    fun setTextInputFilter() {
         val pattern = "^[_.a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ\\u318D\\u119E\\u11A2\\u2022\\u2025a\\u00B7\\uFE55]*$"
-        val lengthFilter = InputFilter.LengthFilter(maxLength)
         val inputFilter = InputFilter { source, _, _, _, _, _ ->
             if (!source.matches(Regex(pattern))) return@InputFilter ""
             null
         }
-        val filters = if (hasPattern) arrayOf(lengthFilter, inputFilter) else arrayOf(lengthFilter)
+        val filters = arrayOf(inputFilter)
         binding.etInput.filters = filters
+    }
+
+    fun setTextMaxLength(maxLength: Int) {
+        this.maxLength = maxLength
+        binding.etInput.addTextChangedListener(textWatcher)
+    }
+
+    fun clearTextMaxLength() {
+        binding.etInput.removeTextChangedListener(textWatcher)
+    }
+
+    fun setBackgroundStroke(color: Int) {
+        backgroundStroke = when (color) {
+            COLOR_GRAY -> ResourcesCompat.getDrawable(resources, R.drawable.shape_gray2_stroke, null)
+            else -> ResourcesCompat.getDrawable(resources, R.drawable.shape_orange_stroke, null)
+        }
     }
 
     companion object {

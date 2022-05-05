@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-
-        <variable
-            name="viewModel"
-            type="com.wyb.wyb_android.ui.open.ChallengeOpenViewModel" />
-    </data>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="158dp">
+        android:layout_height="134dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvItem"
@@ -22,9 +14,7 @@
             android:clipToPadding="true"
             android:paddingHorizontal="5dp"
             android:paddingVertical="5dp"
-            app:currentScrollPos="@={viewModel.discomfortScrollPos}"
-            app:selectedPos="@={viewModel.discomfortPos}"
-            tools:listitem="@layout/item_wyb_popup_window" />
+            tools:listitem="@layout/item_wyb_popup_window_small" />
 
     </FrameLayout>
 </layout>

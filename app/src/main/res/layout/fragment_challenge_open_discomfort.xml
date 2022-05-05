@@ -46,9 +46,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
                     android:layout_marginTop="40dp"
-                    app:backgroundStroke="orange"
                     app:hint="@string/challenge_open_discomfort_hint"
+                    app:inputText="@={viewModel.discomfort}"
                     app:labelText="@string/discomfort"
+                    app:setBackgroundStroke="@{viewModel.discomfort.length() != 0 ? @integer/wyb_label_edit_text_bg_stroke_orange : @integer/wyb_label_edit_text_bg_stroke_gray}"
                     app:showIcon="false" />
 
                 <TextView
@@ -64,7 +65,7 @@
                 <Button
                     android:id="@+id/btnNext"
                     style="@style/Widget.WYB.Button.SolidButton.FullWidth"
-                    android:enabled="true"
+                    android:enabled="@{viewModel.discomfort.length() != 0 ? true : false}"
                     android:text="@string/next" />
 
             </LinearLayout>

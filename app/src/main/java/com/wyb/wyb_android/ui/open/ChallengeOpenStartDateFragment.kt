@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
@@ -19,6 +20,7 @@ class ChallengeOpenStartDateFragment :
         super.onCreateView(inflater, container, savedInstanceState)
 
         initNavBar()
+        addListeners()
 
         return binding.root
     }
@@ -29,6 +31,15 @@ class ChallengeOpenStartDateFragment :
             tvNavTitle.text = getString(R.string.challenge_open_start_date_nav_title)
             ivBottle.setImageResource(R.drawable.ic_nav_bottle)
             progressBar.progress = 3
+        }
+    }
+
+    private fun addListeners() {
+        binding.includeNavBar.btnNav.setOnClickListener {
+            findNavController().popBackStack()
+        }
+        binding.btnStart.setOnClickListener {
+            findNavController().navigate(R.id.actionChallengeOpenStartDateToChallengeHome)
         }
     }
 }
