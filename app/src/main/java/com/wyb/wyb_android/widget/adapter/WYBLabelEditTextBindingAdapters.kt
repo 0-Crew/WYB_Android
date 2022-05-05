@@ -1,4 +1,4 @@
-package com.wyb.wyb_android.widget
+package com.wyb.wyb_android.widget.adapter
 
 import android.text.Editable
 import android.text.TextWatcher
@@ -6,6 +6,7 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
 import com.wyb.wyb_android.R
+import com.wyb.wyb_android.widget.WYBLabelEditText
 import kotlinx.android.synthetic.main.view_wyb_label_edit_text.view.*
 
 @BindingAdapter("inputText")

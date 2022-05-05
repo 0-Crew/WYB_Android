@@ -12,9 +12,9 @@ import com.wyb.wyb_android.databinding.ViewWybPopupWindowBinding
 import com.wyb.wyb_android.databinding.ViewWybPopupWindowSmallBinding
 import com.wyb.wyb_android.ui.open.ChallengeOpenViewModel
 import com.wyb.wyb_android.util.convertDpToPx
-import com.wyb.wyb_android.widget.WYBPopupWindowItemAdapter
-import com.wyb.wyb_android.widget.WYBPopupWindowItemAdapter.Companion.TYPE_POPUP_DEFAULT
-import com.wyb.wyb_android.widget.WYBPopupWindowItemAdapter.Companion.TYPE_POPUP_SMALL
+import com.wyb.wyb_android.widget.adapter.WYBPopupWindowItemAdapter
+import com.wyb.wyb_android.widget.adapter.WYBPopupWindowItemAdapter.Companion.TYPE_POPUP_DEFAULT
+import com.wyb.wyb_android.widget.adapter.WYBPopupWindowItemAdapter.Companion.TYPE_POPUP_SMALL
 
 fun View.showPopupWindow(
     context: Context,

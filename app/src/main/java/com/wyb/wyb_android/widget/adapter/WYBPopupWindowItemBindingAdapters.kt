@@ -1,4 +1,4 @@
-package com.wyb.wyb_android.widget
+package com.wyb.wyb_android.widget.adapter
 
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
