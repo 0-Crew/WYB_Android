@@ -22,7 +22,7 @@ class ChallengeOpenViewModel(application: Application) : AndroidViewModel(applic
     val discomfortScrollPos = MutableLiveData(0)
     val discomfort = MediatorLiveData<String>().apply {
         addSource(discomfortPos) {
-            this.value = if (it == 10) "" else discomfortMenu[it]
+            this.value = if (it == 11) "" else discomfortMenu[it]
         }
     }
 

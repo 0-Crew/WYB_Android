@@ -62,7 +62,7 @@ class ChallengeOpenDiscomfortFragment :
 
     private fun addObserver() {
         viewModel.discomfortPos.observe(viewLifecycleOwner) { position ->
-            if (position == 10) {
+            if (position == 11) {
                 binding.etDiscomfort.setTextMaxLength(MAX_INPUT_LENGTH)
             } else {
                 binding.etDiscomfort.clearTextMaxLength()
