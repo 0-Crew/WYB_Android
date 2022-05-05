@@ -1,6 +1,7 @@
 package com.wyb.wyb_android.ui.home
 
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.wyb.wyb_android.R
 
@@ -17,4 +18,9 @@ fun bindBottleImg(imageView: ImageView, levelOfJuice: Int) {
         0 -> imageView.setImageResource(R.drawable.ic_bottle_main_7)
         else -> imageView.setImageResource(R.drawable.ic_bottle_main_0)
     }
+}
+
+@BindingAdapter("setOtherProfileText")
+fun bindFollowingProfile(textView: TextView, nickName: String) {
+    textView.text = nickName.substring(0, 1)
 }
