@@ -32,3 +32,8 @@ fun requestFocus(context: Context?, view: View) {
         inputMethodManager.showSoftInput(view, 0)
     }
 }
+
+fun hideKeyboard(activity: Activity?, view: View) {
+    val inputMethodManager = activity?.getSystemService<InputMethodManager>() ?: return
+    inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+}

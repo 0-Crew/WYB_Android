@@ -1,5 +1,6 @@
 package com.wyb.wyb_android.widget
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.text.Editable
@@ -12,6 +13,8 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.databinding.ViewWybLabelEditTextBinding
+import com.wyb.wyb_android.util.hideKeyboard
+import com.wyb.wyb_android.util.requestFocus
 
 class WYBLabelEditText @JvmOverloads constructor(
     context: Context,
@@ -107,6 +110,19 @@ class WYBLabelEditText @JvmOverloads constructor(
         backgroundStroke = when (color) {
             COLOR_GRAY -> ResourcesCompat.getDrawable(resources, R.drawable.shape_gray2_stroke, null)
             else -> ResourcesCompat.getDrawable(resources, R.drawable.shape_orange_stroke, null)
+        }
+    }
+
+    fun setOnFocusChangeListener(activity: Activity?) {
+        binding.layout.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                requestFocus(context, binding.etInput)
+            }
+        }
+        binding.etInput.setOnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus) {
+                hideKeyboard(activity, v)
+            }
         }
     }
 
