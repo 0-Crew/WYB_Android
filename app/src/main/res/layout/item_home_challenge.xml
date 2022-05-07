@@ -29,35 +29,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layoutWater"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageButton
-                    android:id="@+id/imgWaterOrange"
-                    android:layout_width="43dp"
-                    android:layout_height="43dp"
-                    android:background="@android:color/transparent"
-                    android:clickable="@{data.future == true? false : true}"
-                    android:src="@{data.future == true? @drawable/ic_water_43_gray : @drawable/ic_water_43_orange}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="ContentDescription" />
-
-                <TextView
-                    android:id="@+id/tvDateToday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="@{data.date}"
-                    android:textAppearance="@style/TextAppearance.WYBComponents.Bold.13"
-                    android:textColor="@{data.future == true? @color/gray_3 : @color/gray_1}"
-                    app:layout_constraintBottom_toBottomOf="@id/imgWaterOrange"
-                    app:layout_constraintEnd_toEndOf="@id/imgWaterOrange"
-                    app:layout_constraintStart_toStartOf="@id/imgWaterOrange"
-                    app:layout_constraintTop_toTopOf="@id/imgWaterOrange" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <CheckBox
+                android:id="@+id/cbWaterDrop"
+                android:layout_width="43dp"
+                android:layout_height="43dp"
+                android:background="@drawable/selector_home_waterdrop"
+                android:button="@null"
+                android:checked="@{data.finished}"
+                android:enabled="@{data.isFuture ? false : true}"
+                android:gravity="center"
+                android:paddingStart="1dp"
+                android:paddingTop="3dp"
+                android:text="@{String.valueOf(data.day)}"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Bold.13"
+                android:textColor="@color/selector_home_waterdrop_text"
+                tools:background="@drawable/ic_water_43_gray"
+                tools:text="00" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layoutChallengeToday"

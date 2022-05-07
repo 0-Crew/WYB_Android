@@ -12,12 +12,16 @@ class HomeViewModel : ViewModel() {
     private val _isEdit = MutableLiveData(false)
     val isEdit: LiveData<Boolean> = _isEdit
 
-    private val _levelOfJuice = MutableLiveData(0)
+    private val _levelOfJuice = MutableLiveData(7)
     val levelOfJuice: LiveData<Int> = _levelOfJuice
 
     fun setIsSuccess(isSuccess: Boolean) {
-        _isSuccess.value = isSuccess
-        _levelOfJuice.value = _levelOfJuice.value!! + 1
+        _isSuccess.postValue(isSuccess)
+        if (isSuccess) {
+            _levelOfJuice.postValue(checkNotNull(_levelOfJuice.value) - 1)
+        } else {
+            _levelOfJuice.postValue(checkNotNull(_levelOfJuice.value) + 1)
+        }
     }
 
     fun setIsEdit(isEdit: Boolean) {

@@ -23,24 +23,12 @@ class HomeChallengeAdapter(
         }
 
         private fun setBtnWaterClickListener() {
-            binding.imgWaterOrange.setOnClickListener {
-                when (viewModel.isSuccess.value) {
-                    true -> {
-                        setSuccessCondition(R.drawable.ic_water_43_success, View.INVISIBLE)
-                        viewModel.setIsSuccess(false)
-                    }
-                    false -> {
-                        setSuccessCondition(R.drawable.ic_water_43_orange, View.VISIBLE)
-                        viewModel.setIsSuccess(true)
-                    }
+            binding.cbWaterDrop.setOnCheckedChangeListener { _, isChecked ->
+                when (isChecked) {
+                    true -> viewModel.setIsSuccess(true)
+                    else -> viewModel.setIsSuccess(false)
                 }
             }
-        }
-
-        private fun setSuccessCondition(img: Int, visibility: Int) {
-            binding.imgWaterOrange.setImageResource(img)
-            binding.tvDateToday.visibility = visibility
-            binding.btnChallengeEdit.visibility = visibility
         }
     }
 
