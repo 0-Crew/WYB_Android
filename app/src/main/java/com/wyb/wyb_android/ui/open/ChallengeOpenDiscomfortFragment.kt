@@ -64,8 +64,10 @@ class ChallengeOpenDiscomfortFragment :
         viewModel.discomfortPos.observe(viewLifecycleOwner) { position ->
             if (position == 11) {
                 binding.etDiscomfort.setTextMaxLength(MAX_INPUT_LENGTH)
+                binding.etDiscomfort.setEditTextFocusable()
             } else {
                 binding.etDiscomfort.clearTextMaxLength()
+                binding.etDiscomfort.setEditTextNotFocusable(requireActivity())
             }
         }
     }

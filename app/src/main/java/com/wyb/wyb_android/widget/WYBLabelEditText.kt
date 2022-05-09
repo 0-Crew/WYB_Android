@@ -126,6 +126,18 @@ class WYBLabelEditText @JvmOverloads constructor(
         }
     }
 
+    fun setEditTextFocusable() {
+        binding.etInput.isFocusable = true
+        binding.etInput.isFocusableInTouchMode = true
+        requestFocus(context, binding.etInput)
+    }
+
+    fun setEditTextNotFocusable(activity: Activity?) {
+        binding.etInput.isFocusable = false
+        binding.etInput.isFocusableInTouchMode = false
+        hideKeyboard(activity, binding.etInput)
+    }
+
     companion object {
         private const val COLOR_GRAY = 0
         private const val COLOR_ORANGE = 1
