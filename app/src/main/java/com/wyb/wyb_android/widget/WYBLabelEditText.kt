@@ -2,6 +2,7 @@ package com.wyb.wyb_android.widget
 
 import android.app.Activity
 import android.content.Context
+import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.text.Editable
 import android.text.InputFilter
@@ -9,6 +10,7 @@ import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import android.widget.ScrollView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import com.wyb.wyb_android.R
@@ -87,6 +89,16 @@ class WYBLabelEditText @JvmOverloads constructor(
         }
     }
 
+    private fun isKeyboardShown(): Boolean {
+        val rootView = binding.etInput.rootView
+        val softKeyboardHeight = 100
+        val r = Rect()
+        rootView.getWindowVisibleDisplayFrame(r)
+        val dm = rootView.resources.displayMetrics
+        val heightDiff = rootView.bottom - r.bottom
+        return heightDiff > softKeyboardHeight * dm.density
+    }
+
     fun setTextInputFilter() {
         val pattern = "^[_.a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ\\u318D\\u119E\\u11A2\\u2022\\u2025a\\u00B7\\uFE55]*$"
         val inputFilter = InputFilter { source, _, _, _, _, _ ->
@@ -123,6 +135,23 @@ class WYBLabelEditText @JvmOverloads constructor(
             if (!hasFocus) {
                 hideKeyboard(activity, v)
             }
+        }
+    }
+
+    fun addOnGlobalLayoutListener(scrollView: ScrollView) {
+        binding.etInput.viewTreeObserver.addOnGlobalLayoutListener {
+            if (isKeyboardShown()) {
+                scrollToBottom(scrollView)
+            }
+        }
+    }
+
+    private fun scrollToBottom(scrollView: ScrollView) {
+        scrollView.apply {
+            val lastChild = getChildAt(0)
+            val bottom = lastChild.bottom + paddingBottom
+            val delta = bottom - (scrollY + height)
+            smoothScrollTo(0, delta)
         }
     }
 
