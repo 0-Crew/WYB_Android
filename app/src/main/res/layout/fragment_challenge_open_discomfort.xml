@@ -64,15 +64,15 @@
                     android:textAppearance="@style/TextAppearance.WYBComponents.Medium.12"
                     android:textColor="@color/orange_alpha_60" />
 
-                <Button
-                    android:id="@+id/btnNext"
-                    style="@style/Widget.WYB.Button.SolidButton.FullWidth"
-                    android:enabled="@{viewModel.discomfort.length() != 0 ? true : false}"
-                    android:text="@string/next" />
-
             </LinearLayout>
 
         </ScrollView>
+
+        <Button
+            android:id="@+id/btnNext"
+            style="@style/Widget.WYB.Button.SolidButton.FullWidth"
+            android:enabled="@{viewModel.discomfort.length() != 0 ? true : false}"
+            android:text="@string/next" />
 
     </LinearLayout>
 </layout>
