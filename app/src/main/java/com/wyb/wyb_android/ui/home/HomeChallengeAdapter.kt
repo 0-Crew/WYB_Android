@@ -1,5 +1,6 @@
 package com.wyb.wyb_android.ui.home
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import com.wyb.wyb_android.databinding.ItemHomeChallengeBinding
 
 class HomeChallengeAdapter(
     private val viewModel: HomeViewModel,
+    private val context: Context
 ) : ListAdapter<Challenge, HomeChallengeAdapter.ChallengeViewHolder>(ChallengeDiffUtil()) {
 
     inner class ChallengeViewHolder(
