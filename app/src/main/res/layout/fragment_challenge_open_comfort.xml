@@ -16,45 +16,52 @@
         android:fillViewport="true"
         tools:context=".ui.open.ChallengeOpenComfortFragment">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <include
                 android:id="@+id/includeNavBar"
-                layout="@layout/include_challenge_open_nav" />
+                layout="@layout/include_challenge_open_nav"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="40dp"
                 android:text="@string/challenge_open_comfort_title"
                 android:textAppearance="@style/TextAppearance.WYBComponents.Bold.30"
-                android:textColor="@color/dark_gray_2" />
+                android:textColor="@color/dark_gray_2"
+                app:layout_constraintTop_toBottomOf="@id/includeNavBar" />
 
             <com.wyb.wyb_android.widget.WYBLabelEditText
                 android:id="@+id/etComfort"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="40dp"
-                android:layout_weight="1"
                 app:hint="@{viewModel.randomHint}"
                 app:iconType="edit"
                 app:inputText="@={viewModel.comfort}"
                 app:labelText="@string/comfort"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle"
                 app:setBackgroundStroke="@{viewModel.isInputEmpty ? @integer/wyb_label_edit_text_bg_stroke_gray : @integer/wyb_label_edit_text_bg_stroke_orange}"
                 app:showIcon="@{viewModel.isInputEmpty}" />
 
             <Button
                 android:id="@+id/btnNext"
                 style="@style/Widget.WYB.Button.SolidButton.FullWidth"
+                android:layout_width="match_parent"
                 android:enabled="@{!viewModel.isInputEmpty}"
-                android:text="@string/next" />
+                android:text="@string/next"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 </layout>

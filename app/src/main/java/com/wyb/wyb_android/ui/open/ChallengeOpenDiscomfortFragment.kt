@@ -4,19 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.PopupWindow
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.databinding.FragmentChallengeOpenDiscomfortBinding
-import com.wyb.wyb_android.extension.showPopupWindow
 import com.wyb.wyb_android.ui.open.ChallengeOpenViewModel.Companion.MAX_INPUT_LENGTH
+import com.wyb.wyb_android.widget.adapter.WYBPopupWindowItemAdapter
 
 class ChallengeOpenDiscomfortFragment :
     ViewModelFragment<FragmentChallengeOpenDiscomfortBinding, ChallengeOpenViewModel>(R.layout.fragment_challenge_open_discomfort) {
     override val viewModel: ChallengeOpenViewModel by navGraphViewModels(R.id.challenge_open_nav_graph)
-    private lateinit var popupWindow: PopupWindow
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -24,16 +23,11 @@ class ChallengeOpenDiscomfortFragment :
         super.onCreateView(inflater, container, savedInstanceState)
 
         initNavBar()
-        initPopupWindow()
+        initRecyclerView()
         addListeners()
         addObserver()
 
         return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        popupWindow.dismiss()
     }
 
     private fun initNavBar() {
@@ -45,13 +39,17 @@ class ChallengeOpenDiscomfortFragment :
         }
     }
 
-    private fun initPopupWindow() {
-        binding.etDiscomfort.post {
-            popupWindow = binding.etDiscomfort.showPopupWindow(requireContext(), viewModel)
-        }
+    private fun initRecyclerView() {
+        val discomfortItemAdapter = WYBPopupWindowItemAdapter(
+            requireContext(),
+            WYBPopupWindowItemAdapter.TYPE_POPUP_DEFAULT
+        )
+        binding.rvDiscomfort.adapter = discomfortItemAdapter
+        binding.rvDiscomfort.layoutManager = LinearLayoutManager(context)
     }
 
     private fun addListeners() {
+        binding.etDiscomfort.addOnGlobalLayoutListener(binding.scrollView)
         binding.includeNavBar.btnNav.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -64,8 +62,10 @@ class ChallengeOpenDiscomfortFragment :
         viewModel.discomfortPos.observe(viewLifecycleOwner) { position ->
             if (position == 11) {
                 binding.etDiscomfort.setTextMaxLength(MAX_INPUT_LENGTH)
+                binding.etDiscomfort.setEditTextFocusable()
             } else {
                 binding.etDiscomfort.clearTextMaxLength()
+                binding.etDiscomfort.setEditTextNotFocusable(requireActivity())
             }
         }
     }

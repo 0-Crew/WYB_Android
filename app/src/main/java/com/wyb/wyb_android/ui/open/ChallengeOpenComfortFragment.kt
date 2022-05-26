@@ -46,6 +46,7 @@ class ChallengeOpenComfortFragment :
     }
 
     private fun addListeners() {
+        binding.etComfort.setOnFocusChangeListener(requireActivity())
         binding.includeNavBar.btnNav.setOnClickListener {
             findNavController().popBackStack()
         }
