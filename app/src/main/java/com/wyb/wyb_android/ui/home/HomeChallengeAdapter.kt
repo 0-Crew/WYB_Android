@@ -21,14 +21,20 @@ class HomeChallengeAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(challengeData: Challenge) {
             binding.data = challengeData
-            setBtnWaterClickListener()
+            setBtnWaterCheckedListener(challengeData.id)
         }
 
-        private fun setBtnWaterClickListener() {
+        private fun setBtnWaterCheckedListener(id: Int) {
             binding.cbWaterDrop.setOnCheckedChangeListener { _, isChecked ->
                 when (isChecked) {
-                    true -> viewModel.setIsSuccess(true)
-                    else -> viewModel.setIsSuccess(false)
+                    true -> {
+                        viewModel.setIsSuccess(id)
+                        binding.btnChallengeEdit.visibility = View.INVISIBLE
+                    }
+                    else -> {
+                        viewModel.setIsSuccess(id)
+                        binding.btnChallengeEdit.visibility = View.VISIBLE
+                    }
                 }
             }
         }

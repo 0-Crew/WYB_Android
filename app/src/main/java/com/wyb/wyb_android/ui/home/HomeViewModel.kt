@@ -1,6 +1,7 @@
 package com.wyb.wyb_android.ui.home
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wyb.wyb_android.data.model.Challenge
@@ -10,22 +11,28 @@ class HomeViewModel : ViewModel() {
     private val _challengeList = MutableLiveData<List<Challenge>>()
     val challengeList: LiveData<List<Challenge>> = _challengeList
 
-    private val _isSuccess = MutableLiveData(false)
-    val isSuccess: LiveData<Boolean> = _isSuccess
+    private val _successItems = MutableLiveData<Set<Int>>()
+    val successItems: LiveData<Set<Int>> = _successItems
 
     private val _isEdit = MutableLiveData(false)
     val isEdit: LiveData<Boolean> = _isEdit
 
-    private val _levelOfJuice = MutableLiveData(7)
-    val levelOfJuice: LiveData<Int> = _levelOfJuice
-
-    fun setIsSuccess(isSuccess: Boolean) {
-        _isSuccess.postValue(isSuccess)
-        if (isSuccess) {
-            _levelOfJuice.postValue(checkNotNull(_levelOfJuice.value) - 1)
-        } else {
-            _levelOfJuice.postValue(checkNotNull(_levelOfJuice.value) + 1)
+    val levelOfJuice = MediatorLiveData<Int>().apply {
+        addSource(successItems) {
+            this.value = it.size
         }
+    }
+
+    fun setIsSuccess(itemId: Int) {
+        val successList = successItems.value.orEmpty()
+        val currentList = successList.toHashSet().apply {
+            if (this.contains(itemId)) {
+                this.remove(itemId)
+            } else {
+                this.add(itemId)
+            }
+        }
+        _successItems.postValue(currentList)
     }
 
     fun setIsEdit(isEdit: Boolean) {
