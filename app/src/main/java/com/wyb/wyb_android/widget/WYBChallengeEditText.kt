@@ -41,17 +41,12 @@ class WYBChallengeEditText @JvmOverloads constructor(
     private fun initializeAttrs(context: Context, attrs: AttributeSet?) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.WYBChallengeEditText)
         typedArray.let {
-            isToday =
-                when (it.getInt(R.styleable.WYBChallengeEditText_setBackgroundRes, STROKE_ORANGE)) {
-                    STROKE_GRAY -> {
-                        setViewColor(R.color.gray_4)
-                        setDrawableRes(R.drawable.shape_gray4_stroke)
-                    }
-                    else -> {
-                        setViewColor(R.color.orange)
-                        setDrawableRes(R.drawable.shape_orange_stroke)
-                    }
-                }
+            setChallengeToday(
+                it.getInt(
+                    R.styleable.WYBChallengeEditText_setBackgroundRes,
+                    STROKE_ORANGE
+                )
+            )
 
             setEtStyle =
                 when (it.getInt(R.styleable.WYBChallengeEditText_setEtStyle, CHALLENGE_NOW)) {
@@ -98,8 +93,7 @@ class WYBChallengeEditText @JvmOverloads constructor(
     private fun checkWritingState() {
         with(binding) {
             etDiscomfort.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                }
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     when (count) {
@@ -115,9 +109,21 @@ class WYBChallengeEditText @JvmOverloads constructor(
                     }
                 }
 
-                override fun afterTextChanged(s: Editable?) {
-                }
+                override fun afterTextChanged(s: Editable?) {}
             })
+        }
+    }
+
+    fun setChallengeToday(color: Int) {
+        isToday = when (color) {
+            STROKE_GRAY -> {
+                setViewColor(R.color.gray_4)
+                setDrawableRes(R.drawable.shape_gray4_stroke)
+            }
+            else -> {
+                setViewColor(R.color.orange)
+                setDrawableRes(R.drawable.shape_orange_stroke)
+            }
         }
     }
 

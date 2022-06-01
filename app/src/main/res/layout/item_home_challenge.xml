@@ -82,6 +82,15 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="ContentDescription" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.wyb.wyb_android.widget.WYBChallengeEditText
+                android:id="@+id/etDiscomfort"
+                setChallengeBackgroundStroke="@{data.isToday ? @integer/wyb_challenge_edit_text_bg_stroke_orange : @integer/wyb_challenge_edit_text_bg_stroke_gray}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:visibility="gone"
+                app:setEtStyle="challengeNow" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
