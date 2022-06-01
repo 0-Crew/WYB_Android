@@ -64,24 +64,23 @@
                     android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
                     android:textColor="@{data.isFuture ? @color/gray_2 : @color/gray_4}"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/btnChallengeEdit"
+                    app:layout_constraintEnd_toStartOf="@id/cbChallengeEdit"
                     app:layout_constraintHorizontal_chainStyle="spread_inside"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageButton
-                    android:id="@+id/btnChallengeEdit"
-                    isVisibleOrInvisible="@{!data.finished}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:onClick="@{()->viewModel.setIsEdit(true)}"
-                    android:src="@drawable/ic_edit"
+                <CheckBox
+                    android:id="@+id/cbChallengeEdit"
+                    isVisibleOrInvisible="@{!data.future}"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/selector_challenge_edit"
+                    android:backgroundTint="@color/gray_1"
+                    android:button="@null"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/tvDiscomfort"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/gray_1"
                     tools:ignore="ContentDescription" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
