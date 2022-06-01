@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat.getColorStateList
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -21,21 +22,47 @@ class HomeChallengeAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(challengeData: Challenge) {
             binding.data = challengeData
-            setBtnWaterCheckedListener(challengeData.id)
+            setBtnWaterCheckedListener(challengeData)
         }
 
-        private fun setBtnWaterCheckedListener(id: Int) {
+        private fun setBtnWaterCheckedListener(data: Challenge) {
             binding.cbWaterDrop.setOnCheckedChangeListener { _, isChecked ->
-                when (isChecked) {
+                viewModel.setIsSuccess(data.id)
+                when (data.isToday) {
                     true -> {
-                        viewModel.setIsSuccess(id)
-                        binding.btnChallengeEdit.visibility = View.INVISIBLE
+                        setTodayCheckedView(isChecked)
+                        binding.cbChallengeEdit.apply {
+                            this.backgroundTintList = if (isChecked) {
+                                getColorStateList(resources,R.color.white,null)
+                            } else {
+                                getColorStateList(resources,R.color.gray_1,null)
+                            }
+                        }
                     }
                     else -> {
-                        viewModel.setIsSuccess(id)
-                        binding.btnChallengeEdit.visibility = View.VISIBLE
+                        binding.cbChallengeEdit.visibility = if (isChecked) {
+                            View.INVISIBLE
+                        } else {
+                            View.VISIBLE
+                        }
                     }
                 }
+            }
+        }
+
+        private fun setTodayCheckedView(isSuccess: Boolean) {
+            if (isSuccess) {
+                initTvDiscomfortTextColor(R.color.white)
+                binding.layoutChallengeToday.setBackgroundResource(R.color.orange)
+            } else {
+                initTvDiscomfortTextColor(R.color.orange)
+                binding.layoutChallengeToday.setBackgroundResource(R.drawable.shape_orange_stroke)
+            }
+        }
+
+        private fun initTvDiscomfortTextColor(resourceId: Int) {
+            binding.tvDiscomfort.apply {
+                setTextColor(resources.getColor(resourceId, null))
             }
         }
     }
