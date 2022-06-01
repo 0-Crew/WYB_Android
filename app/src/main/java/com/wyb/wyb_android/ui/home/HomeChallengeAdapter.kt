@@ -35,12 +35,12 @@ class HomeChallengeAdapter(
         private fun initView(data: Challenge) {
             when (data.isToday) {
                 true -> {
-                    initPopupWindow(R.drawable.shape_orange_stroke, data.day)
+                    initPopupWindow(R.drawable.shape_orange_stroke, data)
                     binding.tvDiscomfort.setTextAppearance(R.style.TextAppearance_WYBComponents_Bold_14)
                     setTodayCheckedView(binding.cbWaterDrop.isChecked)
                 }
                 else -> {
-                    initPopupWindow(R.drawable.shape_gray4_stroke, data.day)
+                    initPopupWindow(R.drawable.shape_gray4_stroke, data)
                     initTvDiscomfortTextColor(
                         if (data.isFuture) {
                             R.color.gray_2
@@ -58,13 +58,6 @@ class HomeChallengeAdapter(
                 when (data.isToday) {
                     true -> {
                         setTodayCheckedView(isChecked)
-                        binding.cbChallengeEdit.apply {
-                            this.backgroundTintList = if (isChecked) {
-                                getColorStateList(resources,R.color.white,null)
-                            } else {
-                                getColorStateList(resources,R.color.gray_1,null)
-                            }
-                        }
                     }
                     else -> {
                         binding.cbChallengeEdit.visibility = if (isChecked) {
@@ -81,9 +74,15 @@ class HomeChallengeAdapter(
             if (isSuccess) {
                 initTvDiscomfortTextColor(R.color.white)
                 binding.layoutChallengeToday.setBackgroundResource(R.color.orange)
+                binding.cbChallengeEdit.apply {
+                    backgroundTintList = getColorStateList(resources, R.color.white, null)
+                }
             } else {
                 initTvDiscomfortTextColor(R.color.orange)
                 binding.layoutChallengeToday.setBackgroundResource(R.drawable.shape_orange_stroke)
+                binding.cbChallengeEdit.apply {
+                    backgroundTintList = getColorStateList(resources, R.color.gray_1, null)
+                }
             }
         }
 
@@ -95,30 +94,38 @@ class HomeChallengeAdapter(
 
         private fun initPopupWindow(
             drawableRes: Int,
-            day: Int,
+            data: Challenge,
         ) {
-            binding.cbChallengeEdit.setOnCheckedChangeListener { view, isChecked ->
+            binding.cbChallengeEdit.setOnCheckedChangeListener { view, isPopupOpen ->
                 val resource = view.resources
-                if (isChecked) {
+                if (isPopupOpen) {
                     popupWindow = binding.layoutChallengeToday.showPopupWindow(
                         adapter = initPopupWindowAdapter(),
                         backgroundRes = drawableRes,
                         context = context,
-                        margin = if (day > 5) {
+                        margin = if (data.day > 5) {
                             resource.getInteger(R.integer.wyb_popup_window_margin_small_up)
                         } else {
                             resource.getInteger(R.integer.wyb_popup_window_margin_small_down)
                         }
                     )
-                    binding.layoutChallengeToday.setBackgroundResource(drawableRes)
+                    if (data.isToday) {
+                        setTodayCheckedView(false)
+                    } else {
+                        binding.layoutChallengeToday.setBackgroundResource(drawableRes)
+                    }
 
                     popupWindow.setOnDismissListener {
                         view.isChecked = false
                     }
                 } else {
-                    binding.layoutChallengeToday.setBackgroundColor(
-                        resource.getColor(android.R.color.transparent, null)
-                    )
+                    if (data.isToday) {
+                        setTodayCheckedView(binding.cbWaterDrop.isChecked)
+                    } else {
+                        binding.layoutChallengeToday.setBackgroundColor(
+                            resource.getColor(android.R.color.transparent, null)
+                        )
+                    }
                 }
             }
         }
