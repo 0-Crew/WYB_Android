@@ -13,6 +13,7 @@ import com.wyb.wyb_android.R
 import com.wyb.wyb_android.data.model.Challenge
 import com.wyb.wyb_android.databinding.ItemHomeChallengeBinding
 import com.wyb.wyb_android.extension.showPopupWindow
+import com.wyb.wyb_android.util.Utils
 import com.wyb.wyb_android.widget.adapter.WYBPopupWindowItemAdapter
 import com.wyb.wyb_android.widget.adapter.WYBPopupWindowItemAdapter.Companion.TYPE_POPUP_SMALL
 
@@ -96,13 +97,11 @@ class HomeChallengeAdapter(
             drawableRes: Int,
             day: Int,
         ) {
-            val popupWindowAdapter = WYBPopupWindowItemAdapter(context, TYPE_POPUP_SMALL)
-
             binding.cbChallengeEdit.setOnCheckedChangeListener { view, isChecked ->
                 val resource = view.resources
                 if (isChecked) {
                     popupWindow = binding.layoutChallengeToday.showPopupWindow(
-                        adapter = popupWindowAdapter,
+                        adapter = initPopupWindowAdapter(),
                         backgroundRes = drawableRes,
                         context = context,
                         margin = if (day > 5) {
@@ -120,6 +119,28 @@ class HomeChallengeAdapter(
                     binding.layoutChallengeToday.setBackgroundColor(
                         resource.getColor(android.R.color.transparent, null)
                     )
+                }
+            }
+        }
+
+        private fun initPopupWindowAdapter(): WYBPopupWindowItemAdapter {
+            return WYBPopupWindowItemAdapter(context, TYPE_POPUP_SMALL).apply {
+                listener = object : WYBPopupWindowItemAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        if (position == 11) {
+                            binding.layoutChallengeToday.visibility = View.GONE
+                            binding.etDiscomfort.visibility = View.VISIBLE
+                            Utils.requestFocus(binding.etDiscomfort)
+                        } else {
+                            val menuList =
+                                context.resources.getStringArray(R.array.challenge_open_discomfort_menu_list)
+                            binding.tvDiscomfort.apply {
+                                this.text = menuList[position]
+                                Utils.clearFocus(this)
+                            }
+                        }
+                        popupWindow.dismiss()
+                    }
                 }
             }
         }

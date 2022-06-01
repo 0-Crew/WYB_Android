@@ -1,4 +1,4 @@
-package com.wyb.wyb_android.util
+package com.wyb.wyb_android.extension
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.databinding.ViewWybPopupWindowBinding
 import com.wyb.wyb_android.databinding.ViewWybPopupWindowSmallBinding
+import com.wyb.wyb_android.util.Utils.convertDpToPx
 import com.wyb.wyb_android.widget.WYBPopupWindowItemAdapter
 import com.wyb.wyb_android.widget.WYBPopupWindowItemAdapter.Companion.TYPE_POPUP_DEFAULT
-import com.wyb.wyb_android.util.Utils.convertDpToPx
 
 fun View.showPopupWindow(
     context: Context
@@ -70,7 +70,7 @@ fun View.showPopupWindow(
 }
 
 private fun initPopupView(popupWindow: ViewWybPopupWindowBinding, type: Int, context: Context) {
-    val wybPopupWindowItemAdapter = WYBPopupWindowItemAdapter(type)
+    val wybPopupWindowItemAdapter = WYBPopupWindowItemAdapter(context, type)
     popupWindow.rvItem.adapter = wybPopupWindowItemAdapter
     popupWindow.rvItem.layoutManager = LinearLayoutManager(context)
 }
