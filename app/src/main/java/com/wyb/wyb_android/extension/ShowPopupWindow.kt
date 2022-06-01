@@ -8,9 +8,9 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.databinding.ViewWybPopupWindowBinding
+import com.wyb.wyb_android.databinding.ViewWybPopupWindowSmallBinding
 import com.wyb.wyb_android.widget.WYBPopupWindowItemAdapter
 import com.wyb.wyb_android.widget.WYBPopupWindowItemAdapter.Companion.TYPE_POPUP_DEFAULT
-import com.wyb.wyb_android.widget.WYBPopupWindowItemAdapter.Companion.TYPE_POPUP_SMALL
 import com.wyb.wyb_android.util.Utils.convertDpToPx
 
 fun View.showPopupWindow(
@@ -43,10 +43,11 @@ fun View.showPopupWindow(
 fun View.showPopupWindow(
     backgroundRes: Int,
     context: Context,
-    margin: Int
-) {
-    val popupView = ViewWybPopupWindowBinding.inflate(LayoutInflater.from(context))
-    initPopupView(popupView, TYPE_POPUP_SMALL, context)
+    margin: Int,
+    adapter: WYBPopupWindowItemAdapter
+): PopupWindow {
+    val popupView = ViewWybPopupWindowSmallBinding.inflate(LayoutInflater.from(context))
+    popupView.rvItem.adapter = adapter
 
     val popupHeight: Int = resources.getInteger(R.integer.wyb_popup_window_height_small)
 
@@ -59,12 +60,13 @@ fun View.showPopupWindow(
 
     popup.setBackgroundDrawable(
         ResourcesCompat.getDrawable(
-            context.resources,
+            resources,
             backgroundRes,
             null
         )
     )
     popup.showAsDropDown(this, 0, convertDpToPx(margin))
+    return popup
 }
 
 private fun initPopupView(popupWindow: ViewWybPopupWindowBinding, type: Int, context: Context) {
