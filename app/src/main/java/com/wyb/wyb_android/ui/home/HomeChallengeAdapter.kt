@@ -133,7 +133,7 @@ class HomeChallengeAdapter(
                             Utils.requestFocus(binding.etDiscomfort)
                         } else {
                             val menuList =
-                                context.resources.getStringArray(R.array.challenge_open_discomfort_menu_list)
+                                context.resources.getStringArray(R.array.challenge_discomfort_menu_list)
                             binding.tvDiscomfort.apply {
                                 this.text = menuList[position]
                                 Utils.clearFocus(this)

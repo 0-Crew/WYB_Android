@@ -12,8 +12,8 @@ import kotlinx.android.synthetic.main.item_wyb_popup_window.view.*
 
 class WYBPopupWindowItemAdapter(context: Context, private val viewType: Int) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private val data = context.resources.getStringArray(R.array.challenge_open_discomfort_menu_list)
-    private var selectedPos = RecyclerView.NO_POSITION
+    private val data = context.resources.getStringArray(R.array.challenge_discomfort_menu_list)
+    var selectedPos = RecyclerView.NO_POSITION
     private lateinit var itemClickListener: OnItemClickListener
 
     var listener: OnItemClickListener? = null
