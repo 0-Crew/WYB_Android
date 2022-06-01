@@ -24,15 +24,15 @@ class HomeViewModel : ViewModel() {
     }
 
     fun setIsSuccess(itemId: Int) {
-        val successList = successItems.value.orEmpty()
-        val currentList = successList.toHashSet().apply {
+        val successItems = successItems.value.orEmpty()
+        val currentItems = successItems.toHashSet().apply {
             if (this.contains(itemId)) {
                 this.remove(itemId)
             } else {
                 this.add(itemId)
             }
         }
-        _successItems.postValue(currentList)
+        _successItems.value = currentItems
     }
 
     fun setIsEdit(isEdit: Boolean) {
