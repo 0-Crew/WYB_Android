@@ -1,5 +1,6 @@
 package com.wyb.wyb_android.util
 
+import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -38,4 +39,9 @@ object Utils : BaseUtils() {
         val density = applicationContext.resources.displayMetrics.density
         return (dp.toFloat() * density).roundToInt()
     }
+}
+
+fun hideKeyboard(activity: Activity?, view: View) {
+    val inputMethodManager = activity?.getSystemService<InputMethodManager>() ?: return
+    inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
 }
