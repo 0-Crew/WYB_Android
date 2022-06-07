@@ -5,8 +5,6 @@
 
     <data>
 
-        <import type="android.view.View" />
-
         <variable
             name="data"
             type="com.wyb.wyb_android.data.model.Challenge" />
@@ -16,89 +14,74 @@
             type="com.wyb.wyb_android.ui.home.HomeViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp">
 
-        <LinearLayout
+        <CheckBox
+            android:id="@+id/cbWaterDrop"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:background="@drawable/selector_home_waterdrop"
+            android:button="@null"
+            android:checked="@{data.finished}"
+            android:enabled="@{data.isFuture ? false : true}"
+            android:gravity="center"
+            android:paddingStart="1dp"
+            android:paddingTop="3dp"
+            android:text="@{String.valueOf(data.day)}"
+            android:textAppearance="@style/TextAppearance.WYBComponents.Bold.13"
+            android:textColor="@color/selector_home_waterdrop_text"
+            tools:background="@drawable/ic_water_43_gray"
+            tools:text="00" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutChallengeToday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginStart="18dp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="8dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layoutWater"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageButton
-                    android:id="@+id/imgWaterOrange"
-                    android:layout_width="43dp"
-                    android:layout_height="43dp"
-                    android:background="@android:color/transparent"
-                    android:clickable="@{data.future == true? false : true}"
-                    android:src="@{data.future == true? @drawable/ic_water_43_gray : @drawable/ic_water_43_orange}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="ContentDescription" />
-
-                <TextView
-                    android:id="@+id/tvDateToday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="@{data.date}"
-                    android:textAppearance="@style/TextAppearance.WYBComponents.Bold.13"
-                    android:textColor="@{data.future == true? @color/gray_3 : @color/gray_1}"
-                    app:layout_constraintBottom_toBottomOf="@id/imgWaterOrange"
-                    app:layout_constraintEnd_toEndOf="@id/imgWaterOrange"
-                    app:layout_constraintStart_toStartOf="@id/imgWaterOrange"
-                    app:layout_constraintTop_toTopOf="@id/imgWaterOrange" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layoutChallengeToday"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvDiscomfort"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
-                android:background="@{data.today == true? @drawable/selector_challenge_today : null}"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="8dp">
+                android:layout_marginEnd="4dp"
+                android:background="@android:color/transparent"
+                android:text="@{data.name}"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/cbChallengeEdit"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tvDiscomfort"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:text="@{data.disComfort}"
-                    android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
-                    android:textColor="@{data.future == true? @color/gray_2 : @color/gray_4}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/btnChallengeEdit"
-                    app:layout_constraintHorizontal_chainStyle="spread_inside"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <CheckBox
+                android:id="@+id/cbChallengeEdit"
+                isVisibleOrInvisible="@{!data.future}"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/selector_challenge_edit"
+                android:backgroundTint="@color/gray_1"
+                android:button="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvDiscomfort"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <ImageButton
-                    android:id="@+id/btnChallengeEdit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:onClick="@{()->viewModel.setIsEdit(true)}"
-                    android:src="@drawable/ic_edit"
-                    android:tint="@color/gray_1"
-                    android:visibility="@{data.future == true ? View.INVISIBLE : 0}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/tvDiscomfort"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="ContentDescription" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.wyb.wyb_android.widget.WYBChallengeEditText
+            android:id="@+id/etDiscomfort"
+            setChallengeBackgroundStroke="@{data.isToday ? @integer/wyb_challenge_edit_text_bg_stroke_orange : @integer/wyb_challenge_edit_text_bg_stroke_gray}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:visibility="gone"
+            app:setEtStyle="challengeNow" />
+    </LinearLayout>
 </layout>

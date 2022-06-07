@@ -10,13 +10,13 @@
         <item>카페에서 일회용 컵 받기</item>
     </string-array>
 
-    <string-array name="challenge_open_discomfort_menu_list">
+    <string-array name="challenge_discomfort_menu_list">
         <item>일회용 식사도구 안 쓰기</item>
         <item>플라스틱 빨대 안 쓰기</item>
         <item>비닐봉투 안 받고 안 쓰기</item>
         <item>비닐봉투나 쇼핑백 재사용 하기</item>
-        <item>분리수거 할 때 오염물이나 라벨 제거하기</item>
-        <item>플라스틱 통 세정제 대신 비누 사용하기</item>
+        <item>분리수거 시 오염물과 라벨 제거하기</item>
+        <item>펌프형 세정제 대신 비누 사용하기</item>
         <item>물티슈 대신 행주나 걸레 사용하기</item>
         <item>핸드타올 대신 손수건 사용하기</item>
         <item>안 쓰는 전자기기 코드 뽑아 놓기</item>

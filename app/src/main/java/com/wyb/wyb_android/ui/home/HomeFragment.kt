@@ -1,45 +1,37 @@
 package com.wyb.wyb_android.ui.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
-import com.wyb.wyb_android.data.model.Challenge
 import com.wyb.wyb_android.databinding.FragmentHomeBinding
 
 class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.layout.fragment_home) {
     override val viewModel: HomeViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        super.onCreateView(inflater, container, savedInstanceState)
-        setOtherProfileRVAdapter()
-        setChallengeRVAdapter()
-        return binding.root
+    private lateinit var challengeAdapter: HomeChallengeAdapter
+    private lateinit var profileAdapter: HomeOtherProfileAdapter
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        challengeAdapter = HomeChallengeAdapter(viewModel, requireContext())
+        profileAdapter = HomeOtherProfileAdapter()
+        viewModel.fetchChallengeList()
+        initHomeRVAdapter()
+        setChallengeList()
     }
 
-    private fun setOtherProfileRVAdapter() {
-        binding.rvOtherProfile.adapter = HomeOtherProfileAdapter()
+    private fun initHomeRVAdapter() {
+        binding.rvOtherProfile.adapter = profileAdapter
+        binding.rvDiscomfort.adapter = challengeAdapter
     }
 
-    private fun setChallengeRVAdapter() {
-        val challengeAdapter = HomeChallengeAdapter(homeViewModel)
-        val itemList = mutableListOf(
-            Challenge("불편함1", "06", isToday = false, isFuture = false),
-            Challenge("불편함1", "07", isToday = false, isFuture = false),
-            Challenge("불편함1", "08", isToday = false, isFuture = false),
-            Challenge("불편함1", "09", isToday = false, isFuture = false),
-            Challenge("불편함1", "10", isToday = true, isFuture = false),
-            Challenge("불편함1", "11", isToday = false, isFuture = true),
-            Challenge("불편함1", "12", isToday = false, isFuture = true)
-        )
-
-        challengeAdapter.submitList(itemList)
+    private fun setChallengeList() {
+        viewModel.challengeList.observe(viewLifecycleOwner) { list ->
+            list?.let {
+                with(challengeAdapter) { submitList(list) }
+            }
+        }
     }
 }

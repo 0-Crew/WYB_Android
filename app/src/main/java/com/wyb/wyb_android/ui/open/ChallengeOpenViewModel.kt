@@ -17,7 +17,7 @@ class ChallengeOpenViewModel(application: Application) : AndroidViewModel(applic
     }
 
     private val discomfortMenu =
-        context.resources.getStringArray(R.array.challenge_open_discomfort_menu_list)
+        context.resources.getStringArray(R.array.challenge_discomfort_menu_list)
     val discomfortPos = MutableLiveData(0)
     val discomfortScrollPos = MutableLiveData(0)
     val discomfort = MediatorLiveData<String>().apply {

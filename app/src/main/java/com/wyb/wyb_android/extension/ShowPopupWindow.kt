@@ -11,10 +11,9 @@ import com.wyb.wyb_android.R
 import com.wyb.wyb_android.databinding.ViewWybPopupWindowBinding
 import com.wyb.wyb_android.databinding.ViewWybPopupWindowSmallBinding
 import com.wyb.wyb_android.ui.open.ChallengeOpenViewModel
-import com.wyb.wyb_android.util.convertDpToPx
+import com.wyb.wyb_android.util.Utils.convertDpToPx
 import com.wyb.wyb_android.widget.adapter.WYBPopupWindowItemAdapter
 import com.wyb.wyb_android.widget.adapter.WYBPopupWindowItemAdapter.Companion.TYPE_POPUP_DEFAULT
-import com.wyb.wyb_android.widget.adapter.WYBPopupWindowItemAdapter.Companion.TYPE_POPUP_SMALL
 
 fun View.showPopupWindow(
     context: Context,
@@ -31,7 +30,7 @@ fun View.showPopupWindow(
     val popup = PopupWindow(
         popupView.root,
         this.width,
-        convertDpToPx(context, popupHeight),
+        convertDpToPx(popupHeight),
         false
     )
 
@@ -42,45 +41,41 @@ fun View.showPopupWindow(
             null
         )
     )
-    popup.showAsDropDown(this, 0, convertDpToPx(context, popupMargin))
+    popup.showAsDropDown(this, 0, convertDpToPx(popupMargin))
     return popup
 }
 
 fun View.showPopupWindow(
     backgroundRes: Int,
     context: Context,
-    margin: Int
-) {
+    margin: Int,
+    adapter: WYBPopupWindowItemAdapter
+): PopupWindow {
     val popupView = ViewWybPopupWindowSmallBinding.inflate(LayoutInflater.from(context))
-    initPopupViewSmall(popupView, context)
+    popupView.rvItem.adapter = adapter
 
     val popupHeight: Int = resources.getInteger(R.integer.wyb_popup_window_height_small)
 
     val popup = PopupWindow(
         popupView.root,
         this.width,
-        convertDpToPx(context, popupHeight),
+        convertDpToPx(popupHeight),
         true
     )
 
     popup.setBackgroundDrawable(
         ResourcesCompat.getDrawable(
-            context.resources,
+            resources,
             backgroundRes,
             null
         )
     )
-    popup.showAsDropDown(this, 0, convertDpToPx(context, margin))
+    popup.showAsDropDown(this, 0, convertDpToPx(margin))
+    return popup
 }
 
 private fun initPopupView(popupWindow: ViewWybPopupWindowBinding, context: Context) {
     val wybPopupWindowItemAdapter = WYBPopupWindowItemAdapter(context, TYPE_POPUP_DEFAULT)
-    popupWindow.rvItem.adapter = wybPopupWindowItemAdapter
-    popupWindow.rvItem.layoutManager = LinearLayoutManager(context)
-}
-
-private fun initPopupViewSmall(popupWindow: ViewWybPopupWindowSmallBinding, context: Context) {
-    val wybPopupWindowItemAdapter = WYBPopupWindowItemAdapter(context, TYPE_POPUP_SMALL)
     popupWindow.rvItem.adapter = wybPopupWindowItemAdapter
     popupWindow.rvItem.layoutManager = LinearLayoutManager(context)
 }

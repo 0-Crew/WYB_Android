@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.wyb.wyb_android.ui.home.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,188 +30,177 @@
             android:orientation="vertical"
             app:layout_constraintGuide_end="20dp" />
 
-        <TextView
-            android:id="@+id/tvNickname"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutTop"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:textAppearance="@style/TextAppearance.WYBComponents.Bold.30"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="@id/guideStart"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="가니" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/home_bottle_title"
-            android:textAppearance="@style/TextAppearance.WYBComponents.Heavy.30.Eng"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@id/tvNickname"
-            app:layout_constraintStart_toEndOf="@id/tvNickname"
-            app:layout_constraintTop_toTopOf="@id/tvNickname" />
-
-        <ImageButton
-            android:id="@+id/btnMenu"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="26dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_menu"
+            android:background="@color/white"
+            android:paddingBottom="20dp"
             app:layout_constraintEnd_toStartOf="@id/guideEnd"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
-
-        <ImageButton
-            android:id="@+id/btnAlarm"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="8dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_alarm_24"
-            app:layout_constraintBottom_toBottomOf="@id/btnMenu"
-            app:layout_constraintEnd_toStartOf="@id/btnMenu"
-            app:layout_constraintTop_toTopOf="@id/btnMenu"
-            tools:ignore="ContentDescription" />
-
-        <LinearLayout
-            android:id="@+id/layoutBottleWorld"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="@id/guideStart"
-            app:layout_constraintTop_toBottomOf="@id/tvNickname">
+            app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvOtherProfile"
+            <TextView
+                android:id="@+id/tvNickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:overScrollMode="never"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:itemCount="0"
-                tools:listitem="@layout/item_home_other_profile" />
+                android:layout_marginTop="50dp"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Bold.30"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="가니" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_bottle_title"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Heavy.30.Eng"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/tvNickname"
+                app:layout_constraintStart_toEndOf="@id/tvNickname"
+                app:layout_constraintTop_toTopOf="@id/tvNickname" />
 
             <ImageButton
-                android:id="@+id/btnBottleWorld"
+                android:id="@+id/btnMenu"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
+                android:layout_marginTop="26dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_plus"
+                android:src="@drawable/ic_menu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="ContentDescription" />
 
-            <TextView
-                android:id="@+id/tvBottleWorld"
+            <ImageButton
+                android:id="@+id/btnAlarm"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_alarm_24"
+                app:layout_constraintBottom_toBottomOf="@id/btnMenu"
+                app:layout_constraintEnd_toStartOf="@id/btnMenu"
+                app:layout_constraintTop_toTopOf="@id/btnMenu"
+                tools:ignore="ContentDescription" />
+
+            <LinearLayout
+                android:id="@+id/layoutBottleWorld"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="@string/home_goto_bottle_world"
-                android:textAppearance="@style/TextAppearance.WYBComponents.Medium.12"
-                android:textColor="@color/gray_3" />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imgBottle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="97dp"
-            android:src="@drawable/ic_bottle_main_0"
-            app:layout_constraintStart_toStartOf="@id/guideStart"
-            app:layout_constraintTop_toBottomOf="@id/layoutBottleWorld"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/tvDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="19dp"
-            android:text=""
-            android:textAppearance="@style/TextAppearance.WYBComponents.Bold.16"
-            android:textColor="@color/orange"
-            app:layout_constraintStart_toEndOf="@id/imgBottle"
-            app:layout_constraintTop_toTopOf="@id/imgBottle"
-            tools:text="2020" />
-
-        <ImageButton
-            android:id="@+id/imgBtnCalendar"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="6dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_calendar_oval"
-            app:layout_constraintBottom_toBottomOf="@id/tvDate"
-            app:layout_constraintStart_toEndOf="@id/tvDate"
-            app:layout_constraintTop_toTopOf="@id/tvDate"
-            tools:ignore="ContentDescription" />
-
-        <LinearLayout
-            android:id="@+id/layoutChallengeComfort"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@color/orange"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="8dp"
-            app:layout_constraintStart_toStartOf="@id/tvDate"
-            app:layout_constraintTop_toBottomOf="@id/tvDate">
-
-            <TextView
-                android:id="@+id/tvComfortTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_star"
-                android:drawablePadding="5dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center_vertical"
-                android:text="@string/comfort"
-                android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14.Eng"
-                android:textColor="@color/white" />
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvNickname">
 
-            <View
-                android:id="@+id/viewDivider"
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="6dp"
-                android:background="@color/white"
-                android:maxHeight="30dp" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvOtherProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="0"
+                    tools:listitem="@layout/item_home_other_profile" />
 
-            <TextView
-                android:id="@+id/tvComfort"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxWidth="212dp"
-                android:text=""
-                android:textAppearance="@style/TextAppearance.WYBComponents.Bold.14"
-                android:textColor="@color/white"
-                tools:text="@string/challenge_open_comfort_hint" />
-        </LinearLayout>
+                <ImageButton
+                    android:id="@+id/btnBottleWorld"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_plus"
+                    tools:ignore="ContentDescription" />
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="340dp"
-            android:layout_marginEnd="1dp"
-            android:background="@drawable/shape_orange_gradient_line"
-            app:layout_constraintEnd_toEndOf="@id/imgBottle"
-            app:layout_constraintStart_toStartOf="@id/imgBottle"
-            app:layout_constraintTop_toBottomOf="@id/imgBottle" />
+                <TextView
+                    android:id="@+id/tvBottleWorld"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/home_goto_bottle_world"
+                    android:textAppearance="@style/TextAppearance.WYBComponents.Medium.12"
+                    android:textColor="@color/gray_3" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvDiscomfort"
-            android:layout_width="match_parent"
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="30dp"
             android:overScrollMode="never"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/guideEnd"
             app:layout_constraintStart_toStartOf="@id/guideStart"
-            app:layout_constraintTop_toBottomOf="@id/layoutChallengeComfort"
-            tools:listitem="@layout/item_home_challenge" />
+            app:layout_constraintTop_toBottomOf="@id/layoutTop">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgBottle"
+                    setBottleSrc="@{viewModel.levelOfJuice}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="77dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/ic_bottle_main_0" />
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="19dp"
+                    android:drawablePadding="6dp"
+                    android:gravity="center_vertical"
+                    android:textAppearance="@style/TextAppearance.WYBComponents.Bold.16"
+                    android:textColor="@color/orange"
+                    app:drawableEndCompat="@drawable/ic_calendar_oval"
+                    app:layout_constraintStart_toEndOf="@id/imgBottle"
+                    app:layout_constraintTop_toTopOf="@id/imgBottle"
+                    tools:text="2020" />
+
+                <com.wyb.wyb_android.widget.WYBCompactTextButton
+                    android:id="@+id/layoutChallengeComfort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:backgroundRes="orange"
+                    app:layout_constraintStart_toStartOf="@id/tvDate"
+                    app:layout_constraintTop_toBottomOf="@id/tvDate"
+                    app:setIcon="starWhite"
+                    app:showComfortTv="true"
+                    app:showStartIcon="true"
+                    app:titleText="@string/comfort"
+                    tools:comfortText="플라스틱 빨대 사용 안 하기" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="340dp"
+                    android:layout_marginEnd="1dp"
+                    android:background="@drawable/shape_orange_gradient_line"
+                    app:layout_constraintEnd_toEndOf="@id/imgBottle"
+                    app:layout_constraintStart_toStartOf="@id/imgBottle"
+                    app:layout_constraintTop_toBottomOf="@id/imgBottle" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvDiscomfort"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="20dp"
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layoutChallengeComfort"
+                    tools:itemCount="7"
+                    tools:listitem="@layout/item_home_challenge" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

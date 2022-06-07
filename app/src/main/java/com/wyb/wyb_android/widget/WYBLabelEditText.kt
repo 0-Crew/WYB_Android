@@ -15,8 +15,8 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.databinding.ViewWybLabelEditTextBinding
+import com.wyb.wyb_android.util.Utils
 import com.wyb.wyb_android.util.hideKeyboard
-import com.wyb.wyb_android.util.requestFocus
 
 class WYBLabelEditText @JvmOverloads constructor(
     context: Context,
@@ -128,7 +128,7 @@ class WYBLabelEditText @JvmOverloads constructor(
     fun setOnFocusChangeListener(activity: Activity?) {
         binding.layout.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
-                requestFocus(context, binding.etInput)
+                Utils.requestFocus(binding.etInput)
             }
         }
         binding.etInput.setOnFocusChangeListener { v, hasFocus ->
@@ -158,7 +158,7 @@ class WYBLabelEditText @JvmOverloads constructor(
     fun setEditTextFocusable() {
         binding.etInput.isFocusable = true
         binding.etInput.isFocusableInTouchMode = true
-        requestFocus(context, binding.etInput)
+        Utils.requestFocus(binding.etInput)
     }
 
     fun setEditTextNotFocusable(activity: Activity?) {
