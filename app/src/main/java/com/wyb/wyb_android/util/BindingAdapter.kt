@@ -4,8 +4,8 @@ import android.view.View
 import androidx.databinding.BindingAdapter
 
 @BindingAdapter("isVisibleOrGone")
-fun View.bindVisibleOrGone(isVisibility: Boolean) {
-    if (isVisibility) {
+fun View.bindVisibleOrGone(isVisible: Boolean) {
+    if (isVisible) {
         this.visibility = View.VISIBLE
     } else {
         this.visibility = View.GONE
@@ -13,8 +13,8 @@ fun View.bindVisibleOrGone(isVisibility: Boolean) {
 }
 
 @BindingAdapter("isVisibleOrInvisible")
-fun View.bindVisibleOrInvisible(isVisibility: Boolean) {
-    if (isVisibility) {
+fun View.bindVisibleOrInvisible(isVisible: Boolean) {
+    if (isVisible) {
         this.visibility = View.VISIBLE
     } else {
         this.visibility = View.INVISIBLE
