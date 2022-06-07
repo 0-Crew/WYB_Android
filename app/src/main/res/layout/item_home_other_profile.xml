@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="date"
+            name="data"
             type="com.wyb.wyb_android.data.model.OtherProfile" />
     </data>
 
@@ -23,7 +23,7 @@
             android:paddingVertical="6dp"
             android:textAppearance="@style/TextAppearance.WYBComponents.Medium.12"
             android:textColor="@color/gray_3"
-            app:setOtherProfileText="@{date.name}"
+            app:setOtherProfileText="@{data.name}"
             tools:text="가" />
     </LinearLayout>
 </layout>
