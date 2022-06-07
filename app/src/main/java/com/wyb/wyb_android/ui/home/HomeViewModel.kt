@@ -39,7 +39,7 @@ class HomeViewModel : ViewModel() {
         _isEdit.value = isEdit
     }
 
-    fun initChallengeList() {
+    fun fetchChallengeList() {
         _challengeList.value = listOf(
             Challenge(1, "불편함1", false, isToday = false, isFuture = false, 1),
             Challenge(2, "불편함1", false, isToday = false, isFuture = false, 2),

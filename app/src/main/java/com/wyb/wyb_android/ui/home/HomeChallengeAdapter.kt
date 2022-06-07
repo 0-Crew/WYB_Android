@@ -132,7 +132,7 @@ class HomeChallengeAdapter(
 
         private fun initPopupWindowAdapter(): WYBPopupWindowItemAdapter {
             return WYBPopupWindowItemAdapter(context, TYPE_POPUP_SMALL).apply {
-                listener = object : WYBPopupWindowItemAdapter.OnItemClickListener {
+                popupItemClickListener = object : WYBPopupWindowItemAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
                         if (position == 11) {
                             binding.layoutChallengeToday.visibility = View.GONE

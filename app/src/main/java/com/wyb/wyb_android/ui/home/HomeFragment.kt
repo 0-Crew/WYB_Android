@@ -17,9 +17,9 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
         super.onViewCreated(view, savedInstanceState)
         challengeAdapter = HomeChallengeAdapter(viewModel, requireContext())
         profileAdapter = HomeOtherProfileAdapter()
-        viewModel.initChallengeList()
+        viewModel.fetchChallengeList()
         initHomeRVAdapter()
-        initChallengeList()
+        setChallengeList()
     }
 
     private fun initHomeRVAdapter() {
@@ -27,10 +27,10 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
         binding.rvDiscomfort.adapter = challengeAdapter
     }
 
-    private fun initChallengeList() {
+    private fun setChallengeList() {
         viewModel.challengeList.observe(viewLifecycleOwner) { list ->
             list?.let {
-                with(binding.rvDiscomfort.adapter as HomeChallengeAdapter) { submitList(list) }
+                with(challengeAdapter) { submitList(list) }
             }
         }
     }

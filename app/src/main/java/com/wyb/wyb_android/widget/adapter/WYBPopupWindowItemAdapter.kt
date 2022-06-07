@@ -16,7 +16,7 @@ class WYBPopupWindowItemAdapter(context: Context, private val viewType: Int) :
     var selectedPos = RecyclerView.NO_POSITION
     private lateinit var itemClickListener: OnItemClickListener
 
-    var listener: OnItemClickListener? = null
+    var popupItemClickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -91,7 +91,7 @@ class WYBPopupWindowItemAdapter(context: Context, private val viewType: Int) :
             itemView.setOnClickListener {
                 selectedPos = adapterPosition
                 notifyItemChanged(selectedPos)
-                listener?.onItemClick(selectedPos)
+                popupItemClickListener?.onItemClick(selectedPos)
             }
         }
     }
