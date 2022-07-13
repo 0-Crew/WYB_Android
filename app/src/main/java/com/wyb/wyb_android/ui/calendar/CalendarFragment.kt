@@ -19,6 +19,14 @@ class CalendarFragment : BottomSheetDialogFragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
+        initCalendarLayout()
+
         return binding.root
+    }
+
+    private fun initCalendarLayout() {
+        binding.calendar.apply {
+            isDynamicHeightEnabled = true
+        }
     }
 }
