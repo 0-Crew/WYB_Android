@@ -29,6 +29,8 @@ class CalendarFragment : BottomSheetDialogFragment() {
     private fun initCalendarLayout() {
         binding.calendar.apply {
             isDynamicHeightEnabled = true
+            leftArrow.setTint(resources.getColor(R.color.light_gray_1, null))
+            rightArrow.setTint(resources.getColor(R.color.light_gray_1, null))
             setWeekDayFormatter(ArrayWeekDayFormatter(resources.getTextArray(R.array.calendar_weekday)))
         }
     }
