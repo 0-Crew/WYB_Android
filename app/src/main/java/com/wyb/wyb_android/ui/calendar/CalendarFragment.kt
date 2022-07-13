@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter
+import com.wyb.wyb_android.R
 import com.wyb.wyb_android.databinding.FragmentCalendarBinding
 
 class CalendarFragment : BottomSheetDialogFragment() {
@@ -27,6 +29,7 @@ class CalendarFragment : BottomSheetDialogFragment() {
     private fun initCalendarLayout() {
         binding.calendar.apply {
             isDynamicHeightEnabled = true
+            setWeekDayFormatter(ArrayWeekDayFormatter(resources.getTextArray(R.array.calendar_weekday)))
         }
     }
 }
