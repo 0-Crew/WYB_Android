@@ -25,6 +25,7 @@ class CalendarViewModel : ViewModel() {
     val datesRight = arrayListOf<ArrayList<CalendarDay>>()
     val datesIndependent = arrayListOf<ArrayList<CalendarDay>>()
     val hasContainedToday = MutableLiveData<Boolean>()
+    val rangeContainsToday = MutableLiveData<Int?>()
 
     fun setEvent() {
         formatDates()
@@ -103,7 +104,7 @@ class CalendarViewModel : ViewModel() {
     }
 
     private fun updateRangeContainsToday() {
-        for (dates in localDates) {
+        for ((index, dates) in localDates.withIndex()) {
             if (dates.toHashSet().contains(
                     LocalDate.of(
                         LocalDate.now().year,
@@ -113,9 +114,11 @@ class CalendarViewModel : ViewModel() {
                 )
             ) {
                 hasContainedToday.value = true
+                rangeContainsToday.value = index
                 break
             } else {
                 hasContainedToday.value = false
+                rangeContainsToday.value = null
             }
         }
     }

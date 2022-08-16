@@ -139,6 +139,14 @@ class CalendarFragment : BottomSheetDialogFragment() {
                 }
             }
         }
+
+        val orangeRangeIndex = viewModel.rangeContainsToday.value
+        if (viewModel.hasContainedToday.value == true && orangeRangeIndex != null) {
+            setDecorators(viewModel.datesLeft[orangeRangeIndex], R.drawable.inset_calendar_range_orange_left)
+            setDecorators(viewModel.datesCenter[orangeRangeIndex], R.drawable.inset_calendar_range_orange_center)
+            setDecorators(viewModel.datesRight[orangeRangeIndex], R.drawable.inset_calendar_range_orange_right)
+            setDecorators(viewModel.datesIndependent[orangeRangeIndex], R.drawable.inset_calendar_range_orange_independent)
+        }
     }
 
     private fun setDecorators(dates: List<CalendarDay>, drawable: Int) {
