@@ -25,9 +25,9 @@ class CalendarFragment : BottomSheetDialogFragment() {
         binding.viewModel = viewModel
 
         initCalendarLayout()
+        viewModel.setEvent()
         addDecorators()
         addListener()
-        viewModel.setEvent()
         addDecoratorsOnDates()
 
         return binding.root
@@ -43,9 +43,9 @@ class CalendarFragment : BottomSheetDialogFragment() {
     }
 
     private fun addDecorators() {
-        binding.calendar.apply {
-            addDecorator(DateDecorator(requireContext()))
-            addDecorator(
+        binding.calendar.addDecorator(DateDecorator(requireContext()))
+        if (viewModel.hasContainedToday.value == true) {
+            binding.calendar.addDecorator(
                 TodayDecorator(
                     requireContext(),
                     resources.getColor(R.color.gray_1, null),
@@ -53,12 +53,30 @@ class CalendarFragment : BottomSheetDialogFragment() {
                     false
                 )
             )
+        } else {
+            binding.calendar.addDecorator(
+                TodayDecorator(
+                    requireContext(),
+                    resources.getColor(R.color.gray_1, null),
+                    resources.getColor(R.color.white, null),
+                    true
+                )
+            )
         }
     }
 
     private fun addListener() {
         binding.calendar.setOnDateChangedListener { widget, date, selected ->
-            if (selected && date == CalendarDay.today()) {
+            if (viewModel.hasContainedToday.value == true) {
+                widget.addDecorator(
+                    TodayDecorator(
+                        requireContext(),
+                        resources.getColor(R.color.white, null),
+                        resources.getColor(R.color.white, null),
+                        false
+                    )
+                )
+            } else if (selected && date == CalendarDay.today()) {
                 widget.addDecorator(
                     TodayDecorator(
                         requireContext(),

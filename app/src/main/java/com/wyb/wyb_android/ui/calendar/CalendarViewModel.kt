@@ -1,5 +1,6 @@
 package com.wyb.wyb_android.ui.calendar
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import java.text.SimpleDateFormat
@@ -23,10 +24,12 @@ class CalendarViewModel : ViewModel() {
     val datesCenter = arrayListOf<ArrayList<CalendarDay>>()
     val datesRight = arrayListOf<ArrayList<CalendarDay>>()
     val datesIndependent = arrayListOf<ArrayList<CalendarDay>>()
+    val hasContainedToday = MutableLiveData<Boolean>()
 
     fun setEvent() {
         formatDates()
         setRange()
+        updateRangeContainsToday()
     }
 
     private fun formatDates() {
@@ -97,6 +100,24 @@ class CalendarViewModel : ViewModel() {
         datesCenter.add(arrayListOf())
         datesRight.add(arrayListOf())
         datesIndependent.add(arrayListOf())
+    }
+
+    private fun updateRangeContainsToday() {
+        for (dates in localDates) {
+            if (dates.toHashSet().contains(
+                    LocalDate.of(
+                        LocalDate.now().year,
+                        LocalDate.now().monthValue,
+                        LocalDate.now().dayOfMonth
+                    )
+                )
+            ) {
+                hasContainedToday.value = true
+                break
+            } else {
+                hasContainedToday.value = false
+            }
+        }
     }
 
     private fun getLocalDate(isoDate: String): LocalDate? {
