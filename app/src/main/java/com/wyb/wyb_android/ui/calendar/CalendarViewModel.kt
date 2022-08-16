@@ -1,11 +1,104 @@
 package com.wyb.wyb_android.ui.calendar
 
 import androidx.lifecycle.ViewModel
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import java.text.SimpleDateFormat
+import java.time.DayOfWeek
 import java.time.LocalDate
 import java.util.*
 
 class CalendarViewModel : ViewModel() {
+    private val localDates = arrayListOf<ArrayList<LocalDate>>()
+    val eventDates = listOf(
+        "2022-06-06T19:13:14.582Z",
+        "2022-06-15T19:13:14.582Z",
+        "2022-06-25T19:13:14.582Z",
+        "2022-07-06T19:13:14.582Z",
+        "2022-07-15T19:13:14.582Z",
+        "2022-07-25T19:13:14.582Z",
+        "2022-08-03T19:13:14.582Z",
+        "2022-08-13T19:13:14.582Z"
+    )
+    val datesLeft = arrayListOf<ArrayList<CalendarDay>>()
+    val datesCenter = arrayListOf<ArrayList<CalendarDay>>()
+    val datesRight = arrayListOf<ArrayList<CalendarDay>>()
+    val datesIndependent = arrayListOf<ArrayList<CalendarDay>>()
+
+    fun setEvent() {
+        formatDates()
+        setRange()
+    }
+
+    private fun formatDates() {
+        for (dateString in eventDates) {
+            val localDate = getLocalDate(dateString)
+            if (localDate != null) {
+                localDates.add(arrayListOf(localDate))
+            }
+        }
+    }
+
+    private fun setRange() {
+        for (localDate in localDates) {
+            for (day in 1..6) {
+                localDate.add(localDate[0].plusDays(day.toLong()))
+            }
+        }
+
+        for ((index, localDate) in localDates.withIndex()) {
+            initDatesArrayList()
+
+            for (date in localDate) {
+                var left = false
+                var right = false
+
+                for (currentDate in localDate) {
+                    if (date.dayOfWeek == DayOfWeek.SATURDAY) {
+                        if (!localDate.toHashSet().contains(currentDate.minusDays(1)) && date.isEqual(currentDate)) {
+                            left = false
+                            right = false
+                            break
+                        }
+                        left = true
+                        continue
+                    }
+                    if (date.dayOfWeek == DayOfWeek.SUNDAY) {
+                        if (!localDate.toHashSet().contains(currentDate.plusDays(1)) && date.isEqual(currentDate)) {
+                            left = false
+                            right = false
+                            break
+                        }
+                        right = true
+                        continue
+                    }
+                    if (date.isEqual(currentDate.plusDays(1))) {
+                        left = true
+                    }
+                    if (currentDate.isEqual(date.plusDays(1))) {
+                        right = true
+                    }
+                }
+
+                if (left && right) {
+                    datesCenter[index].add(CalendarDay.from(date.year, date.monthValue, date.dayOfMonth))
+                } else if (left) {
+                    datesLeft[index].add(CalendarDay.from(date.year, date.monthValue, date.dayOfMonth))
+                } else if (right) {
+                    datesRight[index].add(CalendarDay.from(date.year, date.monthValue, date.dayOfMonth))
+                } else {
+                    datesIndependent[index].add(CalendarDay.from(date.year, date.monthValue, date.dayOfMonth))
+                }
+            }
+        }
+    }
+
+    private fun initDatesArrayList() {
+        datesLeft.add(arrayListOf())
+        datesCenter.add(arrayListOf())
+        datesRight.add(arrayListOf())
+        datesIndependent.add(arrayListOf())
+    }
+
     private fun getLocalDate(isoDate: String): LocalDate? {
         // TODO: 서버 연동 후 timeZone Korea 로 변경 및 date format 변경
         val sdf = SimpleDateFormat(ISO_DATE_FORMAT, Locale.getDefault())
