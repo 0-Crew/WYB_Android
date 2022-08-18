@@ -35,7 +35,7 @@ class CalendarViewModel : ViewModel() {
 
     private fun formatDates() {
         for (dateString in eventDates) {
-            val localDate = getLocalDate(dateString)
+            val localDate = convertIsoStringToLocalDate(dateString)
             if (localDate != null) {
                 localDates.add(arrayListOf(localDate))
             }
@@ -123,7 +123,20 @@ class CalendarViewModel : ViewModel() {
         }
     }
 
-    private fun getLocalDate(isoDate: String): LocalDate? {
+    fun getRangeContainsSelectedDate(calDay: CalendarDay): Pair<CalendarDay, CalendarDay>? {
+        val date = convertCalendarDayToLocalDate(calDay)
+        var range: Pair<CalendarDay, CalendarDay>? = null
+        for (dates in localDates) {
+            if (dates.toHashSet().contains(date)) {
+                val firstDay = convertLocalDateToCalendarDay(dates[0])
+                val lastDay = convertLocalDateToCalendarDay(dates[6])
+                range = Pair(firstDay, lastDay)
+            }
+        }
+        return range
+    }
+
+    private fun convertIsoStringToLocalDate(isoDate: String): LocalDate? {
         // TODO: 서버 연동 후 timeZone Korea 로 변경 및 date format 변경
         val sdf = SimpleDateFormat(ISO_DATE_FORMAT, Locale.getDefault())
         val calendar = Calendar.getInstance()
@@ -134,6 +147,14 @@ class CalendarViewModel : ViewModel() {
             calendar.get(Calendar.MONTH) + 1,
             calendar.get(Calendar.DAY_OF_MONTH)
         )
+    }
+
+    private fun convertCalendarDayToLocalDate(calDay: CalendarDay): LocalDate? {
+        return LocalDate.of(calDay.year, calDay.month, calDay.day)
+    }
+
+    private fun convertLocalDateToCalendarDay(localDate: LocalDate): CalendarDay {
+        return CalendarDay.from(localDate.year, localDate.monthValue, localDate.dayOfMonth)
     }
 
     companion object {

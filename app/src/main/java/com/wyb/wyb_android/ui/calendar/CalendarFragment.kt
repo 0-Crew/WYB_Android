@@ -27,7 +27,8 @@ class CalendarFragment : BottomSheetDialogFragment() {
         initCalendarLayout()
         viewModel.setEvent()
         addDecorators()
-        addListener()
+        addRangeSelectedListener()
+        addDateChangedListener()
         addDecoratorsOnDates()
 
         return binding.root
@@ -65,7 +66,7 @@ class CalendarFragment : BottomSheetDialogFragment() {
         }
     }
 
-    private fun addListener() {
+    private fun addDateChangedListener() {
         binding.calendar.setOnDateChangedListener { widget, date, selected ->
             if (viewModel.hasContainedToday.value == true) {
                 widget.addDecorator(
@@ -95,6 +96,9 @@ class CalendarFragment : BottomSheetDialogFragment() {
                     )
                 )
             }
+
+            val rangePair = viewModel.getRangeContainsSelectedDate(date) ?: return@setOnDateChangedListener
+            widget.selectRange(rangePair.first, rangePair.second)
         }
     }
 
@@ -147,6 +151,10 @@ class CalendarFragment : BottomSheetDialogFragment() {
             setDecorators(viewModel.datesRight[orangeRangeIndex], R.drawable.inset_calendar_range_orange_right)
             setDecorators(viewModel.datesIndependent[orangeRangeIndex], R.drawable.inset_calendar_range_orange_independent)
         }
+    }
+
+    private fun addRangeSelectedListener() {
+        binding.calendar.setOnRangeSelectedListener { widget, dates -> }
     }
 
     private fun setDecorators(dates: List<CalendarDay>, drawable: Int) {
