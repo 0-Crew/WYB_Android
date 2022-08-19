@@ -28,12 +28,6 @@ class CalendarViewModel : ViewModel() {
     val rangeContainsToday = MutableLiveData<Int?>()
     val prevSelectedRange = arrayListOf<CalendarDay>()
 
-    fun setEvent() {
-        formatDates()
-        setRange()
-        updateRangeContainsToday()
-    }
-
     private fun formatDates() {
         for (dateString in eventDates) {
             val localDate = convertIsoStringToLocalDate(dateString)
@@ -51,7 +45,7 @@ class CalendarViewModel : ViewModel() {
         }
 
         for ((index, localDate) in localDates.withIndex()) {
-            initDatesArrayList()
+            initDateArrayLists()
 
             for (date in localDate) {
                 var left = false
@@ -97,7 +91,7 @@ class CalendarViewModel : ViewModel() {
         }
     }
 
-    private fun initDatesArrayList() {
+    private fun initDateArrayLists() {
         datesLeft.add(arrayListOf())
         datesCenter.add(arrayListOf())
         datesRight.add(arrayListOf())
@@ -124,19 +118,6 @@ class CalendarViewModel : ViewModel() {
         }
     }
 
-    fun getRangeContainsSelectedDate(calDay: CalendarDay): Pair<CalendarDay, CalendarDay>? {
-        val date = convertCalendarDayToLocalDate(calDay)
-        var range: Pair<CalendarDay, CalendarDay>? = null
-        for (dates in localDates) {
-            if (dates.toHashSet().contains(date)) {
-                val firstDay = convertLocalDateToCalendarDay(dates[0])
-                val lastDay = convertLocalDateToCalendarDay(dates[6])
-                range = Pair(firstDay, lastDay)
-            }
-        }
-        return range
-    }
-
     private fun convertIsoStringToLocalDate(isoDate: String): LocalDate? {
         // TODO: 서버 연동 후 timeZone Korea 로 변경 및 date format 변경
         val sdf = SimpleDateFormat(ISO_DATE_FORMAT, Locale.getDefault())
@@ -156,6 +137,25 @@ class CalendarViewModel : ViewModel() {
 
     private fun convertLocalDateToCalendarDay(localDate: LocalDate): CalendarDay {
         return CalendarDay.from(localDate.year, localDate.monthValue, localDate.dayOfMonth)
+    }
+
+    fun setEvent() {
+        formatDates()
+        setRange()
+        updateRangeContainsToday()
+    }
+
+    fun getRangeContainsSelectedDate(calDay: CalendarDay): Pair<CalendarDay, CalendarDay>? {
+        val date = convertCalendarDayToLocalDate(calDay)
+        var range: Pair<CalendarDay, CalendarDay>? = null
+        for (dates in localDates) {
+            if (dates.toHashSet().contains(date)) {
+                val firstDay = convertLocalDateToCalendarDay(dates[0])
+                val lastDay = convertLocalDateToCalendarDay(dates[6])
+                range = Pair(firstDay, lastDay)
+            }
+        }
+        return range
     }
 
     companion object {
