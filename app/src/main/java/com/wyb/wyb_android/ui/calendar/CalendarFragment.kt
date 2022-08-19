@@ -195,5 +195,16 @@ class CalendarFragment : BottomSheetDialogFragment() {
                 isSelected
             )
         )
+
+        if (viewModel.rangeContainsToday.value != null) {
+            binding.calendar.addDecorator(
+                TodayDecorator(
+                    requireContext(),
+                    resources.getColor(R.color.white, null),
+                    resources.getColor(R.color.white, null),
+                    false
+                )
+            )
+        }
     }
 }
