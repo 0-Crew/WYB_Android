@@ -30,6 +30,7 @@ class CalendarFragment : BottomSheetDialogFragment() {
         addRangeSelectedListener()
         addDateChangedListener()
         addDecoratorsOnDates()
+        selectToday()
 
         return binding.root
     }
@@ -102,6 +103,15 @@ class CalendarFragment : BottomSheetDialogFragment() {
             }
             val rangePair = viewModel.getRangeContainsSelectedDate(date) ?: return@setOnDateChangedListener
             widget.selectRange(rangePair.first, rangePair.second)
+        }
+    }
+
+    private fun selectToday() {
+        if (viewModel.hasContainedToday.value == true) {
+            val rangePair = viewModel.getRangeContainsSelectedDate(CalendarDay.today()) ?: return
+            binding.calendar.selectRange(rangePair.first, rangePair.second)
+        } else {
+            binding.calendar.selectedDate = CalendarDay.today()
         }
     }
 
