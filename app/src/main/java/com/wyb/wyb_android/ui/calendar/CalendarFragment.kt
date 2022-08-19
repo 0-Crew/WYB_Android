@@ -49,7 +49,7 @@ class CalendarFragment : BottomSheetDialogFragment() {
             binding.calendar.addDecorator(
                 TodayDecorator(
                     requireContext(),
-                    resources.getColor(R.color.gray_1, null),
+                    resources.getColor(R.color.white, null),
                     resources.getColor(R.color.white, null),
                     false
                 )
@@ -58,8 +58,8 @@ class CalendarFragment : BottomSheetDialogFragment() {
             binding.calendar.addDecorator(
                 TodayDecorator(
                     requireContext(),
-                    resources.getColor(R.color.gray_1, null),
-                    resources.getColor(R.color.white, null),
+                    resources.getColor(R.color.dark_gray_2, null),
+                    resources.getColor(R.color.dark_gray_2, null),
                     true
                 )
             )
@@ -97,6 +97,9 @@ class CalendarFragment : BottomSheetDialogFragment() {
                 )
             }
 
+            if (viewModel.prevSelectedRange.isNotEmpty()) {
+                setEventTextColorDecorators(viewModel.prevSelectedRange, false)
+            }
             val rangePair = viewModel.getRangeContainsSelectedDate(date) ?: return@setOnDateChangedListener
             widget.selectRange(rangePair.first, rangePair.second)
         }
@@ -106,63 +109,80 @@ class CalendarFragment : BottomSheetDialogFragment() {
         for (index in 0 until viewModel.eventDates.size) {
             when ((index + 1) % 6) {
                 1 ->  {
-                    setDecorators(viewModel.datesLeft[index], R.drawable.inset_calendar_range_yellow_left)
-                    setDecorators(viewModel.datesCenter[index], R.drawable.inset_calendar_range_yellow_center)
-                    setDecorators(viewModel.datesRight[index], R.drawable.inset_calendar_range_yellow_right)
-                    setDecorators(viewModel.datesIndependent[index], R.drawable.inset_calendar_range_yellow_independent)
+                    setEventDecorators(viewModel.datesLeft[index], R.drawable.inset_calendar_range_yellow_left)
+                    setEventDecorators(viewModel.datesCenter[index], R.drawable.inset_calendar_range_yellow_center)
+                    setEventDecorators(viewModel.datesRight[index], R.drawable.inset_calendar_range_yellow_right)
+                    setEventDecorators(viewModel.datesIndependent[index], R.drawable.inset_calendar_range_yellow_independent)
                 }
                 2 -> {
-                    setDecorators(viewModel.datesLeft[index], R.drawable.inset_calendar_range_green_left)
-                    setDecorators(viewModel.datesCenter[index], R.drawable.inset_calendar_range_green_center)
-                    setDecorators(viewModel.datesRight[index], R.drawable.inset_calendar_range_green_right)
-                    setDecorators(viewModel.datesIndependent[index], R.drawable.inset_calendar_range_green_independent)
+                    setEventDecorators(viewModel.datesLeft[index], R.drawable.inset_calendar_range_green_left)
+                    setEventDecorators(viewModel.datesCenter[index], R.drawable.inset_calendar_range_green_center)
+                    setEventDecorators(viewModel.datesRight[index], R.drawable.inset_calendar_range_green_right)
+                    setEventDecorators(viewModel.datesIndependent[index], R.drawable.inset_calendar_range_green_independent)
                 }
                 3 -> {
-                    setDecorators(viewModel.datesLeft[index], R.drawable.inset_calendar_range_red_left)
-                    setDecorators(viewModel.datesCenter[index], R.drawable.inset_calendar_range_red_center)
-                    setDecorators(viewModel.datesRight[index], R.drawable.inset_calendar_range_red_right)
-                    setDecorators(viewModel.datesIndependent[index], R.drawable.inset_calendar_range_red_independent)
+                    setEventDecorators(viewModel.datesLeft[index], R.drawable.inset_calendar_range_red_left)
+                    setEventDecorators(viewModel.datesCenter[index], R.drawable.inset_calendar_range_red_center)
+                    setEventDecorators(viewModel.datesRight[index], R.drawable.inset_calendar_range_red_right)
+                    setEventDecorators(viewModel.datesIndependent[index], R.drawable.inset_calendar_range_red_independent)
                 }
                 4 -> {
-                    setDecorators(viewModel.datesLeft[index], R.drawable.inset_calendar_range_blue_left)
-                    setDecorators(viewModel.datesCenter[index], R.drawable.inset_calendar_range_blue_center)
-                    setDecorators(viewModel.datesRight[index], R.drawable.inset_calendar_range_blue_right)
-                    setDecorators(viewModel.datesIndependent[index], R.drawable.inset_calendar_range_blue_independent)
+                    setEventDecorators(viewModel.datesLeft[index], R.drawable.inset_calendar_range_blue_left)
+                    setEventDecorators(viewModel.datesCenter[index], R.drawable.inset_calendar_range_blue_center)
+                    setEventDecorators(viewModel.datesRight[index], R.drawable.inset_calendar_range_blue_right)
+                    setEventDecorators(viewModel.datesIndependent[index], R.drawable.inset_calendar_range_blue_independent)
                 }
                 5 -> {
-                    setDecorators(viewModel.datesLeft[index], R.drawable.inset_calendar_range_purple_left)
-                    setDecorators(viewModel.datesCenter[index], R.drawable.inset_calendar_range_purple_center)
-                    setDecorators(viewModel.datesRight[index], R.drawable.inset_calendar_range_purple_right)
-                    setDecorators(viewModel.datesIndependent[index], R.drawable.inset_calendar_range_purple_independent)
+                    setEventDecorators(viewModel.datesLeft[index], R.drawable.inset_calendar_range_purple_left)
+                    setEventDecorators(viewModel.datesCenter[index], R.drawable.inset_calendar_range_purple_center)
+                    setEventDecorators(viewModel.datesRight[index], R.drawable.inset_calendar_range_purple_right)
+                    setEventDecorators(viewModel.datesIndependent[index], R.drawable.inset_calendar_range_purple_independent)
                 }
                 else -> {
-                    setDecorators(viewModel.datesLeft[index], R.drawable.inset_calendar_range_pink_left)
-                    setDecorators(viewModel.datesCenter[index], R.drawable.inset_calendar_range_pink_center)
-                    setDecorators(viewModel.datesRight[index], R.drawable.inset_calendar_range_pink_right)
-                    setDecorators(viewModel.datesIndependent[index], R.drawable.inset_calendar_range_pink_independent)
+                    setEventDecorators(viewModel.datesLeft[index], R.drawable.inset_calendar_range_pink_left)
+                    setEventDecorators(viewModel.datesCenter[index], R.drawable.inset_calendar_range_pink_center)
+                    setEventDecorators(viewModel.datesRight[index], R.drawable.inset_calendar_range_pink_right)
+                    setEventDecorators(viewModel.datesIndependent[index], R.drawable.inset_calendar_range_pink_independent)
                 }
             }
         }
 
         val orangeRangeIndex = viewModel.rangeContainsToday.value
         if (viewModel.hasContainedToday.value == true && orangeRangeIndex != null) {
-            setDecorators(viewModel.datesLeft[orangeRangeIndex], R.drawable.inset_calendar_range_orange_left)
-            setDecorators(viewModel.datesCenter[orangeRangeIndex], R.drawable.inset_calendar_range_orange_center)
-            setDecorators(viewModel.datesRight[orangeRangeIndex], R.drawable.inset_calendar_range_orange_right)
-            setDecorators(viewModel.datesIndependent[orangeRangeIndex], R.drawable.inset_calendar_range_orange_independent)
+            setEventDecorators(viewModel.datesLeft[orangeRangeIndex], R.drawable.inset_calendar_range_orange_left)
+            setEventDecorators(viewModel.datesCenter[orangeRangeIndex], R.drawable.inset_calendar_range_orange_center)
+            setEventDecorators(viewModel.datesRight[orangeRangeIndex], R.drawable.inset_calendar_range_orange_right)
+            setEventDecorators(viewModel.datesIndependent[orangeRangeIndex], R.drawable.inset_calendar_range_orange_independent)
         }
     }
 
     private fun addRangeSelectedListener() {
-        binding.calendar.setOnRangeSelectedListener { widget, dates -> }
+        binding.calendar.setOnRangeSelectedListener { _, dates ->
+            setEventTextColorDecorators(dates, true)
+            viewModel.prevSelectedRange.apply {
+                clear()
+                addAll(dates)
+            }
+        }
     }
 
-    private fun setDecorators(dates: List<CalendarDay>, drawable: Int) {
+    private fun setEventDecorators(dates: List<CalendarDay>, drawable: Int) {
         binding.calendar.addDecorators(
             EventDecorator(
                 requireContext(),
                 dates.toHashSet(),
                 drawable
+            )
+        )
+        setEventTextColorDecorators(dates, false)
+    }
+
+    private fun setEventTextColorDecorators(dates: List<CalendarDay>, isSelected: Boolean) {
+        binding.calendar.addDecorators(
+            EventTextColorDecorator(
+                requireContext(),
+                dates.toHashSet(),
+                isSelected
             )
         )
     }

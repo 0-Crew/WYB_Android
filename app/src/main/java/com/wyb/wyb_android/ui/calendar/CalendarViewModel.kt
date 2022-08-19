@@ -26,6 +26,7 @@ class CalendarViewModel : ViewModel() {
     val datesIndependent = arrayListOf<ArrayList<CalendarDay>>()
     val hasContainedToday = MutableLiveData<Boolean>()
     val rangeContainsToday = MutableLiveData<Int?>()
+    val prevSelectedRange = arrayListOf<CalendarDay>()
 
     fun setEvent() {
         formatDates()
