@@ -14,6 +14,7 @@ import com.wyb.wyb_android.databinding.FragmentCalendarBinding
 class CalendarFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentCalendarBinding
     private val viewModel: CalendarViewModel by viewModels()
+    private lateinit var dateDecorator: DateDecorator
 
     override fun getTheme(): Int = R.style.Widget_WYB_BottomSheet_Calendar_BottomSheetDialogTheme
 
@@ -23,10 +24,12 @@ class CalendarFragment : BottomSheetDialogFragment() {
         binding = FragmentCalendarBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
+        dateDecorator = DateDecorator(requireContext())
 
         initCalendarLayout()
         viewModel.setEvent()
-        addDecoratorOnDates()
+        addDecoratorsOnDates()
+        addMonthChangedListener()
         addRangeSelectedListener()
         addDateChangedListener()
         addDecoratorsOnRange()
@@ -44,8 +47,14 @@ class CalendarFragment : BottomSheetDialogFragment() {
         }
     }
 
-    private fun addDecoratorOnDates() {
-        binding.calendar.addDecorator(DateDecorator(requireContext()))
+    private fun addDecoratorsOnDates() {
+        binding.calendar.addDecorators(
+            DisableDateDecorator(requireContext()),
+            dateDecorator
+        )
+        dateDecorator.updateCurrentMonthDates(viewModel.getCurrentMonthDates(binding.calendar.currentDate))
+        binding.calendar.invalidateDecorators()
+
         if (viewModel.hasContainedToday.value == true) {
             binding.calendar.addDecorator(
                 TodayDecorator(
@@ -64,6 +73,13 @@ class CalendarFragment : BottomSheetDialogFragment() {
                     true
                 )
             )
+        }
+    }
+
+    private fun addMonthChangedListener() {
+        binding.calendar.setOnMonthChangedListener { _, date ->
+            dateDecorator.updateCurrentMonthDates(viewModel.getCurrentMonthDates(date))
+            binding.calendar.invalidateDecorators()
         }
     }
 

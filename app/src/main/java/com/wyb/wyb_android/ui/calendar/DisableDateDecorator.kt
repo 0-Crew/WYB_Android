@@ -8,18 +8,11 @@ import com.prolificinteractive.materialcalendarview.DayViewDecorator
 import com.prolificinteractive.materialcalendarview.DayViewFacade
 import com.wyb.wyb_android.R
 
-class DateDecorator(private val context: Context) : DayViewDecorator {
-    private val currentMonthDates = ArrayList<CalendarDay>()
-
-    override fun shouldDecorate(day: CalendarDay?): Boolean = currentMonthDates.contains(day)
+class DisableDateDecorator(private val context: Context) : DayViewDecorator {
+    override fun shouldDecorate(day: CalendarDay?): Boolean = true
 
     override fun decorate(view: DayViewFacade?) {
         view?.setDaysDisabled(true)
-        view?.addSpan(ForegroundColorSpan(ContextCompat.getColor(context, R.color.gray_3)))
-    }
-
-    fun updateCurrentMonthDates(dates: ArrayList<CalendarDay>) {
-        currentMonthDates.clear()
-        currentMonthDates.addAll(dates)
+        view?.addSpan(ForegroundColorSpan(ContextCompat.getColor(context, R.color.gray_4)))
     }
 }

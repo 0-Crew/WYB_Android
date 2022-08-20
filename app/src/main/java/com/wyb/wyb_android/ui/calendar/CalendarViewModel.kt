@@ -158,6 +158,21 @@ class CalendarViewModel : ViewModel() {
         return range
     }
 
+    fun getCurrentMonthDates(currentDate: CalendarDay): ArrayList<CalendarDay> {
+        val calendar = Calendar.getInstance().apply {
+            set(Calendar.YEAR, currentDate.year)
+            set(Calendar.MONTH, currentDate.month - 1)
+            set(Calendar.DAY_OF_MONTH, 1)
+        }
+        val currentMonthMaxDate = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+        val currentMonthDates = arrayListOf<CalendarDay>()
+
+        for (date in 1..currentMonthMaxDate) {
+            currentMonthDates.add(CalendarDay.from(currentDate.year, currentDate.month, date))
+        }
+        return currentMonthDates
+    }
+
     companion object {
         private const val ISO_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
     }
