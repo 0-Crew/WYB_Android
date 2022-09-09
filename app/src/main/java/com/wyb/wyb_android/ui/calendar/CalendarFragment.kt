@@ -1,15 +1,19 @@
 package com.wyb.wyb_android.ui.calendar
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.databinding.FragmentCalendarBinding
+import com.wyb.wyb_android.util.Utils
 
 class CalendarFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentCalendarBinding
@@ -17,6 +21,14 @@ class CalendarFragment : BottomSheetDialogFragment() {
     private lateinit var dateDecorator: DateDecorator
 
     override fun getTheme(): Int = R.style.Widget_WYB_BottomSheet_Calendar_BottomSheetDialogTheme
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return BottomSheetDialog(requireContext(), theme).also { dialog ->
+            dialog.behavior.skipCollapsed = true
+            dialog.behavior.maxHeight = Utils.convertDpToPx(669)
+            dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
