@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/onboarding_challenge_title"
+            android:textAppearance="@style/TextAppearance.WYBComponents.Bold.30"
+            android:textColor="@color/dark_gray_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitleSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/onboarding_challenge_title_sub"
+            android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
+            android:textColor="@color/gray_3"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+        <ImageView
+            android:id="@+id/ivBottle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="46dp"
+            android:src="@drawable/ic_bottle_main_7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitleSub"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvTerm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="19dp"
+            android:textAppearance="@style/TextAppearance.WYBComponents.Bold.16"
+            android:textColor="@color/gray_1"
+            app:layout_constraintStart_toEndOf="@id/ivBottle"
+            app:layout_constraintTop_toTopOf="@id/ivBottle"
+            tools:text="07.12~20" />
+
+        <com.wyb.wyb_android.widget.WYBCompactTextButton
+            android:id="@+id/layoutChallengeComfort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:backgroundRes="gray"
+            app:comfortText="플라스틱 빨대 사용 하기"
+            app:layout_constraintStart_toStartOf="@id/tvTerm"
+            app:layout_constraintTop_toBottomOf="@id/tvTerm"
+            app:setIcon="starWhite"
+            app:setTitleStyle="medium14"
+            app:showComfortTv="true"
+            app:showStartIcon="true"
+            app:titleText="@string/comfort" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

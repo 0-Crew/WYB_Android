@@ -16,6 +16,21 @@
     <!-- WYBChallengeEditText -->
     <string name="challenge_et_hint">참을 수 있는 불편함을 적어주세요</string>
 
+    <!-- OnBoarding -->
+    <string name="onboarding_intro_title">누구나 포기하기\n어려운 편리함이 있습니다</string>
+    <string name="onboarding_intro_title_sub_1">카페에서\n플라스틱 빨대를 포기하기 어렵다면</string>
+    <string name="onboarding_intro_title_sub_2">대신 텀블러 사용부터\n도전해보는 건 어떨까요?</string>
+    <string name="onboarding_intro_btn">네, 좋아요!</string>
+    <string name="onboarding_comfort_title">보틀 선물을 드려요</string>
+    <string name="onboarding_comfort_title_sub_1">7일간 포기할 수 없는 <b>편리함</b>과</string>
+    <string name="onboarding_comfort_title_sub_2">7일간 참아볼 수 있는 <b>불편함</b>을 적을 수 있어요</string>
+    <string name="onboarding_comfort_example">플라스틱 빨대 사용하기</string>
+    <string name="onboarding_discomfort_example">텀블러 사용하기</string>
+    <string name="onboarding_challenge_title">물방울을 하나씩\n체크해 보세요</string>
+    <string name="onboarding_challenge_title_sub">7일 동안 매일 불편함을 참으면 주스가 줄어들어요</string>
+    <string name="onboarding_date_example">11.10 – 16</string>
+    <string name="onboarding_challenge_mark">체크해 보세요</string>
+
     <!-- HomeFragment -->
     <string name="home_bottle_title">\'s Bottle</string>
     <string name="home_goto_bottle_world">다른 보틀보기</string>
