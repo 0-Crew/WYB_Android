@@ -31,6 +31,7 @@ class CalendarViewModel : ViewModel() {
     val isFinishedChallenge = MutableLiveData<Boolean>()
     val hasSelectedToday = MutableLiveData<Boolean>()
     val currentSelectedRange = arrayListOf<CalendarDay>()
+    val successItemSize = MutableLiveData<Int>()
     val discomfortItems = arrayListOf(
         Discomfort(1, "물티슈 쓰지 않기", "2022-08-29T19:13:14.582Z", "2022-08-29T19:13:14.582Z", false, 1, 1, false, 1),
         Discomfort(2, "종이 컵홀더 안 쓰기", "2022-08-29T19:13:14.582Z", "2022-08-29T19:13:14.582Z", false, 1, 2, true, 1),
@@ -188,6 +189,10 @@ class CalendarViewModel : ViewModel() {
 
     fun updateSelectedRangeContainsToday() {
         isFinishedChallenge.value = !currentSelectedRange.toHashSet().contains(CalendarDay.today())
+    }
+
+    fun updateSuccessItemSize() {
+        successItemSize.value = discomfortItems.filter { it.isFinished }.size
     }
 
     companion object {

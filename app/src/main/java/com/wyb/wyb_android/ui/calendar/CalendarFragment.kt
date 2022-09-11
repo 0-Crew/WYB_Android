@@ -94,6 +94,10 @@ class CalendarFragment : BottomSheetDialogFragment() {
 
             challengeAdapter.updateChallengeFinished(isFinished)
             challengeAdapter.submitList(viewModel.discomfortItems.map { it.copy() })
+
+            if (!isFinished) {
+                viewModel.updateSuccessItemSize()
+            }
         }
 
         viewModel.hasSelectedToday.observe(viewLifecycleOwner) {
