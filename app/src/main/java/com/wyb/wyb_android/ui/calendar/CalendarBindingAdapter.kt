@@ -1,5 +1,6 @@
 package com.wyb.wyb_android.ui.calendar
 
+import android.graphics.Paint
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -66,4 +67,12 @@ fun setChallengeTypeTextColor(textView: TextView, index: Int) {
 fun setEnabledBeforeToday(checkBox: CheckBox, createdDate: String, day: Int) {
     val createdLocalDate = Utils.convertIsoStringToLocalDate(createdDate) ?: return
     checkBox.isEnabled = !createdLocalDate.plusDays((day - 1).toLong()).isAfter(LocalDate.now())
+}
+
+@BindingAdapter("isUnfinished")
+fun setUnfinishedTextStyle(textView: TextView, isFinished: Boolean) {
+    if (!isFinished) {
+        textView.setTextColor(textView.context.resources.getColor(R.color.gray_2, null))
+        textView.paintFlags = textView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+    }
 }
