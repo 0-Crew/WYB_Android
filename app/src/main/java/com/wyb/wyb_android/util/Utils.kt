@@ -6,6 +6,9 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.core.content.getSystemService
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.util.*
 import kotlin.math.roundToInt
 
 object Utils : BaseUtil() {
@@ -37,6 +40,20 @@ object Utils : BaseUtil() {
     fun convertDpToPx(dp: Int): Int {
         val density = applicationContext.resources.displayMetrics.density
         return (dp.toFloat() * density).roundToInt()
+    }
+
+    fun convertIsoStringToLocalDate(isoDate: String): LocalDate? {
+        // TODO: 서버 연동 후 timeZone Korea 로 변경 및 date format 변경
+        val isoDateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
+        val sdf = SimpleDateFormat(isoDateFormat, Locale.getDefault())
+        val calendar = Calendar.getInstance()
+        calendar.time = sdf.parse(isoDate) ?: return null
+        calendar.timeZone = TimeZone.getTimeZone("Etc/UTC")
+        return LocalDate.of(
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH) + 1,
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
     }
 }
 
