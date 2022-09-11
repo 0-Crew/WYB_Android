@@ -76,12 +76,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
+                    android:text="@{viewModel.isFinishedChallenge == true ? @string/calendar_challenge_type_end : @string/calendar_challenge_type_in_progress}"
                     android:textAppearance="@style/TextAppearance.WYBComponents.Medium.10"
                     app:layout_constraintBottom_toBottomOf="@id/tvDate"
                     app:layout_constraintStart_toEndOf="@id/tvDate"
                     app:layout_constraintTop_toTopOf="@id/tvDate"
 
-                    android:text="진행 중인 챌린지"
                     android:textColor="@color/orange_alpha_50" />
 
                 <LinearLayout
