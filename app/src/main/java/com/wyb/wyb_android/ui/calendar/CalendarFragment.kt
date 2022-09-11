@@ -5,20 +5,25 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter
 import com.wyb.wyb_android.R
+import com.wyb.wyb_android.data.model.Discomfort
 import com.wyb.wyb_android.databinding.FragmentCalendarBinding
 import com.wyb.wyb_android.util.Utils
+import kotlin.random.Random
 
 class CalendarFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentCalendarBinding
     private val viewModel: CalendarViewModel by viewModels()
     private lateinit var dateDecorator: DateDecorator
+    private lateinit var challengeAdapter: CalendarChallengeAdapter
 
     override fun getTheme(): Int = R.style.Widget_WYB_BottomSheet_Calendar_BottomSheetDialogTheme
 
@@ -40,6 +45,8 @@ class CalendarFragment : BottomSheetDialogFragment() {
 
         initCalendarLayout()
         viewModel.setEvent()
+        initRecyclerView()
+        addObservers()
         addDecoratorsOnDates()
         addMonthChangedListener()
         addRangeSelectedListener()
@@ -56,6 +63,41 @@ class CalendarFragment : BottomSheetDialogFragment() {
             leftArrow.setTint(resources.getColor(R.color.light_gray_1, null))
             rightArrow.setTint(resources.getColor(R.color.light_gray_1, null))
             setWeekDayFormatter(ArrayWeekDayFormatter(resources.getTextArray(R.array.calendar_weekday)))
+        }
+    }
+
+    private fun initRecyclerView() {
+        challengeAdapter = CalendarChallengeAdapter()
+        binding.rvDiscomfort.adapter = challengeAdapter
+        binding.rvDiscomfort.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    private fun addObservers() {
+        viewModel.isFinishedChallenge.observe(viewLifecycleOwner) { isFinished ->
+            // TODO: 서버 연동 시 리스트가 정상적으로 업데이트 되는지 확인 후 해당 코드 삭제
+            //  - 동일한 리스트를 연속해서 제출하면 ListAdapter 가 RecyclerView 를 업데이트하지 않는 문제가 있음
+            //  - 현재는 더미데이터 중 하나의 id 값을 랜덤으로 변경하여 DiffUtil 이 해당 리스트를 이전과 다른 리스트로 인식하도록 처리해둠
+            viewModel.discomfortItems.removeAt(viewModel.discomfortItems.lastIndex)
+            viewModel.discomfortItems.add(
+                Discomfort(
+                    Random.nextInt(),
+                    "물티슈 쓰지 않기",
+                    "2022-08-29T19:13:14.582Z",
+                    "2022-08-29T19:13:14.582Z",
+                    false,
+                    1,
+                    7,
+                    false,
+                    1
+                )
+            )
+
+            challengeAdapter.updateChallengeFinished(isFinished)
+            challengeAdapter.submitList(viewModel.discomfortItems.map { it.copy() })
+        }
+
+        viewModel.hasSelectedToday.observe(viewLifecycleOwner) {
+            binding.layoutChallengeList.isVisible = it != true
         }
     }
 
@@ -98,6 +140,7 @@ class CalendarFragment : BottomSheetDialogFragment() {
     private fun addDateChangedListener() {
         binding.calendar.setOnDateChangedListener { widget, date, selected ->
             if (viewModel.hasContainedToday.value == true) {
+                viewModel.hasSelectedToday.value = false
                 widget.addDecorator(
                     TodayDecorator(
                         requireContext(),
@@ -107,6 +150,7 @@ class CalendarFragment : BottomSheetDialogFragment() {
                     )
                 )
             } else if (selected && date == CalendarDay.today()) {
+                viewModel.hasSelectedToday.value = true
                 widget.addDecorator(
                     TodayDecorator(
                         requireContext(),
@@ -116,6 +160,7 @@ class CalendarFragment : BottomSheetDialogFragment() {
                     )
                 )
             } else {
+                viewModel.hasSelectedToday.value = false
                 widget.addDecorator(
                     TodayDecorator(
                         requireContext(),
@@ -187,6 +232,12 @@ class CalendarFragment : BottomSheetDialogFragment() {
 
     private fun addRangeSelectedListener() {
         binding.calendar.setOnRangeSelectedListener { _, dates ->
+            viewModel.currentSelectedRange.apply {
+                clear()
+                addAll(dates)
+            }
+            viewModel.updateSelectedRangeContainsToday()
+
             setEventTextColorDecorator(dates, true)
             viewModel.prevSelectedRange.apply {
                 clear()
@@ -201,6 +252,7 @@ class CalendarFragment : BottomSheetDialogFragment() {
             binding.calendar.selectRange(rangePair.first, rangePair.second)
         } else {
             binding.calendar.selectedDate = CalendarDay.today()
+            viewModel.hasSelectedToday.value = true
         }
     }
 

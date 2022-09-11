@@ -3,7 +3,7 @@ package com.wyb.wyb_android.ui.calendar
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.prolificinteractive.materialcalendarview.CalendarDay
-import com.wyb.wyb_android.util.Constants.ISO_DATE_FORMAT
+import com.wyb.wyb_android.data.model.Discomfort
 import java.text.SimpleDateFormat
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -12,14 +12,14 @@ import java.util.*
 class CalendarViewModel : ViewModel() {
     private val localDates = arrayListOf<ArrayList<LocalDate>>()
     val eventDates = listOf(
-        "2022-06-06T19:13:14.582Z",
-        "2022-06-15T19:13:14.582Z",
-        "2022-06-25T19:13:14.582Z",
         "2022-07-06T19:13:14.582Z",
         "2022-07-15T19:13:14.582Z",
         "2022-07-25T19:13:14.582Z",
-        "2022-08-03T19:13:14.582Z",
-        "2022-08-13T19:13:14.582Z"
+        "2022-08-05T19:13:14.582Z",
+        "2022-08-14T19:13:14.582Z",
+        "2022-08-21T19:13:14.582Z",
+        "2022-08-29T19:13:14.582Z",
+        "2022-09-06T19:13:14.582Z",
     )
     val datesLeft = arrayListOf<ArrayList<CalendarDay>>()
     val datesCenter = arrayListOf<ArrayList<CalendarDay>>()
@@ -28,6 +28,18 @@ class CalendarViewModel : ViewModel() {
     val hasContainedToday = MutableLiveData<Boolean>()
     val rangeContainsToday = MutableLiveData<Int?>()
     val prevSelectedRange = arrayListOf<CalendarDay>()
+    val isFinishedChallenge = MutableLiveData<Boolean>()
+    val hasSelectedToday = MutableLiveData<Boolean>()
+    val currentSelectedRange = arrayListOf<CalendarDay>()
+    val discomfortItems = arrayListOf(
+        Discomfort(1, "물티슈 쓰지 않기", "2022-08-29T19:13:14.582Z", "2022-08-29T19:13:14.582Z", false, 1, 1, false, 1),
+        Discomfort(2, "종이 컵홀더 안 쓰기", "2022-08-29T19:13:14.582Z", "2022-08-29T19:13:14.582Z", false, 1, 2, true, 1),
+        Discomfort(3, "물티슈 쓰지 않기", "2022-08-29T19:13:14.582Z", "2022-08-29T19:13:14.582Z", false, 1, 3, true, 1),
+        Discomfort(4, "종이 컵홀더 안 쓰기", "2022-08-29T19:13:14.582Z", "2022-08-29T19:13:14.582Z", false, 1, 4, true, 1),
+        Discomfort(5, "물티슈 쓰지 않기", "2022-08-29T19:13:14.582Z", "2022-08-29T19:13:14.582Z", false, 1, 5, false, 1),
+        Discomfort(6, "종이 컵홀더 안 쓰기", "2022-08-29T19:13:14.582Z", "2022-08-29T19:13:14.582Z", false, 1, 6, true, 1),
+        Discomfort(7, "물티슈 쓰지 않기", "2022-08-29T19:13:14.582Z", "2022-08-29T19:13:14.582Z", false, 1, 7, false, 1),
+    )
 
     private fun formatDates() {
         for (dateString in eventDates) {
@@ -99,7 +111,7 @@ class CalendarViewModel : ViewModel() {
         datesIndependent.add(arrayListOf())
     }
 
-    private fun updateRangeContainsToday() {
+    private fun setRangeContainsToday() {
         for ((index, dates) in localDates.withIndex()) {
             if (dates.toHashSet().contains(
                     LocalDate.of(
@@ -143,7 +155,7 @@ class CalendarViewModel : ViewModel() {
     fun setEvent() {
         formatDates()
         setRange()
-        updateRangeContainsToday()
+        setRangeContainsToday()
     }
 
     fun getRangeContainsSelectedDate(calDay: CalendarDay): Pair<CalendarDay, CalendarDay>? {
@@ -172,5 +184,13 @@ class CalendarViewModel : ViewModel() {
             currentMonthDates.add(CalendarDay.from(currentDate.year, currentDate.month, date))
         }
         return currentMonthDates
+    }
+
+    fun updateSelectedRangeContainsToday() {
+        isFinishedChallenge.value = !currentSelectedRange.toHashSet().contains(CalendarDay.today())
+    }
+
+    companion object {
+        private const val ISO_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
     }
 }

@@ -137,8 +137,8 @@
                 <View
                     android:id="@+id/viewJuiceLine"
                     android:layout_width="1dp"
-                    android:layout_height="204dp"
-                    android:layout_marginEnd="26dp"
+                    android:layout_height="208dp"
+                    android:layout_marginEnd="23.5dp"
                     android:background="@drawable/shape_orange_to_gray1_gradient_line"
                     app:layout_constraintEnd_toEndOf="@id/imgBottle"
                     app:layout_constraintStart_toStartOf="@id/imgBottle"
@@ -150,8 +150,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:clipToPadding="false"
+                    android:overScrollMode="never"
                     android:paddingBottom="18dp"
-                    app:layout_constraintTop_toBottomOf="@id/layoutChallengeComfort" />
+                    app:layout_constraintTop_toBottomOf="@id/layoutChallengeComfort"
+                    tools:itemCount="7"
+                    tools:listitem="@layout/item_calendar_challenge_in_progress" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
