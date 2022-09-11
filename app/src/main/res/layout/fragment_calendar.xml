@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.wyb.wyb_android.ui.calendar.CalendarViewModel" />
@@ -51,10 +53,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="26dp"
+                    android:visibility="@{viewModel.isFinishedChallenge == true ? View.GONE : View.VISIBLE}"
                     app:bottleSrc="@{viewModel.successItemSize}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-
                     tools:ignore="ContentDescription,RtlSymmetry" />
 
                 <TextView
@@ -140,6 +142,7 @@
                     android:layout_height="208dp"
                     android:layout_marginEnd="23.5dp"
                     android:background="@drawable/shape_orange_to_gray1_gradient_line"
+                    android:visibility="@{viewModel.isFinishedChallenge == true ? View.GONE : View.VISIBLE}"
                     app:layout_constraintEnd_toEndOf="@id/imgBottle"
                     app:layout_constraintStart_toStartOf="@id/imgBottle"
                     app:layout_constraintTop_toBottomOf="@id/imgBottle" />
