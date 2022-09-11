@@ -21,4 +21,10 @@
     <color name="orange_alpha_30">#4cff820e</color>
     <color name="orange_alpha_60">#99ff820e</color>
     <color name="orange_alpha_50">#80ff820e</color>
+    <color name="green_alpha_50">#808C9F5F</color>
+    <color name="red_alpha_50">#80E46B50</color>
+    <color name="blue_alpha_50">#80A7D3E0</color>
+    <color name="purple_alpha_50">#80AA7BD9</color>
+    <color name="pink_alpha_50">#80E47DB5</color>
+    <color name="yellow_alpha_50">#80e5bb24</color>
 </resources>

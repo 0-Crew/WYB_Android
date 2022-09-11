@@ -65,10 +65,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:textAppearance="@style/TextAppearance.WYBComponents.Bold.13"
+                    app:dateTextColor="@{viewModel.colorIndexOfSelectedRange}"
                     app:layout_constraintStart_toEndOf="@id/imgBottle"
-                    app:layout_constraintTop_toTopOf="parent"
-
-                    android:textColor="@color/orange" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tvChallengeType"
@@ -77,11 +76,10 @@
                     android:layout_marginStart="4dp"
                     android:text="@{viewModel.isFinishedChallenge == true ? @string/calendar_challenge_type_end : @string/calendar_challenge_type_in_progress}"
                     android:textAppearance="@style/TextAppearance.WYBComponents.Medium.10"
+                    app:challengeTypeTextColor="@{viewModel.colorIndexOfSelectedRange}"
                     app:layout_constraintBottom_toBottomOf="@id/tvDate"
                     app:layout_constraintStart_toEndOf="@id/tvDate"
-                    app:layout_constraintTop_toTopOf="@id/tvDate"
-
-                    android:textColor="@color/orange_alpha_50" />
+                    app:layout_constraintTop_toTopOf="@id/tvDate" />
 
                 <LinearLayout
                     android:id="@+id/layoutChallengeComfort"
@@ -91,11 +89,10 @@
                     android:orientation="horizontal"
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="8dp"
+                    app:comfortBackgroundColor="@{viewModel.colorIndexOfSelectedRange}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/tvDate"
-                    app:layout_constraintTop_toBottomOf="@id/tvDate"
-
-                    android:background="@color/orange">
+                    app:layout_constraintTop_toBottomOf="@id/tvDate">
 
                     <ImageView
                         android:layout_width="20dp"
@@ -106,9 +103,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginStart="5dp"
                         android:text="@string/comfort"
-                        android:layout_gravity="center_vertical"
                         android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
                         android:textColor="@color/white" />
 
@@ -130,8 +127,7 @@
                         android:layout_weight="1"
                         android:textAppearance="@style/TextAppearance.WYBComponents.Bold.14"
                         android:textColor="@color/white"
-
-                        android:text="플라스틱 빨대 사용" />
+                        tools:text="플라스틱 빨대 사용" />
 
                 </LinearLayout>
 
