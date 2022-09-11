@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -22,7 +23,10 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/selector_calendar_waterdrop"
             android:button="@null"
-            android:checked="@{data.finished}" />
+            android:checked="@{data.finished}"
+            android:clickable="false"
+            app:createdDate="@{data.createdAt}"
+            app:day="@{data.day}" />
 
         <TextView
             android:id="@+id/tvDiscomfort"

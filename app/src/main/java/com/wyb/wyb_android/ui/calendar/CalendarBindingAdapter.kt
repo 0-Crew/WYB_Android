@@ -1,10 +1,13 @@
 package com.wyb.wyb_android.ui.calendar
 
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.wyb.wyb_android.R
+import com.wyb.wyb_android.util.Utils
+import java.time.LocalDate
 
 @BindingAdapter("bottleSrc")
 fun setBottleSrc(imageView: ImageView, successItemSize: Int) {
@@ -57,4 +60,10 @@ fun setChallengeTypeTextColor(textView: TextView, index: Int) {
         6 -> textView.setTextColor(textView.context.resources.getColor(R.color.orange_alpha_50, null))
         else -> textView.setTextColor(textView.context.resources.getColor(R.color.pink_alpha_50, null))
     }
+}
+
+@BindingAdapter("createdDate", "day")
+fun setEnabledBeforeToday(checkBox: CheckBox, createdDate: String, day: Int) {
+    val createdLocalDate = Utils.convertIsoStringToLocalDate(createdDate) ?: return
+    checkBox.isEnabled = !createdLocalDate.plusDays((day - 1).toLong()).isAfter(LocalDate.now())
 }
