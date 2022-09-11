@@ -247,6 +247,8 @@ class CalendarFragment : BottomSheetDialogFragment() {
                 clear()
                 addAll(dates)
             }
+
+            setDateText(dates[0], dates[6])
         }
     }
 
@@ -288,6 +290,26 @@ class CalendarFragment : BottomSheetDialogFragment() {
                     resources.getColor(R.color.white, null),
                     false
                 )
+            )
+        }
+    }
+
+    private fun setDateText(firstDate: CalendarDay, lastDate: CalendarDay) {
+        val startMonth = viewModel.formatDate(firstDate.month)
+        val startDay = viewModel.formatDate(firstDate.day)
+        val endMonth = viewModel.formatDate(lastDate.month)
+        val endDay = viewModel.formatDate(lastDate.day)
+
+        if (startMonth == endMonth) {
+            binding.tvDate.text =
+                getString(R.string.calendar_challenge_date_format, startMonth, startDay, endDay)
+        } else {
+            binding.tvDate.text = getString(
+                R.string.calendar_challenge_date_format_long,
+                startMonth,
+                startDay,
+                endMonth,
+                endDay
             )
         }
     }

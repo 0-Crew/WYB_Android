@@ -41,4 +41,6 @@
     <!-- CalendarFragment -->
     <string name="calendar_challenge_type_in_progress">진행 중인 챌린지</string>
     <string name="calendar_challenge_type_end">종료된 챌린지</string>
+    <string name="calendar_challenge_date_format">"%s.%s - %s"</string>
+    <string name="calendar_challenge_date_format_long">"%s.%s - %s.%s"</string>
 </resources>

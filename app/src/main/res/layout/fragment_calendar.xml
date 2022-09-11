@@ -68,7 +68,6 @@
                     app:layout_constraintStart_toEndOf="@id/imgBottle"
                     app:layout_constraintTop_toTopOf="parent"
 
-                    android:text="11.26 - 30"
                     android:textColor="@color/orange" />
 
                 <TextView

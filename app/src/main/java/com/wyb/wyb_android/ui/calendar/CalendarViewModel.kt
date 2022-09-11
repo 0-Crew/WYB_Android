@@ -191,6 +191,13 @@ class CalendarViewModel : ViewModel() {
         isFinishedChallenge.value = !currentSelectedRange.toHashSet().contains(CalendarDay.today())
     }
 
+    fun formatDate(date: Int): String {
+        return when (date) {
+            1, 2, 3, 4, 5, 6, 7, 8, 9 -> "0${date}"
+            else -> "$date"
+        }
+    }
+
     fun updateSuccessItemSize() {
         successItemSize.value = discomfortItems.filter { it.isFinished }.size
     }
