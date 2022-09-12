@@ -46,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="36dp"
+                android:visibility="@{viewModel.hasSelectedToday == true ? View.GONE : View.VISIBLE}"
                 app:layout_constraintTop_toBottomOf="@id/calendar">
 
                 <ImageView
@@ -155,6 +156,62 @@
                     tools:listitem="@layout/item_calendar_challenge_in_progress" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutMyChallengeNew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingVertical="79dp"
+                android:visibility="@{viewModel.hasSelectedToday == true ? View.VISIBLE : View.GONE}"
+                app:layout_constraintTop_toBottomOf="@id/calendar">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_bottle_new" />
+
+                <com.wyb.wyb_android.widget.WYBCompactTextButton
+                    android:id="@+id/btnMyChallengeNew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    app:backgroundRes="white"
+                    app:setIcon="starWhite"
+                    app:showComfortTv="false"
+                    app:showStartIcon="true"
+                    app:titleText="@string/calendar_my_challenge_new" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutOtherChallengeNew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingVertical="85dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/calendar">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_bottle_new" />
+
+                <TextView
+                    android:id="@+id/tvOtherChallengeNew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/calendar_other_challenge_new"
+                    android:textAppearance="@style/TextAppearance.WYBComponents.Bold.16"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

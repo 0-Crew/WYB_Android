@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -98,10 +97,6 @@ class CalendarFragment : BottomSheetDialogFragment() {
             if (!isFinished) {
                 viewModel.updateSuccessItemSize()
             }
-        }
-
-        viewModel.hasSelectedToday.observe(viewLifecycleOwner) {
-            binding.layoutChallengeList.isVisible = it != true
         }
     }
 
