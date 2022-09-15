@@ -43,9 +43,8 @@ object Utils : BaseUtil() {
     }
 
     fun convertIsoStringToLocalDate(isoDate: String): LocalDate? {
-        // TODO: 서버 연동 후 timeZone Korea 로 변경 및 date format 변경
-        val isoDateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
-        val sdf = SimpleDateFormat(isoDateFormat, Locale.getDefault())
+        // TODO: 서버 연동 후 timeZone Korea 로 변경
+        val sdf = SimpleDateFormat(Constants.ISO_DATE_FORMAT, Locale.getDefault())
         val calendar = Calendar.getInstance()
         calendar.time = sdf.parse(isoDate) ?: return null
         calendar.timeZone = TimeZone.getTimeZone("Etc/UTC")
