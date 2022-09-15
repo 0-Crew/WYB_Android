@@ -3,6 +3,7 @@ package com.wyb.wyb_android.ui.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.databinding.FragmentHomeBinding
@@ -20,6 +21,7 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
         viewModel.fetchChallengeList()
         initHomeRVAdapter()
         setChallengeList()
+        addDateClickListener()
     }
 
     private fun initHomeRVAdapter() {
@@ -32,6 +34,12 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
             list?.let {
                 with(challengeAdapter) { submitList(list) }
             }
+        }
+    }
+
+    private fun addDateClickListener() {
+        binding.tvDate.setOnClickListener {
+            findNavController().navigate(R.id.actionChallengeHomeToCalendar)
         }
     }
 }

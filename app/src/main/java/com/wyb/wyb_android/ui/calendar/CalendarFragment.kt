@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -46,6 +47,7 @@ class CalendarFragment : BottomSheetDialogFragment() {
         viewModel.setEvent()
         initRecyclerView()
         addObservers()
+        addNewChallengeClickListener()
         addDecoratorsOnDates()
         addMonthChangedListener()
         addRangeSelectedListener()
@@ -97,6 +99,12 @@ class CalendarFragment : BottomSheetDialogFragment() {
             if (!isFinished) {
                 viewModel.updateSuccessItemSize()
             }
+        }
+    }
+
+    private fun addNewChallengeClickListener() {
+        binding.btnMyChallengeNew.setOnClickListener {
+            findNavController().navigate(R.id.actionCalendarToChallengeOpen)
         }
     }
 
