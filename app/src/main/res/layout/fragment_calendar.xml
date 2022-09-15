@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.wyb.wyb_android.ui.calendar.CalendarViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.calendar.CalendarFragment">
+
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+            android:id="@+id/calendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="26dp"
+            android:layout_marginTop="30dp"
+            app:mcv_allowClickDaysOutsideCurrentMonth="false"
+            app:mcv_dateTextAppearance="@style/TextAppearance.WYBComponents.Calendar.Date"
+            app:mcv_headerTextAppearance="@style/TextAppearance.WYBComponents.Calendar.Header"
+            app:mcv_leftArrow="@drawable/ic_arrow_left"
+            app:mcv_rightArrow="@drawable/ic_arrow_right"
+            app:mcv_selectionColor="@android:color/transparent"
+            app:mcv_selectionMode="single"
+            app:mcv_showOtherDates="all"
+            app:mcv_titleAnimationOrientation="horizontal"
+            app:mcv_weekDayTextAppearance="@style/TextAppearance.WYBComponents.Calendar.WeekDay" />
+
+    </FrameLayout>
+</layout>

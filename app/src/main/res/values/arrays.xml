@@ -24,4 +24,14 @@
         <item>불필요한 이메일 삭제하기</item>
         <item>직접입력</item>
     </string-array>
+    
+    <string-array name="calendar_weekday">
+        <item>MON</item>
+        <item>TUE</item>
+        <item>WED</item>
+        <item>THU</item>
+        <item>FRI</item>
+        <item>SAT</item>
+        <item>SUN</item>
+    </string-array>
 </resources>
