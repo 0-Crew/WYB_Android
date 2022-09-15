@@ -3,6 +3,7 @@ package com.wyb.wyb_android.ui.calendar
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.prolificinteractive.materialcalendarview.CalendarDay
+import com.wyb.wyb_android.util.Constants.ISO_DATE_FORMAT
 import java.text.SimpleDateFormat
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -119,7 +120,7 @@ class CalendarViewModel : ViewModel() {
     }
 
     private fun convertIsoStringToLocalDate(isoDate: String): LocalDate? {
-        // TODO: 서버 연동 후 timeZone Korea 로 변경 및 date format 변경
+        // TODO: 서버 연동 후 timeZone Korea 로 변경
         val sdf = SimpleDateFormat(ISO_DATE_FORMAT, Locale.getDefault())
         val calendar = Calendar.getInstance()
         calendar.time = sdf.parse(isoDate) ?: return null
@@ -171,9 +172,5 @@ class CalendarViewModel : ViewModel() {
             currentMonthDates.add(CalendarDay.from(currentDate.year, currentDate.month, date))
         }
         return currentMonthDates
-    }
-
-    companion object {
-        private const val ISO_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
     }
 }
