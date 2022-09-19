@@ -304,17 +304,10 @@ class CalendarFragment : BottomSheetDialogFragment() {
         val endMonth = viewModel.formatDate(lastDate.month)
         val endDay = viewModel.formatDate(lastDate.day)
 
-        if (startMonth == endMonth) {
-            binding.tvDate.text =
-                getString(R.string.calendar_challenge_date_format, startMonth, startDay, endDay)
+        binding.tvDate.text = if (startMonth == endMonth) {
+            getString(R.string.calendar_challenge_date_format, startMonth, startDay, endDay)
         } else {
-            binding.tvDate.text = getString(
-                R.string.calendar_challenge_date_format_long,
-                startMonth,
-                startDay,
-                endMonth,
-                endDay
-            )
+            getString(R.string.calendar_challenge_date_format_long, startMonth, startDay, endMonth, endDay)
         }
     }
 }
