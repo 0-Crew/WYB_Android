@@ -77,7 +77,7 @@ class CalendarFragment : BottomSheetDialogFragment() {
         viewModel.isFinishedChallenge.observe(viewLifecycleOwner) { isFinished ->
             // TODO: 서버 연동 시 리스트가 정상적으로 업데이트 되는지 확인 후 해당 코드 삭제
             //  - 동일한 리스트를 연속해서 제출하면 ListAdapter 가 RecyclerView 를 업데이트하지 않는 문제가 있음
-            //  - 현재는 더미데이터 중 하나의 id 값을 랜덤으로 변경하여 DiffUtil 이 해당 리스트를 이전과 다른 리스트로 인식하도록 처리해둠
+            //  - 현재는 더미데이터로 넣은 리스트의 마지막 아이템을 삭제한 후 다시 추가하는 방식으로 DiffUtil 이 해당 리스트를 이전과 다른 리스트로 인식하도록 처리해둠
             viewModel.discomfortItems.removeAt(viewModel.discomfortItems.lastIndex)
             viewModel.discomfortItems.add(
                 Discomfort(
