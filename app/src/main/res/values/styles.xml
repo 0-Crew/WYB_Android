@@ -249,17 +249,11 @@
         <item name="android:textColor">@color/selector_challenge_open_check_box_text</item>
     </style>
 
-    <style name="Widget.WYB.BottomSheet.Calendar.BottomSheetDialogTheme" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+    <style name="Widget.WYB.BottomSheet.Calendar.BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/Widget.WYB.BottomSheet.Calendar.BottomSheetStyle</item>
     </style>
 
-    <style name="Widget.WYB.BottomSheet.Calendar.BottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet">
-        <item name="backgroundTint">@color/dark_gray_2</item>
-        <item name="shapeAppearanceOverlay">@style/Widget.WYB.BottomSheet.Calendar.ShapeAppearanceOverlay</item>
-    </style>
-
-    <style name="Widget.WYB.BottomSheet.Calendar.ShapeAppearanceOverlay" parent="">
-        <item name="cornerSizeTopLeft">20dp</item>
-        <item name="cornerSizeTopRight">20dp</item>
+    <style name="Widget.WYB.BottomSheet.Calendar.BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/shape_dark_gray2_top_radius_20</item>
     </style>
 </resources>

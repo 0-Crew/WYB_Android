@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.wyb.wyb_android.data.model.Discomfort" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cbWaterDrop"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/selector_calendar_waterdrop"
+            android:button="@null"
+            android:checked="@{data.finished}"
+            android:clickable="false"
+            app:createdDate="@{data.createdAt}"
+            app:day="@{data.day}" />
+
+        <TextView
+            android:id="@+id/tvDiscomfort"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="39dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:text="@{data.name}"
+            android:textAppearance="@style/TextAppearance.WYBComponents.Medium.12"
+            android:textColor="@color/light_gray_3"
+            tools:text="종이 컵홀더 안 쓰기" />
+
+    </LinearLayout>
+</layout>

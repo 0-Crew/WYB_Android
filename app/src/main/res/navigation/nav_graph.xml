@@ -15,7 +15,23 @@
             android:id="@+id/actionChallengeHomeToChallengeOpen"
             app:destination="@id/challenge_open_nav_graph" />
 
+        <action
+            android:id="@+id/actionChallengeHomeToCalendar"
+            app:destination="@id/calendarFragment" />
+
     </fragment>
+
+    <dialog
+        android:id="@+id/calendarFragment"
+        android:name="com.wyb.wyb_android.ui.calendar.CalendarFragment"
+        android:label="CalendarFragment"
+        tools:layout="@layout/fragment_calendar">
+
+        <action
+            android:id="@+id/actionCalendarToChallengeOpen"
+            app:destination="@id/challenge_open_nav_graph" />
+
+    </dialog>
 
     <include app:graph="@navigation/challenge_open_nav_graph" />
 </navigation>
