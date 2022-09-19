@@ -74,5 +74,8 @@ fun setUnfinishedTextStyle(textView: TextView, isFinished: Boolean) {
     if (!isFinished) {
         textView.setTextColor(textView.context.resources.getColor(R.color.gray_2, null))
         textView.paintFlags = textView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+    } else {
+        textView.setTextColor(textView.context.resources.getColor(R.color.light_gray_3, null))
+        textView.paintFlags = textView.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
     }
 }
