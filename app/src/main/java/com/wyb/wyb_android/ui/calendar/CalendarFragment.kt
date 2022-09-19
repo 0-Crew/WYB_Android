@@ -251,7 +251,7 @@ class CalendarFragment : BottomSheetDialogFragment() {
                 addAll(dates)
             }
 
-            setDateText(dates[0], dates[6])
+            setDateText(dates.first(), dates.last())
             viewModel.updateColorIndexOfSelectedRange()
         }
     }
