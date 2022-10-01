@@ -20,4 +20,6 @@
     <color name="yellow_cal">#e5bb24</color>
     <color name="orange_alpha_30">#4cff820e</color>
     <color name="orange_alpha_60">#99ff820e</color>
+    <color name="kakao_yellow">#ffd231</color>
+    <color name="kakao_brown">#3e2723</color>
 </resources>
