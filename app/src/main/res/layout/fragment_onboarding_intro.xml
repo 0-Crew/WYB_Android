@@ -12,7 +12,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="30dp"
-            app:layout_constraintBottom_toTopOf="@id/btnOnBoarding"
+            app:layout_constraintBottom_toTopOf="@id/btnNext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -44,7 +44,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnOnBoarding"
+            android:id="@+id/btnNext"
             style="@style/Widget.WYB.Button.SolidButton.FullWidth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
