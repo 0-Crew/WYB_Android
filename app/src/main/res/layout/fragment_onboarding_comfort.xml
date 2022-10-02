@@ -45,14 +45,17 @@
                     tools:ignore="ContentDescription" />
 
                 <LinearLayout
+                    android:id="@+id/layoutComfort"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="76dp"
+                    android:alpha="0"
                     android:orientation="vertical"
                     android:paddingHorizontal="30dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imgBottle">
+                    app:layout_constraintTop_toBottomOf="@id/imgBottle"
+                    tools:alpha="1">
 
                     <TextView
                         android:layout_width="wrap_content"
