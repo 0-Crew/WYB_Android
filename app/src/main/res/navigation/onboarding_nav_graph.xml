@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/onboarding_nav_graph"
+    app:startDestination="@id/onBoardingMainFragment">
+
+    <fragment
+        android:id="@+id/onBoardingMainFragment"
+        android:name="com.wyb.wyb_android.ui.onboarding.OnBoardingMainFragment"
+        android:label="OnBoardingMainFragment"
+        tools:layout="@layout/fragment_onboarding_main">
+        <action
+            android:id="@+id/actionOnBoardingMainFragmentToOnBoardingIntroFragment"
+            app:destination="@id/onBoardingIntroFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/onBoardingIntroFragment"
+        android:name="com.wyb.wyb_android.ui.onboarding.OnBoardingIntroFragment"
+        android:label="OnBoardingIntroFragment"
+        tools:layout="@layout/fragment_onboarding_intro">
+        <action
+            android:id="@+id/actionOnBoardingIntroFragmentToOnBoardingComfortFragment"
+            app:destination="@id/onBoardingComfortFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/onBoardingComfortFragment"
+        android:name="com.wyb.wyb_android.ui.onboarding.OnBoardingComfortFragment"
+        android:label="OnBoardingComfortFragment"
+        tools:layout="@layout/fragment_onboarding_comfort">
+        <action
+            android:id="@+id/actionOnBoardingComfortFragmentToOnBoardingChallengeFragment"
+            app:destination="@id/onBoardingChallengeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/onBoardingChallengeFragment"
+        android:name="com.wyb.wyb_android.ui.onboarding.OnBoardingChallengeFragment"
+        android:label="OnBoardingChallengeFragment"
+        tools:layout="@layout/fragment_onboarding_challenge">
+        <action
+            android:id="@+id/actionOnBoardingChallengeFragmentToOnBoardingWashFragment"
+            app:destination="@id/onBoardingWashFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/onBoardingWashFragment"
+        android:name="com.wyb.wyb_android.ui.onboarding.OnBoardingWashFragment"
+        android:label="OnBoardingWashFragment"
+        tools:layout="@layout/fragment_onboarding_wash">
+        <action
+            android:id="@+id/actionOnBoardingWashFragmentToHomeFragment"
+            app:destination="@id/HomeFragment"
+            app:popUpTo="@id/onBoardingMainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
