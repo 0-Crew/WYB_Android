@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/challengeFragment">
+    app:startDestination="@id/HomeFragment">
 
     <fragment
-        android:id="@+id/challengeFragment"
+        android:id="@+id/HomeFragment"
         android:name="com.wyb.wyb_android.ui.home.HomeFragment"
         android:label="ChallengeFragment"
         tools:layout="@layout/fragment_home">
 
         <action
-            android:id="@+id/actionChallengeHomeToChallengeOpen"
+            android:id="@+id/actionHomeToChallengeOpen"
             app:destination="@id/challenge_open_nav_graph" />
 
     </fragment>
