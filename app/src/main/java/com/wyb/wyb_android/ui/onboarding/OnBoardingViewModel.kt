@@ -1,11 +1,15 @@
 package com.wyb.wyb_android.ui.onboarding
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wyb.wyb_android.util.TripleMediatorLiveData
 
 class OnBoardingViewModel : ViewModel() {
+    private val _coachMark = MutableLiveData(true)
+    val coachMark: LiveData<Boolean> = _coachMark
+
     val waterCheckBox1 = MutableLiveData(true)
     val waterCheckBox2 = MutableLiveData(false)
     val waterCheckBox3 = MutableLiveData(false)
@@ -33,5 +37,9 @@ class OnBoardingViewModel : ViewModel() {
 
     private fun countChecked(data: Triple<Boolean?, Boolean?, Boolean?>?): Int {
         return data?.toList()?.filter { it == true }?.size ?: 0
+    }
+
+    fun removeCoachMark() {
+        _coachMark.value = false
     }
 }
