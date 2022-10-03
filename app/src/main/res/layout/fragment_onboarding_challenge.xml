@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.wyb.wyb_android.ui.onboarding.OnBoardingViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -46,6 +53,7 @@
 
                 <ImageView
                     android:id="@+id/imgBottle"
+                    setBottleSrc="@{viewModel.levelOfJuice}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="22dp"
@@ -109,7 +117,7 @@
                         android:layout_height="43dp"
                         android:background="@drawable/selector_home_waterdrop"
                         android:button="@null"
-                        android:checked="true"
+                        android:checked="@={viewModel.waterCheckBox1}"
                         android:gravity="center"
                         android:paddingStart="1dp"
                         android:paddingTop="3dp"
@@ -123,6 +131,7 @@
                         android:layout_marginTop="8dp"
                         android:background="@drawable/selector_home_waterdrop"
                         android:button="@null"
+                        android:checked="@={viewModel.waterCheckBox2}"
                         android:gravity="center"
                         android:paddingStart="1dp"
                         android:paddingTop="3dp"
@@ -136,6 +145,7 @@
                         android:layout_marginTop="8dp"
                         android:background="@drawable/selector_home_waterdrop"
                         android:button="@null"
+                        android:checked="@={viewModel.waterCheckBox3}"
                         android:gravity="center"
                         android:paddingStart="1dp"
                         android:paddingTop="3dp"
@@ -149,6 +159,7 @@
                         android:layout_marginTop="8dp"
                         android:background="@drawable/selector_home_waterdrop"
                         android:button="@null"
+                        android:checked="@={viewModel.waterCheckBox4}"
                         android:gravity="center"
                         android:paddingStart="1dp"
                         android:paddingTop="3dp"
@@ -162,6 +173,7 @@
                         android:layout_marginTop="8dp"
                         android:background="@drawable/selector_home_waterdrop"
                         android:button="@null"
+                        android:checked="@={viewModel.waterCheckBox5}"
                         android:gravity="center"
                         android:paddingStart="1dp"
                         android:paddingTop="3dp"
@@ -175,6 +187,7 @@
                         android:layout_marginTop="8dp"
                         android:background="@drawable/selector_home_waterdrop"
                         android:button="@null"
+                        android:checked="@={viewModel.waterCheckBox6}"
                         android:gravity="center"
                         android:paddingStart="1dp"
                         android:paddingTop="3dp"
@@ -188,6 +201,7 @@
                         android:layout_marginTop="8dp"
                         android:background="@drawable/selector_home_waterdrop"
                         android:button="@null"
+                        android:checked="@={viewModel.waterCheckBox7}"
                         android:gravity="center"
                         android:paddingStart="1dp"
                         android:paddingTop="3dp"
