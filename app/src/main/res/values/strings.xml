@@ -10,6 +10,8 @@
     <string name="complete">완료</string>
     <string name="next">다음</string>
     <string name="discomfort">불편함</string>
+    <string name="date_format">%s.%s - %s</string>
+    <string name="date_format_long">%s.%s - %s.%s</string>
 
     <!-- Dialog -->
 
@@ -64,8 +66,6 @@
     <!-- CalendarFragment -->
     <string name="calendar_challenge_type_in_progress">진행 중인 챌린지</string>
     <string name="calendar_challenge_type_end">종료된 챌린지</string>
-    <string name="calendar_challenge_date_format">%s.%s - %s</string>
-    <string name="calendar_challenge_date_format_long">%s.%s - %s.%s</string>
     <string name="calendar_my_challenge_new">새로운 챌린지 참여하기</string>
     <string name="calendar_other_challenge_new">새로운 챌린지를 기다리는 중</string>
 </resources>
