@@ -37,6 +37,9 @@ class HomeChallengeAdapter(
                 true -> {
                     initPopupWindow(R.drawable.shape_orange_stroke, data)
                     binding.tvDiscomfort.setTextAppearance(R.style.TextAppearance_WYBComponents_Bold_14)
+                    binding.cbWaterDrop.apply {
+                        setTextColor(getColorStateList(resources, R.color.selector_waterdrop_today_text, null))
+                    }
                     setTodayCheckedView(binding.cbWaterDrop.isChecked)
                 }
                 else -> {
