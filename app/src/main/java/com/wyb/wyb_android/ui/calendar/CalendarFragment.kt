@@ -17,6 +17,7 @@ import com.wyb.wyb_android.R
 import com.wyb.wyb_android.data.model.Discomfort
 import com.wyb.wyb_android.databinding.FragmentCalendarBinding
 import com.wyb.wyb_android.util.Utils
+import com.wyb.wyb_android.util.Utils.setDateText
 import kotlin.random.Random
 
 class CalendarFragment : BottomSheetDialogFragment() {
@@ -251,7 +252,7 @@ class CalendarFragment : BottomSheetDialogFragment() {
                 addAll(dates)
             }
 
-            setDateText(dates.first(), dates.last())
+            binding.tvDate.text = setDateText(dates.first(), dates.last())
             viewModel.updateColorIndexOfSelectedRange()
         }
     }
@@ -295,19 +296,6 @@ class CalendarFragment : BottomSheetDialogFragment() {
                     false
                 )
             )
-        }
-    }
-
-    private fun setDateText(firstDate: CalendarDay, lastDate: CalendarDay) {
-        val startMonth = viewModel.formatDate(firstDate.month)
-        val startDay = viewModel.formatDate(firstDate.day)
-        val endMonth = viewModel.formatDate(lastDate.month)
-        val endDay = viewModel.formatDate(lastDate.day)
-
-        binding.tvDate.text = if (startMonth == endMonth) {
-            getString(R.string.calendar_challenge_date_format, startMonth, startDay, endDay)
-        } else {
-            getString(R.string.calendar_challenge_date_format_long, startMonth, startDay, endMonth, endDay)
         }
     }
 }

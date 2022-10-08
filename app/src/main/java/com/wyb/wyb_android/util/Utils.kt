@@ -6,6 +6,8 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.core.content.getSystemService
+import com.prolificinteractive.materialcalendarview.CalendarDay
+import com.wyb.wyb_android.R
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.*
@@ -53,6 +55,27 @@ object Utils : BaseUtil() {
             calendar.get(Calendar.MONTH) + 1,
             calendar.get(Calendar.DAY_OF_MONTH)
         )
+    }
+
+    private fun formatDate(date: Int): String {
+        return when (date) {
+            1, 2, 3, 4, 5, 6, 7, 8, 9 -> "0${date}"
+            else -> "$date"
+        }
+    }
+
+    fun setDateText(firstDate: CalendarDay, lastDate: CalendarDay) : String {
+        val startMonth = formatDate(firstDate.month)
+        val startDay = formatDate(firstDate.day)
+        val endMonth = formatDate(lastDate.month)
+        val endDay = formatDate(lastDate.day)
+        val resources = applicationContext.resources
+
+        return if (startMonth == endMonth) {
+            String.format(resources.getString(R.string.date_format), startMonth, startDay, endDay)
+        } else {
+            String.format(resources.getString(R.string.date_format_long), startMonth, startDay, endDay)
+        }
     }
 }
 
