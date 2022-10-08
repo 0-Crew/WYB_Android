@@ -5,8 +5,13 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wyb.wyb_android.util.TripleMediatorLiveData
+import java.time.LocalDate
 
 class OnBoardingViewModel : ViewModel() {
+    val challengeDates = Array<LocalDate>(7) { i ->
+        LocalDate.now().minusDays(i.toLong())
+    }.reversedArray()
+
     private val _coachMark = MutableLiveData(true)
     val coachMark: LiveData<Boolean> = _coachMark
 

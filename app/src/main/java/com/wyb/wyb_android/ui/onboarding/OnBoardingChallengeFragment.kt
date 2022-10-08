@@ -1,7 +1,10 @@
 package com.wyb.wyb_android.ui.onboarding
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.CheckBox
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import com.wyb.wyb_android.R
@@ -14,6 +17,18 @@ class OnBoardingChallengeFragment :
 
     override val viewModel: OnBoardingViewModel by navGraphViewModels(R.id.onboarding_nav_graph)
 
+    private lateinit var waterDropViews: ArrayList<CheckBox>
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        super.onCreateView(inflater, container, savedInstanceState)
+        initWaterCheckBoxArray()
+        return binding.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initDateView()
@@ -21,10 +36,27 @@ class OnBoardingChallengeFragment :
         setCoachMarkVisibility()
     }
 
+    private fun initWaterCheckBoxArray() {
+        waterDropViews = arrayListOf(
+            binding.cbWater1,
+            binding.cbWater2,
+            binding.cbWater3,
+            binding.cbWater4,
+            binding.cbWater5,
+            binding.cbWater6,
+            binding.cbWater7
+        )
+    }
+
     private fun initDateView() {
-        val sixBeforeDate = viewModel.challengeDates.first()
-        val todayDate = viewModel.challengeDates.last()
+        val challengeDates = viewModel.challengeDates
+        val sixBeforeDate = challengeDates.first()
+        val todayDate = challengeDates.last()
         binding.tvTerm.text = setDateText(sixBeforeDate, todayDate)
+
+        for ((index, view) in waterDropViews.withIndex()) {
+            view.text = challengeDates[index].dayOfMonth.toString()
+        }
     }
 
     private fun initClickListener() {

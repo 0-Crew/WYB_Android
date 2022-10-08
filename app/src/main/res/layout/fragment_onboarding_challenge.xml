@@ -113,6 +113,7 @@
                     app:layout_constraintTop_toBottomOf="@id/imgBottle">
 
                     <CheckBox
+                        android:id="@+id/cbWater1"
                         android:layout_width="43dp"
                         android:layout_height="43dp"
                         android:background="@drawable/selector_home_waterdrop"
@@ -126,6 +127,7 @@
                         tools:text="00" />
 
                     <CheckBox
+                        android:id="@+id/cbWater2"
                         android:layout_width="43dp"
                         android:layout_height="43dp"
                         android:layout_marginTop="8dp"
@@ -140,6 +142,7 @@
                         tools:text="00" />
 
                     <CheckBox
+                        android:id="@+id/cbWater3"
                         android:layout_width="43dp"
                         android:layout_height="43dp"
                         android:layout_marginTop="8dp"
@@ -154,6 +157,7 @@
                         tools:text="00" />
 
                     <CheckBox
+                        android:id="@+id/cbWater4"
                         android:layout_width="43dp"
                         android:layout_height="43dp"
                         android:layout_marginTop="8dp"
@@ -168,6 +172,7 @@
                         tools:text="00" />
 
                     <CheckBox
+                        android:id="@+id/cbWater5"
                         android:layout_width="43dp"
                         android:layout_height="43dp"
                         android:layout_marginTop="8dp"
@@ -182,6 +187,7 @@
                         tools:text="00" />
 
                     <CheckBox
+                        android:id="@+id/cbWater6"
                         android:layout_width="43dp"
                         android:layout_height="43dp"
                         android:layout_marginTop="8dp"
@@ -196,6 +202,7 @@
                         tools:text="00" />
 
                     <CheckBox
+                        android:id="@+id/cbWater7"
                         android:layout_width="43dp"
                         android:layout_height="43dp"
                         android:layout_marginTop="8dp"
