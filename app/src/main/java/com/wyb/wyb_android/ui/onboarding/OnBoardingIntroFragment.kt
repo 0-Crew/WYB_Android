@@ -15,6 +15,7 @@ class OnBoardingIntroFragment : BindingFragment<FragmentOnboardingIntroBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().window.statusBarColor = requireContext().getColor(android.R.color.transparent)
         initClickListener()
         initAlphaAnimation()
     }
