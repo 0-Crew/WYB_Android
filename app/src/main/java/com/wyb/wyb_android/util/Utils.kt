@@ -77,6 +77,20 @@ object Utils : BaseUtil() {
             String.format(resources.getString(R.string.date_format_long), startMonth, startDay, endDay)
         }
     }
+
+    fun setDateText(firstDate: LocalDate, lastDate: LocalDate) : String {
+        val startMonth = formatDate(firstDate.monthValue)
+        val startDay = formatDate(firstDate.dayOfMonth)
+        val endMonth = formatDate(lastDate.monthValue)
+        val endDay = formatDate(lastDate.dayOfMonth)
+        val resources = applicationContext.resources
+
+        return if (startMonth == endMonth) {
+            String.format(resources.getString(R.string.date_format), startMonth, startDay, endDay)
+        } else {
+            String.format(resources.getString(R.string.date_format_long), startMonth, startDay, endDay)
+        }
+    }
 }
 
 fun hideKeyboard(activity: Activity?, view: View) {

@@ -7,6 +7,7 @@ import androidx.navigation.navGraphViewModels
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.databinding.FragmentOnboardingChallengeBinding
+import com.wyb.wyb_android.util.Utils.setDateText
 
 class OnBoardingChallengeFragment :
     ViewModelFragment<FragmentOnboardingChallengeBinding, OnBoardingViewModel>(R.layout.fragment_onboarding_challenge) {
@@ -15,8 +16,15 @@ class OnBoardingChallengeFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initDateView()
         initClickListener()
         setCoachMarkVisibility()
+    }
+
+    private fun initDateView() {
+        val sixBeforeDate = viewModel.challengeDates.first()
+        val todayDate = viewModel.challengeDates.last()
+        binding.tvTerm.text = setDateText(sixBeforeDate, todayDate)
     }
 
     private fun initClickListener() {
