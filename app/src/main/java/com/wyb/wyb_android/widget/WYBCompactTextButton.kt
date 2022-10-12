@@ -95,6 +95,16 @@ class WYBCompactTextButton @JvmOverloads constructor(
                         setColorTvTitle(R.color.orange)
                         setDrawableRes(R.drawable.shape_orange_stroke)
                     }
+                    COLOR_GRAY -> {
+                        binding.ivIcon.setColorFilter(
+                            ContextCompat.getColor(
+                                context,
+                                R.color.white
+                            )
+                        )
+                        setColorTvTitle(R.color.white)
+                        setDrawableRes(R.color.gray_1)
+                    }
                     else -> {
                         binding.ivIcon.setColorFilter(
                             ContextCompat.getColor(
@@ -135,6 +145,7 @@ class WYBCompactTextButton @JvmOverloads constructor(
         private const val COLOR_ORANGE = 0
         private const val COLOR_WHITE = 1
         private const val COLOR_ORANGE_STROKE = 2
+        private const val COLOR_GRAY = 3
         private const val ICON_STAR_WHITE = 0
         private const val ICON_CALENDER = 1
         private const val FONT_BOLD_16 = 0

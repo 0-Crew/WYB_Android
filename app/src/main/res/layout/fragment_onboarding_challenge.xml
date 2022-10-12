@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.wyb.wyb_android.ui.onboarding.OnBoardingViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toTopOf="@id/btnNext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/onboarding_challenge_title"
+                    android:textAppearance="@style/TextAppearance.WYBComponents.Bold.30"
+                    android:textColor="@color/dark_gray_1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvTitleSub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/onboarding_challenge_title_sub"
+                    android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
+                    android:textColor="@color/gray_3"
+                    app:layout_constraintStart_toStartOf="@id/tvTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+                <ImageView
+                    android:id="@+id/imgBottle"
+                    setBottleSrc="@{viewModel.levelOfJuice}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="46dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitleSub"
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/ic_bottle_main_7" />
+
+                <TextView
+                    android:id="@+id/tvTerm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="19dp"
+                    android:textAppearance="@style/TextAppearance.WYBComponents.Bold.16"
+                    android:textColor="@color/gray_1"
+                    app:layout_constraintStart_toEndOf="@id/imgBottle"
+                    app:layout_constraintTop_toTopOf="@id/imgBottle"
+                    tools:text="07.12 - 20" />
+
+                <com.wyb.wyb_android.widget.WYBCompactTextButton
+                    android:id="@+id/layoutChallengeComfort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:backgroundRes="gray"
+                    app:comfortText="@string/onboarding_comfort_example"
+                    app:layout_constraintStart_toStartOf="@id/tvTerm"
+                    app:layout_constraintTop_toBottomOf="@id/tvTerm"
+                    app:setIcon="starWhite"
+                    app:setTitleStyle="medium14"
+                    app:showComfortTv="true"
+                    app:showStartIcon="true"
+                    app:titleText="@string/comfort" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="340dp"
+                    android:layout_marginEnd="1dp"
+                    android:background="@drawable/shape_orange_gradient_line"
+                    app:layout_constraintEnd_toEndOf="@id/imgBottle"
+                    app:layout_constraintStart_toStartOf="@id/imgBottle"
+                    app:layout_constraintTop_toBottomOf="@id/imgBottle" />
+
+                <LinearLayout
+                    android:id="@+id/layoutWaterDrop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="50dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/imgBottle"
+                    app:layout_constraintStart_toStartOf="@id/imgBottle"
+                    app:layout_constraintTop_toBottomOf="@id/imgBottle">
+
+                    <CheckBox
+                        android:id="@+id/cbWater1"
+                        android:layout_width="43dp"
+                        android:layout_height="43dp"
+                        android:background="@drawable/selector_home_waterdrop"
+                        android:button="@null"
+                        android:checked="@={viewModel.waterCheckBox1}"
+                        android:gravity="center"
+                        android:paddingStart="1dp"
+                        android:paddingTop="3dp"
+                        android:textAppearance="@style/TextAppearance.WYBComponents.Bold.13"
+                        android:textColor="@color/selector_home_waterdrop_text"
+                        tools:text="00" />
+
+                    <CheckBox
+                        android:id="@+id/cbWater2"
+                        android:layout_width="43dp"
+                        android:layout_height="43dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/selector_home_waterdrop"
+                        android:button="@null"
+                        android:checked="@={viewModel.waterCheckBox2}"
+                        android:gravity="center"
+                        android:paddingStart="1dp"
+                        android:paddingTop="3dp"
+                        android:textAppearance="@style/TextAppearance.WYBComponents.Bold.13"
+                        android:textColor="@color/selector_home_waterdrop_text"
+                        tools:text="00" />
+
+                    <CheckBox
+                        android:id="@+id/cbWater3"
+                        android:layout_width="43dp"
+                        android:layout_height="43dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/selector_home_waterdrop"
+                        android:button="@null"
+                        android:checked="@={viewModel.waterCheckBox3}"
+                        android:gravity="center"
+                        android:paddingStart="1dp"
+                        android:paddingTop="3dp"
+                        android:textAppearance="@style/TextAppearance.WYBComponents.Bold.13"
+                        android:textColor="@color/selector_home_waterdrop_text"
+                        tools:text="00" />
+
+                    <CheckBox
+                        android:id="@+id/cbWater4"
+                        android:layout_width="43dp"
+                        android:layout_height="43dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/selector_home_waterdrop"
+                        android:button="@null"
+                        android:checked="@={viewModel.waterCheckBox4}"
+                        android:gravity="center"
+                        android:paddingStart="1dp"
+                        android:paddingTop="3dp"
+                        android:textAppearance="@style/TextAppearance.WYBComponents.Bold.13"
+                        android:textColor="@color/selector_home_waterdrop_text"
+                        tools:text="00" />
+
+                    <CheckBox
+                        android:id="@+id/cbWater5"
+                        android:layout_width="43dp"
+                        android:layout_height="43dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/selector_home_waterdrop"
+                        android:button="@null"
+                        android:checked="@={viewModel.waterCheckBox5}"
+                        android:gravity="center"
+                        android:paddingStart="1dp"
+                        android:paddingTop="3dp"
+                        android:textAppearance="@style/TextAppearance.WYBComponents.Bold.13"
+                        android:textColor="@color/selector_home_waterdrop_text"
+                        tools:text="00" />
+
+                    <CheckBox
+                        android:id="@+id/cbWater6"
+                        android:layout_width="43dp"
+                        android:layout_height="43dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/selector_home_waterdrop"
+                        android:button="@null"
+                        android:checked="@={viewModel.waterCheckBox6}"
+                        android:gravity="center"
+                        android:paddingStart="1dp"
+                        android:paddingTop="3dp"
+                        android:textAppearance="@style/TextAppearance.WYBComponents.Bold.13"
+                        android:textColor="@color/selector_home_waterdrop_text"
+                        tools:text="00" />
+
+                    <CheckBox
+                        android:id="@+id/cbWater7"
+                        android:layout_width="43dp"
+                        android:layout_height="43dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/selector_home_waterdrop"
+                        android:button="@null"
+                        android:checked="@={viewModel.waterCheckBox7}"
+                        android:gravity="center"
+                        android:paddingStart="1dp"
+                        android:paddingTop="3dp"
+                        android:textAppearance="@style/TextAppearance.WYBComponents.Bold.13"
+                        android:textColor="@color/selector_waterdrop_today_text"
+                        tools:text="00" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutDiscomfort"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="64dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/layoutWaterDrop"
+                    app:layout_constraintTop_toBottomOf="@id/imgBottle">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/onboarding_discomfort_example"
+                        android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
+                        android:textColor="@color/gray_1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="34dp"
+                        android:text="@string/onboarding_discomfort_example"
+                        android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
+                        android:textColor="@color/gray_1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="34dp"
+                        android:text="@string/onboarding_discomfort_example"
+                        android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
+                        android:textColor="@color/gray_1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="34dp"
+                        android:text="@string/onboarding_discomfort_example"
+                        android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
+                        android:textColor="@color/gray_1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="34dp"
+                        android:text="@string/onboarding_discomfort_example"
+                        android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
+                        android:textColor="@color/gray_1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="34dp"
+                        android:text="@string/onboarding_discomfort_example"
+                        android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
+                        android:textColor="@color/gray_1" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="23dp"
+                    android:background="@drawable/shape_gray1_stroke"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="8dp"
+                    android:text="@string/onboarding_discomfort_example"
+                    android:textAppearance="@style/TextAppearance.WYBComponents.Bold.14"
+                    android:textColor="@color/gray_1"
+                    app:layout_constraintEnd_toEndOf="@id/layoutDiscomfort"
+                    app:layout_constraintStart_toEndOf="@id/layoutWaterDrop"
+                    app:layout_constraintTop_toBottomOf="@id/layoutDiscomfort" />
+
+                <ImageView
+                    android:id="@+id/imgBubble"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="83dp"
+                    android:src="@drawable/img_onboarding_bubble"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/layoutWaterDrop"
+                    tools:ignore="contentDescription" />
+
+                <TextView
+                    android:id="@+id/tvBubble"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:text="@string/onboarding_challenge_mark"
+                    android:textAppearance="@style/TextAppearance.WYBComponents.Bold.16"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/imgBubble"
+                    app:layout_constraintEnd_toEndOf="@id/imgBubble"
+                    app:layout_constraintStart_toStartOf="@id/imgBubble"
+                    app:layout_constraintTop_toTopOf="@id/imgBubble" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/layoutCoachMark"
+                    isVisibleOrGone="@{viewModel.coachMark}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="imgBubble,tvBubble" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/btnNext"
+            style="@style/Widget.WYB.Button.SolidButton.FullWidth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

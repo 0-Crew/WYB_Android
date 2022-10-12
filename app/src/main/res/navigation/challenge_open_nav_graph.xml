@@ -37,7 +37,7 @@
 
         <action
             android:id="@+id/actionChallengeOpenStartDateToChallengeHome"
-            app:destination="@id/challengeFragment"
+            app:destination="@id/HomeFragment"
             app:popUpTo="@id/challengeOpenComfortFragment"
             app:popUpToInclusive="true" />
 

@@ -172,6 +172,7 @@
                     app:layout_constraintStart_toStartOf="@id/tvDate"
                     app:layout_constraintTop_toBottomOf="@id/tvDate"
                     app:setIcon="starWhite"
+                    app:setTitleStyle="medium14"
                     app:showComfortTv="true"
                     app:showStartIcon="true"
                     app:titleText="@string/comfort"
