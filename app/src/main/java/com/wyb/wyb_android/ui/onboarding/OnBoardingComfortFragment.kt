@@ -6,6 +6,7 @@ import androidx.navigation.fragment.findNavController
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.BindingFragment
 import com.wyb.wyb_android.databinding.FragmentOnboardingComfortBinding
+import kotlinx.android.synthetic.main.view_wyb_label_edit_text.view.*
 
 class OnBoardingComfortFragment : BindingFragment<FragmentOnboardingComfortBinding>(
     R.layout.fragment_onboarding_comfort
@@ -15,8 +16,14 @@ class OnBoardingComfortFragment : BindingFragment<FragmentOnboardingComfortBindi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initView()
         initClickListener()
         initAlphaAnimation()
+    }
+
+    private fun initView() {
+        binding.layoutComfortExample.etInput.isFocusable = false
+        binding.layoutComfortExample.etInput.isFocusable = false
     }
 
     private fun initClickListener() {
@@ -26,7 +33,7 @@ class OnBoardingComfortFragment : BindingFragment<FragmentOnboardingComfortBindi
     }
 
     private fun initAlphaAnimation() {
-        binding.layoutComfort.animate()
+        binding.layoutComfortDiscomfort.animate()
             .alpha(1f)
             .setDuration(animationDuration)
             .setStartDelay(animationDelayDuration)

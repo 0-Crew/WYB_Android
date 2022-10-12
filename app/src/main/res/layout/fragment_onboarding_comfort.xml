@@ -45,7 +45,7 @@
                     tools:ignore="ContentDescription" />
 
                 <LinearLayout
-                    android:id="@+id/layoutComfort"
+                    android:id="@+id/layoutComfortDiscomfort"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="76dp"
@@ -70,56 +70,29 @@
                         android:text="@string/onboarding_comfort_title_sub_2"
                         android:textColor="@color/gray_3" />
 
-                    <LinearLayout
+                    <com.wyb.wyb_android.widget.WYBLabelEditText
+                        android:id="@+id/layoutComfortExample"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:background="@drawable/shape_gray2_stroke"
-                        android:orientation="vertical"
-                        android:paddingHorizontal="10dp"
-                        android:paddingVertical="8dp">
+                        android:focusableInTouchMode="false"
+                        app:backgroundStroke="gray"
+                        app:hint="@string/onboarding_comfort_example"
+                        app:labelText="@string/comfort"
+                        app:showIcon="false" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/comfort"
-                            android:textAppearance="@style/TextAppearance.WYBComponents.Medium.10"
-                            android:textColor="@color/gray_3" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="@string/onboarding_comfort_example"
-                            android:textAppearance="@style/TextAppearance.WYBComponents.Bold.16"
-                            android:textColor="@color/gray_2" />
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <com.wyb.wyb_android.widget.WYBLabelEditText
+                        android:id="@+id/layoutDiscomfortExample"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="60dp"
-                        android:background="@drawable/shape_gray2_stroke"
-                        android:orientation="vertical"
-                        android:paddingHorizontal="10dp"
-                        android:paddingVertical="8dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/discomfort"
-                            android:textAppearance="@style/TextAppearance.WYBComponents.Medium.10"
-                            android:textColor="@color/gray_3" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="@string/onboarding_discomfort_example"
-                            android:textAppearance="@style/TextAppearance.WYBComponents.Bold.16"
-                            android:textColor="@color/gray_2" />
-                    </LinearLayout>
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        app:backgroundStroke="gray"
+                        app:hint="@string/onboarding_discomfort_example"
+                        app:labelText="@string/discomfort"
+                        app:showIcon="false" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
