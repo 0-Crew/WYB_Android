@@ -61,7 +61,7 @@ class OnBoardingChallengeFragment :
 
     private fun initClickListener() {
         binding.btnNext.setOnClickListener {
-            findNavController().navigate(R.id.actionOnBoardingChallengeFragmentToOnBoardingWashFragment)
+            findNavController().navigate(R.id.actionOnBoardingChallengeToOnBoardingWash)
         }
     }
 

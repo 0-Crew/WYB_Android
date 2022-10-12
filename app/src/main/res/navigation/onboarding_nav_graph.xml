@@ -11,7 +11,7 @@
         android:label="OnBoardingMainFragment"
         tools:layout="@layout/fragment_onboarding_main">
         <action
-            android:id="@+id/actionOnBoardingMainFragmentToOnBoardingIntroFragment"
+            android:id="@+id/actionOnBoardingMainToOnBoardingIntro"
             app:destination="@id/onBoardingIntroFragment" />
     </fragment>
 
@@ -21,7 +21,7 @@
         android:label="OnBoardingIntroFragment"
         tools:layout="@layout/fragment_onboarding_intro">
         <action
-            android:id="@+id/actionOnBoardingIntroFragmentToOnBoardingComfortFragment"
+            android:id="@+id/actionOnBoardingIntroToOnBoardingComfort"
             app:destination="@id/onBoardingComfortFragment" />
     </fragment>
 
@@ -31,7 +31,7 @@
         android:label="OnBoardingComfortFragment"
         tools:layout="@layout/fragment_onboarding_comfort">
         <action
-            android:id="@+id/actionOnBoardingComfortFragmentToOnBoardingChallengeFragment"
+            android:id="@+id/actionOnBoardingComfortToOnBoardingChallenge"
             app:destination="@id/onBoardingChallengeFragment" />
     </fragment>
 
@@ -41,7 +41,7 @@
         android:label="OnBoardingChallengeFragment"
         tools:layout="@layout/fragment_onboarding_challenge">
         <action
-            android:id="@+id/actionOnBoardingChallengeFragmentToOnBoardingWashFragment"
+            android:id="@+id/actionOnBoardingChallengeToOnBoardingWash"
             app:destination="@id/onBoardingWashFragment" />
     </fragment>
 
@@ -51,7 +51,7 @@
         android:label="OnBoardingWashFragment"
         tools:layout="@layout/fragment_onboarding_wash">
         <action
-            android:id="@+id/actionOnBoardingWashFragmentToHomeFragment"
+            android:id="@+id/actionOnBoardingWashToHome"
             app:destination="@id/HomeFragment"
             app:popUpTo="@id/onBoardingMainFragment"
             app:popUpToInclusive="true" />

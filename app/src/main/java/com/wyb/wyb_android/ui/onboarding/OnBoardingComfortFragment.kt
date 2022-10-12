@@ -28,7 +28,7 @@ class OnBoardingComfortFragment : BindingFragment<FragmentOnboardingComfortBindi
 
     private fun initClickListener() {
         binding.btnNext.setOnClickListener {
-            findNavController().navigate(R.id.actionOnBoardingComfortFragmentToOnBoardingChallengeFragment)
+            findNavController().navigate(R.id.actionOnBoardingComfortToOnBoardingChallenge)
         }
     }
 

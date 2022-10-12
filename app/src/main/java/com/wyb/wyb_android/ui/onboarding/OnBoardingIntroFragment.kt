@@ -22,7 +22,7 @@ class OnBoardingIntroFragment : BindingFragment<FragmentOnboardingIntroBinding>(
 
     private fun initClickListener() {
         binding.btnNext.setOnClickListener {
-            findNavController().navigate(R.id.actionOnBoardingIntroFragmentToOnBoardingComfortFragment)
+            findNavController().navigate(R.id.actionOnBoardingIntroToOnBoardingComfort)
         }
     }
 

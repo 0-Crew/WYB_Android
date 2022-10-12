@@ -18,7 +18,7 @@ class OnBoardingMainFragment : BindingFragment<FragmentOnboardingMainBinding>(
 
     private fun initClickListener() {
         binding.layoutOnBoarding.setOnClickListener {
-            findNavController().navigate(R.id.actionOnBoardingMainFragmentToOnBoardingIntroFragment)
+            findNavController().navigate(R.id.actionOnBoardingMainToOnBoardingIntro)
         }
     }
 }
