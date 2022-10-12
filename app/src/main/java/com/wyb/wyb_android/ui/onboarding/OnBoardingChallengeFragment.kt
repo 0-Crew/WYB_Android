@@ -17,7 +17,7 @@ class OnBoardingChallengeFragment :
 
     override val viewModel: OnBoardingViewModel by navGraphViewModels(R.id.onboarding_nav_graph)
 
-    private lateinit var waterDropViews: ArrayList<CheckBox>
+    private lateinit var waterDropViews: List<CheckBox>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +37,7 @@ class OnBoardingChallengeFragment :
     }
 
     private fun initWaterCheckBoxArray() {
-        waterDropViews = arrayListOf(
+        waterDropViews = listOf(
             binding.cbWater1,
             binding.cbWater2,
             binding.cbWater3,
