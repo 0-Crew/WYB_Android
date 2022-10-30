@@ -21,7 +21,9 @@
 
         <action
             android:id="@+id/actionHomeToSetting"
-            app:destination="@id/settingNavGraph" />
+            app:destination="@id/settingNavGraph"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:popExitAnim="@anim/slide_out_to_right" />
     </fragment>
 
     <dialog
