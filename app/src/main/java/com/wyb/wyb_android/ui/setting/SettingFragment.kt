@@ -7,6 +7,7 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.BindingFragment
+import com.wyb.wyb_android.data.type.TermsType
 import com.wyb.wyb_android.databinding.FragmentSettingBinding
 
 class SettingFragment : BindingFragment<FragmentSettingBinding>(
@@ -28,6 +29,18 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(
             val uri = getString(R.string.wyb_instagram)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
             startActivity(intent)
+        }
+        binding.layoutPrivacy.layoutSettingMenuItem.setOnClickListener {
+            val directions = SettingFragmentDirections.actionSettingToSettingWebView(
+                TermsType.PRIVACY_POLICY
+            )
+            findNavController().navigate(directions)
+        }
+        binding.layoutServiceTerm.layoutSettingMenuItem.setOnClickListener {
+            val directions = SettingFragmentDirections.actionSettingToSettingWebView(
+                TermsType.SERVICE_TERMS
+            )
+            findNavController().navigate(directions)
         }
     }
 }

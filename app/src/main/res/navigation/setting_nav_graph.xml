@@ -14,6 +14,9 @@
         <action
             android:id="@+id/actionSettingToSettingProfile"
             app:destination="@id/settingProfileFragment" />
+        <action
+            android:id="@+id/actionSettingToSettingWebView"
+            app:destination="@id/settingWebViewFragment" />
     </fragment>
 
     <fragment
@@ -41,4 +44,16 @@
         android:name="com.wyb.wyb_android.ui.setting.SettingProfileManagementFragment"
         android:label="SettingProfileManagementFragment"
         tools:layout="@layout/fragment_setting_profile_management" />
+
+    <fragment
+        android:id="@+id/settingWebViewFragment"
+        android:name="com.wyb.wyb_android.ui.setting.SettingWebViewFragment"
+        android:label="SettingWebViewFragment"
+        tools:layout="@layout/fragment_setting_web_view">
+
+        <argument
+            android:name="termsType"
+            app:argType="com.wyb.wyb_android.data.type.TermsType"
+            app:nullable="false" />
+    </fragment>
 </navigation>
