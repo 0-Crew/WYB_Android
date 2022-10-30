@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/btnClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="20dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_x_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/gray_4"
+            tools:ignore="contentDescription" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnClose">
+
+            <TextView
+                android:id="@+id/tvNameOval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_dark_gray2_stroke_oval"
+                android:paddingHorizontal="17dp"
+                android:paddingVertical="14dp"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Bold.16"
+                android:textColor="@color/dark_gray_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="희" />
+
+            <TextView
+                android:id="@+id/tvNickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawablePadding="4dp"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Bold.16"
+                android:textColor="@color/dark_gray_2"
+                app:drawableEndCompat="@drawable/ic_arrow_right_20"
+                app:drawableTint="@color/gray_4"
+                app:layout_constraintStart_toStartOf="@id/tvNameOval"
+                app:layout_constraintTop_toBottomOf="@id/tvNameOval"
+                tools:text="희영룰루루" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            android:id="@+id/layoutInquiry"
+            layout="@layout/include_setting_menu_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@id/layoutProfile"
+            app:menuString="@{@string/setting_inquiry}" />
+
+        <include
+            android:id="@+id/layoutServiceTerm"
+            layout="@layout/include_setting_menu_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            app:layout_constraintTop_toBottomOf="@id/layoutInquiry"
+            app:menuString="@{@string/setting_service_terms}" />
+
+        <include
+            android:id="@+id/layoutPrivacy"
+            layout="@layout/include_setting_menu_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/layoutServiceTerm"
+            app:menuString="@{@string/setting_privacy_policy}" />
+
+        <include
+            android:id="@+id/layoutOpenSource"
+            layout="@layout/include_setting_menu_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/layoutPrivacy"
+            app:menuString="@{@string/setting_open_source}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:layout_marginStart="30dp"
+            android:text="@string/app_version"
+            android:textAppearance="@style/TextAppearance.WYBComponents.Medium.16"
+            android:textColor="@color/gray_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutOpenSource"
+            app:layout_constraintVertical_bias="1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

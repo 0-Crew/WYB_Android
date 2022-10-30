@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/layoutTitle"
+            layout="@layout/include_nav_title_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleString="@{@string/setting_profile_management}" />
+
+        <com.wyb.wyb_android.widget.WYBLabelEditText
+            android:id="@+id/etNickname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="20dp"
+            app:backgroundStroke="gray"
+            app:hint="@string/setting_nickname_hint"
+            app:iconType="edit"
+            app:labelText="@string/nickname"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutTitle"
+            app:showIcon="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/nickname_alert_message"
+            android:textAppearance="@style/TextAppearance.WYBComponents.Medium.12"
+            android:textColor="@color/red_alert"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="@id/etNickname"
+            app:layout_constraintTop_toBottomOf="@id/etNickname" />
+
+        <TextView
+            android:id="@+id/tvLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="46dp"
+            android:text="@string/setting_logout"
+            android:textAppearance="@style/TextAppearance.WYBComponents.Medium.16"
+            android:textColor="@color/gray_4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/etNickname"
+            app:layout_constraintTop_toBottomOf="@id/etNickname"
+            app:layout_constraintVertical_bias="1" />
+
+        <TextView
+            android:id="@+id/tvWithdraw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/setting_withdraw"
+            android:textAppearance="@style/TextAppearance.WYBComponents.Medium.16"
+            android:textColor="@color/gray_1"
+            app:layout_constraintBottom_toBottomOf="@id/tvLogout"
+            app:layout_constraintStart_toEndOf="@id/tvLogout"
+            app:layout_constraintTop_toTopOf="@id/tvLogout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
