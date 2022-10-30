@@ -6,12 +6,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.BindingFragment
-import com.wyb.wyb_android.databinding.FragmentSettingWebViewBinding
+import com.wyb.wyb_android.databinding.FragmentSettingTermsBinding
 
-class SettingWebViewFragment : BindingFragment<FragmentSettingWebViewBinding>(
-    R.layout.fragment_setting_web_view
+class SettingTermsFragment : BindingFragment<FragmentSettingTermsBinding>(
+    R.layout.fragment_setting_terms
 ) {
-    private val args: SettingWebViewFragmentArgs by navArgs()
+    private val args: SettingTermsFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

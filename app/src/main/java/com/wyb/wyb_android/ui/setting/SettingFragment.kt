@@ -31,13 +31,13 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(
             startActivity(intent)
         }
         binding.layoutPrivacy.layoutSettingMenuItem.setOnClickListener {
-            val directions = SettingFragmentDirections.actionSettingToSettingWebView(
+            val directions = SettingFragmentDirections.actionSettingToSettingTerms(
                 TermsType.PRIVACY_POLICY
             )
             findNavController().navigate(directions)
         }
         binding.layoutServiceTerm.layoutSettingMenuItem.setOnClickListener {
-            val directions = SettingFragmentDirections.actionSettingToSettingWebView(
+            val directions = SettingFragmentDirections.actionSettingToSettingTerms(
                 TermsType.SERVICE_TERMS
             )
             findNavController().navigate(directions)
