@@ -5,10 +5,10 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.BindingFragment
-import com.wyb.wyb_android.databinding.FragmentSettingBinding
+import com.wyb.wyb_android.databinding.FragmentSettingProfileExposureBinding
 
-class SettingFragment : BindingFragment<FragmentSettingBinding>(
-    R.layout.fragment_setting
+class SettingProfileExposureFragment : BindingFragment<FragmentSettingProfileExposureBinding>(
+    R.layout.fragment_setting_profile_exposure
 ) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -16,11 +16,8 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(
     }
 
     private fun addListener() {
-        binding.btnClose.setOnClickListener {
+        binding.layoutTitle.btnBack.setOnClickListener {
             findNavController().popBackStack()
-        }
-        binding.layoutProfile.setOnClickListener {
-            findNavController().navigate(R.id.actionSettingToSettingProfile)
         }
     }
 }

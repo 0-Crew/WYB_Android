@@ -9,6 +9,36 @@
         android:id="@+id/settingFragment"
         android:name="com.wyb.wyb_android.ui.setting.SettingFragment"
         android:label="SettingFragment"
-        tools:layout="@layout/fragment_setting" />
+        tools:layout="@layout/fragment_setting">
 
+        <action
+            android:id="@+id/actionSettingToSettingProfile"
+            app:destination="@id/settingProfileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingProfileFragment"
+        android:name="com.wyb.wyb_android.ui.setting.SettingProfileFragment"
+        android:label="SettingProfileFragment"
+        tools:layout="@layout/fragment_setting_profile">
+
+        <action
+            android:id="@+id/actionSettingProfileToSettingProfileManagement"
+            app:destination="@id/settingProfileManagementFragment" />
+        <action
+            android:id="@+id/actionSettingProfileToSettingProfileExposure"
+            app:destination="@id/settingProfileExposureFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingProfileExposureFragment"
+        android:name="com.wyb.wyb_android.ui.setting.SettingProfileExposureFragment"
+        android:label="SettingProfileExposureFragment"
+        tools:layout="@layout/fragment_setting_profile_exposure" />
+
+    <fragment
+        android:id="@+id/settingProfileManagementFragment"
+        android:name="com.wyb.wyb_android.ui.setting.SettingProfileManagementFragment"
+        android:label="SettingProfileManagementFragment"
+        tools:layout="@layout/fragment_setting_profile_management" />
 </navigation>
