@@ -1,5 +1,7 @@
 package com.wyb.wyb_android.ui.setting
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
@@ -21,6 +23,11 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(
         }
         binding.layoutProfile.setOnClickListener {
             findNavController().navigate(R.id.actionSettingToSettingProfile)
+        }
+        binding.layoutInquiry.layoutSettingMenuItem.setOnClickListener {
+            val uri = getString(R.string.wyb_instagram)
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+            startActivity(intent)
         }
     }
 }
