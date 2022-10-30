@@ -31,16 +31,15 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(
             startActivity(intent)
         }
         binding.layoutPrivacy.layoutSettingMenuItem.setOnClickListener {
-            val directions = SettingFragmentDirections.actionSettingToSettingTerms(
-                TermsType.PRIVACY_POLICY
-            )
-            findNavController().navigate(directions)
+            setNavigateSettingTermsFragment(TermsType.PRIVACY_POLICY)
         }
         binding.layoutServiceTerm.layoutSettingMenuItem.setOnClickListener {
-            val directions = SettingFragmentDirections.actionSettingToSettingTerms(
-                TermsType.SERVICE_TERMS
-            )
-            findNavController().navigate(directions)
+            setNavigateSettingTermsFragment(TermsType.SERVICE_TERMS)
         }
+    }
+
+    private fun setNavigateSettingTermsFragment(type: TermsType) {
+        val directions = SettingFragmentDirections.actionSettingToSettingTerms(type)
+        findNavController().navigate(directions)
     }
 }
