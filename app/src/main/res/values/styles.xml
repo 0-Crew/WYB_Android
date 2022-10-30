@@ -256,4 +256,18 @@
     <style name="Widget.WYB.BottomSheet.Calendar.BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/shape_dark_gray2_top_radius_20</item>
     </style>
+
+    <style name="Widget.WYB.Switch" parent="Widget.AppCompat.CompoundButton.Switch">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:textOff">""</item>
+        <item name="android:textOn">""</item>
+        <item name="android:thumb">@drawable/selector_switch_thumb</item>
+        <item name="android:thumbTextPadding">13dp</item>
+        <item name="switchMinWidth">51dp</item>
+        <item name="android:switchMinWidth">51dp</item>
+        <item name="track">@drawable/selector_switch_track</item>
+    </style>
 </resources>
