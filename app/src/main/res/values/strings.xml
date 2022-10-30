@@ -4,8 +4,8 @@
 
     <!--URL-->
     <string name="wyb_instagram">https://www.instagram.com/washyourbottle</string>
-    <string name="wyb_privacy_policy">https://www.notion.so/da60b412544b4 05aaeb8d4fefa46c5cb</string>
-    <string name="wyb_service_terms">https://www.notion.so/239ddeb527df4 83a89cdd2d8fe40fff3</string>
+    <string name="wyb_privacy_policy">https://blog.naver.com/heey1792/222580263334</string>
+    <string name="wyb_service_terms">https://blog.naver.com/heey1792/222574483982</string>
 
     <!-- BindingFragment -->
     <string name="binding_error">Binding not initialized to reference the view.</string>
