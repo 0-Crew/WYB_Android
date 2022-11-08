@@ -68,4 +68,10 @@
     <string name="calendar_challenge_type_end">종료된 챌린지</string>
     <string name="calendar_my_challenge_new">새로운 챌린지 참여하기</string>
     <string name="calendar_other_challenge_new">새로운 챌린지를 기다리는 중</string>
+
+    <!-- NotificationFragment -->
+    <string name="notification_title">알림</string>
+    <string name="notification_policy_guide">알림은 7일 동안 보관됩니다</string>
+    <string name="notification_btn_cheer">응원하기</string>
+    <string name="notification_btn_celeb">축하하기</string>
 </resources>

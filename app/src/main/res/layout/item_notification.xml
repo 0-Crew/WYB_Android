@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.wyb.wyb_android.data.model.Notification" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="12dp">
+
+        <FrameLayout
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/shape_light_gray1_oval">
+
+            <TextView
+                android:id="@+id/tvInitial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
+                android:textColor="@color/gray_2"
+                tools:text="가" />
+
+            <ImageView
+                android:id="@+id/imgIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:tint="@color/gray_2"
+                tools:ignore="contentDescription"
+                tools:src="@drawable/ic_alarm_cheer"
+                tools:visibility="gone" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="3dp"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
+                android:textColor="@color/gray_4"
+                tools:text="가니님이 나의 보틀을 팔로우합니다." />
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Medium.12"
+                android:textColor="@color/gray_2"
+                tools:text="방금 전" />
+
+        </LinearLayout>
+
+        <com.wyb.wyb_android.widget.WYBCompactTextButton
+            android:id="@+id/btnEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            app:backgroundRes="orange"
+            app:setTitleStyle="bold12"
+            tools:titleText="@string/notification_btn_cheer" />
+
+    </LinearLayout>
+
+</layout>
