@@ -4,8 +4,6 @@
 
     <!--URL-->
     <string name="wyb_instagram">https://www.instagram.com/washyourbottle</string>
-    <string name="wyb_privacy_policy">https://blog.naver.com/heey1792/222580263334</string>
-    <string name="wyb_service_terms">https://blog.naver.com/heey1792/222574483982</string>
 
     <!-- BindingFragment -->
     <string name="binding_error">Binding not initialized to reference the view.</string>
