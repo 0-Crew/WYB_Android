@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">WYB_Android</string>
+    <string name="app_version">버전 1.0.0</string>
+
+    <!--URL-->
+    <string name="wyb_instagram">https://www.instagram.com/washyourbottle</string>
 
     <!-- BindingFragment -->
     <string name="binding_error">Binding not initialized to reference the view.</string>
@@ -12,6 +16,7 @@
     <string name="discomfort">불편함</string>
     <string name="date_format">%s.%s - %s</string>
     <string name="date_format_long">%s.%s - %s.%s</string>
+    <string name="nickname">닉네임</string>
 
     <!-- Dialog -->
 
@@ -55,7 +60,7 @@
     <string name="challenge_open_discomfort_title">대신 일주일 동안\n7번 참아볼 수 있는\n불편함은 무엇인가요?</string>
     <string name="challenge_open_discomfort_hint">참을 수 있는 불편함을 적어주세요</string>
     <string name="challenge_open_discomfort_guide">챌린지 기간 동안 언제든 변경할 수 있어요!</string>
-    
+
     <!-- ChallengeOpenStartDateFragment -->
     <string name="challenge_open_start_date_nav_title">보틀 씻기 완료!</string>
     <string name="challenge_open_start_date_title">오늘부터 시작할까요,\n내일부터 시작할까요?</string>
@@ -68,4 +73,19 @@
     <string name="calendar_challenge_type_end">종료된 챌린지</string>
     <string name="calendar_my_challenge_new">새로운 챌린지 참여하기</string>
     <string name="calendar_other_challenge_new">새로운 챌린지를 기다리는 중</string>
+
+    <!-- SettingFragment-->
+    <string name="setting_inquiry">문의하기</string>
+    <string name="setting_service_terms">이용약관</string>
+    <string name="setting_privacy_policy">개인정보정책</string>
+    <string name="setting_open_source">오픈소스</string>
+    <string name="setting_profile">계정 설정</string>
+    <string name="setting_profile_exposure">계정 공개 범위</string>
+    <string name="setting_profile_management">계정 관리</string>
+    <string name="setting_profile_exposure_title">내 계정 공개하기</string>
+    <string name="setting_profile_exposure_sub_title">둘러보기에서 내 보틀을 다른 사용자에게 보여줍니다</string>
+    <string name="setting_nickname_hint">닉네임을 입력해 주세요</string>
+    <string name="nickname_alert_message">이미 사용 중이에요! 다른 닉네임을 적어주세요</string>
+    <string name="setting_logout">로그아웃</string>
+    <string name="setting_withdraw">탈퇴하기</string>
 </resources>
