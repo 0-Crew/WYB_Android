@@ -63,15 +63,15 @@ class WYBLabelEditText @JvmOverloads constructor(
         }
 
     var showIcon: Boolean
-        get() = binding.ivIcon.isVisible
+        get() = binding.cbIcon.isVisible
         set(value) {
-            binding.ivIcon.isVisible = value
+            binding.cbIcon.isVisible = value
         }
 
     var iconType: Drawable?
-        get() = binding.ivIcon.drawable
+        get() = binding.cbIcon.background
         set(value) {
-            binding.ivIcon.setImageDrawable(value)
+            binding.cbIcon.background = value
         }
 
     private fun initializeAttrs(context: Context, attrs: AttributeSet?) {
@@ -80,10 +80,7 @@ class WYBLabelEditText @JvmOverloads constructor(
             labelText = it.getString(R.styleable.WYBLabelEditText_labelText)
             hint = it.getString(R.styleable.WYBLabelEditText_hint)
             showIcon = it.getBoolean(R.styleable.WYBLabelEditText_showIcon, false)
-            iconType = when (it.getInt(R.styleable.WYBLabelEditText_iconType, TYPE_CHECK)) {
-                TYPE_EDIT -> ResourcesCompat.getDrawable(resources, R.drawable.ic_edit, null)
-                else -> ResourcesCompat.getDrawable(resources, R.drawable.ic_check_20, null)
-            }
+            setIconType(it.getInt(R.styleable.WYBLabelEditText_iconType, TYPE_CHECK))
             setBackgroundStroke(it.getInt(R.styleable.WYBLabelEditText_backgroundStroke, COLOR_ORANGE))
             it.recycle()
         }
@@ -122,6 +119,13 @@ class WYBLabelEditText @JvmOverloads constructor(
         backgroundStroke = when (color) {
             COLOR_GRAY -> ResourcesCompat.getDrawable(resources, R.drawable.shape_gray2_stroke, null)
             else -> ResourcesCompat.getDrawable(resources, R.drawable.shape_orange_stroke, null)
+        }
+    }
+
+    fun setIconType(type: Int) {
+        iconType = when (type) {
+            TYPE_EDIT -> ResourcesCompat.getDrawable(resources, R.drawable.ic_edit, null)
+            else -> ResourcesCompat.getDrawable(resources, R.drawable.ic_check_20, null)
         }
     }
 

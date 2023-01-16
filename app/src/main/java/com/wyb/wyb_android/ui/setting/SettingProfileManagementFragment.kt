@@ -28,7 +28,7 @@ class SettingProfileManagementFragment :
         binding.layoutTitle.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
-        binding.etNickname.ivIcon.setOnClickListener {
+        binding.etNickname.cbIcon.setOnClickListener {
             navigateToHomeFragment()
         }
         binding.etNickname.etInput.setOnEditorActionListener(
@@ -54,7 +54,7 @@ class SettingProfileManagementFragment :
     }
 
     private fun navigateToHomeFragment() {
-        if(!binding.etNickname.ivIcon.isChecked) {
+        if(!binding.etNickname.cbIcon.isChecked) {
             findNavController().navigate(R.id.actionSettingProfileManagementToHome)
         }
     }
