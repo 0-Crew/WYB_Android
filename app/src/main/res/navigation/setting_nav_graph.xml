@@ -43,7 +43,14 @@
         android:id="@+id/settingProfileManagementFragment"
         android:name="com.wyb.wyb_android.ui.setting.SettingProfileManagementFragment"
         android:label="SettingProfileManagementFragment"
-        tools:layout="@layout/fragment_setting_profile_management" />
+        tools:layout="@layout/fragment_setting_profile_management" >
+
+        <action
+            android:id="@+id/actionSettingProfileManagementToHome"
+            app:destination="@id/HomeFragment"
+            app:popUpTo="@id/settingFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
     <fragment
         android:id="@+id/settingTermsFragment"
