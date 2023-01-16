@@ -44,6 +44,7 @@ class SettingProfileManagementFragment :
 
     private fun initView() {
         with(binding.etNickname) {
+            setTextInputFilter()
             setTextMaxLength(MAX_NICKNAME_LENGTH)
             etInput.setImeActionLabel(
                 getString(R.string.complete),
