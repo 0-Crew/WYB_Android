@@ -171,6 +171,21 @@ class WYBLabelEditText @JvmOverloads constructor(
         hideKeyboard(activity, binding.etInput)
     }
 
+    fun setCheckBoxMode(activity: Activity?) {
+        binding.cbIcon.setOnCheckedChangeListener { _, isChecked ->
+            when (isChecked) {
+                true -> {
+                    setIconType(TYPE_CHECK)
+                    setEditTextFocusable()
+                }
+                else ->  {
+                    setIconType(TYPE_EDIT)
+                    setEditTextNotFocusable(activity)
+                }
+            }
+        }
+    }
+
     companion object {
         private const val COLOR_GRAY = 0
         private const val COLOR_ORANGE = 1

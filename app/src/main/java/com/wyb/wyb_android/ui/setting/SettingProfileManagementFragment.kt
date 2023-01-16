@@ -44,6 +44,8 @@ class SettingProfileManagementFragment :
 
     private fun initView() {
         with(binding.etNickname) {
+            setEditTextNotFocusable(activity)
+            setCheckBoxMode(activity)
             setTextInputFilter()
             setTextMaxLength(MAX_NICKNAME_LENGTH)
             etInput.setImeActionLabel(
