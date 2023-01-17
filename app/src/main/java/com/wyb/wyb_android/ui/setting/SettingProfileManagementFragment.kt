@@ -36,7 +36,9 @@ class SettingProfileManagementFragment :
             }.show(childFragmentManager, "WITHDRAWAL_DIALOG")
         }
         binding.etNickname.cbIcon.setOnClickListener {
-            navigateToHomeFragment()
+            if (!binding.etNickname.cbIcon.isChecked) {
+                navigateToHomeFragment()
+            }
         }
         binding.etNickname.etInput.setOnEditorActionListener(
             OnEditorActionListener { _, actionId, _ ->
@@ -63,8 +65,6 @@ class SettingProfileManagementFragment :
     }
 
     private fun navigateToHomeFragment() {
-        if (!binding.etNickname.cbIcon.isChecked) {
-            findNavController().navigate(R.id.actionSettingProfileManagementToHome)
-        }
+        findNavController().navigate(R.id.actionSettingProfileManagementToHome)
     }
 }
