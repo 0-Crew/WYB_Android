@@ -10,6 +10,8 @@ import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.databinding.FragmentSettingProfileManagementBinding
 import com.wyb.wyb_android.ui.setting.SettingViewModel.Companion.MAX_NICKNAME_LENGTH
+import com.wyb.wyb_android.ui.setting.dialog.TwoButtonDialog
+import com.wyb.wyb_android.ui.setting.dialog.TwoButtonDialog.Companion.WITHDRAWAL
 import kotlinx.android.synthetic.main.view_wyb_label_edit_text.view.*
 
 class SettingProfileManagementFragment :
@@ -27,6 +29,11 @@ class SettingProfileManagementFragment :
     private fun addListener() {
         binding.layoutTitle.btnBack.setOnClickListener {
             findNavController().popBackStack()
+        }
+        binding.tvWithdraw.setOnClickListener {
+            TwoButtonDialog(WITHDRAWAL) {
+                // 탈퇴 처리
+            }.show(childFragmentManager, "WITHDRAWAL_DIALOG")
         }
         binding.etNickname.cbIcon.setOnClickListener {
             navigateToHomeFragment()
@@ -56,7 +63,7 @@ class SettingProfileManagementFragment :
     }
 
     private fun navigateToHomeFragment() {
-        if(!binding.etNickname.cbIcon.isChecked) {
+        if (!binding.etNickname.cbIcon.isChecked) {
             findNavController().navigate(R.id.actionSettingProfileManagementToHome)
         }
     }

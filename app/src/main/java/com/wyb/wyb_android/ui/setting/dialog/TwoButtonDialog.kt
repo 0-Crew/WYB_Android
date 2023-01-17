@@ -10,6 +10,7 @@ import com.wyb.wyb_android.databinding.DialogTwoButtonBinding
 
 class TwoButtonDialog(
     private val dialogMode: Int,
+    private val doAfterConfirm: () -> Unit
 ) : DialogFragment() {
     private lateinit var binding: DialogTwoButtonBinding
 
@@ -20,6 +21,7 @@ class TwoButtonDialog(
     ): View {
         binding = DialogTwoButtonBinding.inflate(layoutInflater, container, false)
         initView()
+        addListener()
         return binding.root
     }
 
@@ -52,6 +54,17 @@ class TwoButtonDialog(
     private fun setText(title: String, titleSub: String) {
         binding.tvTitle.text = title
         binding.tvTitleSub.text = titleSub
+    }
+
+    private fun addListener() {
+        binding.tvConfirm.setOnClickListener {
+            doAfterConfirm()
+            dismiss()
+        }
+
+        binding.tvCancel.setOnClickListener {
+            dismiss()
+        }
     }
 
     companion object {
