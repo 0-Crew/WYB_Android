@@ -1,4 +1,4 @@
-package com.wyb.wyb_android.ui.setting.dialog
+package com.wyb.wyb_android.widget.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater

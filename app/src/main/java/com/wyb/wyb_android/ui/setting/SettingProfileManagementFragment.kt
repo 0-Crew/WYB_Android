@@ -10,8 +10,8 @@ import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.databinding.FragmentSettingProfileManagementBinding
 import com.wyb.wyb_android.ui.setting.SettingViewModel.Companion.MAX_NICKNAME_LENGTH
-import com.wyb.wyb_android.ui.setting.dialog.TwoButtonDialog
-import com.wyb.wyb_android.ui.setting.dialog.TwoButtonDialog.Companion.WITHDRAWAL
+import com.wyb.wyb_android.widget.dialog.TwoButtonDialog
+import com.wyb.wyb_android.widget.dialog.TwoButtonDialog.Companion.WITHDRAWAL
 import kotlinx.android.synthetic.main.view_wyb_label_edit_text.view.*
 
 class SettingProfileManagementFragment :
