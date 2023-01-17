@@ -97,7 +97,7 @@ class WYBLabelEditText @JvmOverloads constructor(
     }
 
     fun setTextInputFilter() {
-        val pattern = "^[_.a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ\\u318D\\u119E\\u11A2\\u2022\\u2025\\u00B7\\uFE55\\u3161\\u3163]*$"
+        val pattern = "^[_a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ\\u318D\\u119E\\u11A2\\u2022\\u2025\\u00B7\\uFE55\\u3161\\u3163]*$"
         val inputFilter = InputFilter { source, _, _, _, _, _ ->
             if (!source.matches(Regex(pattern))) return@InputFilter ""
             null
