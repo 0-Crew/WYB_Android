@@ -122,7 +122,7 @@ class WYBLabelEditText @JvmOverloads constructor(
         }
     }
 
-    fun setIconType(type: Int) {
+    private fun setIconType(type: Int) {
         iconType = when (type) {
             TYPE_EDIT -> ResourcesCompat.getDrawable(resources, R.drawable.ic_edit, null)
             else -> ResourcesCompat.getDrawable(resources, R.drawable.ic_check_20, null)
