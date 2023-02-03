@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout"
     android:layout_width="match_parent"
@@ -44,12 +43,14 @@
             android:textColorHint="@color/gray_2"
             tools:hint="@string/challenge_open_comfort_hint" />
 
-        <ImageView
-            android:id="@+id/ivIcon"
+        <CheckBox
+            android:id="@+id/cbIcon"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            app:tint="@color/orange"
-            tools:src="@drawable/ic_edit" />
+            android:backgroundTint="@color/orange"
+            android:button="@android:color/transparent"
+            android:checked="false"
+            tools:background="@drawable/ic_edit" />
 
     </LinearLayout>
 

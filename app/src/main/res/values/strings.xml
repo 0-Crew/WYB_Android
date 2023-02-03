@@ -19,6 +19,10 @@
     <string name="nickname">닉네임</string>
 
     <!-- Dialog -->
+    <string name="confirm">확인</string>
+    <string name="cancel">취소</string>
+    <string name="withdraw_title">계정을 정말 삭제하시겠습니까?</string>
+    <string name="withdraw_title_sub">모든 정보가 완전히 삭제됩니다</string>
 
     <!-- WYBChallengeEditText -->
     <string name="challenge_et_hint">참을 수 있는 불편함을 적어주세요</string>
@@ -86,6 +90,7 @@
     <string name="setting_profile_exposure_sub_title">둘러보기에서 내 보틀을 다른 사용자에게 보여줍니다</string>
     <string name="setting_nickname_hint">닉네임을 입력해 주세요</string>
     <string name="nickname_alert_message">이미 사용 중이에요! 다른 닉네임을 적어주세요</string>
+    <string name="nickname_max_length_message">6자까지만 입력할 수 있어요!</string>
     <string name="setting_logout">로그아웃</string>
     <string name="setting_withdraw">탈퇴하기</string>
 </resources>

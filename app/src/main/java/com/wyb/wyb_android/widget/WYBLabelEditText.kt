@@ -63,15 +63,15 @@ class WYBLabelEditText @JvmOverloads constructor(
         }
 
     var showIcon: Boolean
-        get() = binding.ivIcon.isVisible
+        get() = binding.cbIcon.isVisible
         set(value) {
-            binding.ivIcon.isVisible = value
+            binding.cbIcon.isVisible = value
         }
 
     var iconType: Drawable?
-        get() = binding.ivIcon.drawable
+        get() = binding.cbIcon.background
         set(value) {
-            binding.ivIcon.setImageDrawable(value)
+            binding.cbIcon.background = value
         }
 
     private fun initializeAttrs(context: Context, attrs: AttributeSet?) {
@@ -80,10 +80,7 @@ class WYBLabelEditText @JvmOverloads constructor(
             labelText = it.getString(R.styleable.WYBLabelEditText_labelText)
             hint = it.getString(R.styleable.WYBLabelEditText_hint)
             showIcon = it.getBoolean(R.styleable.WYBLabelEditText_showIcon, false)
-            iconType = when (it.getInt(R.styleable.WYBLabelEditText_iconType, TYPE_CHECK)) {
-                TYPE_EDIT -> ResourcesCompat.getDrawable(resources, R.drawable.ic_edit, null)
-                else -> ResourcesCompat.getDrawable(resources, R.drawable.ic_check_20, null)
-            }
+            setIconType(it.getInt(R.styleable.WYBLabelEditText_iconType, TYPE_CHECK))
             setBackgroundStroke(it.getInt(R.styleable.WYBLabelEditText_backgroundStroke, COLOR_ORANGE))
             it.recycle()
         }
@@ -100,7 +97,7 @@ class WYBLabelEditText @JvmOverloads constructor(
     }
 
     fun setTextInputFilter() {
-        val pattern = "^[_.a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ\\u318D\\u119E\\u11A2\\u2022\\u2025a\\u00B7\\uFE55]*$"
+        val pattern = "^[_a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ\\u318D\\u119E\\u11A2\\u2022\\u2025\\u00B7\\uFE55\\u3161\\u3163]*$"
         val inputFilter = InputFilter { source, _, _, _, _, _ ->
             if (!source.matches(Regex(pattern))) return@InputFilter ""
             null
@@ -122,6 +119,13 @@ class WYBLabelEditText @JvmOverloads constructor(
         backgroundStroke = when (color) {
             COLOR_GRAY -> ResourcesCompat.getDrawable(resources, R.drawable.shape_gray2_stroke, null)
             else -> ResourcesCompat.getDrawable(resources, R.drawable.shape_orange_stroke, null)
+        }
+    }
+
+    private fun setIconType(type: Int) {
+        iconType = when (type) {
+            TYPE_EDIT -> ResourcesCompat.getDrawable(resources, R.drawable.ic_edit, null)
+            else -> ResourcesCompat.getDrawable(resources, R.drawable.ic_check_20, null)
         }
     }
 
@@ -165,6 +169,21 @@ class WYBLabelEditText @JvmOverloads constructor(
         binding.etInput.isFocusable = false
         binding.etInput.isFocusableInTouchMode = false
         hideKeyboard(activity, binding.etInput)
+    }
+
+    fun setCheckBoxMode(activity: Activity?) {
+        binding.cbIcon.setOnCheckedChangeListener { _, isChecked ->
+            when (isChecked) {
+                true -> {
+                    setIconType(TYPE_CHECK)
+                    setEditTextFocusable()
+                }
+                else ->  {
+                    setIconType(TYPE_EDIT)
+                    setEditTextNotFocusable(activity)
+                }
+            }
+        }
     }
 
     companion object {
