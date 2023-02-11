@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/layoutBottle"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/shape_surface_stroke_oval"
+            app:layout_constraintBottom_toBottomOf="@id/layoutText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/layoutText" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/layoutBottle"
+            app:layout_constraintEnd_toEndOf="@id/layoutBottle"
+            app:layout_constraintStart_toStartOf="@id/layoutBottle"
+            app:layout_constraintTop_toTopOf="@id/layoutBottle"
+            tools:ignore="contentDescription"
+            tools:src="@drawable/ic_bottle_world_6" />
+
+        <LinearLayout
+            android:id="@+id/layoutText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/viewDivider"
+            app:layout_constraintEnd_toStartOf="@id/btnFollow"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/layoutBottle"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/layoutNickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/layoutBottle"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.WYBComponents.Bold.13"
+                    android:textColor="@color/dark_gray_1"
+                    tools:text="횽아횽아횽아" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bottle_world_name"
+                    android:textAppearance="@style/TextAppearance.WYBComponents.Medium.13"
+                    android:textColor="@color/dark_gray_1" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvChallengeEmpty"
+                isVisibleOrGone=""
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/challenge_open_comfort_nav_title"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Bold.13"
+                android:textColor="@color/gray_2"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                isVisibleOrGone=""
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Medium.12"
+                android:textColor="@color/gray_4"
+                tools:text="11.1 - 5" />
+
+            <TextView
+                android:id="@+id/tvChallenge"
+                isVisibleOrGone=""
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="40dp"
+                android:layout_weight="1"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Bold.13"
+                android:textColor="@color/orange"
+                tools:text="플라스틱 빨대 사용 안하기 안틱 빨대 사용 안하기 안하기" />
+        </LinearLayout>
+
+        <com.wyb.wyb_android.widget.WYBCompactTextButton
+            android:id="@+id/btnFollow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            app:backgroundRes="orange"
+            app:layout_constraintBottom_toBottomOf="@id/layoutText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/layoutText"
+            app:setTitleStyle="bold12"
+            app:showComfortTv="false"
+            app:showStartIcon="false"
+            app:titleText="@string/bottle_world_following" />
+
+        <View
+            android:id="@+id/viewDivider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/light_gray_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
