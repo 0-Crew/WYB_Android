@@ -14,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="12dp">
+        android:layout_marginVertical="12dp"
+        app:notiVisibleDate="@{data.createdAt}">
 
         <FrameLayout
             android:layout_width="36dp"
@@ -28,6 +29,8 @@
                 android:layout_gravity="center"
                 android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
                 android:textColor="@color/gray_2"
+                app:initialName="@{data.sentUser.name}"
+                app:textNotiType="@{data.notificationName}"
                 tools:text="가" />
 
             <ImageView
@@ -35,6 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                app:imgNotiType="@{data.notificationName}"
                 app:tint="@color/gray_2"
                 tools:ignore="contentDescription"
                 tools:src="@drawable/ic_alarm_cheer"
@@ -56,6 +60,8 @@
                 android:lineSpacingExtra="3dp"
                 android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
                 android:textColor="@color/gray_4"
+                app:notiContent="@{data.content}"
+                app:sentUser="@{data.sentUser.name}"
                 tools:text="가니님이 나의 보틀을 팔로우합니다." />
 
             <TextView
@@ -65,6 +71,7 @@
                 android:layout_marginTop="4dp"
                 android:textAppearance="@style/TextAppearance.WYBComponents.Medium.12"
                 android:textColor="@color/gray_2"
+                app:notiCreatedDate="@{data.createdAt}"
                 tools:text="방금 전" />
 
         </LinearLayout>
@@ -75,6 +82,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             app:backgroundRes="orange"
+            app:notiBtnType="@{data.notificationName}"
+            app:notiBtnVisibility="@{data.isButtonEnabled}"
             app:setTitleStyle="bold12"
             tools:titleText="@string/notification_btn_cheer" />
 
