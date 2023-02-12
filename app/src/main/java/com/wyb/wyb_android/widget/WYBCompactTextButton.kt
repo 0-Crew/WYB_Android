@@ -141,6 +141,10 @@ class WYBCompactTextButton @JvmOverloads constructor(
         binding.tvTitle.setTextColor(resources.getColor(colorRes, null))
     }
 
+    fun setTvTitle(text: String) {
+        binding.tvTitle.text = text
+    }
+
     companion object {
         private const val COLOR_ORANGE = 0
         private const val COLOR_WHITE = 1
