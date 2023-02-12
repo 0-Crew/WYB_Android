@@ -27,5 +27,6 @@ class NotificationFragment :
         notificationAdapter = NotificationAdapter()
         binding.rvNotification.adapter = notificationAdapter
         binding.rvNotification.layoutManager = LinearLayoutManager(requireContext())
+        notificationAdapter.submitList(viewModel.notificationItems)
     }
 }
