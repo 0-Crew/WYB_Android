@@ -74,4 +74,6 @@
     <string name="notification_policy_guide">알림은 7일 동안 보관됩니다</string>
     <string name="notification_btn_cheer">응원하기</string>
     <string name="notification_btn_celeb">축하하기</string>
+    <string name="notification_none_title">오늘은 알림이 없습니다</string>
+    <string name="notification_none_content">새로운 소식이 생기면 알려드릴게요!</string>
 </resources>

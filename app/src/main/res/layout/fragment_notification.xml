@@ -6,6 +6,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.wyb.wyb_android.ui.notification.NotificationViewModel" />
@@ -53,6 +55,7 @@
             android:layout_marginBottom="14dp"
             android:clipToPadding="false"
             android:overScrollMode="never"
+            android:visibility="@{viewModel.notificationItems.size() != 0 ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toTopOf="@id/tvGuide"
             app:layout_constraintTop_toBottomOf="@id/layoutNavBar"
             tools:listitem="@layout/item_notification" />
@@ -66,7 +69,45 @@
             android:text="@string/notification_policy_guide"
             android:textAppearance="@style/TextAppearance.WYBComponents.Medium.13"
             android:textColor="@color/gray_2"
+            android:visibility="@{viewModel.notificationItems.size() != 0 ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/layoutNone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="@{viewModel.notificationItems.size() == 0 ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgNone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_alarm_none"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/notification_none_title"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Bold.16"
+                android:textColor="@color/gray_4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/notification_none_content"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
+                android:textColor="@color/gray_4" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
