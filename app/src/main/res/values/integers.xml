@@ -12,5 +12,8 @@
     <integer name="wyb_challenge_edit_text_bg_stroke_orange">0</integer>
     <integer name="wyb_challenge_edit_text_bg_stroke_gray">1</integer>
 
+    <integer name="wyb_compact_text_btn_bg_orange">0</integer>
+    <integer name="wyb_compact_text_btn_bg_orange_stroke">2</integer>
+
     <integer name="wyb_navigation_animation_duration">300</integer>
 </resources>

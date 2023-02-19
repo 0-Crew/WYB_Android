@@ -69,7 +69,7 @@ class WYBCompactTextButton @JvmOverloads constructor(
     private fun initializeAttrs(context: Context, attrs: AttributeSet?) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.WYBCompactTextButton)
         typedArray.let {
-            titleText = it.getString(R.styleable.WYBCompactTextButton_titleText)
+            setBtnTitleText(it.getString(R.styleable.WYBCompactTextButton_titleText))
             comfortText = it.getString(R.styleable.WYBCompactTextButton_comfortText)
             showComfortTv = it.getBoolean(R.styleable.WYBCompactTextButton_showComfortTv, false)
             showIcon = it.getBoolean(R.styleable.WYBCompactTextButton_showStartIcon, false)
@@ -78,45 +78,7 @@ class WYBCompactTextButton @JvmOverloads constructor(
                     ICON_CALENDER -> setDrawableRes(R.drawable.ic_calendar)
                     else -> setDrawableRes(R.drawable.ic_star)
                 }
-
-            setBackgroundColor =
-                when (it.getInt(R.styleable.WYBCompactTextButton_backgroundRes, COLOR_ORANGE)) {
-                    COLOR_WHITE -> {
-                        binding.ivIcon.setColorFilter(
-                            ContextCompat.getColor(
-                                context,
-                                R.color.dark_gray_2
-                            )
-                        )
-                        setColorTvTitle(R.color.dark_gray_2)
-                        setDrawableRes(R.color.white)
-                    }
-                    COLOR_ORANGE_STROKE -> {
-                        setColorTvTitle(R.color.orange)
-                        setDrawableRes(R.drawable.shape_orange_stroke)
-                    }
-                    COLOR_GRAY -> {
-                        binding.ivIcon.setColorFilter(
-                            ContextCompat.getColor(
-                                context,
-                                R.color.white
-                            )
-                        )
-                        setColorTvTitle(R.color.white)
-                        setDrawableRes(R.color.gray_1)
-                    }
-                    else -> {
-                        binding.ivIcon.setColorFilter(
-                            ContextCompat.getColor(
-                                context,
-                                R.color.white
-                            )
-                        )
-                        setColorTvTitle(R.color.white)
-                        setDrawableRes(R.color.orange)
-                    }
-                }
-
+            setBackground(it.getInt(R.styleable.WYBCompactTextButton_backgroundRes, COLOR_ORANGE))
             textStyle =
                 when (it.getInt(R.styleable.WYBCompactTextButton_setTitleStyle, FONT_BOLD_16)) {
                     FONT_MID_14 -> R.style.TextAppearance_WYBComponents_Medium_14
@@ -139,6 +101,50 @@ class WYBCompactTextButton @JvmOverloads constructor(
 
     private fun setColorTvTitle(colorRes: Int) {
         binding.tvTitle.setTextColor(resources.getColor(colorRes, null))
+    }
+
+    fun setBtnTitleText(title: String?) {
+        titleText = title.orEmpty()
+    }
+
+    fun setBackground(colorRes: Int) {
+        setBackgroundColor =
+            when (colorRes) {
+                COLOR_WHITE -> {
+                    binding.ivIcon.setColorFilter(
+                        ContextCompat.getColor(
+                            context,
+                            R.color.dark_gray_2
+                        )
+                    )
+                    setColorTvTitle(R.color.dark_gray_2)
+                    setDrawableRes(R.color.white)
+                }
+                COLOR_ORANGE_STROKE -> {
+                    setColorTvTitle(R.color.orange)
+                    setDrawableRes(R.drawable.shape_orange_stroke)
+                }
+                COLOR_GRAY -> {
+                    binding.ivIcon.setColorFilter(
+                        ContextCompat.getColor(
+                            context,
+                            R.color.white
+                        )
+                    )
+                    setColorTvTitle(R.color.white)
+                    setDrawableRes(R.color.gray_1)
+                }
+                else -> {
+                    binding.ivIcon.setColorFilter(
+                        ContextCompat.getColor(
+                            context,
+                            R.color.white
+                        )
+                    )
+                    setColorTvTitle(R.color.white)
+                    setDrawableRes(R.color.orange)
+                }
+            }
     }
 
     companion object {
