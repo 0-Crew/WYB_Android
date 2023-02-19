@@ -21,7 +21,7 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
         viewModel.fetchChallengeList()
         initHomeRVAdapter()
         setChallengeList()
-        addDateClickListener()
+        addClickListeners()
     }
 
     private fun initHomeRVAdapter() {
@@ -37,9 +37,13 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
         }
     }
 
-    private fun addDateClickListener() {
+    private fun addClickListeners() {
         binding.tvDate.setOnClickListener {
             findNavController().navigate(R.id.actionChallengeHomeToCalendar)
+        }
+
+        binding.btnAlarm.setOnClickListener {
+            findNavController().navigate(R.id.actionHomeToNotification)
         }
     }
 }
