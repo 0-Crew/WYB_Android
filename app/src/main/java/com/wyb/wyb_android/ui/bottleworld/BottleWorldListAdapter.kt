@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.wyb.wyb_android.data.model.BottleWorld
 import com.wyb.wyb_android.databinding.ItemBottleWorldBinding
+import com.wyb.wyb_android.util.Utils
 
 class BottleWorldListAdapter :
     ListAdapter<BottleWorld, BottleWorldListAdapter.BottleWorldListViewHolder>(BottleWorldDiffUtil()) {
@@ -15,7 +16,16 @@ class BottleWorldListAdapter :
         private val binding: ItemBottleWorldBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: BottleWorld) {
+            binding.data = data
 
+            if (data.challengeData != null) {
+                val startDate = Utils.convertIsoStringToLocalDate(data.challengeData.startedAt)
+                val endDate = startDate?.plusDays(6)
+
+                if (startDate != null && endDate != null) {
+                    binding.tvDate.text = Utils.setDateText(startDate, endDate)
+                }
+            }
         }
     }
 
