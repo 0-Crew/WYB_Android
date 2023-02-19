@@ -74,7 +74,7 @@ object Utils : BaseUtil() {
         return if (startMonth == endMonth) {
             String.format(resources.getString(R.string.date_format), startMonth, startDay, endDay)
         } else {
-            String.format(resources.getString(R.string.date_format_long), startMonth, startDay, endDay)
+            String.format(resources.getString(R.string.date_format_long), startMonth, startDay, endMonth, endDay)
         }
     }
 
@@ -88,7 +88,7 @@ object Utils : BaseUtil() {
         return if (startMonth == endMonth) {
             String.format(resources.getString(R.string.date_format), startMonth, startDay, endDay)
         } else {
-            String.format(resources.getString(R.string.date_format_long), startMonth, startDay, endDay)
+            String.format(resources.getString(R.string.date_format_long), startMonth, startDay, endMonth, endDay)
         }
     }
 }
