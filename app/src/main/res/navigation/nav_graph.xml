@@ -24,7 +24,17 @@
             app:destination="@id/settingNavGraph"
             app:enterAnim="@anim/slide_in_from_right"
             app:popExitAnim="@anim/slide_out_to_right" />
+
+        <action
+            android:id="@+id/actionHomeToBottleWorld"
+            app:destination="@id/BottleWorldFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/BottleWorldFragment"
+        android:name="com.wyb.wyb_android.ui.bottleworld.BottleWorldFragment"
+        android:label="BottleWorldFragment"
+        tools:layout="@layout/fragment_bottle_world" />
 
     <dialog
         android:id="@+id/calendarFragment"
