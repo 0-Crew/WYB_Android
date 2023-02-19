@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
@@ -20,6 +21,7 @@ class NotificationFragment :
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         initRecyclerView()
+        addListener()
         return binding.root
     }
 
@@ -28,5 +30,11 @@ class NotificationFragment :
         binding.rvNotification.adapter = notificationAdapter
         binding.rvNotification.layoutManager = LinearLayoutManager(requireContext())
         notificationAdapter.submitList(viewModel.notificationItems)
+    }
+
+    private fun addListener() {
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 }
