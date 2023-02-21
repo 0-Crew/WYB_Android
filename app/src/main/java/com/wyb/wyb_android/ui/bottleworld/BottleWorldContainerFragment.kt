@@ -24,6 +24,7 @@ class BottleWorldContainerFragment(private val tabMode: Int) :
         viewModel.fetchChallengeList()
         initRVAdapter()
         setListToAdapter()
+        initEmptyViewLayout()
     }
 
     private fun initRVAdapter() {
@@ -50,6 +51,31 @@ class BottleWorldContainerFragment(private val tabMode: Int) :
                 viewModel.followingList.observe(viewLifecycleOwner) { list ->
                     list?.let {
                         with(bottleWorldListAdapter) { submitList(list) }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun initEmptyViewLayout() {
+        when (tabMode) {
+            TAB_BOTTLE_WORLD_FOLLOWER -> {
+                viewModel.followerList.observe(viewLifecycleOwner) { followerList ->
+                    if (viewModel.countFollower.value == 0 && followerList.isNullOrEmpty()) {
+                        binding.tvFollowEmptyView.apply {
+                            text = getString(R.string.bottle_world_empty_follower)
+                            visibility = View.VISIBLE
+                        }
+                    }
+                }
+            }
+            TAB_BOTTLE_WORLD_FOLLOWING -> {
+                viewModel.followingList.observe(viewLifecycleOwner) { followingList ->
+                    if (viewModel.countFollowing.value == 0 && followingList.isNullOrEmpty()) {
+                        binding.tvFollowEmptyView.apply {
+                            text = getString(R.string.bottle_world_empty_following)
+                            visibility = View.VISIBLE
+                        }
                     }
                 }
             }
