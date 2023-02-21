@@ -6,8 +6,11 @@ import androidx.fragment.app.viewModels
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.databinding.FragmentBottleWorldContainerBinding
+import com.wyb.wyb_android.ui.bottleworld.BottleWorldPagerAdapter.Companion.TAB_BOTTLE_WORLD_BROWSE
+import com.wyb.wyb_android.ui.bottleworld.BottleWorldPagerAdapter.Companion.TAB_BOTTLE_WORLD_FOLLOWER
+import com.wyb.wyb_android.ui.bottleworld.BottleWorldPagerAdapter.Companion.TAB_BOTTLE_WORLD_FOLLOWING
 
-class BottleWorldContainerFragment :
+class BottleWorldContainerFragment(private val tabMode: Int) :
     ViewModelFragment<FragmentBottleWorldContainerBinding, BottleWorldViewModel>(
         R.layout.fragment_bottle_world_container
     ) {
@@ -20,17 +23,35 @@ class BottleWorldContainerFragment :
         bottleWorldListAdapter = BottleWorldListAdapter()
         viewModel.fetchChallengeList()
         initRVAdapter()
-        setBrowseList()
+        setListToAdapter()
     }
 
     private fun initRVAdapter() {
         binding.rvBottleWorld.adapter = bottleWorldListAdapter
     }
 
-    private fun setBrowseList() {
-        viewModel.browseList.observe(viewLifecycleOwner) { list ->
-            list?.let {
-                with(bottleWorldListAdapter) { submitList(list) }
+    private fun setListToAdapter() {
+        when (tabMode) {
+            TAB_BOTTLE_WORLD_BROWSE -> {
+                viewModel.browseList.observe(viewLifecycleOwner) { list ->
+                    list?.let {
+                        with(bottleWorldListAdapter) { submitList(list) }
+                    }
+                }
+            }
+            TAB_BOTTLE_WORLD_FOLLOWER -> {
+                viewModel.followerList.observe(viewLifecycleOwner) { list ->
+                    list?.let {
+                        with(bottleWorldListAdapter) { submitList(list) }
+                    }
+                }
+            }
+            TAB_BOTTLE_WORLD_FOLLOWING -> {
+                viewModel.followingList.observe(viewLifecycleOwner) { list ->
+                    list?.let {
+                        with(bottleWorldListAdapter) { submitList(list) }
+                    }
+                }
             }
         }
     }

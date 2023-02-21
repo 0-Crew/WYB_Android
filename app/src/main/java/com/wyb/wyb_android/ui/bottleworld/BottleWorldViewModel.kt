@@ -9,10 +9,24 @@ import com.wyb.wyb_android.data.model.BottleWorldUser
 
 class BottleWorldViewModel : ViewModel() {
 
+    private val _countFollower = MutableLiveData(2)
+    val countFollower: LiveData<Int> = _countFollower
+
+    private val _countFollowing = MutableLiveData(0)
+    val countFollowing: LiveData<Int> = _countFollowing
+
     private val _browseList = MutableLiveData<List<BottleWorld>>()
     val browseList: LiveData<List<BottleWorld>> = _browseList
 
+    private val _followerList = MutableLiveData<List<BottleWorld>?>()
+    val followerList: LiveData<List<BottleWorld>?> = _followerList
+
+    private val _followingList = MutableLiveData<List<BottleWorld>?>()
+    val followingList: LiveData<List<BottleWorld>?> = _followingList
+
     fun fetchChallengeList() {
+        _followingList.value = listOf()
+        _followerList.value = listOf()
         _browseList.value = listOf(
             BottleWorld(
                 BottleWorldChallenge("0", 1, "텀블러 사용하기텀블러 사용하기", "2022-08-30T13:04:01.369Z", 1),

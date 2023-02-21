@@ -6,9 +6,9 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 class BottleWorldPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
     private val tabFragmentsCreators: Map<Int, () -> Fragment> = mapOf(
-        PAGE_BOTTLE_WORLD_ALL to { BottleWorldContainerFragment() },
-        PAGE_BOTTLE_WORLD_FOLLOWER to { BottleWorldContainerFragment() },
-        PAGE_BOTTLE_WORLD_FOLLOWING to { BottleWorldContainerFragment() }
+        TAB_BOTTLE_WORLD_BROWSE to { BottleWorldContainerFragment(TAB_BOTTLE_WORLD_BROWSE) },
+        TAB_BOTTLE_WORLD_FOLLOWER to { BottleWorldContainerFragment(TAB_BOTTLE_WORLD_FOLLOWER) },
+        TAB_BOTTLE_WORLD_FOLLOWING to { BottleWorldContainerFragment(TAB_BOTTLE_WORLD_FOLLOWING) }
     )
 
     override fun getItemCount(): Int = tabFragmentsCreators.size
@@ -18,8 +18,8 @@ class BottleWorldPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragmen
     }
 
     companion object {
-        private const val PAGE_BOTTLE_WORLD_ALL = 0
-        private const val PAGE_BOTTLE_WORLD_FOLLOWER = 1
-        private const val PAGE_BOTTLE_WORLD_FOLLOWING = 2
+        const val TAB_BOTTLE_WORLD_BROWSE = 0
+        const val TAB_BOTTLE_WORLD_FOLLOWER = 1
+        const val TAB_BOTTLE_WORLD_FOLLOWING = 2
     }
 }

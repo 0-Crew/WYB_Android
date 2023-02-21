@@ -2,16 +2,20 @@ package com.wyb.wyb_android.ui.bottleworld
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayoutMediator
 import com.wyb.wyb_android.R
-import com.wyb.wyb_android.base.BindingFragment
+import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.databinding.FragmentBottleWorldBinding
+import com.wyb.wyb_android.ui.bottleworld.BottleWorldPagerAdapter.Companion.TAB_BOTTLE_WORLD_FOLLOWER
+import com.wyb.wyb_android.ui.bottleworld.BottleWorldPagerAdapter.Companion.TAB_BOTTLE_WORLD_FOLLOWING
 
-class BottleWorldFragment : BindingFragment<FragmentBottleWorldBinding>(
+class BottleWorldFragment : ViewModelFragment<FragmentBottleWorldBinding, BottleWorldViewModel>(
     R.layout.fragment_bottle_world
 ) {
+    override val viewModel: BottleWorldViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,10 +40,10 @@ class BottleWorldFragment : BindingFragment<FragmentBottleWorldBinding>(
         }.attach()
     }
 
-    private fun setTabLayoutText(position: Int) : String {
-        return when(position) {
-            1 -> "0 " + getString(R.string.bottle_world_follower)
-            2 -> "0 " + getString(R.string.bottle_world_following)
+    private fun setTabLayoutText(tabMode: Int): String {
+        return when (tabMode) {
+            TAB_BOTTLE_WORLD_FOLLOWER -> viewModel.countFollower.value.toString() + " " + getString(R.string.bottle_world_follower)
+            TAB_BOTTLE_WORLD_FOLLOWING -> viewModel.countFollowing.value.toString() + " " + getString(R.string.bottle_world_following)
             else -> getString(R.string.bottle_world_all)
         }
     }
