@@ -76,4 +76,6 @@
     <string name="notification_btn_celeb">축하하기</string>
     <string name="notification_none_title">오늘은 알림이 없습니다</string>
     <string name="notification_none_content">새로운 소식이 생기면 알려드릴게요!</string>
+    <string name="notification_challenge_celeb">%s님이\n챌린지 성공을 축하해줬어요!</string>
+    <string name="notification_challenge_cheer">%s님이\n내 챌린지를 응원해요!</string>
 </resources>
