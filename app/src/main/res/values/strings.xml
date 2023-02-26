@@ -78,4 +78,6 @@
     <string name="notification_none_content">새로운 소식이 생기면 알려드릴게요!</string>
     <string name="notification_challenge_celeb">%s님이\n챌린지 성공을 축하해줬어요!</string>
     <string name="notification_challenge_cheer">%s님이\n내 챌린지를 응원해요!</string>
+    <string name="notification_toast_celeb">%s님에게 챌린지 성공 축하를 보냈어요!</string>
+    <string name="notification_toast_cheer">%s님에게 챌린지 응원을 보냈어요!</string>
 </resources>

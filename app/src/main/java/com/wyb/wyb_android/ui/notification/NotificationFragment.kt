@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.databinding.FragmentNotificationBinding
+import com.wyb.wyb_android.widget.WYBToast
 
 class NotificationFragment :
     ViewModelFragment<FragmentNotificationBinding, NotificationViewModel>(R.layout.fragment_notification) {
@@ -75,10 +76,16 @@ class NotificationFragment :
                 val item = viewModel.notificationItems[position]
                 when (item.notificationName) {
                     "cheer" -> {
-                        // custom toast
+                        WYBToast.createToast(
+                            requireContext(),
+                            getString(R.string.notification_toast_cheer, item.sentUser.name)
+                        ).show()
                     }
                     else -> {
-                        // custom toast
+                        WYBToast.createToast(
+                            requireContext(),
+                            getString(R.string.notification_toast_celeb, item.sentUser.name)
+                        ).show()
                     }
                 }
             }
