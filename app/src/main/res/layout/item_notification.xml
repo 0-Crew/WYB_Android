@@ -81,9 +81,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
+            android:visibility="gone"
             app:backgroundRes="orange"
-            app:notiBtnType="@{data.notificationName}"
-            app:notiBtnVisibility="@{data.isButtonEnabled}"
             app:setTitleStyle="bold12"
             tools:titleText="@string/notification_btn_cheer" />
 

@@ -42,17 +42,6 @@ fun setNotiContent(textView: TextView, content: String, user: String) {
     textView.text = spannableStr
 }
 
-@BindingAdapter("notiBtnType", "notiBtnVisibility")
-fun setBtnAttr(button: WYBCompactTextButton, type: String, visibility: Boolean) {
-    button.isVisible = visibility
-    if (!visibility) return
-    if (type == "cheer") {
-        button.setTvTitle(button.context.getString(R.string.notification_btn_cheer))
-    } else {
-        button.setTvTitle(button.context.getString(R.string.notification_btn_celeb))
-    }
-}
-
 @BindingAdapter("notiCreatedDate")
 fun setNotiCreatedDate(textView: TextView, date: String) {
     val diffTime = getDiffTime(date)
