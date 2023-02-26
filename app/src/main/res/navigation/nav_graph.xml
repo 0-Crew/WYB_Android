@@ -11,6 +11,11 @@
         android:label="ChallengeFragment"
         tools:layout="@layout/fragment_home">
 
+        <argument
+            android:name="userId"
+            android:defaultValue="0"
+            app:argType="integer" />
+
         <action
             android:id="@+id/actionHomeToChallengeOpen"
             app:destination="@id/challenge_open_nav_graph" />
@@ -29,7 +34,47 @@
         android:id="@+id/NotificationFragment"
         android:name="com.wyb.wyb_android.ui.notification.NotificationFragment"
         android:label="NotificationFragment"
-        tools:layout="@layout/fragment_notification" />
+        tools:layout="@layout/fragment_notification">
+
+        <action
+            android:id="@+id/actionNotificationToHome"
+            app:destination="@id/HomeFragment" />
+
+        <action
+            android:id="@+id/actionNotificationToCeleb"
+            app:destination="@id/NotificationCelebFragment" />
+
+        <action
+            android:id="@+id/actionNotificationToCheer"
+            app:destination="@id/NotificationCheerFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/NotificationCelebFragment"
+        android:name="com.wyb.wyb_android.ui.notification.NotificationCelebFragment"
+        android:label="NotificationCelebFragment"
+        tools:layout="@layout/fragment_notification_celeb">
+
+        <argument
+            android:name="userName"
+            android:defaultValue=""
+            app:argType="string" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/NotificationCheerFragment"
+        android:name="com.wyb.wyb_android.ui.notification.NotificationCheerFragment"
+        android:label="NotificationCheerFragment"
+        tools:layout="@layout/fragment_notification_cheer">
+
+        <argument
+            android:name="userName"
+            android:defaultValue=""
+            app:argType="string" />
+
+    </fragment>
 
     <dialog
         android:id="@+id/calendarFragment"
