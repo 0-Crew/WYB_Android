@@ -46,5 +46,6 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
         }
         binding.btnAlarm.setOnClickListener {
             findNavController().navigate(R.id.actionHomeToNotification)
+        }
     }
 }
