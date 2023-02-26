@@ -36,5 +36,52 @@ class NotificationFragment :
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
+
+        notificationAdapter.setTextClickListener(object : NotificationAdapter.OnItemClickListener {
+            override fun onItemClick(position: Int) {
+                val item = viewModel.notificationItems[position]
+                when (item.notificationName) {
+                    "cheer" -> {
+                        if (item.isButtonEnabled) {
+                            val action = NotificationFragmentDirections.actionNotificationToHome(item.userId)
+                            findNavController().navigate(action)
+                        } else {
+                            val action =
+                                NotificationFragmentDirections.actionNotificationToCheer(item.sentUser.name)
+                            findNavController().navigate(action)
+                        }
+                    }
+                    "congrats" -> {
+                        if (item.isButtonEnabled) {
+                            val action = NotificationFragmentDirections.actionNotificationToHome(item.userId)
+                            findNavController().navigate(action)
+                        } else {
+                            val action =
+                                NotificationFragmentDirections.actionNotificationToCeleb(item.sentUser.name)
+                            findNavController().navigate(action)
+                        }
+                    }
+                    else -> {
+                        val action = NotificationFragmentDirections.actionNotificationToHome(item.userId)
+                        findNavController().navigate(action)
+                    }
+                }
+            }
+        })
+
+        notificationAdapter.setButtonClickListener(object :
+            NotificationAdapter.OnItemClickListener {
+            override fun onItemClick(position: Int) {
+                val item = viewModel.notificationItems[position]
+                when (item.notificationName) {
+                    "cheer" -> {
+                        // custom toast
+                    }
+                    else -> {
+                        // custom toast
+                    }
+                }
+            }
+        })
     }
 }

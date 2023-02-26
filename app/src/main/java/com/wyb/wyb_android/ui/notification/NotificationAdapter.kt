@@ -8,7 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.wyb.wyb_android.data.model.Notification
 import com.wyb.wyb_android.databinding.ItemNotificationBinding
 
-class NotificationAdapter : ListAdapter<Notification, NotificationViewHolder>(diffCallback) {
+class NotificationAdapter :
+    ListAdapter<Notification, NotificationAdapter.NotificationViewHolder>(diffCallback) {
+    private lateinit var buttonClickListener: OnItemClickListener
+    private lateinit var textClickListener: OnItemClickListener
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationViewHolder {
         val binding =
             ItemNotificationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -16,7 +20,16 @@ class NotificationAdapter : ListAdapter<Notification, NotificationViewHolder>(di
     }
 
     override fun onBindViewHolder(holder: NotificationViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), position)
+    }
+
+    inner class NotificationViewHolder(private val binding: ItemNotificationBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: Notification, position: Int) {
+            binding.data = item
+            binding.tvContent.setOnClickListener { textClickListener.onItemClick(position) }
+            binding.btnEvent.setOnClickListener { buttonClickListener.onItemClick(position) }
+        }
     }
 
     companion object {
@@ -28,11 +41,16 @@ class NotificationAdapter : ListAdapter<Notification, NotificationViewHolder>(di
                 oldItem == newItem
         }
     }
-}
 
-class NotificationViewHolder(private val binding: ItemNotificationBinding) :
-    RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: Notification) {
-        binding.data = item
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
+    fun setButtonClickListener(onItemClickListener: OnItemClickListener) {
+        buttonClickListener = onItemClickListener
+    }
+
+    fun setTextClickListener(onItemClickListener: OnItemClickListener) {
+        textClickListener = onItemClickListener
     }
 }
