@@ -1,0 +1,47 @@
+* {
+  padding: 0;
+  margin:0;
+}
+
+div {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+ul,ol,li {
+  list-style:none;
+}
+
+#main {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.first {
+    margin-top: 20px;
+}
+
+.title {
+    margin-top: 30px;
+    color: #393731;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.txt {
+    margin-top: 10px;
+    color: #686156;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.txt ul li {
+    padding-top: 10px;
+}
+
+.txt ul li > ul li {
+    padding-left: 10px;
+}
+
+#bottom {
+    margin-bottom: 30px;
+}

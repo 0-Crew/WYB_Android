@@ -6,12 +6,15 @@
     <color name="gray_2">#afaaa3</color>
     <color name="gray_3">#88837c</color>
     <color name="gray_4">#686156</color>
+    <color name="gray_switch_track">#E9E9EB</color>
+    <color name="gray_switch_thumb">#D9D9DA</color>
     <color name="black">#151412</color>
     <color name="light_gray_1">#f5f4f1</color>
     <color name="light_gray_2">#edeae4</color>
     <color name="light_gray_3">#e0dbd3</color>
     <color name="orange">#ff820e</color>
     <color name="white">#FFFFFF</color>
+    <color name="red_alert">#FF541E</color>
     <color name="green_cal">#8c9f5f</color>
     <color name="red_cal">#e46b50</color>
     <color name="blue_cal">#a7d3e0</color>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="menuString"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/layoutSettingMenuItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="30dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingVertical="11dp"
+            android:text="@{menuString == null ? `` : menuString}"
+            android:textAppearance="@style/TextAppearance.WYBComponents.Medium.16"
+            android:textColor="@color/gray_4"
+            app:drawableEndCompat="@drawable/ic_arrow_right_24"
+            app:drawableTint="@color/gray_4" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_gray_2" />
+    </LinearLayout>
+</layout>
