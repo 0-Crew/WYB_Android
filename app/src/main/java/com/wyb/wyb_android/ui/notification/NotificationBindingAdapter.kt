@@ -55,8 +55,8 @@ fun setNotiVisibility(layout: LinearLayout, date: String) {
 }
 
 private fun getDiffTime(date: String): Long {
-    val sdf = SimpleDateFormat(Constants.ISO_DATE_FORMAT, Locale.getDefault())
-    sdf.timeZone = TimeZone.getTimeZone("Etc/UTC")
+    val sdf = SimpleDateFormat(Constants.ISO_DATE_FORMAT, Locale.KOREAN)
+    sdf.timeZone = TimeZone.getTimeZone("Asia/Seoul")
     val createdDate = sdf.parse(date) ?: return -1
     val createdTime = createdDate.time
     val currentTime = System.currentTimeMillis()
