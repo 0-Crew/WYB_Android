@@ -30,25 +30,35 @@ class BottleWorldViewModel : ViewModel() {
         _browseList.value = listOf(
             BottleWorld(
                 BottleWorldChallenge("0", 1, "텀블러 사용하기텀블러 사용하기", "2022-08-30T13:04:01.369Z", 1),
-                BottleWorldUser(1, "가니"),
+                BottleWorldUser(1, "가니1"),
                 true
             ),
             BottleWorld(
                 BottleWorldChallenge("1", 2, "텀블러 사용하기2", "2022-08-10T13:04:01.369Z", 1),
-                BottleWorldUser(1, "가니"),
+                BottleWorldUser(2, "가니2"),
                 false
             ),
             BottleWorld(
                 BottleWorldChallenge("4", 3, "텀블러 사용하기3", "2022-08-10T13:04:01.369Z", 1),
-                BottleWorldUser(1, "가니"),
+                BottleWorldUser(3, "가니3"),
                 true
             ),
             BottleWorld(
-                userData = BottleWorldUser(1, "가니"),
+                BottleWorldChallenge("4", 4, "텀블러 사용하기4", "2022-08-10T13:04:01.369Z", 1),
+                BottleWorldUser(4, "가니4"),
+                false
+            ),
+            BottleWorld(
+                BottleWorldChallenge("4", 4, "텀블러 사용하기5", "2022-08-10T13:04:01.369Z", 1),
+                BottleWorldUser(5, "가니5"),
+                true
+            ),
+            BottleWorld(
+                userData = BottleWorldUser(4, "가니4"),
                 isFollow = true
             ),
             BottleWorld(
-                userData = BottleWorldUser(1, "가니"),
+                userData = BottleWorldUser(5, "가니5"),
                 isFollow = true
             ),
         )
