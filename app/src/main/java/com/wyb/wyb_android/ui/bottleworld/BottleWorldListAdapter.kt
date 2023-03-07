@@ -29,6 +29,10 @@ class BottleWorldListAdapter :
         }
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BottleWorldListViewHolder {
         val binding: ItemBottleWorldBinding =
             ItemBottleWorldBinding.inflate(
