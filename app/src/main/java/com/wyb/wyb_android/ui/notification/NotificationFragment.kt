@@ -34,7 +34,7 @@ class NotificationFragment :
     }
 
     private fun addListener() {
-        binding.btnBack.setOnClickListener {
+        binding.layoutNavBar.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
 
