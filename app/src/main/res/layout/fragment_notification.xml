@@ -33,7 +33,6 @@
             android:layout_marginBottom="14dp"
             android:clipToPadding="false"
             android:overScrollMode="never"
-            app:isVisibleOrGone="@{viewModel.notificationItems.size() != 0}"
             app:layout_constraintBottom_toTopOf="@id/tvGuide"
             app:layout_constraintTop_toBottomOf="@id/layoutNavBar"
             tools:listitem="@layout/item_notification" />
@@ -47,8 +46,13 @@
             android:text="@string/notification_policy_guide"
             android:textAppearance="@style/TextAppearance.WYBComponents.Medium.13"
             android:textColor="@color/gray_2"
-            app:isVisibleOrGone="@{viewModel.notificationItems.size() != 0}"
             app:layout_constraintBottom_toBottomOf="parent" />
+
+        <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="rvNotification, tvGuide"
+            app:isVisibleOrGone="@{viewModel.notificationItems.size() != 0}" />
 
         <LinearLayout
             android:id="@+id/layoutNone"
