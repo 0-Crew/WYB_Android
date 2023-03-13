@@ -12,10 +12,18 @@ class OthersPageFragment :
     ViewModelFragment<FragmentOthersPageBinding, OthersPageViewModel>(R.layout.fragment_others_page) {
     override val viewModel: OthersPageViewModel by viewModels()
 
+    private lateinit var challengeAdapter: OthersPageChallengeAdapter
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initAdapter()
         setListener()
         initLayout()
+    }
+
+    private fun initAdapter() {
+        challengeAdapter = OthersPageChallengeAdapter()
+        binding.rvChallenge.adapter = challengeAdapter
     }
 
     private fun setListener() {
