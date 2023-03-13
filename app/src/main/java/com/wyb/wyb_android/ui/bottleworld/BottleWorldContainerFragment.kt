@@ -3,6 +3,7 @@ package com.wyb.wyb_android.ui.bottleworld
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.databinding.FragmentBottleWorldContainerBinding
@@ -24,7 +25,9 @@ class BottleWorldContainerFragment(private val tabMode: Int) :
         viewModel.fetchChallengeList()
         initRVAdapter()
         setListToAdapter()
+        setListItemClickListener()
         initEmptyViewLayout()
+        setSwipeRefreshListener()
     }
 
     private fun initRVAdapter() {
@@ -57,6 +60,17 @@ class BottleWorldContainerFragment(private val tabMode: Int) :
         }
     }
 
+    private fun setListItemClickListener() {
+        bottleWorldListAdapter.setItemClickListener(object :
+            BottleWorldListAdapter.OnItemClickListener {
+            override fun onItemClick(userId: Int) {
+                findNavController().navigate(
+                    BottleWorldFragmentDirections.actionBottleWorldToOthersPage(userId)
+                )
+            }
+        })
+    }
+
     private fun initEmptyViewLayout() {
         when (tabMode) {
             TAB_BOTTLE_WORLD_FOLLOWER -> {
@@ -80,5 +94,19 @@ class BottleWorldContainerFragment(private val tabMode: Int) :
                 }
             }
         }
+    }
+
+    private fun setSwipeRefreshListener() {
+//        binding.layoutSwipeRefresh.apply {
+//            this.setOnRefreshListener {
+//
+//                lifecycleScope.launch {
+//                    delay(3000)
+//                    binding.lottieLoading.visibility = View.GONE
+//                    this@apply.isRefreshing = false
+//                }
+//            }
+//        }
+        //  binding.rvBottleWorld.addOnItemTouchListener()
     }
 }

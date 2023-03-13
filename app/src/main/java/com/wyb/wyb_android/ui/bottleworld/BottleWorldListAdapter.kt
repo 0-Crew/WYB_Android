@@ -12,6 +12,8 @@ import com.wyb.wyb_android.util.Utils
 class BottleWorldListAdapter :
     ListAdapter<BottleWorld, BottleWorldListAdapter.BottleWorldListViewHolder>(BottleWorldDiffUtil()) {
 
+    private lateinit var itemClickListener: OnItemClickListener
+
     inner class BottleWorldListViewHolder(
         private val binding: ItemBottleWorldBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -25,6 +27,10 @@ class BottleWorldListAdapter :
                 if (startDate != null && endDate != null) {
                     binding.tvDate.text = Utils.setDateText(startDate, endDate)
                 }
+            }
+
+            binding.root.setOnClickListener {
+                itemClickListener.onItemClick(data.userData.userId)
             }
         }
     }
@@ -55,5 +61,13 @@ class BottleWorldListAdapter :
         override fun areContentsTheSame(oldItem: BottleWorld, newItem: BottleWorld): Boolean {
             return oldItem == newItem
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(userId: Int)
+    }
+
+    fun setItemClickListener(onItemClickListener: OnItemClickListener) {
+        itemClickListener = onItemClickListener
     }
 }

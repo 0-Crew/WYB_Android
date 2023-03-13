@@ -34,7 +34,23 @@
         android:id="@+id/BottleWorldFragment"
         android:name="com.wyb.wyb_android.ui.bottleworld.BottleWorldFragment"
         android:label="BottleWorldFragment"
-        tools:layout="@layout/fragment_bottle_world" />
+        tools:layout="@layout/fragment_bottle_world">
+        <action
+            android:id="@+id/actionBottleWorldToOthersPage"
+            app:destination="@id/OthersPageFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/OthersPageFragment"
+        android:name="com.wyb.wyb_android.ui.otherspage.OthersPageFragment"
+        android:label="OthersPageFragment"
+        tools:layout="@layout/fragment_others_page">
+
+        <argument
+            android:name="userId"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
 
     <dialog
         android:id="@+id/calendarFragment"
