@@ -70,7 +70,7 @@ class WYBCompactTextButton @JvmOverloads constructor(
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.WYBCompactTextButton)
         typedArray.let {
             setBtnTitleText(it.getString(R.styleable.WYBCompactTextButton_titleText))
-            comfortText = it.getString(R.styleable.WYBCompactTextButton_comfortText)
+            setComfortTitleText(it.getString(R.styleable.WYBCompactTextButton_comfortText))
             showComfortTv = it.getBoolean(R.styleable.WYBCompactTextButton_showComfortTv, false)
             showIcon = it.getBoolean(R.styleable.WYBCompactTextButton_showStartIcon, false)
             setIcon =
@@ -101,6 +101,10 @@ class WYBCompactTextButton @JvmOverloads constructor(
 
     private fun setColorTvTitle(colorRes: Int) {
         binding.tvTitle.setTextColor(resources.getColor(colorRes, null))
+    }
+
+    fun setComfortTitleText(comfort: String?) {
+        comfortText = comfort.orEmpty()
     }
 
     fun setBtnTitleText(title: String?) {

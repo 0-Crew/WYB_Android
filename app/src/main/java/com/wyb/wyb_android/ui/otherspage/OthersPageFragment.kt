@@ -15,11 +15,18 @@ class OthersPageFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setListener()
+        initLayout()
     }
 
     private fun setListener() {
         binding.layoutTitle.btnBack.setOnClickListener {
             findNavController().popBackStack()
+        }
+    }
+
+    private fun initLayout() {
+        viewModel.challengeComfort.observe(viewLifecycleOwner) { comfort ->
+            binding.layoutChallengeComfort.setComfortTitleText(comfort)
         }
     }
 }
