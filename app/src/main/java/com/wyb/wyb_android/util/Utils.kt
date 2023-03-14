@@ -45,11 +45,10 @@ object Utils : BaseUtil() {
     }
 
     fun convertIsoStringToLocalDate(isoDate: String): LocalDate? {
-        // TODO: 서버 연동 후 timeZone Korea 로 변경
-        val sdf = SimpleDateFormat(Constants.ISO_DATE_FORMAT, Locale.getDefault())
+        val sdf = SimpleDateFormat(Constants.ISO_DATE_FORMAT, Locale.KOREAN)
         val calendar = Calendar.getInstance()
         calendar.time = sdf.parse(isoDate) ?: return null
-        calendar.timeZone = TimeZone.getTimeZone("Etc/UTC")
+        calendar.timeZone = TimeZone.getTimeZone("Asia/Seoul")
         return LocalDate.of(
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH) + 1,
