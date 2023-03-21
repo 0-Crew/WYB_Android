@@ -58,7 +58,7 @@
 
                 <com.wyb.wyb_android.widget.WYBCompactTextButton
                     android:id="@+id/layoutCheer"
-                    isVisibleOrGone="@{viewModel.isFollowing == true}"
+                    isVisibleOrGone="@{viewModel.isFollowing == true &amp;&amp; viewModel.isChallenge == true}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
