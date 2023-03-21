@@ -4,13 +4,17 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.databinding.FragmentOthersPageBinding
+import com.wyb.wyb_android.widget.WYBToast
 
 class OthersPageFragment :
     ViewModelFragment<FragmentOthersPageBinding, OthersPageViewModel>(R.layout.fragment_others_page) {
     override val viewModel: OthersPageViewModel by viewModels()
+
+    private val args: OthersPageFragmentArgs by navArgs()
 
     private lateinit var challengeAdapter: OthersPageChallengeAdapter
 
@@ -30,11 +34,31 @@ class OthersPageFragment :
         binding.layoutTitle.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
+        binding.tvTerm.setOnClickListener {
+            navigateToCalendar()
+        }
+        binding.layoutCalender.setOnClickListener {
+            navigateToCalendar()
+        }
+        binding.layoutCheer.setOnClickListener {
+            WYBToast.createToast(
+                requireContext(),
+                getString(R.string.notification_toast_cheer, viewModel.nickname.value)
+            ).show()
+        }
     }
 
     private fun initLayout() {
         viewModel.challengeComfort.observe(viewLifecycleOwner) { comfort ->
             binding.layoutChallengeComfort.setComfortTitleText(comfort)
         }
+    }
+
+    private fun navigateToCalendar() {
+        findNavController().navigate(
+            OthersPageFragmentDirections.actionOthersPageToCalendar(
+                userId = args.userId
+            )
+        )
     }
 }
