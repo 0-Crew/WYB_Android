@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.notification.NotificationCelebFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvCeleb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="82dp"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.WYBComponents.Bold.20"
+            android:textColor="@color/dark_gray_2" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieCeleb"
+            android:layout_width="300dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/challenge_congratulate" />
+
+    </LinearLayout>
+
+</layout>

@@ -105,4 +105,16 @@
     <string name="bottle_world_empty_search">검색 결과가 없습니다</string>
     <string name="bottle_world_empty_follower">아직 팔로워가 없습니다</string>
     <string name="bottle_world_empty_following">다른 보틀을 팔로우해 보세요!</string>
+    
+    <!-- NotificationFragment -->
+    <string name="notification_title">알림</string>
+    <string name="notification_policy_guide">알림은 7일 동안 보관됩니다</string>
+    <string name="notification_btn_cheer">응원하기</string>
+    <string name="notification_btn_celeb">축하하기</string>
+    <string name="notification_none_title">오늘은 알림이 없습니다</string>
+    <string name="notification_none_content">새로운 소식이 생기면 알려드릴게요!</string>
+    <string name="notification_challenge_celeb">%s님이\n챌린지 성공을 축하해줬어요!</string>
+    <string name="notification_challenge_cheer">%s님이\n내 챌린지를 응원해요!</string>
+    <string name="notification_toast_celeb">%s님에게 챌린지 성공 축하를 보냈어요!</string>
+    <string name="notification_toast_cheer">%s님에게 챌린지 응원을 보냈어요!</string>
 </resources>

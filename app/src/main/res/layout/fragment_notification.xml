@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.notification.NotificationFragment">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.wyb.wyb_android.ui.notification.NotificationViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/layoutNavBar"
+            layout="@layout/include_nav_title_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleString="@{@string/notification_title}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNotification"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="14dp"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            app:layout_constraintBottom_toTopOf="@id/tvGuide"
+            app:layout_constraintTop_toBottomOf="@id/layoutNavBar"
+            tools:listitem="@layout/item_notification" />
+
+        <TextView
+            android:id="@+id/tvGuide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="@string/notification_policy_guide"
+            android:textAppearance="@style/TextAppearance.WYBComponents.Medium.13"
+            android:textColor="@color/gray_2"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="rvNotification, tvGuide"
+            app:isVisibleOrGone="@{viewModel.notificationItems.size() != 0}" />
+
+        <LinearLayout
+            android:id="@+id/layoutNone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:isVisibleOrGone="@{viewModel.notificationItems.size() == 0}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgNone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_alarm_none"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/notification_none_title"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Bold.16"
+                android:textColor="@color/gray_4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/notification_none_content"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
+                android:textColor="@color/gray_4" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
