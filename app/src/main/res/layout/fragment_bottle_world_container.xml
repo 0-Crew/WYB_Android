@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layoutSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/shape_light_gray1_fill_radius_10"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:hint="@string/bottle_world_search_hint"
+                android:inputType="text"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:paddingVertical="8dp"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
+                android:textColor="@color/dark_gray_2"
+                android:textColorHint="@color/gray_2" />
+
+            <ImageButton
+                android:id="@+id/btnSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:background="@android:color/transparent"
+                android:paddingVertical="8dp"
+                android:src="@drawable/ic_search"
+                tools:ignore="contentDescription" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBottleWorld"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutSearch"
+            tools:listitem="@layout/item_bottle_world" />
+
+        <TextView
+            android:id="@+id/tvSearchEmptyView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="70dp"
+            android:drawablePadding="30dp"
+            android:gravity="center"
+            android:text="@string/bottle_world_empty_search"
+            android:textAppearance="@style/TextAppearance.WYBComponents.Bold.16"
+            android:textColor="@color/gray_4"
+            android:visibility="gone"
+            app:drawableTopCompat="@drawable/img_search_none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutSearch" />
+
+        <TextView
+            android:id="@+id/tvFollowEmptyView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="70dp"
+            android:drawablePadding="30dp"
+            android:gravity="center"
+            android:text="@string/bottle_world_empty_follower"
+            android:textAppearance="@style/TextAppearance.WYBComponents.Bold.16"
+            android:textColor="@color/gray_4"
+            android:visibility="gone"
+            app:drawableTopCompat="@drawable/img_follow_none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutSearch" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

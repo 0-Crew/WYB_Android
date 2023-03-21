@@ -93,6 +93,18 @@
     <string name="nickname_max_length_message">6자까지만 입력할 수 있어요!</string>
     <string name="setting_logout">로그아웃</string>
     <string name="setting_withdraw">탈퇴하기</string>
+
+    <!--BottleWorldFragment-->
+    <string name="bottle_world_title">보틀월드</string>
+    <string name="bottle_world_all">둘러보기</string>
+    <string name="bottle_world_follow">팔로우</string>
+    <string name="bottle_world_follower">팔로워</string>
+    <string name="bottle_world_following">팔로잉</string>
+    <string name="bottle_world_search_hint">닉네임으로 검색</string>
+    <string name="bottle_world_name">의 보틀</string>
+    <string name="bottle_world_empty_search">검색 결과가 없습니다</string>
+    <string name="bottle_world_empty_follower">아직 팔로워가 없습니다</string>
+    <string name="bottle_world_empty_following">다른 보틀을 팔로우해 보세요!</string>
     
     <!-- NotificationFragment -->
     <string name="notification_title">알림</string>
@@ -105,5 +117,4 @@
     <string name="notification_challenge_cheer">%s님이\n내 챌린지를 응원해요!</string>
     <string name="notification_toast_celeb">%s님에게 챌린지 성공 축하를 보냈어요!</string>
     <string name="notification_toast_cheer">%s님에게 챌린지 응원을 보냈어요!</string>
-
 </resources>

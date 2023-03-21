@@ -47,5 +47,11 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
         binding.btnAlarm.setOnClickListener {
             findNavController().navigate(R.id.actionHomeToNotification)
         }
+        binding.btnBottleWorld.setOnClickListener { navigateToBottleWorld() }
+        binding.tvBottleWorld.setOnClickListener { navigateToBottleWorld() }
+    }
+
+    private fun navigateToBottleWorld() {
+        findNavController().navigate(R.id.actionHomeToBottleWorld)
     }
 }

@@ -31,6 +31,10 @@
             app:popExitAnim="@anim/slide_out_to_right" />
 
         <action
+            android:id="@+id/actionHomeToBottleWorld"
+            app:destination="@id/BottleWorldFragment" />
+
+        <action
             android:id="@+id/actionHomeToNotification"
             app:destination="@id/NotificationFragment" />
 
@@ -81,6 +85,12 @@
             app:argType="string" />
 
     </fragment>
+
+    <fragment
+        android:id="@+id/BottleWorldFragment"
+        android:name="com.wyb.wyb_android.ui.bottleworld.BottleWorldFragment"
+        android:label="BottleWorldFragment"
+        tools:layout="@layout/fragment_bottle_world" />
 
     <dialog
         android:id="@+id/calendarFragment"
