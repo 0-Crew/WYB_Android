@@ -52,9 +52,7 @@
                 android:id="@+id/layoutNickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintStart_toEndOf="@id/layoutBottle"
-                app:layout_constraintTop_toTopOf="parent">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -82,7 +80,7 @@
                 android:text="@string/challenge_open_comfort_nav_title"
                 android:textAppearance="@style/TextAppearance.WYBComponents.Bold.13"
                 android:textColor="@color/gray_2"
-                android:visibility="gone" />
+                tools:visibility="gone" />
 
             <TextView
                 android:id="@+id/tvDate"
