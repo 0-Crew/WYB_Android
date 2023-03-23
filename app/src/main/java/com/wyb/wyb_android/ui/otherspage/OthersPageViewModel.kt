@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.wyb.wyb_android.data.model.Discomfort
 import com.wyb.wyb_android.data.request.FollowRequest
+import com.wyb.wyb_android.data.type.NotificationType
 import com.wyb.wyb_android.network.ServiceBuilder
 import com.wyb.wyb_android.util.Utils.setDateWithStartAt
 import kotlinx.coroutines.launch
@@ -64,6 +65,19 @@ class OthersPageViewModel : ViewModel() {
                 )
             } catch (e: HttpException) {
                 Log.d("postFollow", e.message().toString())
+            }
+        }
+    }
+
+    fun postCheer(userId: Int) {
+        viewModelScope.launch {
+            try {
+                ServiceBuilder.userService.postFollow(
+                    type = NotificationType.CHEER.toString(),
+                    receiverUserId = userId
+                )
+            } catch (e: HttpException) {
+                Log.d("postCheer", e.message().toString())
             }
         }
     }

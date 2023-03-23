@@ -33,6 +33,7 @@ object ServiceBuilder {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
+    val userService: UserService = retrofit.create(UserService::class.java)
     val challengeService: ChallengeService = retrofit.create(ChallengeService::class.java)
     val bottleWorldService: BottleWorldService = retrofit.create(BottleWorldService::class.java)
 }

@@ -47,6 +47,7 @@ class OthersPageFragment :
             navigateToCalendar()
         }
         binding.layoutCheer.setOnClickListener {
+            viewModel.postCheer(args.userId)
             WYBToast.createToast(
                 requireContext(),
                 getString(R.string.notification_toast_cheer, viewModel.nickname.value)
