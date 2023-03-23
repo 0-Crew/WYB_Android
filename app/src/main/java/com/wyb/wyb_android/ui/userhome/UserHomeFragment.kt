@@ -1,4 +1,4 @@
-package com.wyb.wyb_android.ui.otherspage
+package com.wyb.wyb_android.ui.userhome
 
 import android.os.Bundle
 import android.view.View
@@ -7,16 +7,16 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
-import com.wyb.wyb_android.databinding.FragmentOthersPageBinding
+import com.wyb.wyb_android.databinding.FragmentUserHomeBinding
 import com.wyb.wyb_android.widget.WYBToast
 
-class OthersPageFragment :
-    ViewModelFragment<FragmentOthersPageBinding, OthersPageViewModel>(R.layout.fragment_others_page) {
-    override val viewModel: OthersPageViewModel by viewModels()
+class UserHomeFragment :
+    ViewModelFragment<FragmentUserHomeBinding, UserHomeViewModel>(R.layout.fragment_user_home) {
+    override val viewModel: UserHomeViewModel by viewModels()
 
-    private val args: OthersPageFragmentArgs by navArgs()
+    private val args: UserHomeFragmentArgs by navArgs()
 
-    private lateinit var challengeAdapter: OthersPageChallengeAdapter
+    private lateinit var challengeAdapter: UserHomeChallengeAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,7 +27,7 @@ class OthersPageFragment :
     }
 
     private fun initAdapter() {
-        challengeAdapter = OthersPageChallengeAdapter()
+        challengeAdapter = UserHomeChallengeAdapter()
         binding.rvChallenge.adapter = challengeAdapter
         viewModel.discomfortList.observe(viewLifecycleOwner) { list ->
             list?.let {
@@ -66,7 +66,7 @@ class OthersPageFragment :
 
     private fun navigateToCalendar() {
         findNavController().navigate(
-            OthersPageFragmentDirections.actionOthersPageToCalendar(
+            UserHomeFragmentDirections.actionUserHomeToCalendar(
                 userId = args.userId
             )
         )

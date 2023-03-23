@@ -1,4 +1,4 @@
-package com.wyb.wyb_android.ui.otherspage
+package com.wyb.wyb_android.ui.userhome
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -13,7 +13,7 @@ import com.wyb.wyb_android.util.Utils.setDateWithStartAt
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
-class OthersPageViewModel : ViewModel() {
+class UserHomeViewModel : ViewModel() {
 
     val nickname = MutableLiveData("")
 

@@ -1,4 +1,4 @@
-package com.wyb.wyb_android.ui.otherspage
+package com.wyb.wyb_android.ui.userhome
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,18 +8,18 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.data.model.Discomfort
-import com.wyb.wyb_android.databinding.ItemOthersPageChallengeBinding
+import com.wyb.wyb_android.databinding.ItemUserHomeChallengeBinding
 import com.wyb.wyb_android.util.HomeUtils.isChallengeFailed
 import com.wyb.wyb_android.util.HomeUtils.isDateToday
 import com.wyb.wyb_android.util.HomeUtils.setWaterDropDateText
 
-class OthersPageChallengeAdapter :
-    ListAdapter<Discomfort, OthersPageChallengeAdapter.OthersPageChallengeViewHolder>(
+class UserHomeChallengeAdapter :
+    ListAdapter<Discomfort, UserHomeChallengeAdapter.UserHomeChallengeViewHolder>(
         BottleWorldDiffUtil()
     ) {
 
-    inner class OthersPageChallengeViewHolder(
-        private val binding: ItemOthersPageChallengeBinding
+    inner class UserHomeChallengeViewHolder(
+        private val binding: ItemUserHomeChallengeBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: Discomfort, position: Int) {
             binding.data = data
@@ -51,17 +51,17 @@ class OthersPageChallengeAdapter :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): OthersPageChallengeViewHolder {
-        val binding: ItemOthersPageChallengeBinding =
-            ItemOthersPageChallengeBinding.inflate(
+    ): UserHomeChallengeViewHolder {
+        val binding: ItemUserHomeChallengeBinding =
+            ItemUserHomeChallengeBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             )
-        return OthersPageChallengeViewHolder(binding)
+        return UserHomeChallengeViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: OthersPageChallengeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: UserHomeChallengeViewHolder, position: Int) {
         holder.onBind(getItem(position), position)
     }
 

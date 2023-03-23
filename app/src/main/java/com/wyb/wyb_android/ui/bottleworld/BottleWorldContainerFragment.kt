@@ -65,7 +65,7 @@ class BottleWorldContainerFragment(private val tabMode: Int) :
             BottleWorldListAdapter.OnItemClickListener {
             override fun onItemClick(userId: Int) {
                 findNavController().navigate(
-                    BottleWorldFragmentDirections.actionBottleWorldToOthersPage(userId)
+                    BottleWorldFragmentDirections.actionBottleWorldToUserHome(userId)
                 )
             }
         })

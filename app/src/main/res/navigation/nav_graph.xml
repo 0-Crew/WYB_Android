@@ -92,15 +92,15 @@
         android:label="BottleWorldFragment"
         tools:layout="@layout/fragment_bottle_world">
         <action
-            android:id="@+id/actionBottleWorldToOthersPage"
-            app:destination="@id/OthersPageFragment" />
+            android:id="@+id/actionBottleWorldToUserHome"
+            app:destination="@id/UserHomeFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/OthersPageFragment"
-        android:name="com.wyb.wyb_android.ui.otherspage.OthersPageFragment"
-        android:label="OthersPageFragment"
-        tools:layout="@layout/fragment_others_page">
+        android:id="@+id/UserHomeFragment"
+        android:name="com.wyb.wyb_android.ui.userhome.UserHomeFragment"
+        android:label="UserHomeFragment"
+        tools:layout="@layout/fragment_user_home">
 
         <argument
             android:name="userId"
@@ -108,7 +108,7 @@
             app:argType="integer" />
 
         <action
-            android:id="@+id/actionOthersPageToCalendar"
+            android:id="@+id/actionUserHomeToCalendar"
             app:destination="@id/calendarFragment" />
     </fragment>
 

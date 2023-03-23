@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.wyb.wyb_android.ui.otherspage.OthersPageViewModel" />
+            type="com.wyb.wyb_android.ui.userhome.UserHomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
