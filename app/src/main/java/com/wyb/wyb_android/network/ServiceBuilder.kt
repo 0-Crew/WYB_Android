@@ -32,4 +32,6 @@ object ServiceBuilder {
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
+
+    val challengeService: ChallengeService = retrofit.create(ChallengeService::class.java)
 }
