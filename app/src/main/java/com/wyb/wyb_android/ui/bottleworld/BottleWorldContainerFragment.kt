@@ -27,7 +27,6 @@ class BottleWorldContainerFragment(private val tabMode: Int) :
         setListToAdapter()
         setListItemClickListener()
         initEmptyViewLayout()
-        setSwipeRefreshListener()
     }
 
     private fun initRVAdapter() {
@@ -94,19 +93,5 @@ class BottleWorldContainerFragment(private val tabMode: Int) :
                 }
             }
         }
-    }
-
-    private fun setSwipeRefreshListener() {
-//        binding.layoutSwipeRefresh.apply {
-//            this.setOnRefreshListener {
-//
-//                lifecycleScope.launch {
-//                    delay(3000)
-//                    binding.lottieLoading.visibility = View.GONE
-//                    this@apply.isRefreshing = false
-//                }
-//            }
-//        }
-        //  binding.rvBottleWorld.addOnItemTouchListener()
     }
 }
