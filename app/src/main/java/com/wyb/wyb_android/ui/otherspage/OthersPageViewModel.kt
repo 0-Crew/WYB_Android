@@ -1,9 +1,15 @@
 package com.wyb.wyb_android.ui.otherspage
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.wyb.wyb_android.data.model.Discomfort
+import com.wyb.wyb_android.network.ServiceBuilder
+import com.wyb.wyb_android.util.Utils.setDateWithStartAt
+import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
 class OthersPageViewModel : ViewModel() {
 
@@ -24,4 +30,28 @@ class OthersPageViewModel : ViewModel() {
 
     private val _challengeComfort = MutableLiveData<String?>()
     val challengeComfort: LiveData<String?> = _challengeComfort
+
+    fun fetchUserHome(userId: Int) {
+        viewModelScope.launch {
+            try {
+                val response = ServiceBuilder.challengeService.getUserHome(userId).data
+                val challengeData = response.comfort
+                val discomfortList = response.discomfortList
+                nickname.postValue(response.userData.nickname)
+                isFollowing.postValue(response.isFollowing)
+
+                if (challengeData != null && discomfortList != null) {
+                    _isChallenge.postValue(true)
+                    _challengeComfort.postValue(challengeData.comfortTitle)
+                    _challengeTerm.postValue(setDateWithStartAt(challengeData.startedAt))
+                    _discomfortList.postValue(discomfortList)
+                    levelOfJuice.postValue(discomfortList.filter { it.isFinished }.size)
+                } else {
+                    _isChallenge.postValue(false)
+                }
+            } catch (e: HttpException) {
+                Log.d("fetchUserHome", e.message().toString())
+            }
+        }
+    }
 }
