@@ -147,7 +147,7 @@
                         android:layout_width="1dp"
                         android:layout_height="340dp"
                         android:layout_marginEnd="1dp"
-                        android:layout_marginBottom="70dp"
+                        android:layout_marginBottom="50dp"
                         android:background="@drawable/shape_orange_gradient_line"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@id/imgBottle"
@@ -178,11 +178,11 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvNickname">
+                    app:layout_constraintTop_toBottomOf="@id/tvNickname"
+                    tools:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
