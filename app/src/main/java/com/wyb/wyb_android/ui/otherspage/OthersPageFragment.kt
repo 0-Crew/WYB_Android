@@ -28,6 +28,11 @@ class OthersPageFragment :
     private fun initAdapter() {
         challengeAdapter = OthersPageChallengeAdapter()
         binding.rvChallenge.adapter = challengeAdapter
+        viewModel.discomfortList.observe(viewLifecycleOwner) { list ->
+            list?.let {
+                with(challengeAdapter) { submitList(list) }
+            }
+        }
     }
 
     private fun setListener() {
