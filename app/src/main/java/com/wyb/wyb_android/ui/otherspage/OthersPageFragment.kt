@@ -52,6 +52,9 @@ class OthersPageFragment :
                 getString(R.string.notification_toast_cheer, viewModel.nickname.value)
             ).show()
         }
+        binding.cbFollow.setOnClickListener {
+            viewModel.postFollow(args.userId)
+        }
     }
 
     private fun initLayout() {

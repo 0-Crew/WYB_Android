@@ -34,4 +34,5 @@ object ServiceBuilder {
         .build()
 
     val challengeService: ChallengeService = retrofit.create(ChallengeService::class.java)
+    val bottleWorldService: BottleWorldService = retrofit.create(BottleWorldService::class.java)
 }

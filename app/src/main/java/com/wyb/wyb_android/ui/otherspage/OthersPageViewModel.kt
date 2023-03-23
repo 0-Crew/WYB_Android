@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.wyb.wyb_android.data.model.Discomfort
+import com.wyb.wyb_android.data.request.FollowRequest
 import com.wyb.wyb_android.network.ServiceBuilder
 import com.wyb.wyb_android.util.Utils.setDateWithStartAt
 import kotlinx.coroutines.launch
@@ -15,7 +16,7 @@ class OthersPageViewModel : ViewModel() {
 
     val nickname = MutableLiveData("")
 
-    val isFollowing = MutableLiveData(false)
+    val isFollowing = MutableLiveData<Boolean>()
 
     val levelOfJuice = MutableLiveData(0)
 
@@ -51,6 +52,18 @@ class OthersPageViewModel : ViewModel() {
                 }
             } catch (e: HttpException) {
                 Log.d("fetchUserHome", e.message().toString())
+            }
+        }
+    }
+
+    fun postFollow(userId: Int) {
+        viewModelScope.launch {
+            try {
+                ServiceBuilder.bottleWorldService.postFollow(
+                    FollowRequest(userId)
+                )
+            } catch (e: HttpException) {
+                Log.d("postFollow", e.message().toString())
             }
         }
     }
