@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
+import androidx.lifecycle.LiveData
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.databinding.ViewWybCompactTextButtonBinding
 
@@ -147,6 +148,10 @@ class WYBCompactTextButton @JvmOverloads constructor(
 
     fun setComfortTitleText(comfort: String?) {
         comfortText = comfort.orEmpty()
+    }
+
+    fun setComfortTitleText(comfort: LiveData<String>) {
+        comfortText = comfort.value.orEmpty()
     }
 
     companion object {

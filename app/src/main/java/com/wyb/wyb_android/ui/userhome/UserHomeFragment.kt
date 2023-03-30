@@ -23,7 +23,6 @@ class UserHomeFragment :
         viewModel.fetchUserHome(args.userId)
         initAdapter()
         setListener()
-        initLayout()
     }
 
     private fun initAdapter() {
@@ -55,12 +54,6 @@ class UserHomeFragment :
         }
         binding.cbFollow.setOnClickListener {
             viewModel.postFollow(args.userId)
-        }
-    }
-
-    private fun initLayout() {
-        viewModel.challengeComfort.observe(viewLifecycleOwner) { comfort ->
-            binding.layoutChallengeComfort.setComfortTitleText(comfort)
         }
     }
 
