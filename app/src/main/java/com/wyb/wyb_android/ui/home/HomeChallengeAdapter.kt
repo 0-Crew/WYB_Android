@@ -18,11 +18,10 @@ import com.wyb.wyb_android.widget.adapter.WYBPopupWindowItemAdapter
 import com.wyb.wyb_android.widget.adapter.WYBPopupWindowItemAdapter.Companion.TYPE_POPUP_SMALL
 
 class HomeChallengeAdapter(
-    private val viewModel: HomeViewModel,
     private val context: Context
 ) : ListAdapter<ChallengeDiscomfort, HomeChallengeAdapter.ChallengeViewHolder>(ChallengeDiffUtil()) {
     private lateinit var popupWindow: PopupWindow
-    private lateinit var waterDropClick: OnItemClickListener
+    private lateinit var itemClickListener: OnItemClickListener
 
     inner class ChallengeViewHolder(
         private val binding: ItemHomeChallengeBinding
@@ -36,7 +35,7 @@ class HomeChallengeAdapter(
 
         private fun addListener(challengeData: ChallengeDiscomfort) {
             binding.cbWaterDrop.setOnClickListener {
-                waterDropClick.onWaterDropClick(challengeData.discomfortId)
+                itemClickListener.onWaterDropClick(challengeData.discomfortId)
             }
         }
 
@@ -58,20 +57,15 @@ class HomeChallengeAdapter(
                 }
                 else -> {
                     initPopupWindow(R.drawable.shape_gray4_stroke, data)
-                    initTvDiscomfortTextColor(
-                        if (data.isFuture) {
-                            R.color.gray_2
-                        } else {
-                            R.color.gray_4
-                        }
-                    )
+                    if (data.isFuture) {
+                        initTvDiscomfortTextColor(R.color.gray_2)
+                    }
                 }
             }
         }
 
         private fun setBtnWaterCheckedListener(data: ChallengeDiscomfort) {
             binding.cbWaterDrop.setOnCheckedChangeListener { _, isChecked ->
-                viewModel.setIsSuccess(data.discomfortId)
                 when (data.isToday) {
                     true -> {
                         setTodayCheckedView(isChecked)
@@ -204,7 +198,7 @@ class HomeChallengeAdapter(
         fun onWaterDropClick(discomfortId: Int)
     }
 
-    fun setWaterDropClickListener(onItemClickListener: OnItemClickListener) {
-        waterDropClick = onItemClickListener
+    fun setItemClickListener(onItemClickListener: OnItemClickListener) {
+        itemClickListener = onItemClickListener
     }
 }

@@ -28,8 +28,8 @@ class HomeViewModel : ViewModel() {
     private val _challengeTerm = MutableLiveData<String>()
     val challengeTerm: LiveData<String> = _challengeTerm
 
-    private val _successItems = MutableLiveData<Set<Int>>()
-    val successItems: LiveData<Set<Int>> = _successItems
+    private val _successItems = MutableLiveData<List<Int>>()
+    val successItems: LiveData<List<Int>> = _successItems
 
     private val _isEdit = MutableLiveData(false)
     val isEdit: LiveData<Boolean> = _isEdit
@@ -61,7 +61,7 @@ class HomeViewModel : ViewModel() {
                 this.add(itemId)
             }
         }
-        _successItems.value = currentItems
+        _successItems.value = currentItems.toList()
     }
 
     fun setIsEdit(isEdit: Boolean) {
@@ -78,6 +78,9 @@ class HomeViewModel : ViewModel() {
                 if (challengeData != null) {
                     _challengeTerm.postValue(Utils.setDateWithStartAt(challengeData.startedAt))
                     _challengeComfort.postValue(challengeData.comfortTitle)
+                    _successItems.postValue(
+                        response.discomfortList.filter { it.isFinished }.map { it.id }
+                    )
                     _challengeList.postValue(response.discomfortList.map {
                         ChallengeDiscomfort(
                             discomfortId = it.id,

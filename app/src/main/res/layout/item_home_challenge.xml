@@ -54,6 +54,7 @@
                 android:background="@android:color/transparent"
                 android:text="@{data.discomfortTitle}"
                 android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
+                android:textColor="@color/gray_4"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/cbChallengeEdit"
                 app:layout_constraintHorizontal_chainStyle="spread_inside"

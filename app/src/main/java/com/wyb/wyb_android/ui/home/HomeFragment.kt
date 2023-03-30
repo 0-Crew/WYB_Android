@@ -16,7 +16,7 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        challengeAdapter = HomeChallengeAdapter(viewModel, requireContext())
+        challengeAdapter = HomeChallengeAdapter(requireContext())
         profileAdapter = HomeOtherProfileAdapter()
         viewModel.fetchHomeDate()
         initHomeRVAdapter()
@@ -70,10 +70,11 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
     }
 
     private fun setChallengeAdapterClickListener() {
-        challengeAdapter.setWaterDropClickListener(object :
+        challengeAdapter.setItemClickListener(object :
             HomeChallengeAdapter.OnItemClickListener {
             override fun onWaterDropClick(discomfortId: Int) {
                 viewModel.postChallengeFinished(discomfortId)
+                viewModel.setIsSuccess(discomfortId)
             }
         })
     }
