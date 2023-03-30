@@ -7,38 +7,46 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.wyb.wyb_android.R
-import com.wyb.wyb_android.data.model.Discomfort
+import com.wyb.wyb_android.data.model.ChallengeDiscomfort
 import com.wyb.wyb_android.databinding.ItemUserHomeChallengeBinding
-import com.wyb.wyb_android.util.HomeUtils.isChallengeFailed
-import com.wyb.wyb_android.util.HomeUtils.isDateToday
-import com.wyb.wyb_android.util.HomeUtils.setWaterDropDateText
 
 class UserHomeChallengeAdapter :
-    ListAdapter<Discomfort, UserHomeChallengeAdapter.UserHomeChallengeViewHolder>(
+    ListAdapter<ChallengeDiscomfort, UserHomeChallengeAdapter.UserHomeChallengeViewHolder>(
         BottleWorldDiffUtil()
     ) {
 
     inner class UserHomeChallengeViewHolder(
         private val binding: ItemUserHomeChallengeBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(data: Discomfort, position: Int) {
+        fun onBind(data: ChallengeDiscomfort) {
             binding.data = data
 
-            val waterDropDate = setWaterDropDateText(data.createdAt, position)
             binding.cbWaterDrop.apply {
-                this.text = waterDropDate
-
-                if (isDateToday(waterDropDate)) {
+                if (data.isToday) {
                     setTextColor(
                         ResourcesCompat.getColorStateList(resources, R.color.orange, null)
                     )
                     setBackgroundResource(R.drawable.ic_water_43_orange)
                 }
-                if (isChallengeFailed(data.createdAt, position, data.isFinished)) {
+                if (data.isFuture) {
                     setTextColor(
-                        ResourcesCompat.getColorStateList(resources, R.color.gray_1, null)
+                        ResourcesCompat.getColorStateList(resources, R.color.gray_3, null)
                     )
-                    setBackgroundResource(R.drawable.ic_water_43_orange)
+                    setBackgroundResource(R.drawable.ic_water_43_gray)
+                }
+            }
+
+            binding.tvDiscomfort.apply {
+                if (data.isToday) {
+                    setTextAppearance(R.style.TextAppearance_WYBComponents_Bold_14)
+                    setTextColor(
+                        ResourcesCompat.getColorStateList(resources, R.color.orange, null)
+                    )
+                }
+                if (data.isFuture) {
+                    setTextColor(
+                        ResourcesCompat.getColorStateList(resources, R.color.gray_2, null)
+                    )
                 }
             }
         }
@@ -62,15 +70,21 @@ class UserHomeChallengeAdapter :
     }
 
     override fun onBindViewHolder(holder: UserHomeChallengeViewHolder, position: Int) {
-        holder.onBind(getItem(position), position)
+        holder.onBind(getItem(position))
     }
 
-    private class BottleWorldDiffUtil : DiffUtil.ItemCallback<Discomfort>() {
-        override fun areItemsTheSame(oldItem: Discomfort, newItem: Discomfort): Boolean {
-            return oldItem.id == newItem.id
+    private class BottleWorldDiffUtil : DiffUtil.ItemCallback<ChallengeDiscomfort>() {
+        override fun areItemsTheSame(
+            oldItem: ChallengeDiscomfort,
+            newItem: ChallengeDiscomfort
+        ): Boolean {
+            return oldItem.discomfortId == newItem.discomfortId
         }
 
-        override fun areContentsTheSame(oldItem: Discomfort, newItem: Discomfort): Boolean {
+        override fun areContentsTheSame(
+            oldItem: ChallengeDiscomfort,
+            newItem: ChallengeDiscomfort
+        ): Boolean {
             return oldItem == newItem
         }
     }

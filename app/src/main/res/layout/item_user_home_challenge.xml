@@ -6,7 +6,7 @@
 
         <variable
             name="data"
-            type="com.wyb.wyb_android.data.model.Discomfort" />
+            type="com.wyb.wyb_android.data.model.ChallengeDiscomfort" />
     </data>
 
     <LinearLayout
@@ -26,6 +26,7 @@
             android:enabled="false"
             android:gravity="center"
             android:paddingTop="3dp"
+            android:text="@{data.waterDropDate}"
             android:textAppearance="@style/TextAppearance.WYBComponents.Bold.13"
             android:textColor="@color/selector_waterdrop_other_text"
             tools:background="@drawable/ic_water_43_gray"
@@ -37,11 +38,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:layout_weight="1"
-            android:background="@android:color/transparent"
+            android:background="@{data.today? @drawable/shape_orange_stroke : @drawable/shape_white_stroke}"
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
-            android:text="@{data.name}"
+            android:text="@{data.discomfortTitle}"
             android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
-            android:textColor="@color/gray_4" />
+            android:textColor="@color/gray_4"
+            tools:text="텀블러 사용" />
     </LinearLayout>
 </layout>

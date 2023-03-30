@@ -5,10 +5,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.wyb.wyb_android.data.model.Discomfort
+import com.wyb.wyb_android.data.model.ChallengeDiscomfort
 import com.wyb.wyb_android.data.request.FollowRequest
 import com.wyb.wyb_android.data.type.NotificationType
 import com.wyb.wyb_android.network.ServiceBuilder
+import com.wyb.wyb_android.util.HomeUtils.isDateFuture
+import com.wyb.wyb_android.util.HomeUtils.isDateToday
+import com.wyb.wyb_android.util.HomeUtils.setWaterDropDate
 import com.wyb.wyb_android.util.Utils.setDateWithStartAt
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -27,11 +30,11 @@ class UserHomeViewModel : ViewModel() {
     private val _challengeTerm = MutableLiveData("")
     val challengeTerm: LiveData<String> = _challengeTerm
 
-    private val _discomfortList = MutableLiveData<List<Discomfort>>()
-    val discomfortList: LiveData<List<Discomfort>> = _discomfortList
+    private val _discomfortList = MutableLiveData<List<ChallengeDiscomfort>>()
+    val discomfortList: LiveData<List<ChallengeDiscomfort>> = _discomfortList
 
-    private val _challengeComfort = MutableLiveData<String?>()
-    val challengeComfort: LiveData<String?> = _challengeComfort
+    private val _challengeComfort = MutableLiveData<String>()
+    val challengeComfort: LiveData<String> = _challengeComfort
 
     fun fetchUserHome(userId: Int) {
         viewModelScope.launch {
@@ -46,7 +49,18 @@ class UserHomeViewModel : ViewModel() {
                     _isChallenge.postValue(true)
                     _challengeComfort.postValue(challengeData.comfortTitle)
                     _challengeTerm.postValue(setDateWithStartAt(challengeData.startedAt))
-                    _discomfortList.postValue(discomfortList)
+                    _discomfortList.postValue(discomfortList.map {
+                        ChallengeDiscomfort(
+                            discomfortId = it.id,
+                            discomfortTitle = it.name,
+                            startedAt = challengeData.startedAt,
+                            isFinished = it.isFinished,
+                            isToday = isDateToday(challengeData.startedAt, it.day),
+                            isFuture = isDateFuture(challengeData.startedAt, it.day),
+                            day = it.day,
+                            waterDropDate = setWaterDropDate(challengeData.startedAt, it.day),
+                        )
+                    })
                     levelOfJuice.postValue(discomfortList.filter { it.isFinished }.size)
                 } else {
                     _isChallenge.postValue(false)

@@ -3,24 +3,26 @@ package com.wyb.wyb_android.util
 import java.time.LocalDate
 
 object HomeUtils : BaseUtil() {
-    val isDateToday = { date: String -> date.toInt() == LocalDate.now().dayOfMonth }
-
-    fun setWaterDropDateText(firstDate: String, position: Int): String {
+    private fun getWaterDropLocalDate(firstDate: String, day: Int): LocalDate? {
+        val position = day - 1
         val startDate = Utils.convertIsoStringToLocalDate(firstDate)
-        val currentDate = startDate?.plusDays(position.toLong())
-
-        if (currentDate != null) {
-            return currentDate.dayOfMonth.toString()
-        }
-        return ""
+        return startDate?.plusDays(position.toLong())
     }
 
-    fun isChallengeFailed(startDate: String, position: Int, isFinished: Boolean): Boolean {
-        val startLocalDate = Utils.convertIsoStringToLocalDate(startDate)
-        if (startLocalDate != null) {
-            val waterDropLocalDate = startLocalDate.plusDays(position.toLong())
-            return waterDropLocalDate.isBefore(LocalDate.now()) && !isFinished
-        }
-        return true
+    fun setWaterDropDate(firstDate: String, day: Int): String {
+        val waterDropDate = getWaterDropLocalDate(firstDate, day)
+        return waterDropDate?.dayOfMonth.toString()
+    }
+
+    fun isDateToday(firstDate: String, day: Int): Boolean {
+        val waterDropDate = getWaterDropLocalDate(firstDate, day)
+        val currentDate = LocalDate.now()
+        return waterDropDate?.isEqual(currentDate) == true
+    }
+
+    fun isDateFuture(firstDate: String, day: Int): Boolean {
+        val waterDropDate = getWaterDropLocalDate(firstDate, day)
+        val currentDate = LocalDate.now()
+        return waterDropDate?.isAfter(currentDate) == true
     }
 }
