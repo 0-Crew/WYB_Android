@@ -23,6 +23,7 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
         setChallengeList()
         addListener()
         setProfileItemClickListener()
+        setChallengeAdapterClickListener()
     }
 
     private fun initHomeRVAdapter() {
@@ -64,6 +65,15 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
                 findNavController().navigate(
                     HomeFragmentDirections.actionHomeToUserHome(userId)
                 )
+            }
+        })
+    }
+
+    private fun setChallengeAdapterClickListener() {
+        challengeAdapter.setWaterDropClickListener(object :
+            HomeChallengeAdapter.OnItemClickListener {
+            override fun onWaterDropClick(discomfortId: Int) {
+                viewModel.postChallengeFinished(discomfortId)
             }
         })
     }

@@ -22,6 +22,7 @@ class HomeChallengeAdapter(
     private val context: Context
 ) : ListAdapter<ChallengeDiscomfort, HomeChallengeAdapter.ChallengeViewHolder>(ChallengeDiffUtil()) {
     private lateinit var popupWindow: PopupWindow
+    private lateinit var waterDropClick: OnItemClickListener
 
     inner class ChallengeViewHolder(
         private val binding: ItemHomeChallengeBinding
@@ -30,6 +31,13 @@ class HomeChallengeAdapter(
             binding.data = challengeData
             initView(challengeData)
             setBtnWaterCheckedListener(challengeData)
+            addListener(challengeData)
+        }
+
+        private fun addListener(challengeData: ChallengeDiscomfort) {
+            binding.cbWaterDrop.setOnClickListener {
+                waterDropClick.onWaterDropClick(challengeData.discomfortId)
+            }
         }
 
         private fun initView(data: ChallengeDiscomfort) {
@@ -38,7 +46,13 @@ class HomeChallengeAdapter(
                     initPopupWindow(R.drawable.shape_orange_stroke, data)
                     binding.tvDiscomfort.setTextAppearance(R.style.TextAppearance_WYBComponents_Bold_14)
                     binding.cbWaterDrop.apply {
-                        setTextColor(getColorStateList(resources, R.color.selector_waterdrop_today_text, null))
+                        setTextColor(
+                            getColorStateList(
+                                resources,
+                                R.color.selector_waterdrop_today_text,
+                                null
+                            )
+                        )
                     }
                     setTodayCheckedView(binding.cbWaterDrop.isChecked)
                 }
@@ -171,12 +185,26 @@ class HomeChallengeAdapter(
     }
 
     private class ChallengeDiffUtil : DiffUtil.ItemCallback<ChallengeDiscomfort>() {
-        override fun areItemsTheSame(oldItem: ChallengeDiscomfort, newItem: ChallengeDiscomfort): Boolean {
+        override fun areItemsTheSame(
+            oldItem: ChallengeDiscomfort,
+            newItem: ChallengeDiscomfort
+        ): Boolean {
             return oldItem.discomfortId == newItem.discomfortId
         }
 
-        override fun areContentsTheSame(oldItem: ChallengeDiscomfort, newItem: ChallengeDiscomfort): Boolean {
+        override fun areContentsTheSame(
+            oldItem: ChallengeDiscomfort,
+            newItem: ChallengeDiscomfort
+        ): Boolean {
             return oldItem == newItem
         }
+    }
+
+    interface OnItemClickListener {
+        fun onWaterDropClick(discomfortId: Int)
+    }
+
+    fun setWaterDropClickListener(onItemClickListener: OnItemClickListener) {
+        waterDropClick = onItemClickListener
     }
 }

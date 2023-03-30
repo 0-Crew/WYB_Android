@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.wyb.wyb_android.data.model.ChallengeDiscomfort
 import com.wyb.wyb_android.data.model.OtherProfile
+import com.wyb.wyb_android.data.request.DiscomfortFinishRequest
 import com.wyb.wyb_android.network.ServiceBuilder
 import com.wyb.wyb_android.util.HomeUtils.isDateFuture
 import com.wyb.wyb_android.util.HomeUtils.isDateToday
@@ -96,6 +97,18 @@ class HomeViewModel : ViewModel() {
             } catch (e: HttpException) {
                 validServer.postValue(false)
                 Log.d("fetchHomeDate", e.message())
+            }
+        }
+    }
+
+    fun postChallengeFinished(discomfortId: Int) {
+        viewModelScope.launch {
+            try {
+                ServiceBuilder.challengeService.postDiscomfortFinish(
+                    DiscomfortFinishRequest(discomfortId)
+                )
+            } catch (e: HttpException) {
+                Log.d("postChallengeFinished", e.message())
             }
         }
     }
