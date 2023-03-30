@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.wyb.wyb_android.R
-import com.wyb.wyb_android.data.model.Challenge
+import com.wyb.wyb_android.data.model.ChallengeDiscomfort
 import com.wyb.wyb_android.databinding.ItemHomeChallengeBinding
 import com.wyb.wyb_android.extension.showPopupWindow
 import com.wyb.wyb_android.util.Utils
@@ -20,19 +20,19 @@ import com.wyb.wyb_android.widget.adapter.WYBPopupWindowItemAdapter.Companion.TY
 class HomeChallengeAdapter(
     private val viewModel: HomeViewModel,
     private val context: Context
-) : ListAdapter<Challenge, HomeChallengeAdapter.ChallengeViewHolder>(ChallengeDiffUtil()) {
+) : ListAdapter<ChallengeDiscomfort, HomeChallengeAdapter.ChallengeViewHolder>(ChallengeDiffUtil()) {
     private lateinit var popupWindow: PopupWindow
 
     inner class ChallengeViewHolder(
         private val binding: ItemHomeChallengeBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(challengeData: Challenge) {
+        fun onBind(challengeData: ChallengeDiscomfort) {
             binding.data = challengeData
             initView(challengeData)
             setBtnWaterCheckedListener(challengeData)
         }
 
-        private fun initView(data: Challenge) {
+        private fun initView(data: ChallengeDiscomfort) {
             when (data.isToday) {
                 true -> {
                     initPopupWindow(R.drawable.shape_orange_stroke, data)
@@ -55,9 +55,9 @@ class HomeChallengeAdapter(
             }
         }
 
-        private fun setBtnWaterCheckedListener(data: Challenge) {
+        private fun setBtnWaterCheckedListener(data: ChallengeDiscomfort) {
             binding.cbWaterDrop.setOnCheckedChangeListener { _, isChecked ->
-                viewModel.setIsSuccess(data.id)
+                viewModel.setIsSuccess(data.discomfortId)
                 when (data.isToday) {
                     true -> {
                         setTodayCheckedView(isChecked)
@@ -97,7 +97,7 @@ class HomeChallengeAdapter(
 
         private fun initPopupWindow(
             drawableRes: Int,
-            data: Challenge,
+            data: ChallengeDiscomfort,
         ) {
             binding.cbChallengeEdit.setOnCheckedChangeListener { view, isPopupOpen ->
                 val resource = view.resources
@@ -170,12 +170,12 @@ class HomeChallengeAdapter(
         holder.onBind(getItem(position))
     }
 
-    private class ChallengeDiffUtil : DiffUtil.ItemCallback<Challenge>() {
-        override fun areItemsTheSame(oldItem: Challenge, newItem: Challenge): Boolean {
-            return oldItem.id == newItem.id
+    private class ChallengeDiffUtil : DiffUtil.ItemCallback<ChallengeDiscomfort>() {
+        override fun areItemsTheSame(oldItem: ChallengeDiscomfort, newItem: ChallengeDiscomfort): Boolean {
+            return oldItem.discomfortId == newItem.discomfortId
         }
 
-        override fun areContentsTheSame(oldItem: Challenge, newItem: Challenge): Boolean {
+        override fun areContentsTheSame(oldItem: ChallengeDiscomfort, newItem: ChallengeDiscomfort): Boolean {
             return oldItem == newItem
         }
     }

@@ -18,7 +18,7 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
         super.onViewCreated(view, savedInstanceState)
         challengeAdapter = HomeChallengeAdapter(viewModel, requireContext())
         profileAdapter = HomeOtherProfileAdapter()
-        viewModel.fetchChallengeList()
+        viewModel.fetchHomeDate()
         initHomeRVAdapter()
         setChallengeList()
         addListener()

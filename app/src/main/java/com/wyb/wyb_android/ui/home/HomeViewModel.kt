@@ -1,15 +1,31 @@
 package com.wyb.wyb_android.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.wyb.wyb_android.data.model.Challenge
+import android.util.Log
+import androidx.lifecycle.*
+import com.wyb.wyb_android.data.model.ChallengeDiscomfort
+import com.wyb.wyb_android.data.model.OtherProfile
+import com.wyb.wyb_android.network.ServiceBuilder
+import com.wyb.wyb_android.util.HomeUtils.isDateFuture
+import com.wyb.wyb_android.util.HomeUtils.isDateToday
+import com.wyb.wyb_android.util.HomeUtils.setWaterDropDate
+import com.wyb.wyb_android.util.PairMediatorLiveData
+import com.wyb.wyb_android.util.Utils
+import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
 class HomeViewModel : ViewModel() {
 
-    private val _challengeList = MutableLiveData<List<Challenge>>()
-    val challengeList: LiveData<List<Challenge>> = _challengeList
+    private val _followingList = MutableLiveData<List<OtherProfile>>()
+    val followingList: LiveData<List<OtherProfile>> = _followingList
+
+    private val _challengeList = MutableLiveData<List<ChallengeDiscomfort>>()
+    val challengeList: LiveData<List<ChallengeDiscomfort>> = _challengeList
+
+    private val _challengeComfort = MutableLiveData<String>()
+    val challengeComfort: LiveData<String> = _challengeComfort
+
+    private val _challengeTerm = MutableLiveData<String>()
+    val challengeTerm: LiveData<String> = _challengeTerm
 
     private val _successItems = MutableLiveData<Set<Int>>()
     val successItems: LiveData<Set<Int>> = _successItems
@@ -39,15 +55,35 @@ class HomeViewModel : ViewModel() {
         _isEdit.value = isEdit
     }
 
-    fun fetchChallengeList() {
-        _challengeList.value = listOf(
-            Challenge(1, "불편함1", false, isToday = false, isFuture = false, 1),
-            Challenge(2, "불편함1", false, isToday = false, isFuture = false, 2),
-            Challenge(3, "불편함1", true, isToday = false, isFuture = false, 3),
-            Challenge(4, "불편함1", false, isToday = false, isFuture = false, 4),
-            Challenge(5, "불편함1", false, isToday = true, isFuture = false, 5),
-            Challenge(6, "불편함1", false, isToday = false, isFuture = true, 6),
-            Challenge(7, "불편함1", false, isToday = false, isFuture = true, 7)
-        )
+    fun fetchHomeDate() {
+        viewModelScope.launch {
+            try {
+                val response = ServiceBuilder.challengeService.getHome().data
+                val challengeData = response.myChallenge
+
+                _followingList.postValue(response.followingList)
+                if (challengeData != null) {
+                    _challengeTerm.postValue(Utils.setDateWithStartAt(challengeData.startedAt))
+                    _challengeComfort.postValue(challengeData.comfortTitle)
+                    _challengeList.postValue(response.discomfortList.map {
+                        ChallengeDiscomfort(
+                            discomfortId = it.id,
+                            discomfortTitle = it.name,
+                            startedAt = challengeData.startedAt,
+                            isFinished = it.isFinished,
+                            isToday = isDateToday(challengeData.startedAt, it.day),
+                            isFuture = isDateFuture(challengeData.startedAt, it.day),
+                            day = it.day,
+                            waterDropDate = setWaterDropDate(challengeData.startedAt, it.day),
+                        )
+                    })
+                } else {
+                    _challengeList.postValue(null)
+                }
+                validServer.postValue(true)
+            } catch (e: HttpException) {
+                Log.d("fetchHomeDate", e.message())
+            }
+        }
     }
 }
