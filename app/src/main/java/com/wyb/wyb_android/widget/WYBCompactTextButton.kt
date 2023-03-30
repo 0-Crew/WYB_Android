@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
+import androidx.lifecycle.LiveData
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.databinding.ViewWybCompactTextButtonBinding
 
@@ -70,7 +71,7 @@ class WYBCompactTextButton @JvmOverloads constructor(
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.WYBCompactTextButton)
         typedArray.let {
             titleText = it.getString(R.styleable.WYBCompactTextButton_titleText)
-            comfortText = it.getString(R.styleable.WYBCompactTextButton_comfortText)
+            setComfortTitleText(it.getString(R.styleable.WYBCompactTextButton_comfortText))
             showComfortTv = it.getBoolean(R.styleable.WYBCompactTextButton_showComfortTv, false)
             showIcon = it.getBoolean(R.styleable.WYBCompactTextButton_showStartIcon, false)
             setIcon =
@@ -143,6 +144,14 @@ class WYBCompactTextButton @JvmOverloads constructor(
 
     fun setTvTitle(text: String) {
         binding.tvTitle.text = text
+    }
+
+    fun setComfortTitleText(comfort: String?) {
+        comfortText = comfort.orEmpty()
+    }
+
+    fun setComfortTitleText(comfort: LiveData<String>) {
+        comfortText = comfort.value.orEmpty()
     }
 
     companion object {

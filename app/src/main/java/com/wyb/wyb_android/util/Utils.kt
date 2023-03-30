@@ -63,7 +63,7 @@ object Utils : BaseUtil() {
         }
     }
 
-    fun setDateText(firstDate: CalendarDay, lastDate: CalendarDay) : String {
+    fun setDateText(firstDate: CalendarDay, lastDate: CalendarDay): String {
         val startMonth = formatDate(firstDate.month)
         val startDay = formatDate(firstDate.day)
         val endMonth = formatDate(lastDate.month)
@@ -77,7 +77,7 @@ object Utils : BaseUtil() {
         }
     }
 
-    fun setDateText(firstDate: LocalDate, lastDate: LocalDate) : String {
+    fun setDateText(firstDate: LocalDate, lastDate: LocalDate): String {
         val startMonth = formatDate(firstDate.monthValue)
         val startDay = formatDate(firstDate.dayOfMonth)
         val endMonth = formatDate(lastDate.monthValue)
@@ -89,6 +89,16 @@ object Utils : BaseUtil() {
         } else {
             String.format(resources.getString(R.string.date_format_long), startMonth, startDay, endMonth, endDay)
         }
+    }
+
+    fun setDateWithStartAt(firstDate: String): String {
+        val startDate = convertIsoStringToLocalDate(firstDate)
+        val endDate = startDate?.plusDays(6)
+
+        if (startDate != null && endDate != null) {
+            return setDateText(startDate, endDate)
+        }
+        return ""
     }
 }
 

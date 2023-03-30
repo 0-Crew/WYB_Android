@@ -3,6 +3,7 @@ package com.wyb.wyb_android.ui.bottleworld
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.databinding.FragmentBottleWorldContainerBinding
@@ -24,6 +25,7 @@ class BottleWorldContainerFragment(private val tabMode: Int) :
         viewModel.fetchChallengeList()
         initRVAdapter()
         setListToAdapter()
+        setListItemClickListener()
         initEmptyViewLayout()
     }
 
@@ -55,6 +57,17 @@ class BottleWorldContainerFragment(private val tabMode: Int) :
                 }
             }
         }
+    }
+
+    private fun setListItemClickListener() {
+        bottleWorldListAdapter.setItemClickListener(object :
+            BottleWorldListAdapter.OnItemClickListener {
+            override fun onItemClick(userId: Int) {
+                findNavController().navigate(
+                    BottleWorldFragmentDirections.actionBottleWorldToUserHome(userId)
+                )
+            }
+        })
     }
 
     private fun initEmptyViewLayout() {

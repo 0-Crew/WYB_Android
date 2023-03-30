@@ -23,7 +23,7 @@
         <action
             android:id="@+id/actionChallengeHomeToCalendar"
             app:destination="@id/calendarFragment" />
-            
+
         <action
             android:id="@+id/actionHomeToSetting"
             app:destination="@id/settingNavGraph"
@@ -90,13 +90,38 @@
         android:id="@+id/BottleWorldFragment"
         android:name="com.wyb.wyb_android.ui.bottleworld.BottleWorldFragment"
         android:label="BottleWorldFragment"
-        tools:layout="@layout/fragment_bottle_world" />
+        tools:layout="@layout/fragment_bottle_world">
+        <action
+            android:id="@+id/actionBottleWorldToUserHome"
+            app:destination="@id/UserHomeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/UserHomeFragment"
+        android:name="com.wyb.wyb_android.ui.userhome.UserHomeFragment"
+        android:label="UserHomeFragment"
+        tools:layout="@layout/fragment_user_home">
+
+        <argument
+            android:name="userId"
+            android:defaultValue="0"
+            app:argType="integer" />
+
+        <action
+            android:id="@+id/actionUserHomeToCalendar"
+            app:destination="@id/calendarFragment" />
+    </fragment>
 
     <dialog
         android:id="@+id/calendarFragment"
         android:name="com.wyb.wyb_android.ui.calendar.CalendarFragment"
         android:label="CalendarFragment"
         tools:layout="@layout/fragment_calendar">
+
+        <argument
+            android:name="userId"
+            android:defaultValue="0"
+            app:argType="integer" />
 
         <action
             android:id="@+id/actionCalendarToChallengeOpen"
