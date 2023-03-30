@@ -42,9 +42,8 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
     }
 
     private fun addListener() {
-        binding.tvDate.setOnClickListener {
-            findNavController().navigate(R.id.actionChallengeHomeToCalendar)
-        }
+        binding.tvDate.setOnClickListener { navigateToCalender() }
+        binding.btnCalender.setOnClickListener { navigateToCalender() }
         binding.btnMenu.setOnClickListener {
             findNavController().navigate(R.id.actionHomeToSetting)
         }
@@ -53,6 +52,9 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
         }
         binding.btnBottleWorld.setOnClickListener { navigateToBottleWorld() }
         binding.tvBottleWorld.setOnClickListener { navigateToBottleWorld() }
+        binding.btnNewChallenge.setOnClickListener {
+            findNavController().navigate(R.id.actionHomeToChallengeOpen)
+        }
     }
 
     private fun setProfileItemClickListener() {
@@ -68,5 +70,9 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
 
     private fun navigateToBottleWorld() {
         findNavController().navigate(R.id.actionHomeToBottleWorld)
+    }
+
+    private fun navigateToCalender() {
+        findNavController().navigate(R.id.actionChallengeHomeToCalendar)
     }
 }

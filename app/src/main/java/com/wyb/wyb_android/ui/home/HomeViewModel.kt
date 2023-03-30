@@ -39,6 +39,18 @@ class HomeViewModel : ViewModel() {
         }
     }
 
+    val validServer = MutableLiveData<Boolean>()
+
+    val showEmptyView = MediatorLiveData<Boolean>().apply {
+        addSource(
+            PairMediatorLiveData(challengeList, validServer)
+        ) { data ->
+            val challengeList = data.first
+            val validServer = data.second
+            this.value = challengeList == null && validServer == true
+        }
+    }
+
     fun setIsSuccess(itemId: Int) {
         val successItems = successItems.value.orEmpty()
         val currentItems = successItems.toHashSet().apply {
@@ -82,6 +94,7 @@ class HomeViewModel : ViewModel() {
                 }
                 validServer.postValue(true)
             } catch (e: HttpException) {
+                validServer.postValue(false)
                 Log.d("fetchHomeDate", e.message())
             }
         }

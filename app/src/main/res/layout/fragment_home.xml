@@ -114,6 +114,7 @@
 
                 <TextView
                     android:id="@+id/tvBottleWorld"
+                    isVisibleOrGone="@{viewModel.followingList.size() == 0}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
@@ -123,7 +124,55 @@
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <LinearLayout
+            android:id="@+id/layoutEmpty"
+            isVisibleOrGone="@{viewModel.showEmptyView == true}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutTop">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="12dp"
+                android:gravity="center"
+                android:lineSpacingExtra="3dp"
+                android:text="@string/home_challenge_empty"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Medium.13"
+                android:textColor="@color/gray_2"
+                app:drawableTopCompat="@drawable/img_challenge_none" />
+
+            <com.wyb.wyb_android.widget.WYBCompactTextButton
+                android:id="@+id/btnNewChallenge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:backgroundRes="orange"
+                app:setIcon="starWhite"
+                app:showComfortTv="false"
+                app:showStartIcon="true"
+                app:titleText="@string/home_challenge_new" />
+
+            <com.wyb.wyb_android.widget.WYBCompactTextButton
+                android:id="@+id/btnCalender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="20dp"
+                app:backgroundRes="orangeStroke"
+                app:setIcon="calender"
+                app:showComfortTv="false"
+                app:showStartIcon="true"
+                app:titleText="@string/home_show_calendar" />
+        </LinearLayout>
+
         <androidx.core.widget.NestedScrollView
+            isVisibleOrGone="@{viewModel.challengeList.size() != 0}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:overScrollMode="never"
@@ -156,6 +205,7 @@
                     android:layout_marginTop="19dp"
                     android:drawablePadding="6dp"
                     android:gravity="center_vertical"
+                    android:text="@{viewModel.challengeTerm}"
                     android:textAppearance="@style/TextAppearance.WYBComponents.Bold.16"
                     android:textColor="@color/orange"
                     app:drawableEndCompat="@drawable/ic_calendar_oval"
@@ -171,6 +221,7 @@
                     app:backgroundRes="orange"
                     app:layout_constraintStart_toStartOf="@id/tvDate"
                     app:layout_constraintTop_toBottomOf="@id/tvDate"
+                    app:setComfortTitleText="@{viewModel.challengeComfort}"
                     app:setIcon="starWhite"
                     app:setTitleStyle="medium14"
                     app:showComfortTv="true"
