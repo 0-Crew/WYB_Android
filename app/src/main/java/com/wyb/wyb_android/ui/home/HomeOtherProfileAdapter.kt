@@ -11,11 +11,17 @@ import com.wyb.wyb_android.databinding.ItemHomeOtherProfileBinding
 class HomeOtherProfileAdapter :
     ListAdapter<OtherProfile, HomeOtherProfileAdapter.OtherProfileViewHolder>(FriendDiffUtil()) {
 
+    private lateinit var itemClickListener: OnItemClickListener
+
     inner class OtherProfileViewHolder(
         private val binding: ItemHomeOtherProfileBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: OtherProfile) {
+            binding.data = data
 
+            binding.root.setOnClickListener {
+                itemClickListener.onItemClick(userId = data.id)
+            }
         }
     }
 
@@ -41,5 +47,13 @@ class HomeOtherProfileAdapter :
         override fun areContentsTheSame(oldItem: OtherProfile, newItem: OtherProfile): Boolean {
             return oldItem == newItem
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(userId: Int)
+    }
+
+    fun setItemClickListener(onItemClickListener: OnItemClickListener) {
+        itemClickListener = onItemClickListener
     }
 }

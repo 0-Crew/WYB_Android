@@ -37,6 +37,9 @@
         <action
             android:id="@+id/actionHomeToNotification"
             app:destination="@id/NotificationFragment" />
+        <action
+            android:id="@+id/actionHomeToUserHome"
+            app:destination="@id/UserHomeFragment" />
 
     </fragment>
 

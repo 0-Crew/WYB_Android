@@ -22,6 +22,7 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
         initHomeRVAdapter()
         setChallengeList()
         addListener()
+        setProfileItemClickListener()
     }
 
     private fun initHomeRVAdapter() {
@@ -34,6 +35,9 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
             list?.let {
                 with(challengeAdapter) { submitList(list) }
             }
+        }
+        viewModel.followingList.observe(viewLifecycleOwner) { list ->
+            list.let { profileAdapter.submitList(list) }
         }
     }
 
@@ -49,6 +53,17 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
         }
         binding.btnBottleWorld.setOnClickListener { navigateToBottleWorld() }
         binding.tvBottleWorld.setOnClickListener { navigateToBottleWorld() }
+    }
+
+    private fun setProfileItemClickListener() {
+        profileAdapter.setItemClickListener(object :
+            HomeOtherProfileAdapter.OnItemClickListener {
+            override fun onItemClick(userId: Int) {
+                findNavController().navigate(
+                    HomeFragmentDirections.actionHomeToUserHome(userId)
+                )
+            }
+        })
     }
 
     private fun navigateToBottleWorld() {
