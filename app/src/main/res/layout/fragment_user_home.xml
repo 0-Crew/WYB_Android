@@ -189,7 +189,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawablePadding="12dp"
-                        android:text="@string/home_empty_challenge"
+                        android:text="@string/home_user_challenge_empty"
                         android:textAppearance="@style/TextAppearance.WYBComponents.Bold.16"
                         android:textColor="@color/gray_2"
                         app:drawableTopCompat="@drawable/img_challenge_none" />
