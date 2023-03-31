@@ -24,9 +24,12 @@ class UserHomeChallengeAdapter :
             binding.cbWaterDrop.apply {
                 if (data.isToday) {
                     setTextColor(
-                        ResourcesCompat.getColorStateList(resources, R.color.orange, null)
+                        ResourcesCompat.getColorStateList(
+                            resources,
+                            R.color.selector_waterdrop_today_text,
+                            null
+                        )
                     )
-                    setBackgroundResource(R.drawable.ic_water_43_orange)
                 }
                 if (data.isFuture) {
                     setTextColor(
@@ -39,9 +42,20 @@ class UserHomeChallengeAdapter :
             binding.tvDiscomfort.apply {
                 if (data.isToday) {
                     setTextAppearance(R.style.TextAppearance_WYBComponents_Bold_14)
-                    setTextColor(
-                        ResourcesCompat.getColorStateList(resources, R.color.orange, null)
-                    )
+                    when (data.isFinished) {
+                        true -> {
+                            setTextColor(
+                                ResourcesCompat.getColorStateList(resources, R.color.white, null)
+                            )
+                            setBackgroundResource(R.color.orange)
+                        }
+                        else -> {
+                            setTextColor(
+                                ResourcesCompat.getColorStateList(resources, R.color.orange, null)
+                            )
+                            setBackgroundResource(R.drawable.shape_orange_stroke)
+                        }
+                    }
                 }
                 if (data.isFuture) {
                     setTextColor(
