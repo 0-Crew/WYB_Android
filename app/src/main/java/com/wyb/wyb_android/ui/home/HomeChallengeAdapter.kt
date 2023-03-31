@@ -4,7 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.PopupWindow
+import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat.getColorStateList
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -40,16 +42,29 @@ class HomeChallengeAdapter(
                 itemClickListener.onWaterDropClick(challengeData.discomfortId)
             }
             binding.layoutEditDiscomfort.btnCheck.setOnClickListener {
-                val discomfortInput = getDiscomfortInputText(binding.layoutEditDiscomfort)
-                changeEditDiscomfortMode(isEdit = false, discomfortInput)
-                itemClickListener.onEditIconClick(
-                    challengeData.discomfortId,
-                    discomfortInput
-                )
+                setDiscomfortUpdate(challengeData.discomfortId)
             }
+            binding.layoutEditDiscomfort.etDiscomfort.setOnEditorActionListener(
+                TextView.OnEditorActionListener { _, actionId, _ ->
+                    if (actionId == EditorInfo.IME_ACTION_DONE) {
+                        setDiscomfortUpdate(challengeData.discomfortId)
+                        return@OnEditorActionListener true
+                    }
+                    false
+                }
+            )
             binding.layoutEditDiscomfort.btnClose.setOnClickListener {
                 changeEditDiscomfortMode(isEdit = false)
             }
+        }
+
+        private fun setDiscomfortUpdate(discomfortId: Int) {
+            val discomfortInput = getDiscomfortInputText(binding.layoutEditDiscomfort)
+            changeEditDiscomfortMode(isEdit = false, discomfortInput)
+            itemClickListener.onEditIconClick(
+                discomfortId,
+                discomfortInput
+            )
         }
 
         private fun initView(data: ChallengeDiscomfort) {
