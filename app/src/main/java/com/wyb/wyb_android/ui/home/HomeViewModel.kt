@@ -17,6 +17,8 @@ import retrofit2.HttpException
 
 class HomeViewModel : ViewModel() {
 
+    val nickname = MutableLiveData("")
+
     private val _followingList = MutableLiveData<List<OtherProfile>>()
     val followingList: LiveData<List<OtherProfile>> = _followingList
 
@@ -118,6 +120,17 @@ class HomeViewModel : ViewModel() {
                 )
             } catch (e: HttpException) {
                 Log.d("updateChallengeTitle", e.message())
+            }
+        }
+    }
+
+    fun fetchUserInfo() {
+        viewModelScope.launch {
+            try {
+                val response = ServiceBuilder.userService.getUserInfo()
+                nickname.postValue(response.data.userData.nickname)
+            } catch (e: HttpException) {
+                Log.d("fetchUserInfo", e.message())
             }
         }
     }
