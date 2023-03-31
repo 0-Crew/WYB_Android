@@ -32,9 +32,6 @@ class HomeViewModel : ViewModel() {
     private val _successItems = MutableLiveData<List<Int>>()
     val successItems: LiveData<List<Int>> = _successItems
 
-    private val _isEdit = MutableLiveData(false)
-    val isEdit: LiveData<Boolean> = _isEdit
-
     val levelOfJuice = MediatorLiveData<Int>().apply {
         addSource(successItems) {
             this.value = it.size
@@ -63,10 +60,6 @@ class HomeViewModel : ViewModel() {
             }
         }
         _successItems.value = currentItems.toList()
-    }
-
-    fun setIsEdit(isEdit: Boolean) {
-        _isEdit.value = isEdit
     }
 
     fun fetchHomeDate() {

@@ -76,6 +76,10 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
                 viewModel.postChallengeFinished(discomfortId)
                 viewModel.setIsSuccess(discomfortId)
             }
+
+            override fun onEditIconClick(discomfortId: Int, discomfortTitle: String) {
+                viewModel.updateChallengeTitle(discomfortId, discomfortTitle)
+            }
         })
     }
 

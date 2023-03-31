@@ -16,6 +16,8 @@ import com.wyb.wyb_android.extension.showPopupWindow
 import com.wyb.wyb_android.util.Utils
 import com.wyb.wyb_android.widget.adapter.WYBPopupWindowItemAdapter
 import com.wyb.wyb_android.widget.adapter.WYBPopupWindowItemAdapter.Companion.TYPE_POPUP_SMALL
+import com.wyb.wyb_android.widget.adapter.getDiscomfortInputText
+import kotlinx.android.synthetic.main.view_wyb_challenge_edit_text.view.*
 
 class HomeChallengeAdapter(
     private val context: Context
@@ -36,6 +38,17 @@ class HomeChallengeAdapter(
         private fun addListener(challengeData: ChallengeDiscomfort) {
             binding.cbWaterDrop.setOnClickListener {
                 itemClickListener.onWaterDropClick(challengeData.discomfortId)
+            }
+            binding.layoutEditDiscomfort.btnCheck.setOnClickListener {
+                val discomfortInput = getDiscomfortInputText(binding.layoutEditDiscomfort)
+                changeEditDiscomfortMode(isEdit = false, discomfortInput)
+                itemClickListener.onEditIconClick(
+                    challengeData.discomfortId,
+                    discomfortInput
+                )
+            }
+            binding.layoutEditDiscomfort.btnClose.setOnClickListener {
+                changeEditDiscomfortMode(isEdit = false)
             }
         }
 
@@ -111,7 +124,7 @@ class HomeChallengeAdapter(
                 val resource = view.resources
                 if (isPopupOpen) {
                     popupWindow = binding.layoutChallengeToday.showPopupWindow(
-                        adapter = initPopupWindowAdapter(),
+                        adapter = initPopupWindowAdapter(data.discomfortId),
                         backgroundRes = drawableRes,
                         context = context,
                         margin = if (data.day > 5) {
@@ -141,14 +154,12 @@ class HomeChallengeAdapter(
             }
         }
 
-        private fun initPopupWindowAdapter(): WYBPopupWindowItemAdapter {
+        private fun initPopupWindowAdapter(id: Int): WYBPopupWindowItemAdapter {
             return WYBPopupWindowItemAdapter(context, TYPE_POPUP_SMALL).apply {
                 popupItemClickListener = object : WYBPopupWindowItemAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
                         if (position == 11) {
-                            binding.layoutChallengeToday.visibility = View.GONE
-                            binding.etDiscomfort.visibility = View.VISIBLE
-                            Utils.requestFocus(binding.etDiscomfort)
+                            changeEditDiscomfortMode(isEdit = true)
                         } else {
                             val menuList =
                                 context.resources.getStringArray(R.array.challenge_discomfort_menu_list)
@@ -156,9 +167,29 @@ class HomeChallengeAdapter(
                                 this.text = menuList[position]
                                 Utils.clearFocus(this)
                             }
+                            itemClickListener.onEditIconClick(id, menuList[position])
                         }
                         popupWindow.dismiss()
                     }
+                }
+            }
+        }
+
+        private fun changeEditDiscomfortMode(isEdit: Boolean, discomfort: String? = null) {
+            if (discomfort != null) {
+                binding.tvDiscomfort.text = discomfort
+            }
+            when (isEdit) {
+                true -> {
+                    Utils.clearFocus(binding.root)
+                    binding.layoutChallengeToday.visibility = View.GONE
+                    binding.layoutEditDiscomfort.visibility = View.VISIBLE
+                    binding.layoutEditDiscomfort.requestDiscomfortFocus()
+                }
+                else -> {
+                    Utils.clearFocus(binding.root)
+                    binding.layoutChallengeToday.visibility = View.VISIBLE
+                    binding.layoutEditDiscomfort.visibility = View.GONE
                 }
             }
         }
@@ -196,6 +227,8 @@ class HomeChallengeAdapter(
 
     interface OnItemClickListener {
         fun onWaterDropClick(discomfortId: Int)
+
+        fun onEditIconClick(discomfortId: Int, discomfortTitle: String)
     }
 
     fun setItemClickListener(onItemClickListener: OnItemClickListener) {

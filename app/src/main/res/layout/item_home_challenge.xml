@@ -77,7 +77,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.wyb.wyb_android.widget.WYBChallengeEditText
-            android:id="@+id/etDiscomfort"
+            android:id="@+id/layoutEditDiscomfort"
             setChallengeBackgroundStroke="@{data.isToday ? @integer/wyb_challenge_edit_text_bg_stroke_orange : @integer/wyb_challenge_edit_text_bg_stroke_gray}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
