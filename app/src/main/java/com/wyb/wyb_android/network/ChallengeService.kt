@@ -2,13 +2,11 @@ package com.wyb.wyb_android.network
 
 import com.wyb.wyb_android.data.request.DiscomfortFinishRequest
 import com.wyb.wyb_android.data.request.DiscomfortTitleRequest
+import com.wyb.wyb_android.data.request.OpenRequest
 import com.wyb.wyb_android.data.response.BaseResponse
 import com.wyb.wyb_android.data.response.HomeResponse
 import com.wyb.wyb_android.data.response.UserHomeResponse
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.PUT
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ChallengeService {
     @GET("my-challenge/main")
@@ -28,4 +26,9 @@ interface ChallengeService {
     suspend fun getUserHome(
         @Query("userId") userId: Int
     ): UserHomeResponse
+
+    @POST("my-challenge/add")
+    suspend fun postChallengeOpen(
+        @Body body: OpenRequest
+    ): BaseResponse
 }
