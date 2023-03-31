@@ -39,7 +39,12 @@ class ChallengeOpenStartDateFragment :
             findNavController().popBackStack()
         }
         binding.btnStart.setOnClickListener {
-            findNavController().navigate(R.id.actionChallengeOpenStartDateToChallengeHome)
+            viewModel.postChallengeOpen()
+            viewModel.validServer.observe(viewLifecycleOwner) { isSuccess ->
+                if (isSuccess) {
+                    findNavController().navigate(R.id.actionChallengeOpenStartDateToChallengeHome)
+                }
+            }
         }
     }
 }

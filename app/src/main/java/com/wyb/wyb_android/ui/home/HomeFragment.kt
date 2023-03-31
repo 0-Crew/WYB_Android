@@ -16,12 +16,15 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        challengeAdapter = HomeChallengeAdapter(viewModel, requireContext())
+        challengeAdapter = HomeChallengeAdapter(requireContext())
         profileAdapter = HomeOtherProfileAdapter()
-        viewModel.fetchChallengeList()
+        viewModel.fetchHomeDate()
+        viewModel.fetchUserInfo()
         initHomeRVAdapter()
         setChallengeList()
         addListener()
+        setProfileItemClickListener()
+        setChallengeAdapterClickListener()
     }
 
     private fun initHomeRVAdapter() {
@@ -35,12 +38,14 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
                 with(challengeAdapter) { submitList(list) }
             }
         }
+        viewModel.followingList.observe(viewLifecycleOwner) { list ->
+            list.let { profileAdapter.submitList(list) }
+        }
     }
 
     private fun addListener() {
-        binding.tvDate.setOnClickListener {
-            findNavController().navigate(R.id.actionChallengeHomeToCalendar)
-        }
+        binding.tvDate.setOnClickListener { navigateToCalender() }
+        binding.btnCalender.setOnClickListener { navigateToCalender() }
         binding.btnMenu.setOnClickListener {
             findNavController().navigate(R.id.actionHomeToSetting)
         }
@@ -49,9 +54,41 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModel>(R.lay
         }
         binding.btnBottleWorld.setOnClickListener { navigateToBottleWorld() }
         binding.tvBottleWorld.setOnClickListener { navigateToBottleWorld() }
+        binding.btnNewChallenge.setOnClickListener {
+            findNavController().navigate(R.id.actionHomeToChallengeOpen)
+        }
+    }
+
+    private fun setProfileItemClickListener() {
+        profileAdapter.setItemClickListener(object :
+            HomeOtherProfileAdapter.OnItemClickListener {
+            override fun onItemClick(userId: Int) {
+                findNavController().navigate(
+                    HomeFragmentDirections.actionHomeToUserHome(userId)
+                )
+            }
+        })
+    }
+
+    private fun setChallengeAdapterClickListener() {
+        challengeAdapter.setItemClickListener(object :
+            HomeChallengeAdapter.OnItemClickListener {
+            override fun onWaterDropClick(discomfortId: Int) {
+                viewModel.postChallengeFinished(discomfortId)
+                viewModel.setIsSuccess(discomfortId)
+            }
+
+            override fun onEditIconClick(discomfortId: Int, discomfortTitle: String) {
+                viewModel.updateChallengeTitle(discomfortId, discomfortTitle)
+            }
+        })
     }
 
     private fun navigateToBottleWorld() {
         findNavController().navigate(R.id.actionHomeToBottleWorld)
+    }
+
+    private fun navigateToCalender() {
+        findNavController().navigate(R.id.actionChallengeHomeToCalendar)
     }
 }

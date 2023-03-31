@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="com.wyb.wyb_android.data.model.Challenge" />
+            type="com.wyb.wyb_android.data.model.ChallengeDiscomfort" />
 
         <variable
             name="viewModel"
@@ -32,7 +32,7 @@
             android:gravity="center"
             android:paddingStart="1dp"
             android:paddingTop="3dp"
-            android:text="@{String.valueOf(data.day)}"
+            android:text="@{data.waterDropDate}"
             android:textAppearance="@style/TextAppearance.WYBComponents.Bold.13"
             android:textColor="@color/selector_home_waterdrop_text"
             tools:background="@drawable/ic_water_43_gray"
@@ -52,8 +52,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
                 android:background="@android:color/transparent"
-                android:text="@{data.name}"
+                android:text="@{data.discomfortTitle}"
                 android:textAppearance="@style/TextAppearance.WYBComponents.Medium.14"
+                android:textColor="@color/gray_4"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/cbChallengeEdit"
                 app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -76,7 +77,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.wyb.wyb_android.widget.WYBChallengeEditText
-            android:id="@+id/etDiscomfort"
+            android:id="@+id/layoutEditDiscomfort"
             setChallengeBackgroundStroke="@{data.isToday ? @integer/wyb_challenge_edit_text_bg_stroke_orange : @integer/wyb_challenge_edit_text_bg_stroke_gray}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

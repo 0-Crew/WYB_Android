@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.databinding.ViewWybChallengeEditTextBinding
+import com.wyb.wyb_android.util.Utils
 
 class WYBChallengeEditText @JvmOverloads constructor(
     context: Context,
@@ -123,6 +124,20 @@ class WYBChallengeEditText @JvmOverloads constructor(
             else -> {
                 setViewColor(R.color.orange)
                 setDrawableRes(R.drawable.shape_orange_stroke)
+            }
+        }
+    }
+
+    fun requestDiscomfortFocus() {
+        binding.etDiscomfort.requestFocus()
+        binding.layout.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                Utils.requestFocus(binding.etDiscomfort)
+            }
+        }
+        binding.etDiscomfort.setOnFocusChangeListener { view, hasFocus ->
+            if (!hasFocus) {
+                Utils.clearFocus(view)
             }
         }
     }
