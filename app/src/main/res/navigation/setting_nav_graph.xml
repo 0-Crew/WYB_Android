@@ -25,6 +25,11 @@
         android:label="SettingProfileFragment"
         tools:layout="@layout/fragment_setting_profile">
 
+        <argument
+            android:name="nickname"
+            android:defaultValue=""
+            app:argType="string" />
+
         <action
             android:id="@+id/actionSettingProfileToSettingProfileManagement"
             app:destination="@id/settingProfileManagementFragment" />
@@ -43,7 +48,12 @@
         android:id="@+id/settingProfileManagementFragment"
         android:name="com.wyb.wyb_android.ui.setting.SettingProfileManagementFragment"
         android:label="SettingProfileManagementFragment"
-        tools:layout="@layout/fragment_setting_profile_management" >
+        tools:layout="@layout/fragment_setting_profile_management">
+
+        <argument
+            android:name="nickname"
+            android:defaultValue=""
+            app:argType="string" />
 
         <action
             android:id="@+id/actionSettingProfileManagementToHome"

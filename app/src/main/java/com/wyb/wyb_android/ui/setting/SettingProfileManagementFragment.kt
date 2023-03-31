@@ -6,10 +6,12 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView.OnEditorActionListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.databinding.FragmentSettingProfileManagementBinding
 import com.wyb.wyb_android.ui.setting.SettingViewModel.Companion.MAX_NICKNAME_LENGTH
+import com.wyb.wyb_android.widget.adapter.setInputText
 import com.wyb.wyb_android.widget.dialog.TwoButtonDialog
 import com.wyb.wyb_android.widget.dialog.TwoButtonDialog.Companion.WITHDRAWAL
 import kotlinx.android.synthetic.main.view_wyb_label_edit_text.view.*
@@ -19,6 +21,7 @@ class SettingProfileManagementFragment :
         R.layout.fragment_setting_profile_management
     ) {
     override val viewModel: SettingViewModel by viewModels()
+    private val args: SettingProfileManagementFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -53,6 +56,7 @@ class SettingProfileManagementFragment :
 
     private fun initView() {
         with(binding.etNickname) {
+            setInputText(this, args.nickname)
             setEditTextNotFocusable(activity)
             setCheckBoxMode(activity)
             setTextInputFilter()

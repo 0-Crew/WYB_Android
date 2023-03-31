@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class SettingViewModel : ViewModel() {
-    val userNickname = MutableLiveData("")
+    val userNickname = MutableLiveData("가니가")
 
     val isNicknameLengthValid = MediatorLiveData<Boolean>().apply {
-        addSource(userNickname) { this.value = it.length >= MAX_NICKNAME_LENGTH}
+        addSource(userNickname) { this.value = it.length >= MAX_NICKNAME_LENGTH }
     }
 
     companion object {

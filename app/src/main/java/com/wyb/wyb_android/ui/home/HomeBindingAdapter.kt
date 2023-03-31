@@ -20,7 +20,7 @@ fun bindBottleImg(imageView: ImageView, levelOfJuice: Int) {
     }
 }
 
-@BindingAdapter("setOtherProfileText")
-fun bindFollowingProfile(textView: TextView, nickName: String) {
+@BindingAdapter("setProfileFirstText")
+fun bindProfileFirstText(textView: TextView, nickName: String) {
     textView.text = nickName.substring(0, 1)
 }
