@@ -5,6 +5,7 @@ import androidx.lifecycle.*
 import com.wyb.wyb_android.data.model.ChallengeDiscomfort
 import com.wyb.wyb_android.data.model.OtherProfile
 import com.wyb.wyb_android.data.request.DiscomfortFinishRequest
+import com.wyb.wyb_android.data.request.DiscomfortTitleRequest
 import com.wyb.wyb_android.network.ServiceBuilder
 import com.wyb.wyb_android.util.HomeUtils.isDateFuture
 import com.wyb.wyb_android.util.HomeUtils.isDateToday
@@ -40,7 +41,7 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-    val validServer = MutableLiveData<Boolean>()
+    private val validServer = MutableLiveData<Boolean>()
 
     val showEmptyView = MediatorLiveData<Boolean>().apply {
         addSource(
@@ -112,6 +113,18 @@ class HomeViewModel : ViewModel() {
                 )
             } catch (e: HttpException) {
                 Log.d("postChallengeFinished", e.message())
+            }
+        }
+    }
+
+    fun updateChallengeTitle(discomfortId: Int, discomfortTitle: String) {
+        viewModelScope.launch {
+            try {
+                ServiceBuilder.challengeService.updateDiscomfortTitle(
+                    DiscomfortTitleRequest(discomfortId, discomfortTitle)
+                )
+            } catch (e: HttpException) {
+                Log.d("updateChallengeTitle", e.message())
             }
         }
     }

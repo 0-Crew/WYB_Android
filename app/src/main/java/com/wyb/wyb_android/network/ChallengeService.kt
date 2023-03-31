@@ -1,6 +1,7 @@
 package com.wyb.wyb_android.network
 
 import com.wyb.wyb_android.data.request.DiscomfortFinishRequest
+import com.wyb.wyb_android.data.request.DiscomfortTitleRequest
 import com.wyb.wyb_android.data.response.BaseResponse
 import com.wyb.wyb_android.data.response.HomeResponse
 import com.wyb.wyb_android.data.response.UserHomeResponse
@@ -16,6 +17,11 @@ interface ChallengeService {
     @PUT("my-inconvenience/finish")
     suspend fun postDiscomfortFinish(
         @Body body: DiscomfortFinishRequest
+    ): BaseResponse
+
+    @PUT("my-inconvenience/update")
+    suspend fun updateDiscomfortTitle(
+        @Body body: DiscomfortTitleRequest
     ): BaseResponse
 
     @GET("my-challenge/user")
