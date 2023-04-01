@@ -1,4 +1,4 @@
-package com.wyb.wyb_android.ui.onboarding
+package com.wyb.wyb_android.ui.auth
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.wyb.wyb_android.util.TripleMediatorLiveData
 import java.time.LocalDate
 
-class OnBoardingViewModel : ViewModel() {
+class AuthViewModel : ViewModel() {
     val challengeDates = Array<LocalDate>(7) { i ->
         LocalDate.now().minusDays(i.toLong())
     }.reversedArray()

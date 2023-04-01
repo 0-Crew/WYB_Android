@@ -1,14 +1,14 @@
-package com.wyb.wyb_android.ui.onboarding
+package com.wyb.wyb_android.ui.auth
 
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.BindingFragment
-import com.wyb.wyb_android.databinding.FragmentOnboardingMainBinding
+import com.wyb.wyb_android.databinding.FragmentAuthBinding
 
-class OnBoardingMainFragment : BindingFragment<FragmentOnboardingMainBinding>(
-    R.layout.fragment_onboarding_main
+class AuthFragment : BindingFragment<FragmentAuthBinding>(
+    R.layout.fragment_auth
 ) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -18,7 +18,7 @@ class OnBoardingMainFragment : BindingFragment<FragmentOnboardingMainBinding>(
 
     private fun initClickListener() {
         binding.layoutOnBoarding.setOnClickListener {
-            findNavController().navigate(R.id.actionOnBoardingMainToOnBoardingIntro)
+            findNavController().navigate(R.id.actionAuthToOnBoardingIntro)
         }
     }
 }

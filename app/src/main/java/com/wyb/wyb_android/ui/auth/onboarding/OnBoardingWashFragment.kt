@@ -1,4 +1,4 @@
-package com.wyb.wyb_android.ui.onboarding
+package com.wyb.wyb_android.ui.auth.onboarding
 
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.BindingFragment
