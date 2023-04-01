@@ -95,7 +95,7 @@ class HomeViewModel : ViewModel() {
                 validServer.postValue(true)
             } catch (e: HttpException) {
                 validServer.postValue(false)
-                Log.d("fetchHomeDate", e.message())
+                Log.d("fetchHomeDate", e.message().toString())
             }
         }
     }
@@ -107,7 +107,7 @@ class HomeViewModel : ViewModel() {
                     DiscomfortFinishRequest(discomfortId)
                 )
             } catch (e: HttpException) {
-                Log.d("postChallengeFinished", e.message())
+                Log.d("postChallengeFinished", e.message().toString())
             }
         }
     }
@@ -119,7 +119,7 @@ class HomeViewModel : ViewModel() {
                     DiscomfortTitleRequest(discomfortId, discomfortTitle)
                 )
             } catch (e: HttpException) {
-                Log.d("updateChallengeTitle", e.message())
+                Log.d("updateChallengeTitle", e.message().toString())
             }
         }
     }
@@ -130,7 +130,7 @@ class HomeViewModel : ViewModel() {
                 val response = ServiceBuilder.userService.getUserInfo()
                 nickname.postValue(response.data.userData.nickname)
             } catch (e: HttpException) {
-                Log.d("fetchUserInfo", e.message())
+                Log.d("fetchUserInfo", e.message().toString())
             }
         }
     }

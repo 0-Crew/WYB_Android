@@ -1,14 +1,19 @@
 package com.wyb.wyb_android.network
 
 import com.wyb.wyb_android.data.response.BaseResponse
+import com.wyb.wyb_android.data.response.ExposureResponse
 import com.wyb.wyb_android.data.response.SettingResponse
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface UserService {
     @GET("user/setting")
     suspend fun getUserInfo(): SettingResponse
+
+    @GET("user/private")
+    suspend fun getUserExposure(): ExposureResponse
+
+    @PUT("user/private")
+    suspend fun updateUserExposure(): ExposureResponse
 
     @POST("notification/button")
     suspend fun postFollow(
