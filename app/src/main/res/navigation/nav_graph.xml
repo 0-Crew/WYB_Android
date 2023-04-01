@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/HomeFragment"
         android:name="com.wyb.wyb_android.ui.home.HomeFragment"
-        android:label="ChallengeFragment"
+        android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
 
         <argument

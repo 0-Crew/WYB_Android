@@ -11,6 +11,7 @@ import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.databinding.FragmentSettingProfileManagementBinding
 import com.wyb.wyb_android.ui.setting.SettingViewModel.Companion.MAX_NICKNAME_LENGTH
+import com.wyb.wyb_android.util.safeNavigate
 import com.wyb.wyb_android.widget.adapter.setInputText
 import com.wyb.wyb_android.widget.dialog.TwoButtonDialog
 import com.wyb.wyb_android.widget.dialog.TwoButtonDialog.Companion.WITHDRAWAL
@@ -69,6 +70,11 @@ class SettingProfileManagementFragment :
     }
 
     private fun navigateToHomeFragment() {
-        findNavController().navigate(R.id.actionSettingProfileManagementToHome)
+        viewModel.updateNickname()
+        viewModel.isNickNameValid.observe(viewLifecycleOwner) { isValid ->
+            if (isValid) {
+                findNavController().safeNavigate(R.id.actionSettingProfileManagementToHome)
+            }
+        }
     }
 }
