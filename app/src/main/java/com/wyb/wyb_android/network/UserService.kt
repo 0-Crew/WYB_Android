@@ -33,4 +33,7 @@ interface UserService {
         @Query("type") type: String,
         @Query("receiverUserId") receiverUserId: Int,
     ): BaseResponse
+
+    @DELETE("user")
+    suspend fun deleteUser(): BaseResponse
 }

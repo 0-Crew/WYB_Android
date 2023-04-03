@@ -67,6 +67,16 @@ class SettingViewModel : ViewModel() {
         }
     }
 
+    fun postDeleteUser() {
+        viewModelScope.launch {
+            try {
+                ServiceBuilder.userService.deleteUser()
+            } catch (e: HttpException) {
+                Log.d("postDeleteUser", e.message.toString())
+            }
+        }
+    }
+
     companion object {
         const val MAX_NICKNAME_LENGTH = 7
     }

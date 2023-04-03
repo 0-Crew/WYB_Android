@@ -1,15 +1,21 @@
 package com.wyb.wyb_android.ui.setting
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView.OnEditorActionListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.kakao.sdk.user.UserApiClient
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
+import com.wyb.wyb_android.data.SharedPreferenceController
 import com.wyb.wyb_android.databinding.FragmentSettingProfileManagementBinding
+import com.wyb.wyb_android.ui.auth.AuthActivity
+import com.wyb.wyb_android.ui.auth.AuthActivity.Companion.TAG
 import com.wyb.wyb_android.ui.setting.SettingViewModel.Companion.MAX_NICKNAME_LENGTH
 import com.wyb.wyb_android.util.safeNavigate
 import com.wyb.wyb_android.widget.adapter.setInputText
@@ -34,9 +40,23 @@ class SettingProfileManagementFragment :
         binding.layoutTitle.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
+        binding.tvLogout.setOnClickListener {
+            clearUserInfo()
+            UserApiClient.instance.logout { error ->
+                if (error != null) {
+                    Log.e(TAG, "로그아웃 실패", error)
+                }
+            }
+        }
         binding.tvWithdraw.setOnClickListener {
             TwoButtonDialog(WITHDRAWAL) {
-                // 탈퇴 처리
+                viewModel.postDeleteUser()
+                clearUserInfo()
+                UserApiClient.instance.unlink { error ->
+                    if (error != null) {
+                        Log.e(TAG, "연결끊기 실패", error)
+                    }
+                }
             }.show(childFragmentManager, "WITHDRAWAL_DIALOG")
         }
         binding.etNickname.cbIcon.setOnClickListener {
@@ -53,6 +73,12 @@ class SettingProfileManagementFragment :
                 false
             }
         )
+    }
+
+    private fun clearUserInfo() {
+        startActivity(Intent(requireContext(), AuthActivity::class.java))
+        requireActivity().finish()
+        SharedPreferenceController.clearAuth()
     }
 
     private fun initView() {
