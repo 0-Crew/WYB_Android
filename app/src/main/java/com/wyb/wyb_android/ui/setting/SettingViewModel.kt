@@ -2,6 +2,7 @@ package com.wyb.wyb_android.ui.setting
 
 import android.util.Log
 import androidx.lifecycle.*
+import com.wyb.wyb_android.data.SharedPreferenceController
 import com.wyb.wyb_android.data.request.NicknameRequest
 import com.wyb.wyb_android.network.ServiceBuilder
 import kotlinx.coroutines.launch
@@ -10,7 +11,7 @@ import retrofit2.HttpException
 class SettingViewModel : ViewModel() {
     val userExposure = MutableLiveData<Boolean>()
 
-    val userNickname = MutableLiveData("가니가")
+    val userNickname = MutableLiveData(SharedPreferenceController.getNickname())
 
     val duplicatedNickname = MutableLiveData("")
 
