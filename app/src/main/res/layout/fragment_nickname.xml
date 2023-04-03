@@ -9,68 +9,74 @@
             type="com.wyb.wyb_android.ui.auth.nickname.NicknameViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/nickname_title"
-            android:textAppearance="@style/TextAppearance.WYBComponents.Bold.30"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.wyb.wyb_android.widget.WYBLabelEditText
-            android:id="@+id/layoutNickname"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="54dp"
-            app:backgroundStroke="gray"
-            app:hint="@string/nickname_hint"
-            app:inputText="@={viewModel.nickname}"
-            app:labelText="@string/nickname"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            isVisibleOrInvisible="@{viewModel.isNicknameDuplicate &amp;&amp; viewModel.duplicatedNickname == viewModel.nickname}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/nickname_alert_message"
-            android:textAppearance="@style/TextAppearance.WYBComponents.Medium.12"
-            android:textColor="@color/red_alert"
-            android:visibility="invisible"
-            app:layout_constraintStart_toStartOf="@id/layoutNickname"
-            app:layout_constraintTop_toBottomOf="@id/layoutNickname" />
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/nickname_title"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Bold.30"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            isVisibleOrInvisible="@{viewModel.isNicknameLengthValid}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/nickname_max_length_message"
-            android:textAppearance="@style/TextAppearance.WYBComponents.Medium.12"
-            android:textColor="@color/red_alert"
-            android:visibility="invisible"
-            app:layout_constraintStart_toStartOf="@id/layoutNickname"
-            app:layout_constraintTop_toBottomOf="@id/layoutNickname" />
+            <com.wyb.wyb_android.widget.WYBLabelEditText
+                android:id="@+id/layoutNickname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="54dp"
+                app:backgroundStroke="gray"
+                app:hint="@string/nickname_hint"
+                app:inputText="@={viewModel.nickname}"
+                app:labelText="@string/nickname"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
-        <Button
-            android:id="@+id/btnConfirm"
-            style="@style/Widget.WYB.Button.SolidButton.FullWidth"
-            android:layout_width="match_parent"
-            android:text="@string/confirm"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                isVisibleOrInvisible="@{viewModel.isNicknameDuplicate &amp;&amp; viewModel.duplicatedNickname == viewModel.nickname}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/nickname_alert_message"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Medium.12"
+                android:textColor="@color/red_alert"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="@id/layoutNickname"
+                app:layout_constraintTop_toBottomOf="@id/layoutNickname" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                isVisibleOrInvisible="@{viewModel.isNicknameLengthValid}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/nickname_max_length_message"
+                android:textAppearance="@style/TextAppearance.WYBComponents.Medium.12"
+                android:textColor="@color/red_alert"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="@id/layoutNickname"
+                app:layout_constraintTop_toBottomOf="@id/layoutNickname" />
+
+            <Button
+                android:id="@+id/btnConfirm"
+                style="@style/Widget.WYB.Button.SolidButton.FullWidth"
+                android:layout_width="match_parent"
+                android:enabled="@{viewModel.isWriting}"
+                android:text="@string/confirm"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

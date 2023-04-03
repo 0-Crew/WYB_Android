@@ -8,6 +8,8 @@ import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.databinding.FragmentNicknameBinding
 import com.wyb.wyb_android.ui.MainActivity
+import com.wyb.wyb_android.ui.setting.SettingViewModel.Companion.MAX_NICKNAME_LENGTH
+import kotlinx.android.synthetic.main.view_wyb_label_edit_text.view.*
 
 class NicknameFragment : ViewModelFragment<FragmentNicknameBinding, NicknameViewModel>(
     R.layout.fragment_nickname
@@ -18,7 +20,20 @@ class NicknameFragment : ViewModelFragment<FragmentNicknameBinding, NicknameView
         super.onViewCreated(view, savedInstanceState)
         requireActivity().window.statusBarColor =
             requireContext().getColor(android.R.color.transparent)
+        initView()
         addListener()
+    }
+
+    private fun initView() {
+        with(binding.layoutNickname) {
+            setEditTextFocusable()
+            setTextInputFilter()
+            setTextMaxLength(MAX_NICKNAME_LENGTH)
+            etInput.setImeActionLabel(
+                getString(R.string.complete),
+                android.view.inputmethod.EditorInfo.IME_ACTION_DONE
+            )
+        }
     }
 
     private fun addListener() {

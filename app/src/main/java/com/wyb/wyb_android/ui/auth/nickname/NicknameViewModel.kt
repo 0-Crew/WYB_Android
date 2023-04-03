@@ -22,6 +22,12 @@ class NicknameViewModel : ViewModel() {
         addSource(nickname) { this.value = it.length >= MAX_NICKNAME_LENGTH }
     }
 
+    val isWriting = MediatorLiveData<Boolean>().apply {
+        addSource(nickname) {
+            this.value = it.isNotEmpty()
+        }
+    }
+
     fun postNickname() {
         viewModelScope.launch {
             try {
@@ -32,7 +38,6 @@ class NicknameViewModel : ViewModel() {
                     )
                     if (response.success) {
                         isNickNameValid.postValue(true)
-
                     }
                 }
             } catch (e: HttpException) {
