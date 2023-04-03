@@ -1,5 +1,6 @@
 package com.wyb.wyb_android.network
 
+import com.wyb.wyb_android.data.SharedPreferenceController
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -12,7 +13,7 @@ object ServiceBuilder {
     private val headerInterceptor = Interceptor { chain ->
         with(chain) {
             val newRequest = request().newBuilder()
-                .addHeader("Authorization", "")
+                .addHeader("Authorization", SharedPreferenceController.getToken())
                 .build()
             proceed(newRequest)
         }
