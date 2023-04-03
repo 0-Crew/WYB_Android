@@ -1,13 +1,18 @@
 package com.wyb.wyb_android.ui.auth
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.util.Log
+import androidx.lifecycle.*
+import com.wyb.wyb_android.data.SharedPreferenceController
+import com.wyb.wyb_android.data.request.AuthRequest
+import com.wyb.wyb_android.data.type.AuthType
+import com.wyb.wyb_android.network.ServiceBuilder
 import com.wyb.wyb_android.util.TripleMediatorLiveData
+import kotlinx.coroutines.launch
+import retrofit2.HttpException
 import java.time.LocalDate
 
 class AuthViewModel : ViewModel() {
+    // onBoarding
     val challengeDates = Array<LocalDate>(7) { i ->
         LocalDate.now().minusDays(i.toLong())
     }.reversedArray()
@@ -46,5 +51,27 @@ class AuthViewModel : ViewModel() {
 
     fun removeCoachMark() {
         _coachMark.value = false
+    }
+
+    //auth
+    val authType = MutableLiveData<AuthType>()
+
+    fun postAuth(email: String, kakaoToken: String) {
+        viewModelScope.launch {
+            try {
+                val response = ServiceBuilder.userService.postAuth(
+                    AuthRequest(
+                        email = email,
+                        token = kakaoToken
+                    )
+                )
+                if (response.data != null) {
+                    authType.postValue(AuthType.valueOf(response.data.type.uppercase()))
+                    SharedPreferenceController.setToken(response.data.accessToken)
+                }
+            } catch (e: HttpException) {
+                Log.d("postAuth", e.message.toString())
+            }
+        }
     }
 }

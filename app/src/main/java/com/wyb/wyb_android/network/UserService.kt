@@ -1,12 +1,19 @@
 package com.wyb.wyb_android.network
 
+import com.wyb.wyb_android.data.request.AuthRequest
 import com.wyb.wyb_android.data.request.NicknameRequest
+import com.wyb.wyb_android.data.response.AuthResponse
 import com.wyb.wyb_android.data.response.BaseResponse
 import com.wyb.wyb_android.data.response.ExposureResponse
 import com.wyb.wyb_android.data.response.SettingResponse
 import retrofit2.http.*
 
 interface UserService {
+    @POST("auth")
+    suspend fun postAuth(
+        @Body body: AuthRequest
+    ): AuthResponse
+
     @GET("user/setting")
     suspend fun getUserInfo(): SettingResponse
 
