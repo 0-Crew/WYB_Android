@@ -18,6 +18,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "KAKAO_API_KEY", KAKAO_API_KEY_STRING)
+        manifestPlaceholders["KAKAO_API_KEY"] = KAKAO_API_KEY
     }
 
     buildTypes {
@@ -72,4 +75,7 @@ dependencies {
     // RetrofitLog
     implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
     implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+
+    // Kakao Login
+    implementation "com.kakao.sdk:v2-user:2.13.0"
 }

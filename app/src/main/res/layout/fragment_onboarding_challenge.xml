@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.wyb.wyb_android.ui.onboarding.OnBoardingViewModel" />
+            type="com.wyb.wyb_android.ui.auth.AuthViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

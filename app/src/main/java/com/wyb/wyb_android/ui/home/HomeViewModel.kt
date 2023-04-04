@@ -2,6 +2,7 @@ package com.wyb.wyb_android.ui.home
 
 import android.util.Log
 import androidx.lifecycle.*
+import com.wyb.wyb_android.data.SharedPreferenceController
 import com.wyb.wyb_android.data.model.ChallengeDiscomfort
 import com.wyb.wyb_android.data.model.OtherProfile
 import com.wyb.wyb_android.data.request.DiscomfortFinishRequest
@@ -95,7 +96,7 @@ class HomeViewModel : ViewModel() {
                 validServer.postValue(true)
             } catch (e: HttpException) {
                 validServer.postValue(false)
-                Log.d("fetchHomeDate", e.message())
+                Log.d("fetchHomeDate", e.message().toString())
             }
         }
     }
@@ -107,7 +108,7 @@ class HomeViewModel : ViewModel() {
                     DiscomfortFinishRequest(discomfortId)
                 )
             } catch (e: HttpException) {
-                Log.d("postChallengeFinished", e.message())
+                Log.d("postChallengeFinished", e.message().toString())
             }
         }
     }
@@ -119,7 +120,7 @@ class HomeViewModel : ViewModel() {
                     DiscomfortTitleRequest(discomfortId, discomfortTitle)
                 )
             } catch (e: HttpException) {
-                Log.d("updateChallengeTitle", e.message())
+                Log.d("updateChallengeTitle", e.message().toString())
             }
         }
     }
@@ -129,8 +130,9 @@ class HomeViewModel : ViewModel() {
             try {
                 val response = ServiceBuilder.userService.getUserInfo()
                 nickname.postValue(response.data.userData.nickname)
+                SharedPreferenceController.setNickname(response.data.userData.nickname)
             } catch (e: HttpException) {
-                Log.d("fetchUserInfo", e.message())
+                Log.d("fetchUserInfo", e.message().toString())
             }
         }
     }

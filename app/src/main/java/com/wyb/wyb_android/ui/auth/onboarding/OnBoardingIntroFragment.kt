@@ -1,4 +1,4 @@
-package com.wyb.wyb_android.ui.onboarding
+package com.wyb.wyb_android.ui.auth.onboarding
 
 import android.os.Bundle
 import android.view.View

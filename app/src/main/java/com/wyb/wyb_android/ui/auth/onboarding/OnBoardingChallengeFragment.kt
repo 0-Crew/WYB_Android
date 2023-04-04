@@ -1,4 +1,4 @@
-package com.wyb.wyb_android.ui.onboarding
+package com.wyb.wyb_android.ui.auth.onboarding
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +10,13 @@ import androidx.navigation.navGraphViewModels
 import com.wyb.wyb_android.R
 import com.wyb.wyb_android.base.ViewModelFragment
 import com.wyb.wyb_android.databinding.FragmentOnboardingChallengeBinding
+import com.wyb.wyb_android.ui.auth.AuthViewModel
 import com.wyb.wyb_android.util.Utils.setDateText
 
 class OnBoardingChallengeFragment :
-    ViewModelFragment<FragmentOnboardingChallengeBinding, OnBoardingViewModel>(R.layout.fragment_onboarding_challenge) {
+    ViewModelFragment<FragmentOnboardingChallengeBinding, AuthViewModel>(R.layout.fragment_onboarding_challenge) {
 
-    override val viewModel: OnBoardingViewModel by navGraphViewModels(R.id.onboarding_nav_graph)
+    override val viewModel: AuthViewModel by navGraphViewModels(R.id.auth_nav_graph)
 
     private lateinit var waterDropViews: List<CheckBox>
 
